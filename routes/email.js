@@ -9,6 +9,9 @@ var path = require('path');
 
 var socket = null;
 
+const SUPORTEMAIL = process.env.SUPORTEMAIL;
+const PASSEMAIL = process.env.MAILGUN_SMTP_PASSWORD;
+
 const reqPath = path.join(__dirname, '../');
 
 
@@ -166,8 +169,8 @@ router.post('/:date', function (req, res, next) {
     port: 465,
     secure: true,
     auth: {
-      user: 'postmaster@tpesantoandre.com.br',
-      pass: '00c800f40f0974e724856a62951631b4-a909d4a1-4f81ffb7'
+      user: SUPORTEMAIL,
+      pass: PASSEMAIL
     },
   });
 
@@ -214,8 +217,8 @@ router.post('/:date', function (req, res, next) {
                 console.log(emailresult);
 
               });
-              let hash1 = 'https://tpesantoandre.com.br/email/confirm/' + emailhash.hash + '?' + 'qs1=' + emailhash.idescala + '&qs0=S' + '&qs2=' + emailhash.iduser + '&qs3=' + emailhash.idhora;
-              let hash2 = 'https://tpesantoandre.com.br/email/confirm/' + emailhash.hash + '?' + 'qs1=' + emailhash.idescala + '&qs0=N' + '&qs2=' + emailhash.iduser + '&qs3=' + emailhash.idhora;
+              let hash1 = 'https://#/email/confirm/' + emailhash.hash + '?' + 'qs1=' + emailhash.idescala + '&qs0=S' + '&qs2=' + emailhash.iduser + '&qs3=' + emailhash.idhora;
+              let hash2 = 'https://#/email/confirm/' + emailhash.hash + '?' + 'qs1=' + emailhash.idescala + '&qs0=N' + '&qs2=' + emailhash.iduser + '&qs3=' + emailhash.idhora;
 
               let text = emailtext(escala[i].pontos[p][u].pubs[s], escala[i].pontos[p][u], escala[i], hash1, hash2);
               console.log(text);
@@ -223,7 +226,7 @@ router.post('/:date', function (req, res, next) {
               let mail = { user: escala[i].pontos[p][u].pubs[s], dia: escala[i].dia, hora: escala[i].hora[p].hora }
               emails.push(mail);
               let mailOptions = {
-                from: '"TPE Santo Andre " <postmaster@tpesantoandre.com.br>',
+                from: `"TPE" <${SUPORTEMAIL}>`,
                 to: escala[i].pontos[p][u].pubs[s].email,
                 subject: titulo,
                 html: text,
@@ -382,7 +385,7 @@ function emailtext(pub, ponto, escala, hash1, hash2) {
   emailpronto = emailpronto + `
 </table>
 <br/>
-<label>Favor confirmar sua designação no sistema TPE via Telegram ou pelo site <a href="https://www.tpesantoandre.com.br">www.tpesantoandre.com.br</a></label>
+<label>Favor confirmar sua designação no sistema TPE via Telegram ou pelo site <a href="${process.env.SITE}">${process.env.SITE}</a></label>
 <br/>
 
 

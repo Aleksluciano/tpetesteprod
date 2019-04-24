@@ -220,6 +220,12 @@ router.post("/cadastro/:id", function(req, res, next) {
   });
 });
 
+router.post("/cadastro/grupo", function(req, res, next) {
+    res.status(200).json({
+      message: process.env.LINKGRUPOTELEGRAM,
+    });
+  });
+
 router.post("/:date", function(req, res, next) {
   const telegrams = [];
 

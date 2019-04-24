@@ -12,7 +12,8 @@ var User = require('../models/user');
 var User2 = require('../models/user');
 
 localStorage = new LocalStorage('./scratch');
-
+const SUPORTEMAIL = process.env.SUPORTEMAIL;
+const PASSEMAIL = process.env.MAILGUN_SMTP_PASSWORD;
 
 router.post('/', function (req, res, next) {
 
@@ -116,21 +117,21 @@ router.patch('/sendpass', function(req, res, next) {
                     error: err
                 });
             }
+            let transporter = nodemailer.createTransport({
+              host: 'smtp.mailgun.org',
+              port: 465,
+              secure: true,
+              auth: {
+                user: SUPORTEMAIL,
+                pass: PASSEMAIL
+              },
+            });
 
-            var transporter = nodemailer.createTransport({
-                host: 'smtp.gmail.com',
-                port: 465,
-                secure: true,
-                auth: {
-                  user: 'carrinhoagenda101@gmail.com',
-                  pass: 'Livro@2018'
-                }
-              });
 
               var mailOptions = {
-                from: '"TPE Santo Andre " <carrinhoagenda101@gmail.com>',
+                from: `"TPE" <${SUPORTEMAIL}>`,
                 to: user.email,
-                subject: 'Senha nova do TPE Santo André',
+                subject: 'Senha nova do TPE',
                 text: 'Olá ' + user.firstName + ' ' + user.lastName + ' sua senha nova é: ' + pass
               };
 
