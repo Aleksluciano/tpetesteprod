@@ -6,6 +6,7 @@ const Usertotal = require("../models/user");
 const Usersub = require("../models/user");
 const Led = require("../models/led");
 const Congregation = require("../models/congregation");
+const bcrypt = require("bcryptjs");
 const Escala = require("../models/escala");
 const mongoose = require("mongoose");
 const TelegramBot = require("node-telegram-bot-api");
