@@ -10,7 +10,7 @@ var path = require('path');
 var socket = null;
 
 const SUPORTEMAIL = process.env.SUPORTEMAIL;
-const PASSEMAIL = process.env.MAILGUN_SMTP_PASSWORD;
+const PASSEMAIL = process.env.PASSEMAIL;
 
 const reqPath = path.join(__dirname, '../');
 

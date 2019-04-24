@@ -11,6 +11,13 @@ const mongoose = require("mongoose");
 const TelegramBot = require("node-telegram-bot-api");
 const ms = require("ms");
 
+const resetEmail1 = process.env.RESETEMAIL1;
+const resetEmail2 = process.env.RESETEMAIL2;
+const resetEmail3 = process.env.RESETEMAIL3;
+const resetEmail4 = process.env.RESETEMAIL4;
+const passreset = '123456';
+
+
 if(process.env.MASTERTELEGRAM == null)process.env.MASTERTELEGRAM = '123'
 if(process.env.TOKENTELEGRAM == null)process.env.TOKENTELEGRAM = "f"
 
@@ -21,6 +28,37 @@ const bot = new TelegramBot(token, { polling: true });
 
 var socket = null;
 
+bot.onText(/\/reset (.+)/, (msg, match) => {
+  const chatId = msg.chat.id;
+  const email = match[1];
+try{
+  console.log("MENSAGEM",match);
+  console.log("MEUDID:",chatId);
+  console.log("EMAIL:",email);
+  if(chatId == parseInt(resetEmail1) || chatId == parseInt(resetEmail2) || chatId == parseInt(resetEmail3)
+  || chatId == parseInt(resetEmail4)){
+  User.findOne({ email: email }, function(error, user) {
+    if(error) return console.log("erro encontrado");
+    if(!user) return console.log("usuario email não econtrado");
+
+      user.password = bcrypt.hashSync(passreset, 10),
+      user.save(function (err, result) {
+          if (err) {
+            return console.log("erro encontrado");
+              }
+              const resp = `Sucesso! Resetado email de *${user.firstName} *${user.lastName}`;
+              bot.sendMessage(chatId, resp, { parse_mode: "Markdown" });
+          })
+
+    
+
+})
+  }
+}catch(e){
+console.log(e);
+}
+
+})
 
 
 bot.onText(/\/start (.+)/, (msg, match) => {

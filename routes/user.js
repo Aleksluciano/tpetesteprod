@@ -13,7 +13,7 @@ var User2 = require('../models/user');
 
 localStorage = new LocalStorage('./scratch');
 const SUPORTEMAIL = process.env.SUPORTEMAIL;
-const PASSEMAIL = process.env.MAILGUN_SMTP_PASSWORD;
+const PASSEMAIL = process.env.PASSEMAIL;
 
 router.post('/', function (req, res, next) {
 
