@@ -191,7 +191,8 @@ router.post('/signin', function(req, res, next) {
             message: 'Sucesso em logar',
             token: token,
             userId: user._id,
-            name: user.firstName
+            name: user.firstName,
+            cidade: process.env.CIDADE
         });
     });
 });
