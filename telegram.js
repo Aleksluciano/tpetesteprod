@@ -563,7 +563,7 @@ Circ: *${j.congregation.circuit}*\n`;
 
                       console.log("marca 4");
                       try {
-                      bot.sendMessage(-1001237612416, text, {
+                      bot.sendMessage(process.env.GROUPTELEGRAM, text, {
                         parse_mode: "Markdown",
                         reply_markup: {
                           inline_keyboard: [
