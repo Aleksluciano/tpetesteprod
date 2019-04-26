@@ -102,7 +102,7 @@ Circ: *${j.congregation.circuit}*\n`
                   let question = `\nQuem gostaria de substituir?`;
                   text = text + complement + question;
                   let textsub = '@' + req.query.qs1 + '%' + req.query.qs2 + '$' + req.query.qs3;
-                  telegram.bot.sendMessage(-1001237612416, text, {
+                  telegram.bot.sendMessage(process.env.GROUPTELEGRAM, text, {
                     parse_mode: 'Markdown',
                     reply_markup: {
                       inline_keyboard: [[
