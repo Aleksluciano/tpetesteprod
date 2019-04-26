@@ -51,7 +51,7 @@ try{
               bot.sendMessage(chatId, resp, { parse_mode: "Markdown" });
           })
 
-    
+
 
 })
   }
@@ -316,12 +316,18 @@ Companheiro: `;
               let complement = "";
 
               userFriend.map(j => {
+                try{
+                if(j.congregation.nome){
                 complement =
                   complement +
                   `*${j.firstName} ${j.lastName}*
 Tel: *${j.mobilephone}*
 Cong: *${j.congregation.nome}*
 Circ: *${j.congregation.circuit}*\n`;
+                }
+              }catch(e){
+                console.log(e)
+              }
               });
 
               let question = `\nPor favor confirmar sua designação no sistema do TPE`;
