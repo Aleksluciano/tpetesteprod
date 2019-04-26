@@ -54,12 +54,13 @@ const server = http.createServer(app);
 
 //init io socket
 var io = require('socket.io')(server);
-var consumer = require('/routes/escalas.js');
+var consumer = require('./routes/escalas.js');
 consumer.start(io);
-var consumer2 = require('/routes/telegram.js');
+var consumer2 = require('./routes/telegram.js');
 consumer2.pass(io);
-var consumer3 = require('/routes/email.js');
-consumer3.pass(io)
+var consumer3 = require('./routes/email.js');
+consumer3.pass(io);
+//end io socket
 
 
 server.on("error", onError);
