@@ -371,6 +371,7 @@ function emailtext(pub, ponto, escala, hash1, hash2) {
     emailpronto = emailpronto + `<tr>
                         <td style="background-color:${estilolinha[x]}" rowspan="${corpoemail[x].ponto.pubs.length}" align="center">${corpoemail[x].hora.hora}</td>`;
     for (let z = 0; z < corpoemail[x].ponto.pubs.length; z++) {
+      if(!corpoemail[x].ponto.pubs[z].congregation) continue;
       let corlinha = estilolinha[x];
       if (corpoemail[x].ponto.pubs[z].userId == pub.userId) corlinha = "#ffffff";
       if(z != 0)emailpronto = emailpronto + '<tr>';
