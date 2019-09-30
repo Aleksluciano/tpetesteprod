@@ -206,7 +206,12 @@ bot.on("callback_query", msg => {
       data: new Date()
     }
     buttonConfirmation.push(myresp);
-    bot.answerCallbackQuery(msg.id, "Clique mais uma vez para registrar sua resposta", true);
+    if (subdata_quest == "S")
+    bot.answerCallbackQuery(msg.id, "Aperte novamente 'confirmar' para enviar sua resposta", true);
+    if (subdata_quest == "N")
+    bot.answerCallbackQuery(msg.id, "Aperte novamente 'recusar' para enviar sua resposta", true);
+    if (subdata_quest == "@")
+    bot.answerCallbackQuery(msg.id, "Aperte novamente 'substituir' para pegar essa substituição", true);
     return console.log(`primeira resposta armazenada: ${msg.data}`);
   }
 
