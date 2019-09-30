@@ -436,7 +436,7 @@ function setUserLed(idescala, iduser, horacode, sim, nao, msg, resposta, conjuge
         return console.log("Usuario inexistente");
       }
 
-      if (led.nao) {
+      if (led.sim || led.nao) {
         //Confirma a reposta do usuario
         bot.answerCallbackQuery(msg.id, "Respondido pelo site!", true);
 
