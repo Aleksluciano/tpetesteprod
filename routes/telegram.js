@@ -11,6 +11,12 @@ const Escala = require("../models/escala");
 const mongoose = require("mongoose");
 const TelegramBot = require("node-telegram-bot-api");
 const ms = require("ms");
+const cron = require("node-cron");
+
+var buttonConfirmation = [];
+cron.schedule("* * * * *", () => (buttonConfirmation = []));
+
+
 
 const resetEmail1 = process.env.RESETEMAIL1;
 const resetEmail2 = process.env.RESETEMAIL2;
@@ -190,6 +196,14 @@ bot.on("callback_query", msg => {
   let index2 = msg.data.indexOf("$");
   let subdata_userid = msg.data.substring(index + 1, index2);
   let subdata_codehora = msg.data.substring(index2 + 1);
+
+  if(buttonConfirmation.includes(msg.data)){
+    //se existe cotninua o processo para o botão escolhido
+  }else{
+    buttonConfirmation.push(msg.data);
+    bot.answerCallbackQuery(msg.id, "Clique mais uma vez para confirmar", true);
+    return console.log(`primeira resposta armazenada: ${msg.data}`);
+  }
 
   if (subdata_quest == "N") {
     setUserLed(
