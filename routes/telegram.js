@@ -14,7 +14,7 @@ const ms = require("ms");
 const cron = require("node-cron");
 
 var buttonConfirmation = [];
-cron.schedule("* * * * *", () => (buttonConfirmation = []));
+cron.schedule("0 */1 * * *", () => (buttonConfirmation = []));
 
 
 
@@ -197,11 +197,16 @@ bot.on("callback_query", msg => {
   let subdata_userid = msg.data.substring(index + 1, index2);
   let subdata_codehora = msg.data.substring(index2 + 1);
 
-  if(buttonConfirmation.includes(msg.data)){
+  let atualData = new Date();
+  if(buttonConfirmation.find(a => ((a.code == msg.data) && (atualData.getTime() - a.data.getTime() < 12000)))){
     //se existe cotninua o processo para o botão escolhido
   }else{
-    buttonConfirmation.push(msg.data);
-    bot.answerCallbackQuery(msg.id, "Clique mais uma vez para confirmar", true);
+    let myresp = {
+      code: msg.data,
+      data: new Date()
+    }
+    buttonConfirmation.push(myresp);
+    bot.answerCallbackQuery(msg.id, "Clique mais uma vez para registrar sua resposta", true);
     return console.log(`primeira resposta armazenada: ${msg.data}`);
   }
 
