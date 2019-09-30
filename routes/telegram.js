@@ -420,7 +420,7 @@ Circ: *${j.congregation.circuit}*\n`;
   });
 });
 
-function setUserLed(idescala, iduser, horacode, sim, nao, msg, resposta) {
+function setUserLed(idescala, iduser, horacode, sim, nao, msg, resposta, conjugeJarespondeu = false) {
   Led.findOne(
     {
       idescala: idescala,
