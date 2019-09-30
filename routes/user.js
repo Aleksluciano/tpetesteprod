@@ -6,7 +6,7 @@ var Sms = require('totalvoice-node').Sms;
 var nodemailer = require('nodemailer');
 var mongoose = require('mongoose');
 var LocalStorage = require('node-localstorage').LocalStorage;
-
+var telegram = require("../routes/telegram");
 
 var User = require('../models/user');
 var User2 = require('../models/user');
@@ -654,6 +654,11 @@ router.delete('/:id', function (req, res, next) {
                     error: err
                 });
             }
+
+            telegram.bot.kickChatMember(process.env.GROUPTELEGRAM, user.telegram, {
+                until_date: Math.round((Date.now() + ms("1m")) / 1000)
+              });
+
             return res.status(200).json({
                 message: 'Usuario deletado',
                 obj: result
