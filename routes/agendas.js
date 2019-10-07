@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require("../models/user");
 var Agenda = require("../models/agenda");
 var mongoose = require("mongoose");
+var moment = require("moment");
 
 
 /* router.use('/', function (req, res, next) {
@@ -20,8 +21,8 @@ var mongoose = require("mongoose");
 
 router.get("/", function(req, res, next) {
   //var decoded = jwt.decode(req.query.token);
-
-  Agenda.find().exec(function(err, agendas) {
+  const start = moment().startOf('day');
+  Agenda.find({ data: start }).exec(function(err, agendas) {
     if (err) {
       return res.status(500).json({
         title: "Ocorreu um erro13",
