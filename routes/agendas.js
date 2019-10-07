@@ -21,8 +21,13 @@ var moment = require("moment");
 
 router.get("/", function(req, res, next) {
   //var decoded = jwt.decode(req.query.token);
-  const start = moment();
-  Agenda.find({ data: { $gte: start }}).exec(function(err, agendas) {
+
+  let today = new Date();
+  let todaymonth = today.getMonth();
+  let todayyear = today.getFullYear();
+  let todayday = today.getDate();
+
+  Agenda.find({ datareal: { $gte: new Date(todayyear, todaymonth, todayday, 0, 0, 0) }}).exec(function(err, agendas) {
     if (err) {
       return res.status(500).json({
         title: "Ocorreu um erro13",
@@ -77,7 +82,8 @@ router.post("/", function(req, res, next) {
       diasemana: req.body.diasemana,
       code: req.body.code,
       sex: user.sex,
-      user: user
+      user: user,
+      datareal: new Date(req.body.data)
     });
 
     Agenda.find({ data: req.body.data, hora: req.body.hora }).count(function(err, count) {
