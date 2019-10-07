@@ -163,8 +163,10 @@ cron.schedule("0 20 * * 0-6", function() {
         
         }
         });
-        
- 
+      });
+    });
+
+    
 cron.schedule("0 17 * * 0-6", function() {
   let diaatual = moment.utc().add(1, "day");
   let dia = new Date(diaatual);
@@ -797,4 +799,4 @@ module.exports.start = function(io) {
     });
   });
   socket = io;
-};
+}
