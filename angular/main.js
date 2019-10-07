@@ -270,13 +270,12 @@ function webpackContext(req) {
 	return __webpack_require__(id);
 }
 function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) { // check for number or string
+	if(!__webpack_require__.o(map, req)) {
 		var e = new Error("Cannot find module '" + req + "'");
 		e.code = 'MODULE_NOT_FOUND';
 		throw e;
 	}
-	return id;
+	return map[req];
 }
 webpackContext.keys = function webpackContextKeys() {
 	return Object.keys(map);
@@ -284,6 +283,409 @@ webpackContext.keys = function webpackContextKeys() {
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
 webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/anuncio/anuncio.component.html":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/anuncio/anuncio.component.html ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <form [formGroup]=\"anuncioForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n                <div class=\"modal-header\">\r\n                    <h5 class=\"modal-title\" id=\"modal_titulo\">Novo anuncio</h5>\r\n                    <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n                        <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n                    <br/>\r\n\r\n                    <div class=\"form-row\">\r\n                        <div class=\"form-group col-md-8\">\r\n                            <label>Titulo *</label>\r\n                            <input type=\"text\" class=\"form-control\" id=\"anuncio_titulo\" placeholder=\"Digite o titulo do anuncio\" formControlName=\"titulo\">\r\n\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-row\">\r\n                        <div class=\"form-group col-md-10\">\r\n                            <label>Mensagem *</label>\r\n                            <input type=\"text\" class=\"form-control\" id=\"anuncio_mensagem\" placeholder=\"Digite a mensagem do anuncio\" formControlName=\"mensagem\">\r\n\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n\r\n                    <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n                </div>\r\n            </form>\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n    <div class=\"row\">\r\n        <div class=\"form-group col-md-4\">\r\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewanuncio()\" [disabled]=\"auth\">Novo anuncio +</button>\r\n        </div>\r\n\r\n        <form>\r\n\r\n        </form>\r\n        <table class=\"table table-striped\">\r\n            <thead>\r\n                <tr>\r\n                    <th scope=\"col\">#</th>\r\n                    <th scope=\"col\">Título</th>\r\n                    <th scope=\"col\">Mensagem</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr *ngFor=\"let anuncio of anuncios; let j = index\">\r\n                    <th scope=\"row\">{{j + 1}}</th>\r\n                    <td>{{anuncio.titulo}}</td>\r\n                    <td>{{anuncio.mensagem}}</td>\r\n                    <td>\r\n                        <button type=\"button\" class=\"btn btn-success btn-sm\" (click)=\"onAvisar(j)\" [disabled]=\"auth || anuncio.avisado\">\r\n                            <i class=\"fa fa-paper-plane-o\" aria-hidden=\"true\"></i> Avisar</button>\r\n                        <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n                            <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n                        <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n                            <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/anunciouser/anunciouser.component.html":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/anunciouser/anunciouser.component.html ***!
+  \**********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n    <div class=\"row\" *ngFor=\"let anuncio of anuncios; let j = index\">\r\n      <div class=\"form-group col-md-10\">\r\n        <h4>{{anuncio.titulo}}</h4>\r\n        <p>{{anuncio.mensagem}}</p>\r\n          </div>\r\n        </div>\r\n    </div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html":
+/*!**************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n  <!-- <app-header></app-header> -->\r\n  <router-outlet></router-outlet>\r\n  </div>\r\n  <app-error></app-error>\r\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/authentication.component.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/auth/authentication.component.html ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<header class=\"row spacing\">\r\n        <nav *ngIf=\"isLoggedIn()\" class=\"navbar navbar-expand-lg navbar-dark bg-dark fixed-top\">\r\n                <div class=\"container\">\r\n                  <b><a style=\"color:white\" class=\"navbar-brand\" routerLinkActive=\"active\" >TPE Metropolitano {{ cidade }}</a></b>\r\n                  <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" aria-controls=\"appNavigation\" [attr.aria-expanded]=\"!isCollapsed\" aria-label=\"Toggle navigation\" (click)=\"toggleMenu()\">\r\n                    <span class=\"navbar-toggler-icon\"></span>\r\n                  </button>\r\n                    <div class=\"collapse navbar-collapse\" id=\"appNavigation\" [ngbCollapse]=\"isCollapsed\" >\r\n                      <ul class=\"navbar-nav ml-auto\">\r\n                      <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"!isLoggedIn()\">\r\n                          <a class=\"nav-link\" [routerLink]=\"['signin']\"></a>\r\n                        </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn()\">\r\n                      <a class=\"nav-link\"  [routerLink]=\"['logout']\" (click)=\"toggleMenu()\">Sair</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && isPleno()\">\r\n                      <a class=\"nav-link\"  [routerLink]=\"['signup']\" (click)=\"toggleMenu()\">Cadastro</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn()\">\r\n                      <a class=\"nav-link\"  [routerLink]=\"['anunciouser']\" (click)=\"toggleMenu()\">Anúncios</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && !isPleno() && !isGold() && !isCtc()\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['help']\" (click)=\"toggleMenu()\">Ajuda</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && !isPleno() && !isGold() && !isCtc()\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['perfil']\" (click)=\"toggleMenu()\">Perfil</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn()\">\r\n                      <a class=\"nav-link\"  [routerLink]=\"['newpass']\" (click)=\"toggleMenu()\">Senha</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && !isPleno() && !isGold() && !isCtc()\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['designations']\" (click)=\"toggleMenu()\">Designações</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && !isPleno() && !isGold() && !isCtc()\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['schedule2']\" (click)=\"toggleMenu()\">Agendamento</a>\r\n                    </li>\r\n                     <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn()\">\r\n                        <a class=\"nav-link\" [routerLink]=\"['showpontos']\" (click)=\"toggleMenu()\">Pontos</a>\r\n                      </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && !isPleno() && !isGold() && !isCtc()\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['telegram']\" (click)=\"toggleMenu()\">Telegram</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && ( isPleno() || isGold() )\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['listusers']\" (click)=\"toggleMenu()\">Usuários</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && ( isPleno() || isGold() )\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['statistic']\" (click)=\"toggleMenu()\">Estatística</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && ( isPleno() || isGold() || isCtc() )\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['newschedule']\" (click)=\"toggleMenu()\">Escala</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && ( isPleno() || isGold() || isCtc() )\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['report']\" (click)=\"toggleMenu()\">Relatórios</a>\r\n                    </li>\r\n\r\n              <!--       <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && ( isAuthenticated() || isGold() )\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['setup']\" (click)=\"toggleMenu()\">Setup</a>\r\n                    </li> -->\r\n\r\n                    <li class=\"nav-item dropdown\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && ( isAuthenticated() || isGold() )\">\r\n\r\n                        <div class=\"col\">\r\n                          <div ngbDropdown class=\"d-inline-block\">\r\n                            <button class=\"btn btn-outline-primary\" id=\"dropdownBasic1\" ngbDropdownToggle>Configurações</button>\r\n                            <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['newponto']\" (click)=\"toggleMenu()\">Pontos</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['hora']\" (click)=\"toggleMenu()\">Horários</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['excel']\" (click)=\"toggleMenu()\">Dia x Ponto x Horário</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['feriado']\" (click)=\"toggleMenu()\">Feriados</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['circuito']\" (click)=\"toggleMenu()\">Circuitos</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['congregation']\" (click)=\"toggleMenu()\">Congregações</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['validity']\" (click)=\"toggleMenu()\">Vigências</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['especial']\" (click)=\"toggleMenu()\">Dias Especiais</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['anuncio']\" (click)=\"toggleMenu()\">Anúncios</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['perfilrole']\" (click)=\"toggleMenu()\">Perfil Adm</button>\r\n\r\n                            </div>\r\n                          </div>\r\n                        </div>\r\n                        <!-- <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdownBlog\">\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['newponto']\" (click)=\"toggleMenu()\">Pontos</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['hora']\" (click)=\"toggleMenu()\">Horários</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['excel']\" (click)=\"toggleMenu()\">Dia x Ponto x Horário</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['feriado']\" (click)=\"toggleMenu()\">Feriados</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['circuito']\" (click)=\"toggleMenu()\">Circuitos</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['congregation']\" (click)=\"toggleMenu()\">Congregações</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['validity']\" (click)=\"toggleMenu()\">Vigências</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['especial']\" (click)=\"toggleMenu()\">Dias Especiais</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['anuncio']\" (click)=\"toggleMenu()\">Anúncios</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['perfilrole']\" (click)=\"toggleMenu()\">Perfil Adm</a>\r\n                        </div> -->\r\n                      </li>\r\n                  </ul>\r\n                </div>\r\n                </div>\r\n              </nav>\r\n\r\n</header>\r\n\r\n<body>\r\n\r\n\r\n  <div *ngIf=\"onWelcome()\" class=\"container\" >\r\n\r\n\r\n\r\n      <br><br><br><br>\r\n      <h3>Olá {{name}}</h3>\r\n      <div id=\"logo-container\">\r\n    <img  style=\"width: 250px;\" src=\"/assets/img/welcome2.jpg\" >\r\n  </div>\r\n\r\n  </div>\r\n<div>\r\n    <br><br><br>\r\n   <router-outlet></router-outlet>\r\n</div>\r\n</body>\r\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/designations.component.html":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/auth/designations.component.html ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"msgdefault\" class=\"container\">\r\n  <br>\r\n  <h4>Você não possui designações no momento.</h4>\r\n</div>\r\n<div *ngIf=\"showNow\" class=\"container\">\r\n  <div class=\"col-md-12\">\r\n\r\n\r\n    <div class=\"table-responsive\" *ngFor=\"let esc of escala\">\r\n      <div class=\"card-body\">\r\n        <div class=\"alert alert-secondary\" role=\"alert\">\r\n          <span class=\"label label-info\" style=\"font-size:15px;\">\r\n            <b>Dia: </b>{{ esc.dia }}</span>\r\n          <span class=\"label label-warning\" style=\"font-size:15px;\">\r\n            <b> {{ esc.diasemana }}</b>\r\n          </span>\r\n          <br>\r\n          <span class=\"label label-warning\" style=\"font-size:15px;\">\r\n            <b>Ponto: </b>{{esc.ponto}}\r\n          </span>\r\n        </div>\r\n        <table class=\"table\">\r\n\r\n          <thead>\r\n            <tr>\r\n              <th class=\"text-center\">Horário</th>\r\n              <th class=\"text-center\">Status</th>\r\n              <th style=\"vertical-align: middle !important; text-align: left;\">Nome</th>\r\n              <th style=\"vertical-align: middle !important; text-align: left;\">Circuito</th>\r\n              <th style=\"vertical-align: middle !important; text-align: left;\">Congregação</th>\r\n              <th style=\"vertical-align: middle !important; text-align: left;\">Telefone</th>\r\n              <th style=\"vertical-align: middle !important; text-align: left;\">Email</th>\r\n            </tr>\r\n\r\n          </thead>\r\n          <tbody *ngFor=\"let item of esc.grupo; let i = index\">\r\n\r\n\r\n\r\n            <tr *ngFor=\"let pub of item.ponto.pubs; let h = index\">\r\n\r\n              <td *ngIf=\"h == 0\" [attr.rowspan]=\"item.ponto.pubs.length\" style=\"vertical-align: middle !important; text-align: center;\">{{item.hora.hora}}</td>\r\n\r\n              <td *ngIf=\"pub?.sim == false && pub?.nao == false\" style=\"vertical-align: middle !important; text-align: center;\">\r\n                <div class=\"led-yellow\"></div>\r\n              </td>\r\n              <td *ngIf=\"pub?.sim == true && pub?.nao == false\" style=\"vertical-align: middle !important; text-align: center;\">\r\n                <div class=\"led-green\"></div>\r\n              </td>\r\n              <td *ngIf=\"pub?.sim == false && pub?.nao == true\" style=\"vertical-align: middle !important; text-align: center;\">\r\n                <div class=\"led-red\"></div>\r\n              </td>\r\n              <td *ngIf=\"pub?.sim == true && pub?.nao == true\" style=\"vertical-align: middle !important; text-align: center;\">\r\n                <div class=\"led-green\"></div>\r\n              </td>\r\n              <td [style.color]=\"getStyle(pub?.sex)\" style=\"vertical-align: middle !important; text-align: left;\">{{ pub?.firstName }} {{ pub?.lastName}} </td>\r\n              <td style=\"vertical-align: middle !important; text-align: left;\">{{ pub?.congregation?.circuit }}</td>\r\n              <td style=\"vertical-align: middle !important; text-align: left;\">{{ pub?.congregation?.nome }}</td>\r\n              <td style=\"vertical-align: middle !important; text-align: left;\">{{ pub?.mobilephone || pub?.phone }}</td>\r\n              <td style=\"vertical-align: middle !important; text-align: left;\">{{ pub?.email }}</td>\r\n            </tr>\r\n\r\n\r\n          </tbody>\r\n\r\n        </table>\r\n        <!-- <div *ngIf=\"existPerfil(pont)\"> -->\r\n        <div>\r\n          <button class=\"btn btn-success\" (click)=\"responseYes(esc,esc.grupo)\" [hidden]=\"esc.type\" style=\"margin-right: 25px\">Confirmar</button>\r\n          <button class=\"btn btn-danger\" (click)=\"responseNot(esc,esc.grupo)\"  [hidden]=\"esc.type\">Recusar</button>\r\n        </div>\r\n        <br>\r\n        <br>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n<!--           <span class=\"label label-info\" style=\"font-size:15px;\">{{esc.dia}}</span>\r\n          <span class=\"label label-warning\" style=\"font-size:12px;\">{{esc.diasemana}}</span>\r\n          <br>\r\n          <ul *ngFor=\"let hr of esc.hora; let h = index\">\r\n            <br>\r\n            <li style=\"background-color:Azure; color:Black\" ><b>{{ hr.hora }}</b><span style=\"float:right;font-size:11px;\">{{esc.dia}}/{{esc.diasemana}}</span></li>\r\n            <br> -->\r\n<!-- <ul *ngFor=\"let pont of esc.ponto\">\r\n              <li style=\"color:Black\"><b>{{ pont.name }}</b></li>\r\n              <br>\r\n              <ul>\r\n                  <table>\r\n                      <tr>\r\n                        <th>Status</th>\r\n                        <th>Nome</th>\r\n                        <th>Circuito</th>\r\n                        <th>Congregação</th>\r\n                        <th>Telefone</th>\r\n                      </tr>\r\n                      <tr *ngFor=\"let pub of pont.pubs\">\r\n                        <td  *ngIf=\"pub?.sim == false && pub?.nao == false\"><div class=\"led-yellow\"></div></td>\r\n                        <td  *ngIf=\"pub?.sim == true && pub?.nao == false\"><div class=\"led-green\"></div></td>\r\n                        <td  *ngIf=\"pub?.sim == false && pub?.nao == true\"><div class=\"led-red\"></div></td>\r\n                        <td  *ngIf=\"pub?.sim == true && pub?.nao == true\"><div class=\"led-green\"></div></td>\r\n                        <td [style.color]=\"getStyle(pub?.sex)\">{{ pub?.firstName }} {{ pub?.lastName}} </td>\r\n                        <td>{{ pub?.congregation.circuit }}</td>\r\n                        <td>{{ pub?.congregation.nome }}</td>\r\n                        <td>{{ pub?.mobilephone }}</td>\r\n                      </tr>\r\n                    </table>\r\n                    <div *ngIf=\"existPerfil(pont)\">\r\n                    <button class=\"btn btn-success\" (click)=\"responseYes(esc,pont)\">Sim</button>\r\n                    <button class=\"btn btn-danger\" (click)=\"responseNot(esc,pont)\">Não</button>\r\n                  </div>\r\n                </ul>\r\n                <br>\r\n            </ul> -->\r\n<!-- </ul>   -->");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/general.component.html":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/auth/general.component.html ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"col-md-8 col-md-offset-1\">\r\n    <button id=\"btnchange\" class=\"btn btn-warning\" (click)=\"doEnabled()\">\r\n        <span class=\"glyphicon glyphicon-edit\"></span>Modificar</button>\r\n        <label>Selecione um usuário.</label>\r\n        <select [(ngModel)]=\"userselected\" (change)=\"selectmyuser(userselected)\"> \r\n                <option *ngFor=\"let user of usersall\" [ngValue]=\"user\">{{user.firstName}} {{user.lastName}}</option>\r\n            </select>\r\n\r\n        <form class=\"form-inline\">\r\n        <form [formGroup]=\"perfilForm\" (ngSubmit)=\"onSubmit()\">\r\n           \r\n            <div class=\"form-group\">\r\n                <label for=\"lastday\">Última vez:</label>\r\n                <input type=\"date\" id=\"lastday\" class=\"form-control\" formControlName=\"lastday\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"firstName\">Nome:</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"firstName\" formControlName=\"firstName\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"lastName\">Sobrenome:</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"lastName\" formControlName=\"lastName\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"email\">Email:</label>\r\n                <input type=\"email\" class=\"form-control\" id=\"email\" formControlName=\"email\">\r\n            </div>\r\n            <!--    <div class=\"form-group\">\r\n                <label for=\"password\">Senha:</label>\r\n                <input type=\"password\" class=\"form-control\" id=\"password\" formControlName=\"password\">\r\n            </div> -->\r\n\r\n            <div class=\"form-group\">\r\n                <label for=\"congregation\">Congregação:</label>\r\n                <select type=\"text\" class=\"form-control\" id=\"congregation\" formControlName=\"congregation\">\r\n                    <option value=\"Alto Itamaraty\">Alto Itamaraty</option>\r\n                    <option value=\"Alzira Franco\">Alzira Franco</option>\r\n                    <option value=\"Bangu\">Bangu</option>\r\n                    <option value=\"Dos Alpes\">Dos Alpes</option>\r\n                    <option value=\"Espanhola\">Espanhola</option>\r\n                    <option value=\"Evangelista\">Evangelista</option>\r\n                    <option value=\"Fenícia\">Fenícia</option>\r\n                    <option value=\"Jardim Rina\">Jardim Rina</option>\r\n                    <option value=\"Língua de Sinais\">Língua de Sinais</option>\r\n                    <option value=\"Maravilhas\">Maravilhas</option>\r\n                    <option value=\"Matarazzo\">Matarazzo</option>\r\n                    <option value=\"Nova Capuava\">Nova Capuava</option>\r\n                    <option value=\"Nova Zelândia\">Nova Zelândia</option>\r\n                    <option value=\"Parque Erasmo\">Parque Erasmo</option>\r\n                    <option value=\"Parque Novo Oratório\">Parque Novo Oratório</option>\r\n                    <option value=\"Rio Grande do Norte\">Rio Grande do Norte</option>\r\n                    <option value=\"Vila Lucinda\">Vila Lucinda</option>\r\n                </select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"mobilephone\">Telefone Celular:</label>\r\n                <input type=\"number\" class=\"form-control\" id=\"mobilephone\" formControlName=\"mobilephone\" pattern=\".{11,11}\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"phone\">Telefone Residencial:</label>\r\n                <input type=\"number\" id=\"phone\" class=\"form-control\" formControlName=\"phone\" pattern=\".{10,10}\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"datebirth\">Data de Nascimento:</label>\r\n                <input type=\"date\" id=\"datebirth\" class=\"form-control\" formControlName=\"datebirth\">\r\n            </div>\r\n            <br>\r\n            <div class=\"form-group\">\r\n                <label for=\"sex\">Sexo:</label>\r\n                <select type=\"text\" id=\"sex\" class=\"form-control\" formControlName=\"sex\">\r\n                    <option value=\"M\">Masculino</option>\r\n                    <option value=\"F\">Feminino</option>\r\n                </select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"privilege\">O irmão(a) é:</label>\r\n                <select type=\"text\" id=\"privilege\" class=\"form-control\" formControlName=\"privilege\">\r\n                    <option value=\"PU\">Publicador(a)</option>\r\n                    <option value=\"PI\">Pioneiro(a)</option>\r\n                    <option value=\"S\">Servo</option>\r\n                    <option value=\"A\">Ancião</option>\r\n                    <option value=\"PS\">Pioneiro e Servo</option>\r\n                    <option value=\"PA\">Pioneiro e Ancião</option>\r\n                </select>\r\n            </div>\r\n            <br>\r\n            <br>\r\n            <div class=\"form-group\">\r\n                <p for=\"available\">Tem disponibilidade para trabalhar com varões?(lembrando que serão designadas 2 irmãs e 1 varão).</p>\r\n                <input type=\"checkbox\" value=\"sim\" name=\"available\" class=\"available\" formControlName=\"available\"> SIM\r\n            </div>\r\n            <br>\r\n            <br>\r\n            <div class=\"form-group\">\r\n                <label for=\"elder\">Nome do Ancião:</label>\r\n                <input type=\"text\" id=\"elder\" class=\"form-control\" formControlName=\"elder\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"eldermail\">Email do Ancião:</label>\r\n                <input type=\"email\" id=\"eldermail\" class=\"form-control\" formControlName=\"eldermail\">\r\n            </div>\r\n            <br>\r\n            <br>\r\n            <div>\r\n                <p>Marque sua disponibilidade para cada um dos horários e dias</p>\r\n                <br>\r\n                <table id=\"example\" class=\"display\" cellspacing=\"0\" width=\"100%\">\r\n                    <thead>\r\n\r\n                        <tr id=\"main\">\r\n                            <th>Horários</th>\r\n                            <th>Segunda</th>\r\n                            <th>Terça</th>\r\n                            <th>Quarta</th>\r\n                            <th>Quinta</th>\r\n                            <th>Sexta</th>\r\n                            <th>Sábado</th>\r\n                            <th>Domingo</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr>\r\n                            <td>9h00 - 12h00</td>\r\n                            <td>\r\n                                <input formControlName=\"se1\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"te1\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"qa1\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"qi1\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"sx1\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"sa1\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"do1\" type=\"checkbox\">\r\n                            </td>\r\n\r\n                        </tr>\r\n\r\n                        <tr>\r\n                            <td>12h00 - 15h00</td>\r\n                            <td>\r\n                                <input formControlName=\"se2\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"te2\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"qa2\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"qi2\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"sx2\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"sa2\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"do2\" type=\"checkbox\">\r\n                            </td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>15h00 - 18h00</td>\r\n                            <td>\r\n                                <input formControlName=\"se3\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"te3\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"qa3\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"qi3\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"sx3\" type=\"checkbox\">\r\n                            </td>\r\n                            <td></td>\r\n                            <td></td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>19h00 - 21h30</td>\r\n                            <td>\r\n                                <input formControlName=\"se4\" type=\"checkbox\">\r\n                            </td>\r\n                            <td></td>\r\n                            <td></td>\r\n                            <td></td>\r\n                            <td>\r\n                                <input formControlName=\"sx4\" type=\"checkbox\">\r\n                            </td>\r\n                            <td></td>\r\n                            <td></td>\r\n                        </tr>\r\n\r\n                    </tbody>\r\n                </table>\r\n            </div>\r\n            <br>\r\n            <div class=\"form-group\">\r\n                <p>OBS.: Caso haja algum irmão com situação especial de diponibilidade de horário (escala de trabalho por exemplo) informe aqui.</p>\r\n                <input type=\"text\" id=\"special\" class=\"form-control\" formControlName=\"special\">\r\n            </div>  \r\n            <br> \r\n            <br> \r\n            <button id=\"btnsalvarperfil\" class=\"btn btn-success\" type=\"submit\" [disabled]=\"!perfilForm.valid\">\r\n                <span class=\"glyphicon glyphicon-save\"></span>Salvar</button>\r\n\r\n        </form>\r\n\r\n    </form>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/newpass.component.html":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/auth/newpass.component.html ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n\r\n<div class=\"col-md-12\">\r\n    <form [formGroup]=\"myForm\" (ngSubmit)=\"onSubmit()\">\r\n        <div class=\"row\">\r\n        <div class=\"form-group col-md-4\">\r\n            <br>\r\n            <label for=\"oldpassword\"><b>Senha atual</b></label>\r\n            <input type=\"password\" id=\"oldpassword\" pattern=\".{6,}\" class=\"form-control\" formControlName=\"oldpassword\">\r\n        </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"form-group col-md-4\">\r\n            <label for=\"newpassword\"><b>Senha nova</b></label><span> (mínimo de 6 caracteres)</span>\r\n            <input type=\"password\" id=\"newpassword\" pattern=\".{6,}\" class=\"form-control\" formControlName=\"newpassword\">\r\n        </div>\r\n    </div>\r\n        <div class=\"row\">\r\n        <div class=\"form-group col-md-4\">\r\n        <button name=\"save\" \r\n        id=\"btnsalvarperfil\" \r\n        class=\"btn btn-primary\" \r\n        type=\"submit\" \r\n        [disabled]=\"!myForm.valid\" \r\n        [hidden]=\"changemode\">\r\n        <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"></i> Salvar</button>\r\n        \r\n        <button name=\"change\" \r\n        id=\"btnchange\" \r\n        class=\"btn btn-warning\" \r\n        (click)=\"doEnabled(true)\" \r\n        type=\"button\"\r\n        [hidden]=\"!changemode\">\r\n        <i class=\"fa fa-pencil-square-o\" \r\n        aria-hidden=\"true\"></i> Editar</button> \r\n        \r\n        <button name=\"cancel\" \r\n        id=\"btncancel\" \r\n        class=\"btn btn-danger\" \r\n        (click)=\"doEnabled(true)\" \r\n        type=\"button\"\r\n        [hidden]=\"changemode\">\r\n        <i class=\"fas fa-times\" aria-hidden=\"true\"\r\n        aria-hidden=\"true\"></i> Cancelar</button> \r\n    </div>\r\n    </div>\r\n    </form>\r\n   \r\n</div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/perfil.component.html":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/auth/perfil.component.html ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n  <div class=\"row\">\r\n    <ul class=\"nav nav-tabs\" id=\"myTab\" role=\"tablist\">\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link active\" id=\"home-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"home\" aria-selected=\"true\" (click)=\"onChangeDisponiblidade()\">Dados</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" id=\"profile-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"profile\" aria-selected=\"false\" (click)=\"onChangeDisponiblidade()\">Disponibilidade</a>\r\n      </li>\r\n\r\n    </ul>\r\n  </div>\r\n</div>\r\n\r\n<div *ngIf=\"showDisponibilidade\" class=\"container\">\r\n\r\n\r\n     \r\n      <!--       <ul class=\"list-inline\">\r\n        <li>\r\n          <span class=\"node-link\" (click)=\"onChangeDisponiblidade()\">Perfil</span>\r\n        </li>\r\n      </ul> -->\r\n      <!--ABAS-->\r\n\r\n      <br>\r\n      \r\n\r\n          <div class=\"row\">\r\n              <div class=\"col-md-4\">\r\n          <button type=\"button\" id=\"anterior\" (click)=\"anteriorDia($event)\" class=\"btn btn-default\"><i class=\"fas fa-angle-left\"></i></button>\r\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r\n          <button type=\"button\" id=\"proximo\" (click)=\"proximoDia($event)\" class=\"btn btn-default\"><i class=\"fas fa-angle-right\"></i></button>\r\n        </div>\r\n        </div>\r\n         <div class=\"row\">\r\n          <div class=\"col-md-3\">\r\n          <select [(ngModel)]=\"dayselect\" class=\"form-control\" (change)=\"horasExistentes()\" id=\"dayselected\">\r\n              <option>Segunda-feira</option>\r\n              <option>Terça-feira</option>\r\n              <option>Quarta-feira</option>\r\n              <option>Quinta-feira</option>\r\n              <option>Sexta-feira</option>\r\n              <option>Sábado</option>\r\n              <option>Domingo</option>\r\n            </select>\r\n          </div>\r\n         \r\n        \r\n        </div>\r\n       \r\n        <div class=\"row\">\r\n        <div class=\"col-md-6\">\r\n          <br>\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table table-striped\">\r\n            <thead>\r\n              <tr>\r\n                <th scope=\"col\">Horários</th>\r\n                <th class=\"center\" scope=\"col\">Seleção</th>\r\n                <th class=\"center\" scope=\"col\">Vezes/Mês</th>\r\n              </tr>\r\n            </thead>\r\n            <tbody>\r\n              <tr *ngFor=\"let hora of horas; let h = index\">\r\n                <th *ngIf=\"hora.vagas > 0\" scope=\"row\">{{ hora.hora }}</th>\r\n                <td class=\"center\" *ngIf=\"hora.vagas > 0\" >\r\n                  <input class=\"inputhora\" type=\"checkbox\" (change)=\"changed($event.target.checked,hora)\" [checked]=\"valorCheck(hora)\" [disabled]=\"inputCheckCondition()\">\r\n                </td>\r\n                <td class=\"center\" *ngIf=\"((dayselect == 'Domingo' || dayselect == 'Sábado') && (hora.vagas > 0))\" >\r\n                  <!-- <input id=\"{{ 'input' + dayselect }}\" type=\"number\" min=\"1\" max=\"5\" style=\"width: 2em;\"  (change)=\"vezesFds($event.target.value, hora.code)\" value=\"valueInput()\" [disabled]=\"!valorCheck(hora)\"> -->\r\n                  <input type=\"number\" min=\"1\" max=\"5\" style=\"width: 2em;\" (change)=\"vezesFds($event.target.value, hora.code)\" [value]=\"valueInput(hora.code)\"\r\n                    [disabled]=\"inputCondition(hora)\" >\r\n                </td>\r\n              </tr>\r\n            </tbody>\r\n          </table>\r\n        </div>\r\n      </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class=\"row\">\r\n        <div class=\"form-group col-md-6\">\r\n\r\n\r\n          <button class=\"btn btn-primary\" type=\"button\" (click)=\"onSubmit()\" [disabled]=\"inputCheckCondition()\" [hidden]=\"changemode\">\r\n            <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"></i> Salvar</button>\r\n\r\n          <button id=\"btnenabled\" class=\"btn btn-warning\" (click)=\"doConfig()\" type=\"button\" [hidden]=\"!changemode\">\r\n            <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n\r\n          <button name=\"cancel\" id=\"btncancel\" class=\"btn btn-danger\" (click)=\"doConfig()\" type=\"button\" [hidden]=\"changemode\">\r\n            <i class=\"fas fa-times\"></i> Cancelar</button>\r\n        </div>\r\n      </div>\r\n\r\n\r\n   \r\n \r\n\r\n</div>\r\n\r\n\r\n\r\n\r\n<div *ngIf=\"!showDisponibilidade\" class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <!--     <ul class=\"list-inline\">\r\n        <li>\r\n          <span class=\"node-link\" (click)=\"onChangeDisponiblidade()\">Disponibilidade</span>\r\n        </li>\r\n      </ul> -->\r\n      <form [formGroup]=\"myForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n\r\n            <label for=\"firstName\">Nome</label>\r\n            <input type=\"text\" id=\"firstName\" class=\"form-control\" formControlName=\"firstName\">\r\n\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"lastName\">Sobrenome</label>\r\n            <input type=\"text\" id=\"lastName\" class=\"form-control\" formControlName=\"lastName\">\r\n          </div>\r\n        </div>\r\n\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"email\">Email</label>\r\n            <input align=\"right\" type=\"email\" id=\"email\" class=\"form-control\" formControlName=\"email\" autocomplete=\"false\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"circuito\">Circuito</label>\r\n            <input type=\"text\" id=\"circuito\" class=\"form-control\" formControlName=\"circuito\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"congregation\">Congregação</label>\r\n            <input type=\"text\" formControlName=\"congregation\" id=\"congregation\" class=\"form-control\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"sex\">Sexo</label>\r\n            <select type=\"text\" id=\"sex\" class=\"form-control\" formControlName=\"sex\">\r\n              <option> </option>\r\n              <option value=\"M\">Masculino</option>\r\n              <option value=\"F\">Feminino</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"privilege\">Privilégio</label>\r\n            <select type=\"text\" id=\"privilege\" class=\"form-control\" formControlName=\"privilege\" ng-model=\"privilege\">\r\n              <option> </option>\r\n              <option value=\"PU\">Publicador(a)</option>\r\n              <option value=\"PI\">Pioneiro(a)</option>\r\n              <option value=\"S\">Servo</option>\r\n              <option value=\"A\">Ancião</option>\r\n              <option value=\"PS\">Pioneiro e Servo</option>\r\n              <option value=\"PA\">Pioneiro e Ancião</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"datebirth\">Data de Nascimento</label>\r\n            <input [(ngModel)]=\"mybirth\" name=\"mybirth\" type=\"date\" id=\"datebirth\" class=\"form-control\" formControlName=\"datebirth\" (change)=\"responsableNeed()\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div *ngIf=\"responsableNeed()\" class=\"form-group\">\r\n            <label for=\"responsable\">Responsável</label>\r\n            <input type=\"text\" formControlName=\"responsable\" id=\"responsable\" class=\"form-control\">\r\n          </div>\r\n        </div>\r\n\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"mobilephone\">Telefone Celular</label>\r\n            <input type=\"number\" id=\"mobilephone\" class=\"form-control\" formControlName=\"mobilephone\" pattern=\".{11,11}\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"phone\">Telefone Residencial</label>\r\n            <input type=\"number\" id=\"phone\" class=\"form-control\" formControlName=\"phone\" pattern=\".{0,10}\">\r\n          </div>\r\n        </div>\r\n\r\n\r\n\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"eldermail\">Email para notificação </label>\r\n            <input type=\"email\" id=\"eldermail\" class=\"form-control\" formControlName=\"eldermail\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"conjuge\">Companheiro(a)</label>\r\n            <input type=\"text\" formControlName=\"conjuge\" id=\"conjuge\" class=\"form-control\">\r\n          </div>\r\n        </div>\r\n\r\n\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/sendpass.component.html":
+/*!************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/auth/sendpass.component.html ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"col-md-6 col-md-offset-1\"> \r\n    <form [formGroup]=\"myForm\" (ngSubmit)=\"onSubmit()\">\r\n        <div class=\"form-group\">\r\n            <br>\r\n            <h3>Esqueceu sua senha?</h3>\r\n            <br>\r\n            <span>Digite seu e-mail cadastrado e click em enviar, você receberá uma nova senha em sua caixa de mensagens</span>\r\n            <br>\r\n            <br>\r\n            <label for=\"email\">Email</label>\r\n            <input type=\"email\" id=\"email\" class=\"form-control\" formControlName=\"email\">\r\n        </div>\r\n        <button id=\"btnsalvarperfil\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!myForm.valid\">Enviar</button>\r\n    </form>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/signin.component.html":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/auth/signin.component.html ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"d-flex justify-content-center\">\r\n  <div class=\"container\">\r\n    <div class=\"row justify-content-center\">\r\n      <div class=\"col-md-4 col-md-offset-4\">\r\n        <div class=\"login-panel panel panel-default\">\r\n          <br>\r\n          <div class=\"row\">\r\n              <img  id=\"mala\" src=\"/assets/img/tpeg.png\" style=\"width: 50%; height: 30%\">\r\n       <!--      <span id=\"mala\" class=\"fa fa-suitcase\" aria-hidden=\"true\"></span> -->\r\n          </div>\r\n  <!--         <h3>TPE Metropolitano</h3> -->\r\n        <!--   <p>Santo André</p> -->\r\n\r\n          <div class=\"panel-body\">\r\n            <form name='form-login' role=\"form\" [formGroup]=\"myForm\" (ngSubmit)=\"onSubmit()\">\r\n              <fieldset>\r\n                <div class=\"form-group\">\r\n                  <span class=\"fa fa-user\"></span>\r\n                  <input class=\"form-control\" placeholder=\"E-mail\" name=\"email\" type=\"email\" formControlName=\"email\" autofocus>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                  <span class=\"fa fa-lock\"></span>\r\n                  <input class=\"form-control\" placeholder=\"Senha\" name=\"password\" type=\"password\" formControlName=\"password\" value=\"\">\r\n                </div>\r\n\r\n                <button class=\"btn btn-default\" id=\"entrar\" type=\"submit\" [disabled]=\"!myForm.valid\">Entrar</button>\r\n                <br>\r\n                <a style=\"margin-right:10%;float:right; font-size: 60%; position: right; color:blue;\" id=\"recuperarSenha\" value=\"recSenha\"\r\n                  routerLink=\"/auth/sendpass\" routerLinkActive=\"active\">Recuperar Senha</a>\r\n              </fieldset>\r\n            </form>\r\n            <br>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/signup.component.html":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/auth/signup.component.html ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row\">\r\n  <div *ngIf=\"criarForm()\" class=\"col-md-1\">\r\n    <button id=\"btnnew\" class=\"btn btn-secondary\" (click)=\"goCadastro()\">Cadastro</button>\r\n  </div>\r\n  <div *ngIf=\"!criarForm()\" class=\"col-md-1\">\r\n    <button id=\"btnchange\" class=\"btn btn-secondary\" (click)=\"goCadastro()\">Novo</button>\r\n  </div>\r\n  <div *ngIf=\"!criarForm()\" class=\"col-md-1\">\r\n    <button id=\"btnenabled\" class=\"btn btn-warning\" (click)=\"doEnabled()\">\r\n      <span class=\"glyphicon glyphicon-edit\"></span>Editar</button>\r\n  </div>\r\n</div>\r\n\r\n<div *ngIf=\"!criarForm()\" class=\"row\">\r\n  <div class=\"col-md-1\">\r\n    <h4>Filtro:</h4>\r\n  </div>\r\n  <hr>\r\n</div>\r\n\r\n<div *ngIf=\"!criarForm()\" class=\"row\">\r\n  <div class=\"col-md-3\">\r\n    <button type=\"button\" id=\"useranterior\" (click)=\"anteriorUser($event)\" class=\"btn btn-default\">\r\n      < </button>\r\n        <button type=\"button\" id=\"userproximo\" (click)=\"proximoUser($event)\" class=\"btn btn-default\"> > </button>\r\n  </div>\r\n</div>\r\n\r\n\r\n  <div *ngIf=\"!criarForm()\" class=\"row\" >\r\n    <div class=\"col-md-3\">\r\n      <label for=\"userselected\">Publicador </label>\r\n      <select [(ngModel)]=\"userselected\" class=\"form-control\" (change)=\"setValuesToForm()\" id=\"userselected\">\r\n        <option> </option>\r\n        <option *ngFor=\"let user of userall\" [ngValue]=\"user\">{{user?.firstName}} {{user?.lastName}}</option>\r\n      </select>\r\n    </div>\r\n\r\n\r\n    <div class=\"col-md-3\" >\r\n      <label for=\"circselected\">Circuito </label>\r\n      <select [(ngModel)]=\"circselected\" class=\"form-control\" (change)=\"onCirc()\" id=\"circselected\">\r\n        <option> </option>\r\n        <option *ngFor=\"let circ of circall\" [ngValue]=\"circ\">{{circ?.nome}}</option>\r\n      </select>\r\n    </div>\r\n\r\n    <div class=\"col-md-3\">\r\n      <label for=\"congselected\">Congregação </label>\r\n      <select [(ngModel)]=\"congselected\" class=\"form-control\" (change)=\"onCong()\" id=\"congselected\">\r\n        <option> </option>\r\n        <option *ngFor=\"let cong of congall\" [ngValue]=\"cong\">{{cong?.nome}}</option>\r\n      </select>\r\n    </div>\r\n  </div>\r\n\r\n\r\n  <div *ngIf=\"!criarForm()\" class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <hr>\r\n    </div>\r\n  </div>\r\n\r\n\r\n\r\n  <form [formGroup]=\"myForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n  \r\n    \r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n\r\n            <label for=\"firstName\">Nome</label>\r\n            <input type=\"text\" id=\"firstName\" class=\"form-control\" formControlName=\"firstName\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"lastName\">Sobrenome</label>\r\n            <input type=\"text\" id=\"lastName\" class=\"form-control\" formControlName=\"lastName\">\r\n          </div>\r\n        </div>\r\n\r\n\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"email\">Email</label>\r\n            <input align=\"right\" type=\"email\" id=\"email\" class=\"form-control\" formControlName=\"email\" autocomplete=\"false\">\r\n          </div>\r\n        </div>\r\n  \r\n\r\n    \r\n        <div class=\"col-md-3\">\r\n          <div *ngIf=\"userSelected()\" class=\"form-group\">\r\n            <label for=\"password\">Senha</label>\r\n            <span> (mínimo de 6 caracteres)</span>\r\n            <input name=\"password\" align=\"right\" type=\"password\" id=\"password\" class=\"form-control\" formControlName=\"password\" pattern=\".{6,}\"\r\n              required title=\"deve ter 6 caracteres no mínimo\" autocomplete=\"false\">\r\n          </div>\r\n        </div>\r\n      \r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"circuito\">Circuito</label>\r\n            <select [(ngModel)]=\"circuito\" id=\"circuito\" class=\"form-control\" formControlName=\"circuito\" (change)=\"changeCongregation()\">\r\n              <option> </option>\r\n              <option *ngFor=\"let circuito of circuitos\" [ngValue]=\"circuito\">{{circuito?.nome}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"congregation\">Congregação</label>\r\n            <select [(ngModel)]=\"congregation\" formControlName=\"congregation\" id=\"congregation\" class=\"form-control\" (change)=\"changeResponsableAndConjuge()\">\r\n              <option> </option>\r\n              <option *ngFor=\"let congregation of congregations\" [ngValue]=\"congregation\">{{congregation?.nome}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n      \r\n\r\n  \r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"sex\">Sexo</label>\r\n            <select type=\"text\" [(ngModel)]=\"sex\" id=\"sex\" class=\"form-control\" formControlName=\"sex\" (change)=\"changeResponsableAndConjuge()\">\r\n              <option> </option>\r\n              <option value=\"M\">Masculino</option>\r\n              <option value=\"F\">Feminino</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"privilege\">Privilégio</label>\r\n            <select type=\"text\" id=\"privilege\" class=\"form-control\" formControlName=\"privilege\" ng-model=\"privilege\">\r\n              <option> </option>\r\n              <option value=\"PU\">Publicador(a)</option>\r\n              <option value=\"PI\">Pioneiro(a)</option>\r\n              <option value=\"S\">Servo</option>\r\n              <option value=\"A\">Ancião</option>\r\n              <option value=\"PS\">Pioneiro e Servo</option>\r\n              <option value=\"PA\">Pioneiro e Ancião</option>\r\n            </select>\r\n          </div>\r\n        </div> \r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"datebirth\">Data de Nascimento</label>\r\n            <input [(ngModel)]=\"mybirth\" name=\"mybirth\" type=\"date\" id=\"datebirth\" class=\"form-control\" formControlName=\"datebirth\" (change)=\"responsableNeed()\">\r\n          </div>\r\n        </div>\r\n    \r\n\r\n     \r\n        <div class=\"col-md-3\">\r\n          <div *ngIf=\"responsableNeed()\" class=\"form-group\">\r\n            <label for=\"responsable\">Responsável</label>\r\n            <select [(ngModel)]=\"responsable\" formControlName=\"responsable\" id=\"responsable\" class=\"form-control\">\r\n              <option> </option>\r\n              <option *ngFor=\"let responsable of responsables\" [ngValue]=\"responsable\">{{responsable?.firstName}} {{responsable?.lastName}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"mobilephone\">Telefone Celular</label>\r\n            <input type=\"number\" id=\"mobilephone\" class=\"form-control\" formControlName=\"mobilephone\" pattern=\".{11,11}\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"phone\">Telefone Residencial</label>\r\n            <input type=\"number\" id=\"phone\" class=\"form-control\" formControlName=\"phone\" pattern=\".{0,10}\">\r\n          </div>\r\n        </div>\r\n   \r\n\r\n    \r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"eldermail\">Email para notificação </label>\r\n            <input type=\"email\" id=\"eldermail\" class=\"form-control\" formControlName=\"eldermail\">\r\n          </div>\r\n        </div>\r\n     \r\n\r\n     \r\n        <div class=\"col-md-3\">\r\n          <div *ngIf=\"existConjuge()\" class=\"form-group\">\r\n            <label for=\"conjuge\">Companheiro(a)</label>\r\n            <select [(ngModel)]=\"conjuge\" formControlName=\"conjuge\" id=\"conjuge\" class=\"form-control\">\r\n              <option> </option>\r\n              <option *ngFor=\"let conjuge of conjuges\" [ngValue]=\"conjuge\">{{conjuge?.firstName}} {{conjuge?.lastName}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n   \r\n\r\n    <div class=\"row\">\r\n      <div *ngIf=\"criarForm()\" class=\"col-md-3\">\r\n        <br>\r\n        <button class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!myForm.valid\">Criar</button>\r\n      </div>\r\n\r\n      <div *ngIf=\"!criarForm()\" class=\"col-md-3\">\r\n        <br>\r\n        <button class=\"btn btn-primary\" type=\"submit\" [disabled]=\"validMyForm()\">Salvar</button>\r\n      </div>\r\n    </div>\r\n  \r\n\r\n  </form>\r\n\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-3\">\r\n      <h4>Disponibilidade</h4>\r\n\r\n      <br>\r\n\r\n\r\n      <button type=\"button\" id=\"anterior\" (click)=\"anteriorDia($event)\" class=\"btn btn-default\">\r\n        < </button>\r\n          <button type=\"button\" id=\"proximo\" (click)=\"proximoDia($event)\" class=\"btn btn-default\"> > </button>\r\n          <select [(ngModel)]=\"dayselect\" class=\"form-control\" (change)=\"horasExistentes()\" id=\"dayselected\">\r\n            <option>Segunda-feira</option>\r\n            <option>Terça-feira</option>\r\n            <option>Quarta-feira</option>\r\n            <option>Quinta-feira</option>\r\n            <option>Sexta-feira</option>\r\n            <option>Sábado</option>\r\n            <option>Domingo</option>\r\n          </select>\r\n\r\n          <table class=\"table table-condensed\">\r\n            <thead>\r\n              <tr>\r\n                <th scope=\"col\">Horários</th>\r\n                <th scope=\"col\">Seleção</th>\r\n                <th scope=\"col\">Vezes/Mês</th>\r\n              </tr>\r\n            </thead>\r\n            <tbody>\r\n              <tr *ngFor=\"let hora of horas; let h = index\">\r\n                <th *ngIf=\"hora.vagas > 0\" scope=\"row\">{{ hora.hora }}</th>\r\n                <td *ngIf=\"hora.vagas > 0\">\r\n                  <input class=\"inputhora\" type=\"checkbox\" (change)=\"changed($event.target.checked,hora)\" [checked]=\"valorCheck(hora)\" [disabled]=\"inputCheckCondition()\">\r\n                </td>\r\n                <td *ngIf=\"((dayselect == 'Domingo' || dayselect == 'Sábado') && (hora.vagas > 0))\">\r\n                  <!-- <input id=\"{{ 'input' + dayselect }}\" type=\"number\" min=\"1\" max=\"5\" style=\"width: 2em;\"  (change)=\"vezesFds($event.target.value, hora.code)\" value=\"valueInput()\" [disabled]=\"!valorCheck(hora)\"> -->\r\n                  <input type=\"number\" min=\"1\" max=\"5\" style=\"width: 2em;\" (change)=\"vezesFds($event.target.value, hora.code)\" [value]=\"valueInput(hora.code)\"\r\n                    [disabled]=\"inputCondition(hora)\">\r\n                </td>\r\n              </tr>\r\n            </tbody>\r\n          </table>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/statistic.component.html":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/auth/statistic.component.html ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"!showNow\" >\r\n  <h4>Carregando informações...</h4>\r\n</div>\r\n<div *ngIf=\"showNow\" class=\"container\">\r\n\r\n  <div class=\"table table-responsive\">\r\n\r\n    <h2 class=\"text-primary\">Geral</h2>\r\n    <br>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"form-group col-md-4\">\r\n\r\n        <table class=\"table table-responsive table-hover\" id=\"dataTables\">\r\n          <thead style=\"background-color:LightSkyBlue\">\r\n            <tr>\r\n              <th></th>\r\n              <th>Total</th>\r\n              <th>Porcentagem</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr>\r\n              <td>\r\n                <b>Varões</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ totalman }}</span>\r\n                </b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ (totalman/totalpub * 100).toFixed(1)}}%</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Irmãs</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ totalwoman }}</span>\r\n                </b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ (totalwoman/totalpub * 100).toFixed(1)}}%</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Publicadores</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ totalpub }}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n      <div class=\"form-group col-md-4\">\r\n        <table width=\"100%\" class=\"table table-responsive table-hover\" id=\"dataTables2\">\r\n          <thead style=\"background-color:LightSkyBlue\">\r\n            <tr>\r\n              <th></th>\r\n              <th>Média</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr>\r\n              <td>\r\n                <b>Idade</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ (mediaidade).toFixed(1) }}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Publicador mais velho</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ maisvelho }}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Publicador mais novo</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ maisnovo }}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n      <br>\r\n      <div class=\"form-group col-md-4\">\r\n        <table width=\"100%\" class=\"table table-responsive table-hover\" id=\"dataTables3\">\r\n          <thead style=\"background-color:LightSkyBlue\">\r\n            <tr>\r\n              <th></th>\r\n              <th>Total</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr>\r\n              <td>\r\n                <b>Circuitos</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ countcirc }}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Congregações</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ countcong }}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n    </div>\r\n    <br>\r\n    <h2 class=\"text-primary\">Publicadores por Circuito / Congregação </h2>\r\n    <div class=\"row\">\r\n      <div *ngFor=\"let cc of circcong\">\r\n        <br>\r\n        <br>\r\n        <div class=\"form-group col-md-4\">\r\n          <table>\r\n            <tbody>\r\n              <tr>\r\n                <td style=\"white-space:nowrap;\">\r\n                  <b>Circuito: </b>\r\n                  <span class=\"text-danger\">\r\n                    <b>{{ encontraCircuito(cc.circ )}}</b>\r\n                  </span>\r\n                </td>\r\n              </tr>\r\n            </tbody>\r\n          </table>\r\n          <table>\r\n            <thead style=\"background-color:LightSkyBlue\">\r\n              <th>Congregação</th>\r\n              <th>Publicadores</th>\r\n            </thead>\r\n            <tbody>\r\n              <tr *ngFor=\"let c of cc.cong\">\r\n                <td>\r\n                  <b>{{ encontraCongregacao(c) }}</b>\r\n                </td>\r\n                <td class=\"center\">\r\n                  <b>\r\n                    <span class=\"text-danger\">{{ countCong(c) }}</span>\r\n                  </b>\r\n                </td>\r\n              </tr>\r\n              <tr>\r\n                <td>\r\n                  <b>Total</b>\r\n                </td>\r\n                <td class=\"center\">\r\n                  <b>\r\n                    <span class=\"text-danger\">{{ cc.countcirc }}</span>\r\n                  </b>\r\n                </td>\r\n              </tr>\r\n            </tbody>\r\n          </table>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <br>\r\n    <br>\r\n    <h2 class=\"text-primary\">Publicadores por dia / Vagas disponíveis </h2>\r\n    <br>\r\n    <div class=\"row\">\r\n      <div class=\"form-group col-md-6\">\r\n\r\n\r\n\r\n        <table class=\"table table-responsive table-hover\">\r\n          <thead style=\"background-color:LightSkyBlue\">\r\n            <th>Dias da Semana</th>\r\n            <th>Vagas Disponíveis</th>\r\n          </thead>\r\n          <tbody>\r\n            <tr>\r\n              <td>\r\n                <b>Segunda-feira</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ segunda}}/{{totalsegunda}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Terça-feira</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ terca}}/{{totalterca}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Quarta-feira</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ quarta}}/{{totalquarta}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Quinta-feira</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ quinta}}/{{totalquinta}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Sexta-feira</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ sexta}}/{{totalsexta}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Sábado</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ sabado}}/{{totalsabado}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Domingo</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ domingo}}/{{totaldomingo}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n\r\n      <div class=\"form-group col-md-6\">\r\n        <table class=\"table table-responsive table-hover\">\r\n          <thead style=\"background-color:LightSkyBlue\">\r\n            <th>\r\n              <b>Publicadores sem disponibilidade</b>\r\n            </th>\r\n            <th>Qtd</th>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let user of semdispoarray\">\r\n              <td>\r\n                <b>\r\n                  <span class=\"text\"> {{ user.firstName}}{{ user.lastName}}</span>\r\n                </b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">1</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Total</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ semdispo }}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n    </div>\r\n    <br>\r\n    <br>\r\n\r\n    <h2 class=\"text-primary\">Publicadores por horário / Vagas disponíveis </h2>\r\n    <br>\r\n    <div class=\"row\">\r\n\r\n      <div *ngFor=\"let semanadia of diasdasemana; let i = index\" class=\"form-group col-md-4\">\r\n\r\n        <table class=\"table table-responsive table-hover\">\r\n          <thead style=\"background-color:LightSkyBlue\">\r\n            <tr>\r\n              <th scope=\"col\">Horário</th>\r\n              <th scope=\"col\">\r\n                <b>{{ semanadia }}</b>\r\n              </th>\r\n            </tr>\r\n            <tr>\r\n\r\n            </tr>\r\n          </thead>\r\n          <tbody *ngIf=\"horasExistentes(semanadia)\">\r\n            <tr *ngFor=\"let hora of horas; let h = index\">\r\n              <th *ngIf=\"hora.vagas > 0\" scope=\"row\">\r\n                <b>{{ hora.hora }}</b>\r\n              </th>\r\n              <td *ngIf=\"hora.vagas > 0\" class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{countUser(hora.code,semanadia)}}/{{hora.vagas}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/errors/error.component.html":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/errors/error.component.html ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"onErrorHandled()\"><span aria-hidden=\"true\">&times;</span></button>\r\n                <h4 class=\"modal-title\">{{ error?.title }}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <p>{{ error?.message }}</p>\r\n            </div>\r\n            <div class=\"modal-footer\">\r\n                <button type=\"button\" class=\"btn btn-default\" (click)=\"onErrorHandled()\">Fechar</button>\r\n            </div>\r\n        </div><!-- /.modal-content -->\r\n    </div><!-- /.modal-dialog -->\r\n</div><!-- /.modal -->");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/newschedule/newschedule.component.html":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/newschedule/newschedule.component.html ***!
+  \**********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"onClose()\"><span aria-hidden=\"true\">&times;</span></button>\r\n                <h4 class=\"modal-title\">Telegrams Enviados {{telegramreport.length}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <p *ngFor=\"let tele of telegramreport\">{{ tele.user.firstName }} {{ tele.user.lastName }} dia {{ tele.dia}} horário: {{ tele.hora }}</p>\r\n            </div>\r\n            <div class=\"modal-footer\">\r\n                <button type=\"button\" class=\"btn btn-default\" (click)=\"onClose()\">Fechar</button>\r\n            </div>\r\n        </div><!-- /.modal-content -->\r\n    </div><!-- /.modal-dialog -->\r\n</div><!-- /.modal -->\r\n\r\n<div class=\"backdrop\" [ngStyle]=\"{'display': displaymail}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': displaymail}\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"onClosemail()\"><span aria-hidden=\"true\">&times;</span></button>\r\n                <h4 class=\"modal-title\">Emails Enviados {{emailreport.length}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <p *ngFor=\"let mail of emailreport\">{{ mail.user.firstName }} {{ mail.user.lastName }} dia {{ mail.dia}} horário: {{ mail.hora }}</p>\r\n            </div>\r\n            <div class=\"modal-footer\">\r\n                <button type=\"button\" class=\"btn btn-default\" (click)=\"onClosemail()\">Fechar</button>\r\n            </div>\r\n        </div><!-- /.modal-content -->\r\n    </div><!-- /.modal-dialog -->\r\n</div><!-- /.modal -->\r\n\r\n<div class=\"row\">\r\n  <div class=\"col-md-10 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <h3>Período Vigente</h3>\r\n    <button type=\"button\" id=\"anterior\" (click)=\"nextValidity($event)\" class=\"btn btn-default\">\r\n      < </button>\r\n        <button type=\"button\" id=\"proximo\" (click)=\"beforeValidity($event)\" class=\"btn btn-default\"> > </button>\r\n        <span class=\"badge badge-success\">De</span>\r\n        <span class=\"badge badge-success\"> {{ datainicio }}</span>\r\n        <span class=\"badge badge-success\">até</span>\r\n        <span class=\"badge badge-success\"> {{ datafim }}</span>\r\n        <div *ngIf=\"isAuthenticated()\">\r\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"sendEmail()\" style=\"float: right;\" [disabled]=\"!allowdelete\" [hidden]=\"!allowdelete\">Email</button>\r\n        <button type=\"button\" class=\"btn btn-success\" (click)=\"sendTelegram()\" style=\"float: right;\" [disabled]=\"!allowdelete\" [hidden]=\"!allowdelete\">Telegram</button>\r\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"salvaEscala()\" style=\"float: right;\" [disabled]=\"verifyallowsave()\">Salvar Escala</button>\r\n        <button type=\"button\" class=\"btn btn-danger\" (click)=\"deletaEscala()\" style=\"float: right;\" [disabled]=\"!allowdelete\">Del</button>\r\n        </div>\r\n  </div>\r\n</div>\r\n\r\n<div *ngIf=\"isAuthenticated()\" class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <button type=\"button\" class=\"btn btn-primary\" (click)=\"geraEscala()\" [disabled]=\"!allowsave\">Gerar Escala</button>\r\n    <br>\r\n    <li style=\"color:Black\" *ngIf=\"showNow\">\r\n      Pontos Vazios\r\n      <span class=\"label label-primary\" style=\"font-size:16px;\">\r\n        {{ reportvoid }}</span>\r\n    </li>\r\n    <hr>\r\n    <br>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div *ngIf=\"showNow\" class=\"row\">\r\n  <div class=\"col-md-12 col-md-offset-1\">\r\n    <div *ngFor=\"let esc of escala\">\r\n      <div class=\"alert alert-secondary\" role=\"alert\">\r\n      <span class=\"label label-info\" style=\"font-size:17px;\"><b>{{esc.dia}}</b></span>\r\n      <span class=\"label label-warning\" style=\"font-size:14px;\"><b>{{esc.diasemana}}</b></span>\r\n      </div>\r\n      <br>\r\n      <ul *ngFor=\"let hr of esc.hora; let h = index\">\r\n        <br>\r\n        <li style=\"background-color:Azure; color:Black\">\r\n          <b>{{ hr.hora }}</b>\r\n          <span style=\"float:right;font-size:11px;\">{{esc.dia}}/{{esc.diasemana}}</span>\r\n        </li>\r\n        <ul *ngFor=\"let pont of esc.pontos[h]\">\r\n          <li style=\"color:Black\">\r\n            <b>{{ pont.name }}</b>\r\n          </li>\r\n          <ul>\r\n            <table style=\"width:100%\">\r\n              <tr *ngFor=\"let pub of pont.pubs\">\r\n                <td width=\"5%\" *ngIf=\"(!allowsave) && pub?.sim == false && pub?.nao == false\"><div class=\"led-yellow\"></div></td>\r\n                <td width=\"5%\" *ngIf=\"allowsave && pub?.sim == false && pub?.nao == false\"><div class=\"led-yellow-static\"></div></td>\r\n                <td width=\"5%\" *ngIf=\"pub?.sim == true && pub?.nao == false\"><div class=\"led-green\"></div></td>\r\n                <td width=\"5%\" *ngIf=\"pub?.sim == false && pub?.nao == true\"><div class=\"led-red\"></div></td>\r\n                <td width=\"5%\" *ngIf=\"pub?.sim == true && pub?.nao == true\"><div class=\"led-green\"></div></td>\r\n                <td *ngIf=\"pub.firstName != undefined\" [style.color]=\"getStyle(pub?.sex)\" width=\"30%\">{{ pub?.firstName }} {{ pub?.lastName}}</td>\r\n                \r\n                <td *ngIf=\"pub.firstName != undefined\" width=\"4%\">{{ getAge(pub?.datebirth) || ' '}}</td>\r\n                <td *ngIf=\"pub.firstName != undefined\" width=\"9%\">{{ pub?.congregation.circuit || ' ' }}</td> \r\n                <td *ngIf=\"pub.firstName != undefined\" width=\"20%\">{{ pub?.congregation.nome }}</td>\r\n                <td *ngIf=\"pub.firstName != undefined\" width=\"12%\">{{ pub?.mobilephone || pub?.phone }}</td>\r\n                <td *ngIf=\"pub.firstName != undefined\" >{{ pub?.email }}</td>\r\n                <td *ngIf=\"pub.firstName != undefined\" width=\"5%\">\r\n                  <p class=\"bg-success text-white\" style=\"font-size:12px; text-align: center;\" *ngIf=\"pub.tipoesc == 'A' \"><b>{{ pub?.tipoesc }}</b></p>\r\n                  <p class=\"bg-light text-dark\" style=\"font-size:12px; text-align: center;\" *ngIf=\"pub.tipoesc == 'E' \"><b>{{ pub?.tipoesc }}</b></p>\r\n                  <p class=\"bg-primary text-white\" style=\"font-size:12px; text-align: center;\" *ngIf=\"pub.tipoesc == 'S' \"><b>{{ pub?.tipoesc }}</b></p>\r\n                </td>\r\n                <td *ngIf=\"pub.firstName != undefined\" width=\"5%\"> </td> \r\n              </tr>\r\n            </table>\r\n          </ul>\r\n        </ul>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div *ngIf=\"showNow\" class=\"row\">\r\n  <div class=\"col-md-10 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <h3>Designações por período:</h3>\r\n    <br>\r\n    <div *ngFor=\"let final of finalreport\">\r\n      <li style=\"color:Black\">\r\n        <span class=\"label label-primary\" style=\"font-size:12px;\" *ngIf=\"final.count > 0\">\r\n          {{ final.count }}</span>\r\n        <span class=\"label label-danger\" style=\"font-size:12px;\" *ngIf=\"final.count == 0\">\r\n          {{ final.count }}</span>\r\n        <b>{{ final.nome }} {{ final.sobrenome }}</b>\r\n      </li>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/perfilrole/perfilrole.component.html":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/perfilrole/perfilrole.component.html ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <form [formGroup]=\"perfilroleForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n                <div class=\"modal-header\">\r\n                    <h5 class=\"modal-title\" id=\"modal_titulo\">Novo perfil</h5>\r\n                    <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n                        <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n                    <br/>\r\n\r\n                    <div class=\"form-row\">\r\n                        <div class=\"form-group col-md-8\">\r\n                            <label>Email *</label>\r\n                            <input type=\"email\" class=\"form-control\" id=\"perfilrole_email\" placeholder=\"Digite o email\" formControlName=\"email\">\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div *ngIf=\"!this.edit\" class=\"form-row\">\r\n                        <div class=\"form-group col-md-8\">\r\n                            <label>Senha *</label>\r\n                            <span> (mínimo de 6 caracteres)</span>\r\n                            <input name=\"senha\" type=\"password\" id=\"perfilrole_senha\" class=\"form-control\" formControlName=\"senha\" pattern=\".{6,}\"\r\n                              required title=\"deve ter 6 caracteres no mínimo\" autocomplete=\"false\">\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"form-row\">\r\n                            <div class=\"form-group col-md-8\">\r\n                                <label>Função *</label>\r\n                                <br>\r\n                                <label class=\"md-check\">CTC\r\n                                <input type=\"radio\" value=\"ctc\" class=\"form-control\" id=\"perfilrole_role1\"  formControlName=\"role\">\r\n                                </label>\r\n                                <label class=\"md-check\">Superintendente/Logistica\r\n                                <input type=\"radio\" value=\"gold\" class=\"form-control\" id=\"perfilrole_role2\"  formControlName=\"role\">\r\n                                </label>\r\n                            </div>\r\n                        </div>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n\r\n                    <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n                </div>\r\n            </form>\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n    <div class=\"row\">\r\n        <div class=\"form-group col-md-4\">\r\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewperfilrole()\" [disabled]=\"auth\">Novo perfilrole +</button>\r\n        </div>\r\n\r\n        <form>\r\n\r\n        </form>\r\n        <table class=\"table table-striped\">\r\n            <thead>\r\n                <tr>\r\n                    <th scope=\"col\">#</th>\r\n                    <th scope=\"col\">Email</th>\r\n                    <th scope=\"col\">Perfil</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr *ngFor=\"let perfilrole of perfilroles; let j = index\">\r\n                    <th scope=\"row\">{{j + 1}}</th>\r\n                    <td>{{perfilrole.email}}</td>\r\n                    <td *ngIf=\"perfilrole.role == 'ctc'\">CTC</td>\r\n                    <td *ngIf=\"perfilrole.role == 'gold'\">Superintendente/Logistica</td>\r\n                    <td>\r\n                        <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n                            <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n                        <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n                            <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/report/report.component.html":
+/*!************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/report/report.component.html ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n  <div class=\"col-md-12\">\r\n    <form [formGroup]=\"dataForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n      <div class=\"form-row\">\r\n        <div class=\"form-group col-md-3\">\r\n          <label>Início *</label>\r\n          <input name=\"begin\" type=\"date\" id=\"begin\" class=\"form-control\" formControlName=\"begin\">\r\n        </div>\r\n\r\n        <div class=\"form-group col-md-3\">\r\n          <label>Fim *</label>\r\n          <input name=\"end\" type=\"date\" id=\"end\" class=\"form-control\" formControlName=\"end\">\r\n\r\n        </div>\r\n        <div class=\"form-group col-md-3\">\r\n          <button type=\"submit\" class=\"form-control\" [disabled]=\"validMyForm()\" style=\"padding: 22px 26px\" class=\"btn btn-primary\">Buscar</button>\r\n        </div>\r\n      </div>\r\n        <div class=\"form-row col-md-5\">\r\n          <h4>Total de designações: {{totaldesignacoes}}</h4>\r\n          <hr>\r\n        </div>\r\n      \r\n    </form>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-md-3\">\r\n        <div class=\"form-group\">\r\n          <label for=\"circuito\">Circuito</label>\r\n          <select [(ngModel)]=\"circuito\" id=\"circuito\" class=\"form-control\" (change)=\"onCircuito()\">\r\n            <option> </option>\r\n            <option *ngFor=\"let circuito of circuitos\" [ngValue]=\"circuito\">{{circuito?.nome}}</option>\r\n          </select>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-md-3\">\r\n        <div class=\"form-group\">\r\n          <label for=\"congregation\">Congregação</label>\r\n          <select [(ngModel)]=\"congregation\" class=\"form-control\" (change)=\"onCongregacao()\">\r\n            <option> </option>\r\n            <option *ngFor=\"let congregation of congregations\" [ngValue]=\"congregation\">{{congregation?.nome}}</option>\r\n          </select>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n\r\n    <div class=\"row\">\r\n      <ul class=\"nav nav-tabs\" id=\"myTab\" role=\"tablist\">\r\n          <li class=\"nav-item\">\r\n              <a class=\"nav-link active\" id=\"aba0-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"home\" aria-selected=\"true\" (click)=\"onAba0()\">Por Período</a>\r\n            </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"aba1-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"home\" aria-selected=\"true\" (click)=\"onAba1()\">Sem confirmação</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"aba2-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"profile\" aria-selected=\"false\" (click)=\"onAba2()\">Recusadas</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"aba3-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"profile\" aria-selected=\"false\" (click)=\"onAba3()\">Substituições</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"aba4-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"profile\" aria-selected=\"false\" (click)=\"onAba4()\">Gráficos</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"aba5-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"profile\" aria-selected=\"false\" (click)=\"onAba5()\">Companheiro</a>\r\n        </li>\r\n\r\n      </ul>\r\n    </div>\r\n\r\n\r\n    <br>\r\n\r\n    <div *ngIf=\"abaperiodo\">\r\n        <h4>Designações por Período:</h4>  \r\n\r\n        <button (click)=\"sortAlpha()\" type=\"button\" class=\"btn btn-default btn-sm\">\r\n            <i class=\"fa fa-sort-alpha-asc\"></i> \r\n          </button>\r\n\r\n          <button (click)=\"sortAsc()\" type=\"button\" class=\"btn btn-default btn-sm\">\r\n              <i class=\"fa fa-sort-amount-asc\"></i> \r\n            </button>\r\n\r\n            <button (click)=\"sortDesc()\" type=\"button\" class=\"btn btn-default btn-sm\">\r\n                <i class=\"\tfa fa-sort-amount-desc\"></i> \r\n              </button>\r\n\r\n        <div class=\"table-responsive\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-bordered\">\r\n  \r\n              <thead>\r\n                <tr>\r\n                  <th style=\"vertical-align: middle !important; text-align: left;\">Total</th>\r\n                  <th style=\"vertical-align: middle !important; text-align: left;\">Nome</th>\r\n                  <th style=\"vertical-align: middle !important; text-align: left;\">Circuito</th>\r\n                  <th style=\"vertical-align: middle !important; text-align: left;\">Congregação</th>\r\n                  <th style=\"vertical-align: middle !important; text-align: left;\">Telefone</th>\r\n                  <th style=\"vertical-align: middle !important; text-align: left;\">Email</th>\r\n                  <th style=\"vertical-align: middle !important; text-align: left;\">Telegram</th>\r\n                </tr>\r\n  \r\n              </thead>\r\n              <tbody>\r\n  \r\n  \r\n  \r\n                <tr *ngFor=\"let obj of totalhistorico; let i = index\">\r\n                  <td style=\"vertical-align: middle !important; text-align: center;\">{{ obj.total }}</td>\r\n                  <td [style.color]=\"getStyle(obj.user?.sex)\" style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.firstName }} {{ obj.user?.lastName}} </td>\r\n                  <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCircuito(obj.user?.circuito) }}</td>\r\n                  <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCongregacao(obj.user?.congregation) }}</td>\r\n                  <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.mobilephone || obj.user?.phone }}</td>\r\n                  <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.email }}</td>\r\n                  <td *ngIf=\"getTelegram(obj.user?.telegram) == 'SIM'\" ><i class=\"fa fa-check-circle-o\" style=\"font-size:40px;color:green\"></i></td>\r\n                  <td *ngIf=\"getTelegram(obj.user?.telegram) == 'NÃO'\" ><i class=\"fa fa-times-circle-o\" style=\"font-size:40px;color:red\"></i></td>\r\n                  <!-- <td style=\"vertical-align: middle !important; text-align: left;\">getTelegram(obj.user?.telegram) }}</td> -->\r\n                </tr>\r\n  \r\n  \r\n              </tbody>\r\n  \r\n            </table>\r\n            <!-- <div *ngIf=\"existPerfil(pont)\"> -->\r\n  \r\n            <br>\r\n            <br>\r\n          </div>\r\n  \r\n        </div>\r\n      </div>\r\n\r\n    <div *ngIf=\"abasemconfirmacao\">\r\n      <h4>Designações não confirmadas: {{semresposta.length}}</h4>\r\n\r\n      <div class=\"table-responsive\">\r\n        <div class=\"card-body\">\r\n          <table class=\"table table-bordered\">\r\n\r\n            <thead>\r\n              <tr>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Data</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Nome</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Circuito</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Congregação</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Telefone</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Email</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Telegram</th>\r\n              </tr>\r\n\r\n            </thead>\r\n            <tbody>\r\n\r\n\r\n\r\n              <tr *ngFor=\"let obj of semresposta; let i = index\">\r\n                <td style=\"vertical-align: middle !important; text-align: center;\">{{ obj.data }}</td>\r\n                <td [style.color]=\"getStyle(obj.user?.sex)\" style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.firstName }} {{ obj.user?.lastName}} </td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCircuito(obj.user?.circuito) }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCongregacao(obj.user?.congregation) }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.mobilephone || obj.user?.phone }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.email }}</td>\r\n                <td *ngIf=\"getTelegram(obj.user?.telegram) == 'SIM'\" ><i class=\"fa fa-check-circle-o\" style=\"font-size:40px;color:green\"></i></td>\r\n                <td *ngIf=\"getTelegram(obj.user?.telegram) == 'NÃO'\" ><i class=\"fa fa-times-circle-o\" style=\"font-size:40px;color:red\"></i></td>\r\n              </tr>\r\n\r\n\r\n            </tbody>\r\n\r\n          </table>\r\n          <!-- <div *ngIf=\"existPerfil(pont)\"> -->\r\n\r\n          <br>\r\n          <br>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"abarecusadas\">\r\n      <h4>Designações recusadas: {{naoresposta.length}}</h4>\r\n      <div class=\"table-responsive\">\r\n        <div class=\"card-body\">\r\n          <table class=\"table table-bordered\">\r\n\r\n            <thead>\r\n              <tr>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Total</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Nome</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Circuito</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Congregação</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Telefone</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Email</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Telegram</th>\r\n              </tr>\r\n\r\n            </thead>\r\n            <tbody>\r\n\r\n\r\n\r\n              <tr *ngFor=\"let obj of totalnao; let i = index\">\r\n                <td style=\"vertical-align: middle !important; text-align: center;\">{{ obj.nao}}/{{obj.sim }}</td>\r\n                <td [style.color]=\"getStyle(obj.user?.sex)\" style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.firstName }} {{ obj.user?.lastName}} </td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCircuito(obj.user?.circuito) }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCongregacao(obj.user?.congregation) }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.mobilephone || obj.user?.phone }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.email }}</td>\r\n                <td *ngIf=\"getTelegram(obj.user?.telegram) == 'SIM'\" ><i class=\"fa fa-check-circle-o\" style=\"font-size:40px;color:green\"></i></td>\r\n                <td *ngIf=\"getTelegram(obj.user?.telegram) == 'NÃO'\" ><i class=\"fa fa-times-circle-o\" style=\"font-size:40px;color:red\"></i></td>\r\n              </tr>\r\n\r\n\r\n            </tbody>\r\n\r\n          </table>\r\n          <!-- <div *ngIf=\"existPerfil(pont)\"> -->\r\n\r\n          <br>\r\n          <br>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n\r\n    <div *ngIf=\"abasubstituicao\">\r\n      <h4>Substituições realizadas: {{subresposta.length}}</h4>\r\n\r\n      <div class=\"table-responsive\">\r\n        <div class=\"card-body\">\r\n          <table class=\"table table-bordered\">\r\n\r\n            <thead>\r\n              <tr>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Total</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Nome</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Circuito</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Congregação</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Telefone</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Email</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Telegram</th>\r\n              </tr>\r\n\r\n            </thead>\r\n            <tbody>\r\n\r\n\r\n\r\n              <tr *ngFor=\"let obj of totalsub; let i = index\">\r\n                <td style=\"vertical-align: middle !important; text-align: center;\">{{ obj.sub }}</td>\r\n                <td [style.color]=\"getStyle(obj.user?.sex)\" style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.firstName }} {{ obj.user?.lastName}} </td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCircuito(obj.user?.circuito) }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCongregacao(obj.user?.congregation) }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.mobilephone || obj.user?.phone }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.email }}</td>\r\n                <td *ngIf=\"getTelegram(obj.user?.telegram) == 'SIM'\" ><i class=\"fa fa-check-circle-o\" style=\"font-size:40px;color:green\"></i></td>\r\n                <td *ngIf=\"getTelegram(obj.user?.telegram) == 'NÃO'\" ><i class=\"fa fa-times-circle-o\" style=\"font-size:40px;color:red\"></i></td>\r\n              </tr>\r\n\r\n\r\n            </tbody>\r\n\r\n          </table>\r\n          <!-- <div *ngIf=\"existPerfil(pont)\"> -->\r\n\r\n          <br>\r\n          <br>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"abagraficos\">\r\n      \r\n        </div>\r\n \r\n\r\n    <div *ngIf=\"abacompanheiro\">\r\n      <h4>Total de irmãos: {{userscomp.length}}</h4>\r\n      <div class=\"table-responsive\">\r\n        <div class=\"card-body\">\r\n          <table class=\"table table-bordered\">\r\n\r\n            <thead>\r\n              <tr>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Nome</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Circuito</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Congregação</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Companheiro</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Responsavel</th>\r\n              </tr>\r\n\r\n            </thead>\r\n            <tbody>\r\n\r\n\r\n\r\n              <tr *ngFor=\"let obj of userscomp; let i = index\">\r\n                <td [style.color]=\"getStyle(obj?.sex)\" style=\"vertical-align: middle !important; text-align: left;\">{{ obj?.firstName }} {{ obj?.lastName}} </td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCircuito(obj?.circuito) }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCongregacao(obj?.congregation) }}</td>\r\n                <td [style.color]=\"getStyleId(obj?.conjuge)\" style=\"vertical-align: middle !important; text-align: left;\">{{ encontraId(obj?.conjuge) }}</td>\r\n                <td [style.color]=\"getStyleId(obj?.responsable)\" style=\"vertical-align: middle !important; text-align: left;\">{{ encontraId(obj?.responsable) }}</td>\r\n\r\n              </tr>\r\n\r\n\r\n            </tbody>\r\n\r\n          </table>\r\n          <!-- <div *ngIf=\"existPerfil(pont)\"> -->\r\n\r\n          <br>\r\n          <br>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/schedule/schedule.component.html":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/schedule/schedule.component.html ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"col-md-12 col-md-offset-1\">\r\n        <h2><span class=\"badge badge-primary\">Escala</span></h2>\r\n        <br>\r\n    \r\n        <button type=\"button\" id=\"anterior\" (click)=\"anteriorDia($event)\" class=\"btn btn-default\"> < </button>\r\n                        <button type=\"button\" id=\"proximo\" (click)=\"proximoDia($event)\" class=\"btn btn-default\"> > </button>\r\n                        <label for=\"dia\">DATA</label>\r\n                        <input name=\"dia\" id=\"dia\" type=\"date\" [(ngModel)]=\"dia\" (change)=\"onChange()\"> {{ diasemana }}\r\n                        <br>\r\n                        <br>\r\n\r\n                        <div *ngFor=\"let hora of horas; let h = index\">\r\n                                <div *ngIf=\"hora.vagas > 0\">\r\n                        <h3>{{hora.hora}}</h3>\r\n                        <div class=\"row\">     \r\n                        <div *ngFor=\"let ponto of pontos_hora[h]; let i = index\">    \r\n                        <div class=\"col-md-4\">  \r\n                        <div class=\"panel panel-default\" >\r\n                                        \r\n                                        <div class=\"panel-heading\" ><strong>Ponto({{i + 1}}): {{ponto.name}}</strong></div>\r\n                                        <div class=\"panel-body\">\r\n                                                        <div *ngFor=\"let pub of ponto.pubs; let j = index\" class=\"alert alert-success\" role=\"alert\">\r\n                                                                P {{ j + 1 }}:\r\n                                                                 <span  [style.color]=\"getStyle(pub?.sex)\" *ngIf=\"pub\">{{ pub?.firstName }} {{ pub?.lastName}}         </span>\r\n                                                                        I:  <span [style.color]=\"getStyle(pub?.sex)\" *ngIf=\"pub\">{{ getAge(pub?.datebirth) || ' ' }}  </span>\r\n                                                                        Cong: <span  [style.color]=\"getStyle(pub?.sex)\" *ngIf=\"pub\">{{ identifyCongregation(pub?.congregation) || ' ' }} </span> \r\n\r\n                                                                </div> \r\n                                                                </div>\r\n                                                        </div>\r\n                                                </div>\r\n                                        </div>\r\n                                </div>\r\n                        </div>\r\n                </div>\r\n             ");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/schedule2/schedule2.component.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/schedule2/schedule2.component.html ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"showNow\" class=\"container\">\r\n<div *ngIf=\"validities.length > 0\">\r\n  <p><b>Período aberto de {{ dateString(validities[0].begin) }} até {{ dateString(validities[0].end) }}</b></p>\r\n</div>\r\n<div *ngIf=\"validities.length == 0\">\r\n  <h4>Período fechado</h4>\r\n</div>\r\n    <div class=\"row\">\r\n      <div class=\"col-md-6\">\r\n        <button type=\"button\" id=\"anterior\" (click)=\"anteriorDia($event)\" class=\"btn btn-default\">\r\n          <i class=\"fas fa-angle-left\"></i>\r\n        </button>\r\n        <input name=\"dia\" id=\"dia\" type=\"date\" [(ngModel)]=\"dia\" (change)=\"onChange()\">\r\n        <button type=\"button\" id=\"proximo\" (click)=\"proximoDia($event)\" class=\"btn btn-default\">\r\n          <i class=\"fas fa-angle-right\"></i>\r\n        </button>\r\n        <br>\r\n        <b> {{ diasemana }}</b>\r\n        <div class=\"panel-body\">\r\n\r\n          <div *ngIf=\"buscaFeriado()\" class=\"alert alert-warning\">\r\n            <strong>Feriado</strong>\r\n          </div>\r\n          <div class=\"table-responsive\">\r\n            <table class=\"table\">\r\n              <thead>\r\n                <tr>\r\n                  <th scope=\"col\">Horários</th>\r\n                  <th scope=\"col\">Vagas</th>\r\n                  <th scope=\"col\" class=\"center\">Seleção</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n\r\n                <tr *ngFor=\"let hora of horas; let h = index\">\r\n                  <th *ngIf=\"hora.vagas > 0\" scope=\"row\">{{ hora.hora }}</th>\r\n                  <td *ngIf=\"hora.vagas > 0\">\r\n                    <span class=\"badge badge-success\">{{ hora.vagas - hora.dispo}}/{{hora.vagas}}</span>\r\n                  </td>\r\n                  <td *ngIf=\"hora.vagas > 0\" class=\"center\">\r\n                    <input  type=\"radio\" name=\"jradio\" (change)=\"onChangeSel($event, hora)\" [checked]=\"valCheck()\" [disabled]=\"disabledAgenda()\">\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n          </div>\r\n        </div>\r\n        <button id=\"btnAgendar\" class=\"btn btn-primary\" type=\"submit\" (click)=\"execAgendar()\" [disabled]=\"disabledAgenda()\">Agendar</button>\r\n\r\n      </div>\r\n\r\n      <div class=\"col-md-5\">\r\n\r\n        <h4>Histórico</h4>\r\n        <div *ngFor=\"let agenda of user_agenda; let i = index\" class=\"alert alert-success\" role=\"alert\">\r\n          <a>\r\n            <i class=\"fa fa-trash-o\" aria-hidden=\"true\" style=\"color:blue\" (click)=\"Delete(i)\"></i>\r\n          </a>Agendado {{ agenda.diasemana }} {{ agenda.datashow }} ás {{ agenda.hora }}\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/circuito.component.html":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/setup/circuito.component.html ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <form [formGroup]=\"circuitoForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"modal_titulo\">Novo Circuito</h5>\r\n          <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n          <br/>\r\n\r\n          <div class=\"form-row\">\r\n            <div class=\"form-group col-md-4\">\r\n              <label>Nome *</label>\r\n              <input type=\"text\" class=\"form-control\" id=\"circuito_nome\" placeholder=\"Digite o nome do circuito\" formControlName=\"nome\">\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n\r\n          <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n        </div>\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewCircuito()\" [disabled]=\"auth\">Novo circuito +</button>\r\n    </div>\r\n\r\n    <form>\r\n\r\n    </form>\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th scope=\"col\">#</th>\r\n          <th scope=\"col\">Nome</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let circuito of circuitos; let j = index\">\r\n          <th scope=\"row\">{{j + 1}}</th>\r\n          <td>{{circuito.nome}}</td>\r\n          <td>\r\n            <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/congregation.component.html":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/setup/congregation.component.html ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <form [formGroup]=\"congregationForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"modal_titulo\">Nova congregação</h5>\r\n          <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n          <br/>\r\n          \r\n          <div class=\"form-row\">\r\n            <div class=\"form-group col-md-4\">\r\n              <label>Circuito *</label>\r\n          <select [(ngModel)]=\"mycircuit\" formControlName=\"circuit\" id=\"circuit\" class=\"form-control\">\r\n            <option value=\" \"></option>\r\n            <option *ngFor=\"let circuito of circuitos\" [ngValue]=\"circuito\">{{circuito.nome}}</option>\r\n          </select>\r\n        </div>\r\n \r\n            <div class=\"form-group col-md-7\">\r\n              <label>Nome *</label>\r\n              <input type=\"text\" class=\"form-control\" id=\"congregation_nome\" placeholder=\"Digite o nome da congregação\" formControlName=\"nome\">\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n\r\n          <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n        </div>\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewCongregation()\" [disabled]=\"auth\">Nova congregação +</button>\r\n    </div>\r\n\r\n    <form>\r\n    </form>\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th scope=\"col\">#</th>\r\n          <th scope=\"col\">Circuito</th>\r\n          <th scope=\"col\">Nome</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let congregation of congregations; let j = index\">\r\n          <th scope=\"row\">{{j + 1}}</th>\r\n          <td>{{congregation.circuit}}</td>\r\n          <td>{{congregation.nome}}</td>\r\n          <td>\r\n            <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/especial.component.html":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/setup/especial.component.html ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <form [formGroup]=\"especialForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"modal_titulo\">Novo dia especial</h5>\r\n          <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n          <br/>\r\n\r\n          <div class=\"form-row\">\r\n\r\n            <div class=\"form-group col-md-7\">\r\n              <label>Nome *</label>\r\n              <input name=\"nome\" type=\"text\" id=\"nome\" class=\"form-control\" formControlName=\"nome\">\r\n            </div>\r\n\r\n            <div class=\"form-group col-md-4\">\r\n              <label>Circuito *</label>\r\n              <select [(ngModel)]=\"mycircuit\" formControlName=\"circuit\" id=\"circuit\" class=\"form-control\">\r\n                <option value=\" \"></option>\r\n                <option *ngFor=\"let circuito of circuitos\" [ngValue]=\"circuito\">{{circuito.nome}}</option>\r\n              </select>\r\n            </div>\r\n\r\n          </div>\r\n\r\n          <div class=\"form-row\">\r\n            <div class=\"form-group col-md-6\">\r\n              <label>Início *</label>\r\n              <input name=\"begin\" type=\"date\" id=\"begin\" class=\"form-control\" formControlName=\"begin\">\r\n            </div>\r\n\r\n            <div class=\"form-group col-md-6\">\r\n              <label>Fim *</label>\r\n              <input name=\"end\" type=\"date\" id=\"end\" class=\"form-control\" formControlName=\"end\">\r\n\r\n            </div>\r\n\r\n\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n\r\n          <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n        </div>\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewespecial()\" [disabled]=\"auth\">Novo dia especial +</button>\r\n    </div>\r\n\r\n    <form>\r\n    </form>\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th scope=\"col\">#</th>\r\n          <th scope=\"col\">Nome</th>\r\n          <th scope=\"col\">Circuito</th>\r\n          <th scope=\"col\">Início</th>\r\n          <th scope=\"col\">Fim</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let especial of especiais; let j = index\">\r\n          <th scope=\"row\">{{j + 1}}</th>\r\n          <td>{{especial.nome}}</td>\r\n          <td>{{especial.circuito}}</td>\r\n          <td>{{dateString(especial.begin)}}</td>\r\n          <td>{{dateString(especial.end)}}</td>\r\n          <td>\r\n            <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/excel.component.html":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/setup/excel.component.html ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-row\">\r\n      <div class=\"form-group\">\r\n\r\n        <button type=\"button\" id=\"anterior\" (click)=\"anteriorDia($event)\" class=\"btn btn-default\">\r\n          < </button>\r\n            <button type=\"button\" id=\"proximo\" (click)=\"proximoDia($event)\" class=\"btn btn-default\"> > </button>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <select [(ngModel)]=\"dayselect\" class=\"form-control\">\r\n          <option>Segunda-feira</option>\r\n          <option>Terça-feira</option>\r\n          <option>Quarta-feira</option>\r\n          <option>Quinta-feira</option>\r\n          <option>Sexta-feira</option>\r\n          <option>Sábado</option>\r\n          <option>Domingo</option>\r\n          <option>Feriado</option>\r\n        </select>\r\n      </div>\r\n      <div class=\"form-group col-md-3\">\r\n        <button id=\"btnCreate3\" class=\"btn btn-primary\" (click)=\"salvarConfig()\" [disabled]=\"auth\">Salvar </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th>Ponto/Horário</th>\r\n          <th *ngFor=\"let hora of horas; let h = index\">{{hora.hora}}</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let ponto of pontos; let p = index\">\r\n          <td>{{ponto.name}}</td>\r\n          <td *ngFor=\"let hora of horas; let ph = index\">\r\n            <input type=\"checkbox\" (click)=\"changed($event.target.checked,ponto,hora)\" [checked]=\"valorCheck(ponto,hora)\" [disabled]=\"auth\">\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n\r\n  </div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/feriado.component.html":
+/*!************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/setup/feriado.component.html ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <form [formGroup]=\"feriadoForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"modal_titulo\">Novo feriado</h5>\r\n          <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n          <br/>\r\n\r\n          <div class=\"form-row\">\r\n            <div class=\"form-group col-md-7\">\r\n              <label>Nome *</label>\r\n              <input name=\"feriado\" type=\"text\" id=\"feriado\" class=\"form-control\" formControlName=\"feriado\">\r\n            </div>\r\n\r\n            <div class=\"form-group col-md-5\">\r\n              <label>Data *</label>\r\n              <input name=\"data\" type=\"date\" id=\"data\" class=\"form-control\" formControlName=\"data\">\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n\r\n          <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n        </div>\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewferiado()\" [disabled]=\"auth\">Novo feriado +</button>\r\n    </div>\r\n\r\n    <form>\r\n    </form>\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th scope=\"col\">#</th>\r\n          <th scope=\"col\">Nome</th>\r\n          <th scope=\"col\">Data</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let feriado of feriados; let j = index\">\r\n          <th scope=\"row\">{{j + 1}}</th>\r\n          <td>{{feriado.feriado}}</td>\r\n          <td>{{feriado.datashow}}</td>\r\n          <td>\r\n            <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/hora.component.html":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/setup/hora.component.html ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <form [formGroup]=\"horaForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"modal_titulo\">Novo horário</h5>\r\n          <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n          <br/>\r\n\r\n          <div class=\"form-row\">\r\n            <div class=\"form-group col-md-7\">\r\n              <label>Horário *</label>\r\n              <input type=\"text\" class=\"form-control\" id=\"hora_hora\" pattern=\".{11,11}\" placeholder=\"Digite o nome da congregação\" formControlName=\"hora\">\r\n            </div>\r\n\r\n            <div class=\"form-group col-md-5\">\r\n              <label>Código *</label>\r\n              <input type=\"text\" class=\"form-control\" id=\"hora_code\" pattern=\".{3,3}\" placeholder=\"Digite o nome da congregação\" formControlName=\"code\">\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n\r\n          <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n        </div>\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewhora()\" [disabled]=\"auth\">Novo horário +</button>\r\n    </div>\r\n\r\n    <form>\r\n    </form>\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th scope=\"col\">#</th>\r\n          <th scope=\"col\">Horário</th>\r\n          <th scope=\"col\">Código</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let hora of horas; let j = index\">\r\n          <th scope=\"row\">{{j + 1}}</th>\r\n          <td>{{hora.hora}}</td>\r\n          <td>{{hora.code}}</td>\r\n          <td>\r\n            <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/newponto.component.html":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/setup/newponto.component.html ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <form [formGroup]=\"pontoForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"modal_titulo\">Novo Ponto</h5>\r\n          <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n          <br/>\r\n\r\n          <div class=\"form-row\">\r\n            <div class=\"form-group col-md-7\">\r\n              <label>Nome *</label>\r\n              <input type=\"text\" class=\"form-control\" id=\"ponto_nome\" placeholder=\"Digite o nome do ponto\" formControlName=\"name\">\r\n\r\n            </div>\r\n            <div class=\"form-group col-md-5\">\r\n              <label>Qtde. Publicadores *</label>\r\n              <input type=\"number\" class=\"form-control\" id=\"ponto_qtde_publicadores\" placeholder=\"Digite a quantidade\" formControlName=\"npubs\">\r\n\r\n            </div>\r\n            <div class=\"form-group col-md-12\">\r\n              <label>Endereço *</label>\r\n              <input type=\"text\" class=\"form-control\" id=\"ponto_endereco\" placeholder=\"Digite o endereço do ponto\" formControlName=\"address\">\r\n\r\n            </div>\r\n            <div class=\"form-group col-md-12\">\r\n              <label>Observações</label>\r\n              <textarea class=\"form-control\" id=\"ponto_obs\" rows=\"2\" formControlName=\"obs\"></textarea>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label for=\"exampleFormControlFile1\">Imagem *</label>\r\n              <input type=\"file\" class=\"form-control\" id=\"ponto_imagem\" (change)=\"onFileChanged($event)\" formControlName=\"fileimg\">\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n  \r\n          <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n    \r\n        </div>\r\n      </form>\r\n   \r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewPonto()\" [disabled]=\"auth\">Novo ponto +</button>\r\n    </div>\r\n\r\n    <form>\r\n\r\n    </form>\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th scope=\"col\">#</th>\r\n          <th scope=\"col\">Ponto</th>\r\n          <th scope=\"col\">Qtde. Publicadores</th>\r\n          <th scope=\"col\">Endereço</th>\r\n          <th scope=\"col\"></th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let point of pontos; let i = index\">\r\n          <th scope=\"row\">{{i + 1}}</th>\r\n          <td>{{point.name}}</td>\r\n          <td>{{point.npubs}}</td>\r\n          <td>{{point.address}}</td>\r\n          <td>\r\n            <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(i)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(i)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-trash-o\" aria-hidden=\"true\" ></i> Excluir</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n\r\n <!--  <div *ngFor=\"let point of pontos; let t = index\" class='holder'>\r\n      <img src=\"/assets/img/{{point.fileimg}}\" alt=\"{{point.name}}\"> \r\n  </div> -->\r\n  <div class=\"row\">\r\n  <div *ngFor=\"let point of pontos; let t = index\" class=\"card\" style=\"width: 18rem;\">\r\n      <img class=\"card-img-top\" src=\"/assets/img/{{point.fileimg}}\" alt=\"Card image cap\">\r\n      <div class=\"card-body\">\r\n        <p class=\"card-text\"><b>{{point.name}}</b></p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n    <!-- \r\n</div>\r\n\r\n\r\n<div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <form [formGroup]=\"pontoForm\" (ngSubmit)=\"onSubmit()\">\r\n        <h2>Pontos</h2>\r\n        <div class=\"form-group\">\r\n            <label for=\"name\">Nome do ponto:</label>\r\n            <input type=\"text\" id=\"name\" class=\"form-control\" formControlName=\"name\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label for=\"npubs\">Número de Publicadores:</label>\r\n            <input type=\"number\" id=\"npubs\" class=\"form-control\" formControlName=\"npubs\">\r\n        </div>\r\n\r\n\r\n        <button id=\"btnCreate\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!pontoForm.valid\">Criar Ponto</button>\r\n    </form>\r\n</div> -->");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/setup.component.html":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/setup/setup.component.html ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <form [formGroup]=\"pontoForm\" (ngSubmit)=\"onSubmit()\">\r\n      <h2>Pontos</h2>\r\n      <div class=\"form-group\">\r\n        <label for=\"name\">Nome do ponto:</label>\r\n        <input type=\"text\" id=\"name\" class=\"form-control\" formControlName=\"name\">\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"npubs\">Número de Publicadores:</label>\r\n        <input type=\"number\" id=\"npubs\" class=\"form-control\" formControlName=\"npubs\">\r\n      </div>\r\n\r\n\r\n      <button id=\"btnCreate\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!pontoForm.valid\">Criar Ponto</button>\r\n    </form>\r\n  </div>\r\n\r\n\r\n\r\n  <div class=\"col-md-4\">\r\n    <br>\r\n    <br>\r\n    <div *ngFor=\"let ponto of pontos; let i = index\" class=\"alert alert-info\">\r\n\r\n      <a>\r\n          <i class=\"fa fa-trash-o\" aria-hidden=\"true\" style=\"color:blue\" (click)=\"Delete(i)\"></i>\r\n      </a>\r\n      <span style=\"color:black\">Ponto({{i + 1}}): </span>\r\n      <span style=\"color:Sienna\">{{ponto.name}} </span>\r\n      <span style=\"color:black\">Publicadores: </span>\r\n      <span style=\"color:Sienna\">{{ ponto.npubs }}</span>\r\n    </div>\r\n  </div>\r\n</div> -->\r\n\r\n\r\n\r\n\r\n<!-- \r\n\r\n\r\n\r\n<div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <form [formGroup]=\"horaForm\" (ngSubmit)=\"onSubmit2()\">\r\n      <h2>Horários</h2>\r\n      <div class=\"form-group\">\r\n        <label for=\"hora\">Nome do horário:</label>\r\n        <input type=\"text\" id=\"hora\" pattern=\".{11,11}\" class=\"form-control\" formControlName=\"hora\">\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"hora\">Código:</label>\r\n        <input type=\"text\" id=\"code\" pattern=\".{3,3}\" class=\"form-control\" formControlName=\"code\">\r\n      </div>\r\n\r\n      <button id=\"btnCreate2\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!horaForm.valid\">Criar Hora</button>\r\n    </form>\r\n  </div>\r\n  <div class=\"col-md-3\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <div *ngFor=\"let hora of horas; let j = index\" class=\"alert alert-info\">\r\n\r\n      <a>\r\n          <i class=\"fa fa-trash-o\" aria-hidden=\"true\" style=\"color:blue\" (click)=\"Delete2(j)\"></i>\r\n      </a>\r\n      <span style=\"color:black\">Horário({{j+1}}): </span>\r\n      <span style=\"color:Sienna\">{{ hora.hora }}</span>\r\n      <span style=\"color:black\">Cód: </span>\r\n      <span style=\"color:Sienna\">{{ hora.code }}</span>\r\n    </div>\r\n  </div>\r\n</div> -->\r\n\r\n\r\n<div class=\"row\">\r\n  <div class=\"col-md-8 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <h2>Dia X Ponto X Horário</h2>\r\n    <div class=\"col-md-4\">\r\n      <br>\r\n      <button type=\"button\" id=\"anterior\" (click)=\"anteriorDia($event)\" class=\"btn btn-default\">\r\n        < </button>\r\n          <button type=\"button\" id=\"proximo\" (click)=\"proximoDia($event)\" class=\"btn btn-default\"> > </button>\r\n          <select [(ngModel)]=\"dayselect\" class=\"form-control\">\r\n            <option>Segunda-feira</option>\r\n            <option>Terça-feira</option>\r\n            <option>Quarta-feira</option>\r\n            <option>Quinta-feira</option>\r\n            <option>Sexta-feira</option>\r\n            <option>Sábado</option>\r\n            <option>Domingo</option>\r\n            <option>Feriado</option>\r\n          </select>\r\n    </div>\r\n    <table class=\"table table-condensed\">\r\n      <thead>\r\n        <tr>\r\n          <th>Ponto/Horário</th>\r\n          <th *ngFor=\"let hora of horas; let h = index\">{{hora.hora}}</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let ponto of pontos; let p = index\">\r\n          <td>{{ponto.name}}</td>\r\n          <td *ngFor=\"let hora of horas; let ph = index\">\r\n            <input type=\"checkbox\" (click)=\"changed($event.target.checked,ponto,hora)\" [checked]=\"valorCheck(ponto,hora)\">\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n    <button id=\"btnCreate3\" class=\"btn btn-primary\" (click)=\"salvarConfig()\">Salvar Config</button>\r\n  </div>\r\n</div>\r\n\r\n<!-- <div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <form [formGroup]=\"feriadoForm\" (ngSubmit)=\"onSubmit3()\">\r\n      <h2>Feriados</h2>\r\n      <div class=\"form-group\">\r\n        <label for=\"feriado\">Nome do Feriado:</label>\r\n        <input type=\"text\" id=\"feriado\" pattern=\".{3,20}\" class=\"form-control\" formControlName=\"feriado\">\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"data\">Data:</label>\r\n        <input type=\"date\" id=\"dia\" name=\"dia\" [ngModel]=\"dia\" class=\"form-control\" formControlName=\"data\">\r\n      </div>\r\n\r\n      <button id=\"btnCreate4\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!feriadoForm.valid\">Criar Feriado</button>\r\n    </form>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <div *ngFor=\"let feriado of feriados; let j = index\" class=\"alert alert-info\">\r\n\r\n      <a>\r\n          <i class=\"fa fa-trash-o\" aria-hidden=\"true\" style=\"color:blue\" (click)=\"Delete3(j)\"></i>\r\n      </a>\r\n      <span style=\"color:black\">Feriado({{j+1}}): </span>\r\n      <span style=\"color:Sienna\">{{ feriado.feriado }}</span>\r\n      <span style=\"color:black\">Data: </span>\r\n      <span style=\"color:Sienna\">{{ feriado.datashow }}</span>\r\n    </div>\r\n  </div>\r\n\r\n\r\n</div> -->\r\n\r\n<!-- <div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <form [formGroup]=\"circuitoForm\" (ngSubmit)=\"onSubmit4()\">\r\n      <h2>Circuitos</h2>\r\n      <div class=\"form-group\">\r\n        <label for=\"circuito\">Nome do circuito:</label>\r\n        <input type=\"text\" id=\"nome\" pattern=\".{3,20}\" class=\"form-control\" formControlName=\"nome\">\r\n      </div>\r\n\r\n      <button id=\"btnCreate5\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!circuitoForm.valid\">Criar Circuito</button>\r\n    </form>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item list-group-item-action active\">Circuitos</li>\r\n      <li class=\"list-group-item list-group-item-dark\" *ngFor=\"let circuito of circuitos; let j = index\">\r\n        <span style=\"color:black\">Circuito({{j+1}}): </span>\r\n        <span style=\"color:Sienna\">{{ circuit.nome }}</span>\r\n        <a>\r\n            <i class=\"fa fa-trash-o\" aria-hidden=\"true\" style=\"color:blue\"  (click)=\"Delete4(j)\"></i>\r\n        </a>\r\n      </li>\r\n    </ul>\r\n\r\n\r\n  </div>\r\n</div> -->\r\n\r\n<!-- <div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n\r\n\r\n    <form [formGroup]=\"congregationForm\" (ngSubmit)=\"onSubmit5()\">\r\n\r\n      <h2>Congregações</h2>\r\n      <div class=\"form-group\">\r\n        <label for=\"circuit\">Circuito:</label>\r\n        <select [(ngModel)]=\"mycircuit\" formControlName=\"circuit\" id=\"circuit\" class=\"form-control\">\r\n          <option value=\" \"></option>\r\n          <option *ngFor=\"let circuito of circuitos\" [ngValue]=\"circuito\">{{circuito.nome}}</option>\r\n        </select>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"congregation\">Nome da Congregação:</label>\r\n        <input type=\"text\" id=\"nome\" class=\"form-control\" formControlName=\"nome\">\r\n      </div>\r\n\r\n\r\n\r\n\r\n      <button id=\"btnCreate6\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!congregationForm.valid\">Criar Congregação</button>\r\n    </form>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item list-group-item-action active\">Congregações</li>\r\n      <li class=\"list-group-item list-group-item-dark\" *ngFor=\"let congregation of congregations; let j = index\">\r\n        <span style=\"color:black\">Circ: </span>\r\n        <span style=\"color:Sienna\">{{congregation.circuit}}</span>\r\n        <span style=\"color:black\">Cong({{j+1}}): </span>\r\n        <span style=\"color:Sienna\">{{congregation.nome}}</span>\r\n\r\n        <a>\r\n            <i class=\"fa fa-trash-o\" aria-hidden=\"true\" style=\"color:blue\" (click)=\"Delete5(j)\"></i>\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</div> -->\r\n\r\n<!-- <div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n\r\n\r\n    <form [formGroup]=\"validityForm\" (ngSubmit)=\"onSubmit6()\">\r\n\r\n      <h2>Vigência</h2>\r\n      <div class=\"form-group\">\r\n        <label for=\"begin\">Início:</label>\r\n        <input [(ngModel)]=\"begin\" name=\"begin\" type=\"date\" id=\"begin\" class=\"form-control\" formControlName=\"begin\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"end\">Fim:</label>\r\n      <input [(ngModel)]=\"end\" name=\"end\" type=\"date\" id=\"end\" class=\"form-control\" formControlName=\"end\">\r\n  </div>\r\n\r\n\r\n\r\n\r\n      <button id=\"btnCreate7\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!validityForm.valid\">Criar Vigência</button>\r\n    </form>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item list-group-item-action active\">Vigências</li>\r\n      <li class=\"list-group-item list-group-item-dark\" *ngFor=\"let validity of validities; let j = index\">\r\n        <span style=\"color:black\">Início: </span>\r\n        <span style=\"color:Sienna\">{{dateString(validity.begin)}}</span>\r\n        <span style=\"color:black\">Fim: </span>\r\n        <span style=\"color:Sienna\">{{dateString(validity.end)}}</span>\r\n\r\n        <a>\r\n            <i class=\"fa fa-trash-o\" aria-hidden=\"true\" style=\"color:blue\"  (click)=\"Delete6(j)\"></i>\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</div> -->");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/validity.component.html":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/setup/validity.component.html ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <form [formGroup]=\"validityForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"modal_titulo\">Nova vigência</h5>\r\n          <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n          <br/>\r\n\r\n          <div class=\"form-row\">\r\n            <div class=\"form-group col-md-6\">\r\n              <label>Início *</label>\r\n              <input name=\"begin\" type=\"date\" id=\"begin\" class=\"form-control\" formControlName=\"begin\">\r\n            </div>\r\n\r\n            <div class=\"form-group col-md-6\">\r\n              <label>Fim *</label>\r\n              <input name=\"end\" type=\"date\" id=\"end\" class=\"form-control\" formControlName=\"end\">\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n\r\n          <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n        </div>\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewvalidity()\" [disabled]=\"auth\">Nova vigência +</button>\r\n    </div>\r\n\r\n    <form>\r\n    </form>\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th scope=\"col\">#</th>\r\n          <th scope=\"col\">Início</th>\r\n          <th scope=\"col\">Fim</th>\r\n          <th scope=\"col\">Status</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let validity of validities; let j = index\">\r\n          <th scope=\"row\">{{j + 1}}</th>\r\n          <td>{{dateString(validity.begin)}}</td>\r\n          <td>{{dateString(validity.end)}}</td>\r\n          <td ><label class=\"switch\">\r\n            <input type=\"checkbox\" [checked]=\"validities[j].status\" (click)=\"onChangeStatus($event, $event.target.checked,j)\" [disabled]=\"auth\">\r\n            <span class=\"slider round\"></span>\r\n          </label>\r\n          </td>\r\n          <td>\r\n            <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/showpontos/showpontos.component.html":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/showpontos/showpontos.component.html ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n\r\n  <div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\r\n    <!-- Indicators -->\r\n    <ol class=\"carousel-indicators\">\r\n      <li data-target=\"#myCarousel\" *ngFor=\"let point of pontos;let i = index\" [attr.data-slide-to]=\"i\" ngClass=\"i == 0 ? 'active' : ''\"></li>\r\n    </ol>\r\n    <!-- Wrapper for slides -->\r\n    <div class=\"carousel-inner\" role=\"listbox\">\r\n      <div *ngFor=\"let point of pontos; let k = index\" [ngClass]=\"k == 0 ? 'carousel-item active' : 'carousel-item'\" style=\"background-image: url('http://placehold.it/1080x400')\">\r\n        <img src=\"/assets/img/{{point.fileimg}}\" alt=\"Event Image\" id=\"foto\">\r\n        <div class=\"carousel-caption\">\r\n          <h3 style=\"font-size: 5.0vh\" class=\"mycaption\" >{{point.name}}</h3>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Left and right controls -->\r\n    <a class=\"carousel-control-prev\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\r\n      <span style=\"color:black\" class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\r\n      <span class=\"sr-only\">Previous</span>\r\n    </a>\r\n    <a class=\"carousel-control-next\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\r\n      <span style=\"color:black\" class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\r\n      <span class=\"sr-only\">Next</span>\r\n    </a>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n\r\n  <h1 class=\"my-4\">Pontos TPE</h1>\r\n\r\n\r\n  <div class=\"row\">\r\n\r\n\r\n    <div class=\"col-md-4\" *ngFor=\"let point of pontos; let k = index\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <h4 class=\"myleft\">{{point.name}}</h4>\r\n        </div>\r\n        <div class=\"card-body\">\r\n\r\n          <p class=\"myleft\">\r\n            <b>Endereço: </b>{{ point.address }}</p>\r\n          <p class=\"myleft\">{{point.obs}}</p>\r\n        </div>\r\n\r\n        <div class=\"card-footer\">\r\n          <button id=\"visualizar\" class=\"btn btn-primary\" href=\"#myCarousel\" [attr.data-slide-to]=\"k\" (click)=\"onTop()\">Visualizar</button>\r\n        </div>\r\n      </div>\r\n      <br>\r\n    </div>\r\n\r\n  </div>\r\n\r\n\r\n\r\n\r\n  <hr>\r\n\r\n\r\n  <div class=\"row mb-4\">\r\n    <div class=\"col-md-8\">\r\n      <p>\"Estas boas novas do Reino serão pregadas em toda a terra habitada\" - Mateus 24:14</p>\r\n    </div>\r\n    <div class=\"col-md-4\">\r\n      <a class=\"btn btn-lg btn-secondary btn-block\" (click)=\"onTop()\">Voltar ao topo</a>\r\n    </div>\r\n  </div>\r\n\r\n\r\n\r\n</div>\r\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/telegram/telegramapi.component.html":
+/*!*******************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/telegram/telegramapi.component.html ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n  <div class=\"form-group\">\r\n    <div class=\"row\">\r\n      <br>\r\n      <p>\r\n      <b>STATUS: </b>\r\n      <span *ngIf=\"user?.telegram\" style=\"color:green\">\r\n        <b> Cadastrado</b>\r\n      </span>\r\n      <span *ngIf=\"!user?.telegram\" style=\"color:red\">\r\n        <b> Sem cadastro</b>\r\n      </span>\r\n    </p>\r\n      <br>\r\n      <br>\r\n    </div>\r\n\r\n    <h4>Para receber as designações por telegram, execute os seguintes passos:</h4>\r\n    <p>1. Baixe o aplicativo para o seu celular</p>\r\n    <p>2. Configure o aplicativo com o seu numero</p>\r\n    <p>3. Clique no botão abaixo para vincular sua conta do site com o telegram</p>\r\n    <button (click)=\"onCadastro()\">Cadastrar Telegram</button>\r\n    <br>\r\n    <br>\r\n\r\n    <p>4. Dentro do aplicativo, clique no botão \"começar\"</p>\r\n    <p>Pronto, você já pode receber suas designações.</p>\r\n    <br>\r\n    <h4>Para entrar no grupo de substituições, clique no botão abaixo:</h4>\r\n    <p>Obs.: Você deve estar cadastrado no telegram</p>\r\n    <button (click)=\"onGoGroup()\">Grupo Substituição</button>\r\n  </div>\r\n\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/testsms/testsms.component.html":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/testsms/testsms.component.html ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"col-md-5 col-md-offset-1\">\r\n    <br>\r\n    <h3>Saldo atual: R$ {{ saldo }}</h3>\r\n    <br>\r\n    <button type=\"button\" class=\"btn btn-warning\" (click)=\"open()\">Tempo</button>\r\n    <input type=\"time\" [(ngModel)]=\"selectedTime\"> \r\n    <form [formGroup]=\"smsForm\" (ngSubmit)=\"onSubmit()\">\r\n    <div class=\"form-group\">\r\n        <label for=\"meutexto\">Texto para SMS:</label>\r\n        <textarea class=\"form-control\" rows=\"5\" id=\"meutexto\" formControlName=\"meutexto\"></textarea>\r\n      </div>\r\n      <div class=\"form-group\">\r\n          <label for=\"telefone\">Celular para envio com DDD:</label>\r\n          <input type=\"number\" class=\"form-control\" id=\"telefone\" formControlName=\"telefone\">\r\n        </div>\r\n    \r\n    <br>\r\n      <button id=\"btnSMS\" class=\"btn btn-success\" type=\"submit\" [disabled]=\"!smsForm.valid\">Envia SMS</button>      \r\n    </form>\r\n    <br> \r\n    <button id=\"btnSMSresposta\" class=\"btn btn-info\"  (click)=\"smsResposta()\">Pegar Resposta</button>\r\n    <input type=\"text\" id=\"idresposta\" [(ngModel)]=\"idresposta\" disabled> \r\n    <br>\r\n    <h4>Resposta: <span style=\"color:red\">{{respostadada}}</span></h4>\r\n    </div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/testtelegram/testtelegram.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/testtelegram/testtelegram.component.html ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"col-md-5 col-md-offset-1\">\r\n\r\n    <form [formGroup]=\"telegramForm\" (ngSubmit)=\"onSubmit()\">\r\n    <div class=\"form-group\">\r\n        <label for=\"meutexto\">Texto para Telegram:</label>\r\n        <textarea class=\"form-control\" rows=\"5\" id=\"meutexto\" formControlName=\"message\"></textarea>\r\n      </div>\r\n      <div class=\"form-group\">\r\n          <label for=\"telefone\">Id Chat:</label>\r\n          <input type=\"number\" class=\"form-control\" id=\"telefone\" formControlName=\"id\">\r\n        </div>\r\n\r\n    <br>\r\n      <button id=\"btnTelegram\" class=\"btn btn-success\" type=\"submit\" [disabled]=\"!telegramForm.valid\">Envia Telegram</button>\r\n    </form>\r\n    <br>\r\n\r\n    </div>\r\n    <div class=\"col-md-5\">\r\n\r\n    </div>\r\n");
 
 /***/ }),
 
@@ -314,21 +716,12 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*!***********************************************!*\
   !*** ./src/app/anuncio/anuncio.component.css ***!
   \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FudW5jaW8vYW51bmNpby5jb21wb25lbnQuY3NzIn0= */"
-
-/***/ }),
-
-/***/ "./src/app/anuncio/anuncio.component.html":
-/*!************************************************!*\
-  !*** ./src/app/anuncio/anuncio.component.html ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <form [formGroup]=\"anuncioForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n                <div class=\"modal-header\">\r\n                    <h5 class=\"modal-title\" id=\"modal_titulo\">Novo anuncio</h5>\r\n                    <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n                        <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n                    <br/>\r\n\r\n                    <div class=\"form-row\">\r\n                        <div class=\"form-group col-md-8\">\r\n                            <label>Titulo *</label>\r\n                            <input type=\"text\" class=\"form-control\" id=\"anuncio_titulo\" placeholder=\"Digite o titulo do anuncio\" formControlName=\"titulo\">\r\n\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-row\">\r\n                        <div class=\"form-group col-md-10\">\r\n                            <label>Mensagem *</label>\r\n                            <input type=\"text\" class=\"form-control\" id=\"anuncio_mensagem\" placeholder=\"Digite a mensagem do anuncio\" formControlName=\"mensagem\">\r\n\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n\r\n                    <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n                </div>\r\n            </form>\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n    <div class=\"row\">\r\n        <div class=\"form-group col-md-4\">\r\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewanuncio()\" [disabled]=\"auth\">Novo anuncio +</button>\r\n        </div>\r\n\r\n        <form>\r\n\r\n        </form>\r\n        <table class=\"table table-striped\">\r\n            <thead>\r\n                <tr>\r\n                    <th scope=\"col\">#</th>\r\n                    <th scope=\"col\">Título</th>\r\n                    <th scope=\"col\">Mensagem</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr *ngFor=\"let anuncio of anuncios; let j = index\">\r\n                    <th scope=\"row\">{{j + 1}}</th>\r\n                    <td>{{anuncio.titulo}}</td>\r\n                    <td>{{anuncio.mensagem}}</td>\r\n                    <td>\r\n                        <button type=\"button\" class=\"btn btn-success btn-sm\" (click)=\"onAvisar(j)\" [disabled]=\"auth || anuncio.avisado\">\r\n                            <i class=\"fa fa-paper-plane-o\" aria-hidden=\"true\"></i> Avisar</button>\r\n                        <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n                            <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n                        <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n                            <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FudW5jaW8vYW51bmNpby5jb21wb25lbnQuY3NzIn0= */");
 
 /***/ }),
 
@@ -354,6 +747,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -449,11 +845,14 @@ var AnuncioComponent = /** @class */ (function () {
         if (this.authService.isAuthenticated())
             this.auth = false;
     };
+    AnuncioComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+    ]; };
     AnuncioComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-anuncio",
-            template: __webpack_require__(/*! ./anuncio.component.html */ "./src/app/anuncio/anuncio.component.html"),
-            styles: [__webpack_require__(/*! ./anuncio.component.css */ "./src/app/anuncio/anuncio.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./anuncio.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/anuncio/anuncio.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./anuncio.component.css */ "./src/app/anuncio/anuncio.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], AnuncioComponent);
@@ -474,6 +873,9 @@ var AnuncioComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Anuncio", function() { return Anuncio; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var Anuncio = /** @class */ (function () {
     function Anuncio(titulo, mensagem, avisado, id) {
         this.titulo = titulo;
@@ -492,21 +894,12 @@ var Anuncio = /** @class */ (function () {
 /*!*******************************************************!*\
   !*** ./src/app/anunciouser/anunciouser.component.css ***!
   \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FudW5jaW91c2VyL2FudW5jaW91c2VyLmNvbXBvbmVudC5jc3MifQ== */"
-
-/***/ }),
-
-/***/ "./src/app/anunciouser/anunciouser.component.html":
-/*!********************************************************!*\
-  !*** ./src/app/anunciouser/anunciouser.component.html ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\r\n    <div class=\"row\" *ngFor=\"let anuncio of anuncios; let j = index\">\r\n      <div class=\"form-group col-md-10\">\r\n        <h4>{{anuncio.titulo}}</h4>\r\n        <p>{{anuncio.mensagem}}</p>\r\n          </div>\r\n        </div>\r\n    </div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FudW5jaW91c2VyL2FudW5jaW91c2VyLmNvbXBvbmVudC5jc3MifQ== */");
 
 /***/ }),
 
@@ -531,6 +924,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 
 var AnunciouserComponent = /** @class */ (function () {
@@ -547,11 +943,14 @@ var AnunciouserComponent = /** @class */ (function () {
             });
         });
     };
+    AnunciouserComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"] }
+    ]; };
     AnunciouserComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-anunciouser",
-            template: __webpack_require__(/*! ./anunciouser.component.html */ "./src/app/anunciouser/anunciouser.component.html"),
-            styles: [__webpack_require__(/*! ./anunciouser.component.css */ "./src/app/anunciouser/anunciouser.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./anunciouser.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/anunciouser/anunciouser.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./anunciouser.component.css */ "./src/app/anunciouser/anunciouser.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"]])
     ], AnunciouserComponent);
@@ -613,6 +1012,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _anuncio_anuncio_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./anuncio/anuncio.component */ "./src/app/anuncio/anuncio.component.ts");
 /* harmony import */ var _anunciouser_anunciouser_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./anunciouser/anunciouser.component */ "./src/app/anunciouser/anunciouser.component.ts");
 /* harmony import */ var _perfilrole_perfilrole_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./perfilrole/perfilrole.component */ "./src/app/perfilrole/perfilrole.component.ts");
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 
 
@@ -699,21 +1101,12 @@ var routing = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRo
 /*!***********************************!*\
   !*** ./src/app/app.component.css ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"
-
-/***/ }),
-
-/***/ "./src/app/app.component.html":
-/*!************************************!*\
-  !*** ./src/app/app.component.html ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\n  <!-- <app-header></app-header> -->\n  <router-outlet></router-outlet>\n  </div>\n  <app-error></app-error>\n"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */");
 
 /***/ }),
 
@@ -734,6 +1127,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
@@ -742,8 +1138,8 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
-            template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
-            styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")).default]
         })
     ], AppComponent);
     return AppComponent;
@@ -818,11 +1214,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _perfilrole_perfilrole_component__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./perfilrole/perfilrole.component */ "./src/app/perfilrole/perfilrole.component.ts");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! @swimlane/ngx-charts */ "./node_modules/@swimlane/ngx-charts/release/esm.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_common_locales_pt__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! @angular/common/locales/pt */ "./node_modules/@angular/common/locales/pt.js");
+/* harmony import */ var _angular_common_locales_pt__WEBPACK_IMPORTED_MODULE_56___default = /*#__PURE__*/__webpack_require__.n(_angular_common_locales_pt__WEBPACK_IMPORTED_MODULE_56__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -879,6 +1281,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
+Object(_angular_common__WEBPACK_IMPORTED_MODULE_55__["registerLocaleData"])(_angular_common_locales_pt__WEBPACK_IMPORTED_MODULE_56___default.a, 'pt-BR');
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -935,7 +1341,8 @@ var AppModule = /** @class */ (function () {
                 _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_54__["NgxChartsModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_53__["BrowserAnimationsModule"],
             ],
-            providers: [_auth_auth_service__WEBPACK_IMPORTED_MODULE_15__["AuthService"], _errors_error_service__WEBPACK_IMPORTED_MODULE_17__["ErrorService"], _auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["Authguard"], _auth_admin_guard_service__WEBPACK_IMPORTED_MODULE_38__["Adminguard"], _auth_logistic_guard_service__WEBPACK_IMPORTED_MODULE_40__["Logisticguard"], _auth_normal_guard_service__WEBPACK_IMPORTED_MODULE_41__["Normalguard"], _auth_common_guard_service__WEBPACK_IMPORTED_MODULE_39__["Commonguard"], _auth_ctc_guard_service__WEBPACK_IMPORTED_MODULE_0__["Ctcguard"]],
+            // tslint:disable-next-line: max-line-length
+            providers: [_auth_auth_service__WEBPACK_IMPORTED_MODULE_15__["AuthService"], _errors_error_service__WEBPACK_IMPORTED_MODULE_17__["ErrorService"], _auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_28__["Authguard"], _auth_admin_guard_service__WEBPACK_IMPORTED_MODULE_38__["Adminguard"], _auth_logistic_guard_service__WEBPACK_IMPORTED_MODULE_40__["Logisticguard"], _auth_normal_guard_service__WEBPACK_IMPORTED_MODULE_41__["Normalguard"], _auth_common_guard_service__WEBPACK_IMPORTED_MODULE_39__["Commonguard"], _auth_ctc_guard_service__WEBPACK_IMPORTED_MODULE_0__["Ctcguard"], { provide: _angular_core__WEBPACK_IMPORTED_MODULE_4__["LOCALE_ID"], useValue: 'pt-BR' }],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]],
         })
     ], AppModule);
@@ -967,6 +1374,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 
 var Adminguard = /** @class */ (function () {
@@ -976,6 +1386,9 @@ var Adminguard = /** @class */ (function () {
     Adminguard.prototype.canActivate = function (route, state) {
         return this.authService.isAuthenticated();
     };
+    Adminguard.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"] }
+    ]; };
     Adminguard = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"]])
@@ -1008,6 +1421,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 
 var Authguard = /** @class */ (function () {
@@ -1017,6 +1433,9 @@ var Authguard = /** @class */ (function () {
     Authguard.prototype.canActivate = function (route, state) {
         return this.authService.isPleno();
     };
+    Authguard.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"] }
+    ]; };
     Authguard = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"]])
@@ -1077,6 +1496,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _anuncio_anuncio_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ../anuncio/anuncio.component */ "./src/app/anuncio/anuncio.component.ts");
 /* harmony import */ var _anunciouser_anunciouser_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../anunciouser/anunciouser.component */ "./src/app/anunciouser/anunciouser.component.ts");
 /* harmony import */ var _perfilrole_perfilrole_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ../perfilrole/perfilrole.component */ "./src/app/perfilrole/perfilrole.component.ts");
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 
 
@@ -1193,6 +1615,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -2384,6 +2809,10 @@ var AuthService = /** @class */ (function () {
             return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].throw(error.json());
         });
     };
+    AuthService.ctorParameters = function () { return [
+        { type: _angular_http__WEBPACK_IMPORTED_MODULE_1__["Http"] },
+        { type: _errors_error_service__WEBPACK_IMPORTED_MODULE_14__["ErrorService"] }
+    ]; };
     AuthService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
         __metadata("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_1__["Http"], _errors_error_service__WEBPACK_IMPORTED_MODULE_14__["ErrorService"]])
@@ -2392,17 +2821,6 @@ var AuthService = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/auth/authentication.component.html":
-/*!****************************************************!*\
-  !*** ./src/app/auth/authentication.component.html ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<header class=\"row spacing\">\r\n        <nav *ngIf=\"isLoggedIn()\" class=\"navbar navbar-expand-lg navbar-dark bg-dark fixed-top\">\r\n                <div class=\"container\">\r\n                  <b><a style=\"color:white\" class=\"navbar-brand\" routerLinkActive=\"active\" >TPE Metropolitano {{ cidade }}</a></b>\r\n                  <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" aria-controls=\"appNavigation\" [attr.aria-expanded]=\"!isCollapsed\" aria-label=\"Toggle navigation\" (click)=\"toggleMenu()\">\r\n                    <span class=\"navbar-toggler-icon\"></span>\r\n                  </button>\r\n                    <div class=\"collapse navbar-collapse\" id=\"appNavigation\" [ngbCollapse]=\"isCollapsed\" >\r\n                      <ul class=\"navbar-nav ml-auto\">\r\n                      <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"!isLoggedIn()\">\r\n                          <a class=\"nav-link\" [routerLink]=\"['signin']\"></a>\r\n                        </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn()\">\r\n                      <a class=\"nav-link\"  [routerLink]=\"['logout']\" (click)=\"toggleMenu()\">Sair</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && isPleno()\">\r\n                      <a class=\"nav-link\"  [routerLink]=\"['signup']\" (click)=\"toggleMenu()\">Cadastro</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn()\">\r\n                      <a class=\"nav-link\"  [routerLink]=\"['anunciouser']\" (click)=\"toggleMenu()\">Anúncios</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && !isPleno() && !isGold() && !isCtc()\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['help']\" (click)=\"toggleMenu()\">Ajuda</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && !isPleno() && !isGold() && !isCtc()\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['perfil']\" (click)=\"toggleMenu()\">Perfil</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn()\">\r\n                      <a class=\"nav-link\"  [routerLink]=\"['newpass']\" (click)=\"toggleMenu()\">Senha</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && !isPleno() && !isGold() && !isCtc()\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['designations']\" (click)=\"toggleMenu()\">Designações</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && !isPleno() && !isGold() && !isCtc()\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['schedule2']\" (click)=\"toggleMenu()\">Agendamento</a>\r\n                    </li>\r\n                     <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn()\">\r\n                        <a class=\"nav-link\" [routerLink]=\"['showpontos']\" (click)=\"toggleMenu()\">Pontos</a>\r\n                      </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && !isPleno() && !isGold() && !isCtc()\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['telegram']\" (click)=\"toggleMenu()\">Telegram</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && ( isPleno() || isGold() )\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['listusers']\" (click)=\"toggleMenu()\">Usuários</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && ( isPleno() || isGold() )\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['statistic']\" (click)=\"toggleMenu()\">Estatística</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && ( isPleno() || isGold() || isCtc() )\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['newschedule']\" (click)=\"toggleMenu()\">Escala</a>\r\n                    </li>\r\n                    <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && ( isPleno() || isGold() || isCtc() )\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['report']\" (click)=\"toggleMenu()\">Relatórios</a>\r\n                    </li>\r\n\r\n              <!--       <li class=\"nav-item\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && ( isAuthenticated() || isGold() )\">\r\n                      <a class=\"nav-link\" [routerLink]=\"['setup']\" (click)=\"toggleMenu()\">Setup</a>\r\n                    </li> -->\r\n\r\n                    <li class=\"nav-item dropdown\" routerLinkActive=\"active\" *ngIf=\"isLoggedIn() && ( isAuthenticated() || isGold() )\">\r\n\r\n                        <div class=\"col\">\r\n                          <div ngbDropdown class=\"d-inline-block\">\r\n                            <button class=\"btn btn-outline-primary\" id=\"dropdownBasic1\" ngbDropdownToggle>Configurações</button>\r\n                            <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['newponto']\" (click)=\"toggleMenu()\">Pontos</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['hora']\" (click)=\"toggleMenu()\">Horários</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['excel']\" (click)=\"toggleMenu()\">Dia x Ponto x Horário</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['feriado']\" (click)=\"toggleMenu()\">Feriados</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['circuito']\" (click)=\"toggleMenu()\">Circuitos</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['congregation']\" (click)=\"toggleMenu()\">Congregações</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['validity']\" (click)=\"toggleMenu()\">Vigências</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['especial']\" (click)=\"toggleMenu()\">Dias Especiais</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['anuncio']\" (click)=\"toggleMenu()\">Anúncios</button>\r\n                                <button  class=\"dropdown-item\" ngbDropdownItem [routerLink]=\"['perfilrole']\" (click)=\"toggleMenu()\">Perfil Adm</button>\r\n\r\n                            </div>\r\n                          </div>\r\n                        </div>\r\n                        <!-- <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdownBlog\">\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['newponto']\" (click)=\"toggleMenu()\">Pontos</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['hora']\" (click)=\"toggleMenu()\">Horários</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['excel']\" (click)=\"toggleMenu()\">Dia x Ponto x Horário</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['feriado']\" (click)=\"toggleMenu()\">Feriados</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['circuito']\" (click)=\"toggleMenu()\">Circuitos</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['congregation']\" (click)=\"toggleMenu()\">Congregações</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['validity']\" (click)=\"toggleMenu()\">Vigências</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['especial']\" (click)=\"toggleMenu()\">Dias Especiais</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['anuncio']\" (click)=\"toggleMenu()\">Anúncios</a>\r\n                          <a class=\"dropdown-item\" [routerLink]=\"['perfilrole']\" (click)=\"toggleMenu()\">Perfil Adm</a>\r\n                        </div> -->\r\n                      </li>\r\n                  </ul>\r\n                </div>\r\n                </div>\r\n              </nav>\r\n\r\n</header>\r\n\r\n<body>\r\n\r\n\r\n  <div *ngIf=\"onWelcome()\" class=\"container\" >\r\n\r\n\r\n\r\n      <br><br><br><br>\r\n      <h3>Olá {{name}}</h3>\r\n      <div id=\"logo-container\">\r\n    <img  style=\"width: 250px;\" src=\"/assets/img/welcome2.jpg\" >\r\n  </div>\r\n\r\n  </div>\r\n<div>\r\n    <br><br><br>\r\n   <router-outlet></router-outlet>\r\n</div>\r\n</body>\r\n"
 
 /***/ }),
 
@@ -2427,6 +2845,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -2471,10 +2892,14 @@ var AuthenticationComponent = /** @class */ (function () {
         this.name = localStorage.getItem('welcome');
         return localStorage.getItem('welcome') !== null;
     };
+    AuthenticationComponent.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    ]; };
     AuthenticationComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-authentication',
-            template: __webpack_require__(/*! ./authentication.component.html */ "./src/app/auth/authentication.component.html"),
+            template: __importDefault(__webpack_require__(/*! raw-loader!./authentication.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/authentication.component.html")).default,
             styles: ["\n    body {\n        padding-top: 30px;\n      }\n    "]
         }),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
@@ -2507,6 +2932,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 
 var Commonguard = /** @class */ (function () {
@@ -2516,6 +2944,9 @@ var Commonguard = /** @class */ (function () {
     Commonguard.prototype.canActivate = function (route, state) {
         return this.authService.isBronze();
     };
+    Commonguard.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"] }
+    ]; };
     Commonguard = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"]])
@@ -2548,6 +2979,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 
 var Ctcguard = /** @class */ (function () {
@@ -2557,6 +2991,9 @@ var Ctcguard = /** @class */ (function () {
     Ctcguard.prototype.canActivate = function (route, state) {
         return this.authService.isBronze() || this.authService.isCtc();
     };
+    Ctcguard.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"] }
+    ]; };
     Ctcguard = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"]])
@@ -2572,21 +3009,12 @@ var Ctcguard = /** @class */ (function () {
 /*!*************************************************!*\
   !*** ./src/app/auth/designations.component.css ***!
   \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\r\n.led-box {\r\n  height: 30px;\r\n  width: 25%;\r\n  margin: 10px 0;\r\n  float: left;\r\n}\r\n\r\n.led-box p {\r\n  font-size: 12px;\r\n  text-align: center;\r\n  margin: 1em;\r\n}\r\n\r\n.led-red {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #F00;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;\r\n  -webkit-animation: blinkRed 0.5s infinite;\r\n  animation: blinkRed 0.5s infinite;\r\n}\r\n\r\n@-webkit-keyframes blinkRed {\r\n    from { background-color: #F00; }\r\n    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}\r\n    to { background-color: #F00; }\r\n}\r\n\r\n@keyframes blinkRed {\r\n    from { background-color: #F00; }\r\n    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}\r\n    to { background-color: #F00; }\r\n}\r\n\r\n.led-yellow {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #FF0;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;\r\n  -webkit-animation: blinkYellow 1s infinite;\r\n  animation: blinkYellow 1s infinite;\r\n}\r\n\r\n@-webkit-keyframes blinkYellow {\r\n    from { background-color: #FF0; }\r\n    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }\r\n    to { background-color: #FF0; }\r\n}\r\n\r\n@keyframes blinkYellow {\r\n    from { background-color: #FF0; }\r\n    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }\r\n    to { background-color: #FF0; }\r\n}\r\n\r\n.led-green {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #ABFF00;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;\r\n}\r\n\r\n.led-blue {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #24E0FF;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3F8CFF 0 2px 14px;\r\n}\r\n\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC9kZXNpZ25hdGlvbnMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7RUFDRSxZQUFZO0VBQ1osVUFBVTtFQUNWLGNBQWM7RUFDZCxXQUFXO0FBQ2I7O0FBRUE7RUFDRSxlQUFlO0VBQ2Ysa0JBQWtCO0VBQ2xCLFdBQVc7QUFDYjs7QUFFQTtFQUNFLGNBQWM7RUFDZCxXQUFXO0VBQ1gsWUFBWTtFQUNaLHNCQUFzQjtFQUN0QixrQkFBa0I7RUFDbEIsd0dBQXdHO0VBQ3hHLHlDQUF5QztFQUl6QyxpQ0FBaUM7QUFDbkM7O0FBRUE7SUFDSSxPQUFPLHNCQUFzQixFQUFFO0lBQy9CLE1BQU0sc0JBQXNCLEVBQUUscUdBQXFHLENBQUM7SUFDcEksS0FBSyxzQkFBc0IsRUFBRTtBQUNqQzs7QUFnQkE7SUFDSSxPQUFPLHNCQUFzQixFQUFFO0lBQy9CLE1BQU0sc0JBQXNCLEVBQUUscUdBQXFHLENBQUM7SUFDcEksS0FBSyxzQkFBc0IsRUFBRTtBQUNqQzs7QUFFQTtFQUNFLGNBQWM7RUFDZCxXQUFXO0VBQ1gsWUFBWTtFQUNaLHNCQUFzQjtFQUN0QixrQkFBa0I7RUFDbEIsd0ZBQXdGO0VBQ3hGLDBDQUEwQztFQUkxQyxrQ0FBa0M7QUFDcEM7O0FBRUE7SUFDSSxPQUFPLHNCQUFzQixFQUFFO0lBQy9CLE1BQU0sc0JBQXNCLEVBQUUscUZBQXFGLEVBQUU7SUFDckgsS0FBSyxzQkFBc0IsRUFBRTtBQUNqQzs7QUFnQkE7SUFDSSxPQUFPLHNCQUFzQixFQUFFO0lBQy9CLE1BQU0sc0JBQXNCLEVBQUUscUZBQXFGLEVBQUU7SUFDckgsS0FBSyxzQkFBc0IsRUFBRTtBQUNqQzs7QUFFQTtFQUNFLGNBQWM7RUFDZCxXQUFXO0VBQ1gsWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixrQkFBa0I7RUFDbEIsMkZBQTJGO0FBQzdGOztBQUVBO0VBQ0UsY0FBYztFQUNkLFdBQVc7RUFDWCxZQUFZO0VBQ1oseUJBQXlCO0VBQ3pCLGtCQUFrQjtFQUNsQix3RkFBd0Y7QUFDMUYiLCJmaWxlIjoic3JjL2FwcC9hdXRoL2Rlc2lnbmF0aW9ucy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbi5sZWQtYm94IHtcclxuICBoZWlnaHQ6IDMwcHg7XHJcbiAgd2lkdGg6IDI1JTtcclxuICBtYXJnaW46IDEwcHggMDtcclxuICBmbG9hdDogbGVmdDtcclxufVxyXG5cclxuLmxlZC1ib3ggcCB7XHJcbiAgZm9udC1zaXplOiAxMnB4O1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBtYXJnaW46IDFlbTtcclxufVxyXG5cclxuLmxlZC1yZWQge1xyXG4gIG1hcmdpbjogMCBhdXRvO1xyXG4gIHdpZHRoOiAyMHB4O1xyXG4gIGhlaWdodDogMjBweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwO1xyXG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcclxuICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMTJweDtcclxuICAtd2Via2l0LWFuaW1hdGlvbjogYmxpbmtSZWQgMC41cyBpbmZpbml0ZTtcclxuICAtbW96LWFuaW1hdGlvbjogYmxpbmtSZWQgMC41cyBpbmZpbml0ZTtcclxuICAtbXMtYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gIC1vLWFuaW1hdGlvbjogYmxpbmtSZWQgMC41cyBpbmZpbml0ZTtcclxuICBhbmltYXRpb246IGJsaW5rUmVkIDAuNXMgaW5maW5pdGU7XHJcbn1cclxuXHJcbkAtd2Via2l0LWtleWZyYW1lcyBibGlua1JlZCB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0EwMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjNDQxMzEzIDAgLTFweCA5cHgsIHJnYmEoMjU1LCAwLCAwLCAwLjUpIDAgMnB4IDA7fVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbn1cclxuQC1tb3ota2V5ZnJhbWVzIGJsaW5rUmVkIHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxufVxyXG5ALW1zLWtleWZyYW1lcyBibGlua1JlZCB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0EwMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjNDQxMzEzIDAgLTFweCA5cHgsIHJnYmEoMjU1LCAwLCAwLCAwLjUpIDAgMnB4IDA7fVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbn1cclxuQC1vLWtleWZyYW1lcyBibGlua1JlZCB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0EwMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjNDQxMzEzIDAgLTFweCA5cHgsIHJnYmEoMjU1LCAwLCAwLCAwLjUpIDAgMnB4IDA7fVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbn1cclxuQGtleWZyYW1lcyBibGlua1JlZCB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0EwMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjNDQxMzEzIDAgLTFweCA5cHgsIHJnYmEoMjU1LCAwLCAwLCAwLjUpIDAgMnB4IDA7fVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbn1cclxuXHJcbi5sZWQteWVsbG93IHtcclxuICBtYXJnaW46IDAgYXV0bztcclxuICB3aWR0aDogMjBweDtcclxuICBoZWlnaHQ6IDIwcHg7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDtcclxuICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMTJweDtcclxuICAtd2Via2l0LWFuaW1hdGlvbjogYmxpbmtZZWxsb3cgMXMgaW5maW5pdGU7XHJcbiAgLW1vei1hbmltYXRpb246IGJsaW5rWWVsbG93IDFzIGluZmluaXRlO1xyXG4gIC1tcy1hbmltYXRpb246IGJsaW5rWWVsbG93IDFzIGluZmluaXRlO1xyXG4gIC1vLWFuaW1hdGlvbjogYmxpbmtZZWxsb3cgMXMgaW5maW5pdGU7XHJcbiAgYW5pbWF0aW9uOiBibGlua1llbGxvdyAxcyBpbmZpbml0ZTtcclxufVxyXG5cclxuQC13ZWJraXQta2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQUEwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAwOyB9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxufVxyXG5ALW1vei1rZXlmcmFtZXMgYmxpbmtZZWxsb3cge1xyXG4gICAgZnJvbSB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxuICAgIDUwJSB7IGJhY2tncm91bmQtY29sb3I6ICNBQTA7IGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yKSAwIC0xcHggN3B4IDFweCwgaW5zZXQgIzgwODAwMiAwIC0xcHggOXB4LCAjRkYwIDAgMnB4IDA7IH1cclxuICAgIHRvIHsgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDsgfVxyXG59XHJcbkAtbXMta2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQUEwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAwOyB9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxufVxyXG5ALW8ta2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQUEwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAwOyB9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxufVxyXG5Aa2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQUEwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAwOyB9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxufVxyXG5cclxuLmxlZC1ncmVlbiB7XHJcbiAgbWFyZ2luOiAwIGF1dG87XHJcbiAgd2lkdGg6IDIwcHg7XHJcbiAgaGVpZ2h0OiAyMHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNBQkZGMDA7XHJcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gIGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yKSAwIC0xcHggN3B4IDFweCwgaW5zZXQgIzMwNDcwMSAwIC0xcHggOXB4LCAjODlGRjAwIDAgMnB4IDEycHg7XHJcbn1cclxuXHJcbi5sZWQtYmx1ZSB7XHJcbiAgbWFyZ2luOiAwIGF1dG87XHJcbiAgd2lkdGg6IDIwcHg7XHJcbiAgaGVpZ2h0OiAyMHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICMyNEUwRkY7XHJcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gIGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yKSAwIC0xcHggN3B4IDFweCwgaW5zZXQgIzAwNiAwIC0xcHggOXB4LCAjM0Y4Q0ZGIDAgMnB4IDE0cHg7XHJcbn1cclxuXHJcblxyXG4iXX0= */"
-
-/***/ }),
-
-/***/ "./src/app/auth/designations.component.html":
-/*!**************************************************!*\
-  !*** ./src/app/auth/designations.component.html ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div *ngIf=\"msgdefault\" class=\"container\">\r\n  <br>\r\n  <h4>Você não possui designações no momento.</h4>\r\n</div>\r\n<div *ngIf=\"showNow\" class=\"container\">\r\n  <div class=\"col-md-12\">\r\n\r\n\r\n    <div class=\"table-responsive\" *ngFor=\"let esc of escala\">\r\n      <div class=\"card-body\">\r\n        <div class=\"alert alert-secondary\" role=\"alert\">\r\n          <span class=\"label label-info\" style=\"font-size:15px;\">\r\n            <b>Dia: </b>{{ esc.dia }}</span>\r\n          <span class=\"label label-warning\" style=\"font-size:15px;\">\r\n            <b> {{ esc.diasemana }}</b>\r\n          </span>\r\n          <br>\r\n          <span class=\"label label-warning\" style=\"font-size:15px;\">\r\n            <b>Ponto: </b>{{esc.ponto}}\r\n          </span>\r\n        </div>\r\n        <table class=\"table\">\r\n\r\n          <thead>\r\n            <tr>\r\n              <th class=\"text-center\">Horário</th>\r\n              <th class=\"text-center\">Status</th>\r\n              <th style=\"vertical-align: middle !important; text-align: left;\">Nome</th>\r\n              <th style=\"vertical-align: middle !important; text-align: left;\">Circuito</th>\r\n              <th style=\"vertical-align: middle !important; text-align: left;\">Congregação</th>\r\n              <th style=\"vertical-align: middle !important; text-align: left;\">Telefone</th>\r\n              <th style=\"vertical-align: middle !important; text-align: left;\">Email</th>\r\n            </tr>\r\n\r\n          </thead>\r\n          <tbody *ngFor=\"let item of esc.grupo; let i = index\">\r\n\r\n\r\n\r\n            <tr *ngFor=\"let pub of item.ponto.pubs; let h = index\">\r\n\r\n              <td *ngIf=\"h == 0\" [attr.rowspan]=\"item.ponto.pubs.length\" style=\"vertical-align: middle !important; text-align: center;\">{{item.hora.hora}}</td>\r\n\r\n              <td *ngIf=\"pub?.sim == false && pub?.nao == false\" style=\"vertical-align: middle !important; text-align: center;\">\r\n                <div class=\"led-yellow\"></div>\r\n              </td>\r\n              <td *ngIf=\"pub?.sim == true && pub?.nao == false\" style=\"vertical-align: middle !important; text-align: center;\">\r\n                <div class=\"led-green\"></div>\r\n              </td>\r\n              <td *ngIf=\"pub?.sim == false && pub?.nao == true\" style=\"vertical-align: middle !important; text-align: center;\">\r\n                <div class=\"led-red\"></div>\r\n              </td>\r\n              <td *ngIf=\"pub?.sim == true && pub?.nao == true\" style=\"vertical-align: middle !important; text-align: center;\">\r\n                <div class=\"led-green\"></div>\r\n              </td>\r\n              <td [style.color]=\"getStyle(pub?.sex)\" style=\"vertical-align: middle !important; text-align: left;\">{{ pub?.firstName }} {{ pub?.lastName}} </td>\r\n              <td style=\"vertical-align: middle !important; text-align: left;\">{{ pub?.congregation.circuit }}</td>\r\n              <td style=\"vertical-align: middle !important; text-align: left;\">{{ pub?.congregation.nome }}</td>\r\n              <td style=\"vertical-align: middle !important; text-align: left;\">{{ pub?.mobilephone || pub?.phone }}</td>\r\n              <td style=\"vertical-align: middle !important; text-align: left;\">{{ pub?.email }}</td>\r\n            </tr>\r\n\r\n\r\n          </tbody>\r\n\r\n        </table>\r\n        <!-- <div *ngIf=\"existPerfil(pont)\"> -->\r\n        <div>\r\n          <button class=\"btn btn-success\" (click)=\"responseYes(esc,esc.grupo)\" [hidden]=\"esc.type\">Sim</button>\r\n          <button class=\"btn btn-danger\" (click)=\"responseNot(esc,esc.grupo)\"  [hidden]=\"esc.type\">Não</button>\r\n        </div>\r\n        <br>\r\n        <br>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n<!--           <span class=\"label label-info\" style=\"font-size:15px;\">{{esc.dia}}</span>\r\n          <span class=\"label label-warning\" style=\"font-size:12px;\">{{esc.diasemana}}</span>\r\n          <br>\r\n          <ul *ngFor=\"let hr of esc.hora; let h = index\">\r\n            <br>\r\n            <li style=\"background-color:Azure; color:Black\" ><b>{{ hr.hora }}</b><span style=\"float:right;font-size:11px;\">{{esc.dia}}/{{esc.diasemana}}</span></li>\r\n            <br> -->\r\n<!-- <ul *ngFor=\"let pont of esc.ponto\">\r\n              <li style=\"color:Black\"><b>{{ pont.name }}</b></li>\r\n              <br>\r\n              <ul>\r\n                  <table>\r\n                      <tr>\r\n                        <th>Status</th>\r\n                        <th>Nome</th>\r\n                        <th>Circuito</th>\r\n                        <th>Congregação</th>\r\n                        <th>Telefone</th>\r\n                      </tr>\r\n                      <tr *ngFor=\"let pub of pont.pubs\">\r\n                        <td  *ngIf=\"pub?.sim == false && pub?.nao == false\"><div class=\"led-yellow\"></div></td>\r\n                        <td  *ngIf=\"pub?.sim == true && pub?.nao == false\"><div class=\"led-green\"></div></td>\r\n                        <td  *ngIf=\"pub?.sim == false && pub?.nao == true\"><div class=\"led-red\"></div></td>\r\n                        <td  *ngIf=\"pub?.sim == true && pub?.nao == true\"><div class=\"led-green\"></div></td>\r\n                        <td [style.color]=\"getStyle(pub?.sex)\">{{ pub?.firstName }} {{ pub?.lastName}} </td>\r\n                        <td>{{ pub?.congregation.circuit }}</td>\r\n                        <td>{{ pub?.congregation.nome }}</td>\r\n                        <td>{{ pub?.mobilephone }}</td>\r\n                      </tr>\r\n                    </table>\r\n                    <div *ngIf=\"existPerfil(pont)\">\r\n                    <button class=\"btn btn-success\" (click)=\"responseYes(esc,pont)\">Sim</button>\r\n                    <button class=\"btn btn-danger\" (click)=\"responseNot(esc,pont)\">Não</button>\r\n                  </div>\r\n                </ul>\r\n                <br>\r\n            </ul> -->\r\n<!-- </ul>   -->"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\r\n.led-box {\r\n  height: 30px;\r\n  width: 25%;\r\n  margin: 10px 0;\r\n  float: left;\r\n}\r\n\r\n.led-box p {\r\n  font-size: 12px;\r\n  text-align: center;\r\n  margin: 1em;\r\n}\r\n\r\n.led-red {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #F00;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;\r\n  -webkit-animation: blinkRed 0.5s infinite;\r\n  animation: blinkRed 0.5s infinite;\r\n}\r\n\r\n@-webkit-keyframes blinkRed {\r\n    from { background-color: #F00; }\r\n    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}\r\n    to { background-color: #F00; }\r\n}\r\n\r\n@keyframes blinkRed {\r\n    from { background-color: #F00; }\r\n    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}\r\n    to { background-color: #F00; }\r\n}\r\n\r\n.led-yellow {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #FF0;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;\r\n  -webkit-animation: blinkYellow 1s infinite;\r\n  animation: blinkYellow 1s infinite;\r\n}\r\n\r\n@-webkit-keyframes blinkYellow {\r\n    from { background-color: #FF0; }\r\n    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }\r\n    to { background-color: #FF0; }\r\n}\r\n\r\n@keyframes blinkYellow {\r\n    from { background-color: #FF0; }\r\n    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }\r\n    to { background-color: #FF0; }\r\n}\r\n\r\n.led-green {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #ABFF00;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;\r\n}\r\n\r\n.led-blue {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #24E0FF;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3F8CFF 0 2px 14px;\r\n}\r\n\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC9kZXNpZ25hdGlvbnMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7RUFDRSxZQUFZO0VBQ1osVUFBVTtFQUNWLGNBQWM7RUFDZCxXQUFXO0FBQ2I7O0FBRUE7RUFDRSxlQUFlO0VBQ2Ysa0JBQWtCO0VBQ2xCLFdBQVc7QUFDYjs7QUFFQTtFQUNFLGNBQWM7RUFDZCxXQUFXO0VBQ1gsWUFBWTtFQUNaLHNCQUFzQjtFQUN0QixrQkFBa0I7RUFDbEIsd0dBQXdHO0VBQ3hHLHlDQUF5QztFQUl6QyxpQ0FBaUM7QUFDbkM7O0FBRUE7SUFDSSxPQUFPLHNCQUFzQixFQUFFO0lBQy9CLE1BQU0sc0JBQXNCLEVBQUUscUdBQXFHLENBQUM7SUFDcEksS0FBSyxzQkFBc0IsRUFBRTtBQUNqQzs7QUFnQkE7SUFDSSxPQUFPLHNCQUFzQixFQUFFO0lBQy9CLE1BQU0sc0JBQXNCLEVBQUUscUdBQXFHLENBQUM7SUFDcEksS0FBSyxzQkFBc0IsRUFBRTtBQUNqQzs7QUFFQTtFQUNFLGNBQWM7RUFDZCxXQUFXO0VBQ1gsWUFBWTtFQUNaLHNCQUFzQjtFQUN0QixrQkFBa0I7RUFDbEIsd0ZBQXdGO0VBQ3hGLDBDQUEwQztFQUkxQyxrQ0FBa0M7QUFDcEM7O0FBRUE7SUFDSSxPQUFPLHNCQUFzQixFQUFFO0lBQy9CLE1BQU0sc0JBQXNCLEVBQUUscUZBQXFGLEVBQUU7SUFDckgsS0FBSyxzQkFBc0IsRUFBRTtBQUNqQzs7QUFnQkE7SUFDSSxPQUFPLHNCQUFzQixFQUFFO0lBQy9CLE1BQU0sc0JBQXNCLEVBQUUscUZBQXFGLEVBQUU7SUFDckgsS0FBSyxzQkFBc0IsRUFBRTtBQUNqQzs7QUFFQTtFQUNFLGNBQWM7RUFDZCxXQUFXO0VBQ1gsWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixrQkFBa0I7RUFDbEIsMkZBQTJGO0FBQzdGOztBQUVBO0VBQ0UsY0FBYztFQUNkLFdBQVc7RUFDWCxZQUFZO0VBQ1oseUJBQXlCO0VBQ3pCLGtCQUFrQjtFQUNsQix3RkFBd0Y7QUFDMUYiLCJmaWxlIjoic3JjL2FwcC9hdXRoL2Rlc2lnbmF0aW9ucy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbi5sZWQtYm94IHtcclxuICBoZWlnaHQ6IDMwcHg7XHJcbiAgd2lkdGg6IDI1JTtcclxuICBtYXJnaW46IDEwcHggMDtcclxuICBmbG9hdDogbGVmdDtcclxufVxyXG5cclxuLmxlZC1ib3ggcCB7XHJcbiAgZm9udC1zaXplOiAxMnB4O1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBtYXJnaW46IDFlbTtcclxufVxyXG5cclxuLmxlZC1yZWQge1xyXG4gIG1hcmdpbjogMCBhdXRvO1xyXG4gIHdpZHRoOiAyMHB4O1xyXG4gIGhlaWdodDogMjBweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwO1xyXG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcclxuICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMTJweDtcclxuICAtd2Via2l0LWFuaW1hdGlvbjogYmxpbmtSZWQgMC41cyBpbmZpbml0ZTtcclxuICAtbW96LWFuaW1hdGlvbjogYmxpbmtSZWQgMC41cyBpbmZpbml0ZTtcclxuICAtbXMtYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gIC1vLWFuaW1hdGlvbjogYmxpbmtSZWQgMC41cyBpbmZpbml0ZTtcclxuICBhbmltYXRpb246IGJsaW5rUmVkIDAuNXMgaW5maW5pdGU7XHJcbn1cclxuXHJcbkAtd2Via2l0LWtleWZyYW1lcyBibGlua1JlZCB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0EwMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjNDQxMzEzIDAgLTFweCA5cHgsIHJnYmEoMjU1LCAwLCAwLCAwLjUpIDAgMnB4IDA7fVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbn1cclxuQC1tb3ota2V5ZnJhbWVzIGJsaW5rUmVkIHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxufVxyXG5ALW1zLWtleWZyYW1lcyBibGlua1JlZCB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0EwMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjNDQxMzEzIDAgLTFweCA5cHgsIHJnYmEoMjU1LCAwLCAwLCAwLjUpIDAgMnB4IDA7fVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbn1cclxuQC1vLWtleWZyYW1lcyBibGlua1JlZCB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0EwMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjNDQxMzEzIDAgLTFweCA5cHgsIHJnYmEoMjU1LCAwLCAwLCAwLjUpIDAgMnB4IDA7fVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbn1cclxuQGtleWZyYW1lcyBibGlua1JlZCB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0EwMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjNDQxMzEzIDAgLTFweCA5cHgsIHJnYmEoMjU1LCAwLCAwLCAwLjUpIDAgMnB4IDA7fVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbn1cclxuXHJcbi5sZWQteWVsbG93IHtcclxuICBtYXJnaW46IDAgYXV0bztcclxuICB3aWR0aDogMjBweDtcclxuICBoZWlnaHQ6IDIwcHg7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDtcclxuICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMTJweDtcclxuICAtd2Via2l0LWFuaW1hdGlvbjogYmxpbmtZZWxsb3cgMXMgaW5maW5pdGU7XHJcbiAgLW1vei1hbmltYXRpb246IGJsaW5rWWVsbG93IDFzIGluZmluaXRlO1xyXG4gIC1tcy1hbmltYXRpb246IGJsaW5rWWVsbG93IDFzIGluZmluaXRlO1xyXG4gIC1vLWFuaW1hdGlvbjogYmxpbmtZZWxsb3cgMXMgaW5maW5pdGU7XHJcbiAgYW5pbWF0aW9uOiBibGlua1llbGxvdyAxcyBpbmZpbml0ZTtcclxufVxyXG5cclxuQC13ZWJraXQta2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQUEwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAwOyB9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxufVxyXG5ALW1vei1rZXlmcmFtZXMgYmxpbmtZZWxsb3cge1xyXG4gICAgZnJvbSB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxuICAgIDUwJSB7IGJhY2tncm91bmQtY29sb3I6ICNBQTA7IGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yKSAwIC0xcHggN3B4IDFweCwgaW5zZXQgIzgwODAwMiAwIC0xcHggOXB4LCAjRkYwIDAgMnB4IDA7IH1cclxuICAgIHRvIHsgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDsgfVxyXG59XHJcbkAtbXMta2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQUEwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAwOyB9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxufVxyXG5ALW8ta2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQUEwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAwOyB9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxufVxyXG5Aa2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQUEwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAwOyB9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxufVxyXG5cclxuLmxlZC1ncmVlbiB7XHJcbiAgbWFyZ2luOiAwIGF1dG87XHJcbiAgd2lkdGg6IDIwcHg7XHJcbiAgaGVpZ2h0OiAyMHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNBQkZGMDA7XHJcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gIGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yKSAwIC0xcHggN3B4IDFweCwgaW5zZXQgIzMwNDcwMSAwIC0xcHggOXB4LCAjODlGRjAwIDAgMnB4IDEycHg7XHJcbn1cclxuXHJcbi5sZWQtYmx1ZSB7XHJcbiAgbWFyZ2luOiAwIGF1dG87XHJcbiAgd2lkdGg6IDIwcHg7XHJcbiAgaGVpZ2h0OiAyMHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICMyNEUwRkY7XHJcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gIGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yKSAwIC0xcHggN3B4IDFweCwgaW5zZXQgIzAwNiAwIC0xcHggOXB4LCAjM0Y4Q0ZGIDAgMnB4IDE0cHg7XHJcbn1cclxuXHJcblxyXG4iXX0= */");
 
 /***/ }),
 
@@ -2603,6 +3031,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth.service */ "./src/app/auth/auth.service.ts");
 /* harmony import */ var _user_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user.model */ "./src/app/auth/user.model.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2612,6 +3041,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
 
 
 
@@ -2628,14 +3061,12 @@ var DesignationsComponent = /** @class */ (function () {
     }
     DesignationsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.authService.getPerfilEscala()
-            .subscribe(function (escala) {
+        this.authService.getPerfilEscala().subscribe(function (escala) {
             console.log(escala);
             escala.sort(function (a, b) {
-                return (a.data > b.data) ? 1 : (a.data < b.data) ? -1 : 0;
+                return a.data > b.data ? 1 : a.data < b.data ? -1 : 0;
             });
-            _this.authService.getLedsDesignations()
-                .subscribe(function (leds) {
+            _this.authService.getLedsDesignations().subscribe(function (leds) {
                 console.log(leds);
                 var _loop_1 = function (i) {
                     var _loop_2 = function (p) {
@@ -2665,7 +3096,7 @@ var DesignationsComponent = /** @class */ (function () {
                                     //  pontouserid.push(escala[i].pontos[p][u].id);
                                     var type = false;
                                     if (escala[i].pontos[p][u].pubs[s].tipoesc == 'S' ||
-                                        escala[i].pontos[p][u].pubs[s].sim == true ||
+                                        // escala[i].pontos[p][u].pubs[s].sim == true ||
                                         escala[i].pontos[p][u].pubs[s].nao == true)
                                         type = true;
                                     _this.escala.push({
@@ -2696,11 +3127,13 @@ var DesignationsComponent = /** @class */ (function () {
                 }
                 if (_this.escala.length <= 0)
                     _this.msgdefault = true;
-                _this.authService.getCircuito()
+                _this.authService
+                    .getCircuito()
                     .subscribe(function (circuitos) {
                     _this.circuitos = circuitos;
                 });
-                _this.authService.getCongregation()
+                _this.authService
+                    .getCongregation()
                     .subscribe(function (congregations) {
                     _this.congregations = congregations;
                     var congsort = _this.congregations;
@@ -2728,9 +3161,9 @@ var DesignationsComponent = /** @class */ (function () {
     };
     DesignationsComponent.prototype.getStyle = function (sex) {
         if (sex == 'M')
-            return "blue";
+            return 'blue';
         if (sex == 'F')
-            return "#FF4081";
+            return '#FF4081';
     };
     DesignationsComponent.prototype.responseYes = function (esc, grupo) {
         var _this = this;
@@ -2738,12 +3171,20 @@ var DesignationsComponent = /** @class */ (function () {
         var iduser = this.userId;
         var idescala = esc._id;
         var indexpub;
+        // let conjuge;
+        // let indexConjuge;
         for (var a = 0; a < grupo.length; a++) {
             for (var s = 0; s < grupo[a].ponto.npubs; s++) {
                 if (grupo[a].ponto.pubs[s].userId == this.userId) {
                     grupo[a].ponto.pubs[s].sim = true;
                     grupo[a].ponto.pubs[s].nao = false;
-                    esc.type = true;
+                    // if (grupo[a].ponto.pubs[s].conjuge) {
+                    //   conjuge = grupo[a].ponto.pubs[s].conjuge;
+                    //   indexConjuge = grupo[a].ponto.pubs.findIndex(
+                    //     x => x.userId == conjuge
+                    //   );
+                    // }
+                    esc.type = false;
                     horacode = grupo[a].hora.code;
                     indexpub = s;
                     break;
@@ -2758,11 +3199,44 @@ var DesignationsComponent = /** @class */ (function () {
             sim: true,
             nao: false
         };
-        this.authService.ledUpdate(obj)
-            .subscribe(function (data) {
-            console.log(data);
-        }, function (error) {
-            if (error.title == "Respondido pelo Telegram!")
+        // if (conjuge && indexConjuge > -1) {
+        //   this.authService
+        //     .ledUpdate(obj)
+        //     .pipe(
+        //       switchMap(data => {
+        //         let obj = {
+        //           idescala: idescala,
+        //           iduser: conjuge,
+        //           horacode: horacode,
+        //           indexpub: indexConjuge,
+        //           sim: true,
+        //           nao: false
+        //         };
+        //         return this.authService.ledUpdate(obj);
+        //       })
+        //     )
+        //     .subscribe(
+        //       data => console.log(data),
+        //       error => {
+        //         if (error.title == "Respondido pelo Telegram!") this.rebuild();
+        //         else {
+        //           console.log(error);
+        //           for (let a = 0; a < grupo.length; a++) {
+        //             for (let s = 0; s < grupo[a].ponto.npubs; s++) {
+        //               if (grupo[a].ponto.pubs[s].userId == this.userId) {
+        //                 esc.type = false;
+        //                 grupo[a].ponto.pubs[s].sim = false;
+        //                 grupo[a].ponto.pubs[s].nao = false;
+        //               }
+        //             }
+        //           }
+        //         }
+        //         console.error(error);
+        //       }
+        //     );
+        // } else {
+        this.authService.ledUpdate(obj).subscribe(function (data) { return console.log(data); }, function (error) {
+            if (error.title == 'Respondido pelo Telegram!')
                 _this.rebuild();
             else {
                 console.log(error);
@@ -2778,6 +3252,7 @@ var DesignationsComponent = /** @class */ (function () {
             }
             console.error(error);
         });
+        // }
     };
     DesignationsComponent.prototype.responseNot = function (esc, grupo) {
         var _this = this;
@@ -2785,11 +3260,17 @@ var DesignationsComponent = /** @class */ (function () {
         var iduser = this.userId;
         var idescala = esc._id;
         var indexpub;
+        var conjuge;
+        var indexConjuge;
         for (var a = 0; a < grupo.length; a++) {
             for (var s = 0; s < grupo[a].ponto.npubs; s++) {
                 if (grupo[a].ponto.pubs[s].userId == this.userId) {
                     grupo[a].ponto.pubs[s].sim = false;
                     grupo[a].ponto.pubs[s].nao = true;
+                    if (grupo[a].ponto.pubs[s].conjuge) {
+                        conjuge = grupo[a].ponto.pubs[s].conjuge;
+                        indexConjuge = grupo[a].ponto.pubs.findIndex(function (x) { return x.userId == conjuge; });
+                    }
                     esc.type = true;
                     horacode = grupo[a].hora.code;
                     indexpub = s;
@@ -2803,38 +3284,71 @@ var DesignationsComponent = /** @class */ (function () {
             horacode: horacode,
             indexpub: indexpub,
             sim: false,
-            nao: true,
+            nao: true
         };
-        this.authService.ledUpdate(obj)
-            .subscribe(function (data) {
-            console.log(data);
-        }, function (error) {
-            if (error.title == "Respondido pelo Telegram!")
-                _this.rebuild();
-            else {
-                console.log(error);
-                for (var a = 0; a < grupo.length; a++) {
-                    for (var s = 0; s < grupo[a].ponto.npubs; s++) {
-                        if (grupo[a].ponto.pubs[s].userId == _this.userId) {
-                            esc.type = false;
-                            grupo[a].ponto.pubs[s].sim = false;
-                            grupo[a].ponto.pubs[s].nao = false;
+        if (conjuge && indexConjuge > -1) {
+            this.authService
+                .ledUpdate(obj)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (data) {
+                var obj = {
+                    idescala: idescala,
+                    iduser: conjuge,
+                    horacode: horacode,
+                    indexpub: indexConjuge,
+                    sim: false,
+                    nao: true
+                };
+                return _this.authService.ledUpdate(obj);
+            }))
+                .subscribe(function (data) {
+                console.log(data);
+            }, function (error) {
+                if (error.title == 'Respondido pelo Telegram!')
+                    _this.rebuild();
+                else {
+                    console.log(error);
+                    for (var a = 0; a < grupo.length; a++) {
+                        for (var s = 0; s < grupo[a].ponto.npubs; s++) {
+                            if (grupo[a].ponto.pubs[s].userId == _this.userId) {
+                                esc.type = false;
+                                grupo[a].ponto.pubs[s].sim = false;
+                                grupo[a].ponto.pubs[s].nao = false;
+                            }
                         }
                     }
                 }
-            }
-            console.error(error);
-        });
+                console.error(error);
+            });
+        }
+        else {
+            this.authService.ledUpdate(obj).subscribe(function (data) {
+                console.log(data);
+            }, function (error) {
+                if (error.title == 'Respondido pelo Telegram!')
+                    _this.rebuild();
+                else {
+                    console.log(error);
+                    for (var a = 0; a < grupo.length; a++) {
+                        for (var s = 0; s < grupo[a].ponto.npubs; s++) {
+                            if (grupo[a].ponto.pubs[s].userId == _this.userId) {
+                                esc.type = false;
+                                grupo[a].ponto.pubs[s].sim = false;
+                                grupo[a].ponto.pubs[s].nao = false;
+                            }
+                        }
+                    }
+                }
+                console.error(error);
+            });
+        }
     };
     DesignationsComponent.prototype.designEscala = function (pub, ponto, escala) {
         var newdesign = [];
         for (var p = 0; p < escala.pontos.length; p++) {
             for (var u = 0; u < escala.pontos[p].length; u++) {
                 if (escala.pontos[p][u].id == ponto.id) {
-                    console.log("pontoigual", escala.pontos[p][u].id, ponto.id);
-                    var corpo = { hora: escala.hora[p],
-                        ponto: escala.pontos[p][u],
-                    };
+                    console.log('pontoigual', escala.pontos[p][u].id, ponto.id);
+                    var corpo = { hora: escala.hora[p], ponto: escala.pontos[p][u] };
                     newdesign.push(corpo);
                     console.log(corpo);
                 }
@@ -2845,14 +3359,12 @@ var DesignationsComponent = /** @class */ (function () {
     DesignationsComponent.prototype.rebuild = function () {
         var _this = this;
         var escala_aux = [];
-        this.authService.getPerfilEscala()
-            .subscribe(function (escala) {
+        this.authService.getPerfilEscala().subscribe(function (escala) {
             console.log(escala);
             escala.sort(function (a, b) {
-                return (a.data > b.data) ? 1 : (a.data < b.data) ? -1 : 0;
+                return a.data > b.data ? 1 : a.data < b.data ? -1 : 0;
             });
-            _this.authService.getLedsDesignations()
-                .subscribe(function (leds) {
+            _this.authService.getLedsDesignations().subscribe(function (leds) {
                 console.log(leds);
                 var _loop_5 = function (i) {
                     var _loop_6 = function (p) {
@@ -2881,7 +3393,7 @@ var DesignationsComponent = /** @class */ (function () {
                                 if (escala[i].pontos[p][u].pubs[s].userId == _this.userId) {
                                     var type = false;
                                     if (escala[i].pontos[p][u].pubs[s].tipoesc == 'S' ||
-                                        escala[i].pontos[p][u].pubs[s].sim == true ||
+                                        // escala[i].pontos[p][u].pubs[s].sim == true ||
                                         escala[i].pontos[p][u].pubs[s].nao == true)
                                         type = true;
                                     escala_aux.push({
@@ -2920,11 +3432,14 @@ var DesignationsComponent = /** @class */ (function () {
             }, function (error) { return console.error(error); });
         }, function (error) { return console.error(error); });
     };
+    DesignationsComponent.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"] }
+    ]; };
     DesignationsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-designations',
-            template: __webpack_require__(/*! ./designations.component.html */ "./src/app/auth/designations.component.html"),
-            styles: [__webpack_require__(/*! ./designations.component.css */ "./src/app/auth/designations.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./designations.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/designations.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./designations.component.css */ "./src/app/auth/designations.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"]])
     ], DesignationsComponent);
@@ -2932,17 +3447,6 @@ var DesignationsComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/auth/general.component.html":
-/*!*********************************************!*\
-  !*** ./src/app/auth/general.component.html ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"col-md-8 col-md-offset-1\">\r\n    <button id=\"btnchange\" class=\"btn btn-warning\" (click)=\"doEnabled()\">\r\n        <span class=\"glyphicon glyphicon-edit\"></span>Modificar</button>\r\n        <label>Selecione um usuário.</label>\r\n        <select [(ngModel)]=\"userselected\" (change)=\"selectmyuser(userselected)\"> \r\n                <option *ngFor=\"let user of usersall\" [ngValue]=\"user\">{{user.firstName}} {{user.lastName}}</option>\r\n            </select>\r\n\r\n        <form class=\"form-inline\">\r\n        <form [formGroup]=\"perfilForm\" (ngSubmit)=\"onSubmit()\">\r\n           \r\n            <div class=\"form-group\">\r\n                <label for=\"lastday\">Última vez:</label>\r\n                <input type=\"date\" id=\"lastday\" class=\"form-control\" formControlName=\"lastday\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"firstName\">Nome:</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"firstName\" formControlName=\"firstName\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"lastName\">Sobrenome:</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"lastName\" formControlName=\"lastName\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"email\">Email:</label>\r\n                <input type=\"email\" class=\"form-control\" id=\"email\" formControlName=\"email\">\r\n            </div>\r\n            <!--    <div class=\"form-group\">\r\n                <label for=\"password\">Senha:</label>\r\n                <input type=\"password\" class=\"form-control\" id=\"password\" formControlName=\"password\">\r\n            </div> -->\r\n\r\n            <div class=\"form-group\">\r\n                <label for=\"congregation\">Congregação:</label>\r\n                <select type=\"text\" class=\"form-control\" id=\"congregation\" formControlName=\"congregation\">\r\n                    <option value=\"Alto Itamaraty\">Alto Itamaraty</option>\r\n                    <option value=\"Alzira Franco\">Alzira Franco</option>\r\n                    <option value=\"Bangu\">Bangu</option>\r\n                    <option value=\"Dos Alpes\">Dos Alpes</option>\r\n                    <option value=\"Espanhola\">Espanhola</option>\r\n                    <option value=\"Evangelista\">Evangelista</option>\r\n                    <option value=\"Fenícia\">Fenícia</option>\r\n                    <option value=\"Jardim Rina\">Jardim Rina</option>\r\n                    <option value=\"Língua de Sinais\">Língua de Sinais</option>\r\n                    <option value=\"Maravilhas\">Maravilhas</option>\r\n                    <option value=\"Matarazzo\">Matarazzo</option>\r\n                    <option value=\"Nova Capuava\">Nova Capuava</option>\r\n                    <option value=\"Nova Zelândia\">Nova Zelândia</option>\r\n                    <option value=\"Parque Erasmo\">Parque Erasmo</option>\r\n                    <option value=\"Parque Novo Oratório\">Parque Novo Oratório</option>\r\n                    <option value=\"Rio Grande do Norte\">Rio Grande do Norte</option>\r\n                    <option value=\"Vila Lucinda\">Vila Lucinda</option>\r\n                </select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"mobilephone\">Telefone Celular:</label>\r\n                <input type=\"number\" class=\"form-control\" id=\"mobilephone\" formControlName=\"mobilephone\" pattern=\".{11,11}\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"phone\">Telefone Residencial:</label>\r\n                <input type=\"number\" id=\"phone\" class=\"form-control\" formControlName=\"phone\" pattern=\".{10,10}\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"datebirth\">Data de Nascimento:</label>\r\n                <input type=\"date\" id=\"datebirth\" class=\"form-control\" formControlName=\"datebirth\">\r\n            </div>\r\n            <br>\r\n            <div class=\"form-group\">\r\n                <label for=\"sex\">Sexo:</label>\r\n                <select type=\"text\" id=\"sex\" class=\"form-control\" formControlName=\"sex\">\r\n                    <option value=\"M\">Masculino</option>\r\n                    <option value=\"F\">Feminino</option>\r\n                </select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"privilege\">O irmão(a) é:</label>\r\n                <select type=\"text\" id=\"privilege\" class=\"form-control\" formControlName=\"privilege\">\r\n                    <option value=\"PU\">Publicador(a)</option>\r\n                    <option value=\"PI\">Pioneiro(a)</option>\r\n                    <option value=\"S\">Servo</option>\r\n                    <option value=\"A\">Ancião</option>\r\n                    <option value=\"PS\">Pioneiro e Servo</option>\r\n                    <option value=\"PA\">Pioneiro e Ancião</option>\r\n                </select>\r\n            </div>\r\n            <br>\r\n            <br>\r\n            <div class=\"form-group\">\r\n                <p for=\"available\">Tem disponibilidade para trabalhar com varões?(lembrando que serão designadas 2 irmãs e 1 varão).</p>\r\n                <input type=\"checkbox\" value=\"sim\" name=\"available\" class=\"available\" formControlName=\"available\"> SIM\r\n            </div>\r\n            <br>\r\n            <br>\r\n            <div class=\"form-group\">\r\n                <label for=\"elder\">Nome do Ancião:</label>\r\n                <input type=\"text\" id=\"elder\" class=\"form-control\" formControlName=\"elder\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"eldermail\">Email do Ancião:</label>\r\n                <input type=\"email\" id=\"eldermail\" class=\"form-control\" formControlName=\"eldermail\">\r\n            </div>\r\n            <br>\r\n            <br>\r\n            <div>\r\n                <p>Marque sua disponibilidade para cada um dos horários e dias</p>\r\n                <br>\r\n                <table id=\"example\" class=\"display\" cellspacing=\"0\" width=\"100%\">\r\n                    <thead>\r\n\r\n                        <tr id=\"main\">\r\n                            <th>Horários</th>\r\n                            <th>Segunda</th>\r\n                            <th>Terça</th>\r\n                            <th>Quarta</th>\r\n                            <th>Quinta</th>\r\n                            <th>Sexta</th>\r\n                            <th>Sábado</th>\r\n                            <th>Domingo</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr>\r\n                            <td>9h00 - 12h00</td>\r\n                            <td>\r\n                                <input formControlName=\"se1\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"te1\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"qa1\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"qi1\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"sx1\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"sa1\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"do1\" type=\"checkbox\">\r\n                            </td>\r\n\r\n                        </tr>\r\n\r\n                        <tr>\r\n                            <td>12h00 - 15h00</td>\r\n                            <td>\r\n                                <input formControlName=\"se2\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"te2\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"qa2\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"qi2\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"sx2\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"sa2\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"do2\" type=\"checkbox\">\r\n                            </td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>15h00 - 18h00</td>\r\n                            <td>\r\n                                <input formControlName=\"se3\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"te3\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"qa3\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"qi3\" type=\"checkbox\">\r\n                            </td>\r\n                            <td>\r\n                                <input formControlName=\"sx3\" type=\"checkbox\">\r\n                            </td>\r\n                            <td></td>\r\n                            <td></td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>19h00 - 21h30</td>\r\n                            <td>\r\n                                <input formControlName=\"se4\" type=\"checkbox\">\r\n                            </td>\r\n                            <td></td>\r\n                            <td></td>\r\n                            <td></td>\r\n                            <td>\r\n                                <input formControlName=\"sx4\" type=\"checkbox\">\r\n                            </td>\r\n                            <td></td>\r\n                            <td></td>\r\n                        </tr>\r\n\r\n                    </tbody>\r\n                </table>\r\n            </div>\r\n            <br>\r\n            <div class=\"form-group\">\r\n                <p>OBS.: Caso haja algum irmão com situação especial de diponibilidade de horário (escala de trabalho por exemplo) informe aqui.</p>\r\n                <input type=\"text\" id=\"special\" class=\"form-control\" formControlName=\"special\">\r\n            </div>  \r\n            <br> \r\n            <br> \r\n            <button id=\"btnsalvarperfil\" class=\"btn btn-success\" type=\"submit\" [disabled]=\"!perfilForm.valid\">\r\n                <span class=\"glyphicon glyphicon-save\"></span>Salvar</button>\r\n\r\n        </form>\r\n\r\n    </form>\r\n</div>"
 
 /***/ }),
 
@@ -2971,6 +3475,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -3183,10 +3690,14 @@ var GeneralComponent = /** @class */ (function () {
             lastday: moment__WEBPACK_IMPORTED_MODULE_5__["utc"](usersel.lastday).format("YYYY-MM-DD") || null,
         });
     };
+    GeneralComponent.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+    ]; };
     GeneralComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-general',
-            template: __webpack_require__(/*! ./general.component.html */ "./src/app/auth/general.component.html"),
+            template: __importDefault(__webpack_require__(/*! raw-loader!./general.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/general.component.html")).default,
             styles: ["\n\nlabel {\n  display: inline-block;\n  width: 140px;\n  text-align: right;\n}\u200B\n\np{\n    text-align: center;\n}\n\n.available{\n    vertical-align: middle;\n}\n\n\n.ng-valid:not(form){\n    border-left: 5px solid #42A948; /* green */\n  }\n  .ng-invalid:not(form){\n    border-left: 5px solid #a94442; /* red */\n  }\n\n  table {\n    font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n    border-collapse: collapse;\n    width: 90%;\n}\n\ntd, th {\n    border: 1px solid #ddd;\n    padding: 8px;\n    text-align: center;\n}\n\ntr:nth-child(even){background-color: #f2f2f2;}\n\ntr:hover {background-color: #ddd;}\n\nth {\n    padding-top: 12px;\n    padding-bottom: 12px;\n    background-color: black;\n    color: white;\n}\n\ninput[type=checkbox] {\n    transform: scale(2);\n    -ms-transform: scale(2);\n    -webkit-transform: scale(2);\n    padding: 10px;\n}\n\n\n.form-control{\n\n   width: 200px;\n\n}\n\n\n#btnchange{\n    margin-top: 1px;\n    margin-right: 2px;\n    position:absolute;\n    top:0;\n    right:0;\n\n}\n\n\n    "]
         }),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
@@ -3221,6 +3732,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -3319,6 +3833,10 @@ var ListusersComponent = /** @class */ (function () {
             });
         }
     };
+    ListusersComponent.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+    ]; };
     ListusersComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-listusers',
@@ -3355,6 +3873,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 
 var Logisticguard = /** @class */ (function () {
@@ -3364,6 +3885,9 @@ var Logisticguard = /** @class */ (function () {
     Logisticguard.prototype.canActivate = function (route, state) {
         return this.authService.isGold();
     };
+    Logisticguard.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"] }
+    ]; };
     Logisticguard = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"]])
@@ -3397,6 +3921,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 
 
@@ -3407,6 +3934,10 @@ var LogoutComponent = /** @class */ (function () {
         authService.logout();
         router.navigate(['/auth', 'signin']);
     }
+    LogoutComponent.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }
+    ]; };
     LogoutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-logout',
@@ -3441,6 +3972,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -3524,17 +4058,6 @@ var phoneMaskDirective = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/auth/newpass.component.html":
-/*!*********************************************!*\
-  !*** ./src/app/auth/newpass.component.html ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\r\n\r\n<div class=\"col-md-12\">\r\n    <form [formGroup]=\"myForm\" (ngSubmit)=\"onSubmit()\">\r\n        <div class=\"row\">\r\n        <div class=\"form-group col-md-4\">\r\n            <br>\r\n            <label for=\"oldpassword\"><b>Senha atual</b></label>\r\n            <input type=\"password\" id=\"oldpassword\" pattern=\".{6,}\" class=\"form-control\" formControlName=\"oldpassword\">\r\n        </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"form-group col-md-4\">\r\n            <label for=\"newpassword\"><b>Senha nova</b></label><span> (mínimo de 6 caracteres)</span>\r\n            <input type=\"password\" id=\"newpassword\" pattern=\".{6,}\" class=\"form-control\" formControlName=\"newpassword\">\r\n        </div>\r\n    </div>\r\n        <div class=\"row\">\r\n        <div class=\"form-group col-md-4\">\r\n        <button name=\"save\" \r\n        id=\"btnsalvarperfil\" \r\n        class=\"btn btn-primary\" \r\n        type=\"submit\" \r\n        [disabled]=\"!myForm.valid\" \r\n        [hidden]=\"changemode\">\r\n        <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"></i> Salvar</button>\r\n        \r\n        <button name=\"change\" \r\n        id=\"btnchange\" \r\n        class=\"btn btn-warning\" \r\n        (click)=\"doEnabled(true)\" \r\n        type=\"button\"\r\n        [hidden]=\"!changemode\">\r\n        <i class=\"fa fa-pencil-square-o\" \r\n        aria-hidden=\"true\"></i> Editar</button> \r\n        \r\n        <button name=\"cancel\" \r\n        id=\"btncancel\" \r\n        class=\"btn btn-danger\" \r\n        (click)=\"doEnabled(true)\" \r\n        type=\"button\"\r\n        [hidden]=\"changemode\">\r\n        <i class=\"fas fa-times\" aria-hidden=\"true\"\r\n        aria-hidden=\"true\"></i> Cancelar</button> \r\n    </div>\r\n    </div>\r\n    </form>\r\n   \r\n</div>\r\n</div>"
-
-/***/ }),
-
 /***/ "./src/app/auth/newpass.component.ts":
 /*!*******************************************!*\
   !*** ./src/app/auth/newpass.component.ts ***!
@@ -3558,6 +4081,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -3611,10 +4137,14 @@ var NewpassComponent = /** @class */ (function () {
             this.changemode = true;
         return this.changemode;
     };
+    NewpassComponent.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    ]; };
     NewpassComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-newpass',
-            template: __webpack_require__(/*! ./newpass.component.html */ "./src/app/auth/newpass.component.html"),
+            template: __importDefault(__webpack_require__(/*! raw-loader!./newpass.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/newpass.component.html")).default,
             styles: [" \n    "]
         }),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
@@ -3636,6 +4166,9 @@ var NewpassComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Newpass", function() { return Newpass; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var Newpass = /** @class */ (function () {
     function Newpass(oldpassword, newpassword) {
         this.oldpassword = oldpassword;
@@ -3669,6 +4202,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 
 var Normalguard = /** @class */ (function () {
@@ -3678,6 +4214,9 @@ var Normalguard = /** @class */ (function () {
     Normalguard.prototype.canActivate = function (route, state) {
         return this.authService.isLoggedIn();
     };
+    Normalguard.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"] }
+    ]; };
     Normalguard = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_0__["AuthService"]])
@@ -3686,17 +4225,6 @@ var Normalguard = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/auth/perfil.component.html":
-/*!********************************************!*\
-  !*** ./src/app/auth/perfil.component.html ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <ul class=\"nav nav-tabs\" id=\"myTab\" role=\"tablist\">\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link active\" id=\"home-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"home\" aria-selected=\"true\" (click)=\"onChangeDisponiblidade()\">Dados</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" id=\"profile-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"profile\" aria-selected=\"false\" (click)=\"onChangeDisponiblidade()\">Disponibilidade</a>\r\n      </li>\r\n\r\n    </ul>\r\n  </div>\r\n</div>\r\n\r\n<div *ngIf=\"showDisponibilidade\" class=\"container\">\r\n\r\n\r\n     \r\n      <!--       <ul class=\"list-inline\">\r\n        <li>\r\n          <span class=\"node-link\" (click)=\"onChangeDisponiblidade()\">Perfil</span>\r\n        </li>\r\n      </ul> -->\r\n      <!--ABAS-->\r\n\r\n      <br>\r\n      \r\n\r\n          <div class=\"row\">\r\n              <div class=\"col-md-4\">\r\n          <button type=\"button\" id=\"anterior\" (click)=\"anteriorDia($event)\" class=\"btn btn-default\"><i class=\"fas fa-angle-left\"></i></button>\r\n          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r\n          <button type=\"button\" id=\"proximo\" (click)=\"proximoDia($event)\" class=\"btn btn-default\"><i class=\"fas fa-angle-right\"></i></button>\r\n        </div>\r\n        </div>\r\n         <div class=\"row\">\r\n          <div class=\"col-md-3\">\r\n          <select [(ngModel)]=\"dayselect\" class=\"form-control\" (change)=\"horasExistentes()\" id=\"dayselected\">\r\n              <option>Segunda-feira</option>\r\n              <option>Terça-feira</option>\r\n              <option>Quarta-feira</option>\r\n              <option>Quinta-feira</option>\r\n              <option>Sexta-feira</option>\r\n              <option>Sábado</option>\r\n              <option>Domingo</option>\r\n            </select>\r\n          </div>\r\n         \r\n        \r\n        </div>\r\n       \r\n        <div class=\"row\">\r\n        <div class=\"col-md-6\">\r\n          <br>\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table table-striped\">\r\n            <thead>\r\n              <tr>\r\n                <th scope=\"col\">Horários</th>\r\n                <th class=\"center\" scope=\"col\">Seleção</th>\r\n                <th class=\"center\" scope=\"col\">Vezes/Mês</th>\r\n              </tr>\r\n            </thead>\r\n            <tbody>\r\n              <tr *ngFor=\"let hora of horas; let h = index\">\r\n                <th *ngIf=\"hora.vagas > 0\" scope=\"row\">{{ hora.hora }}</th>\r\n                <td class=\"center\" *ngIf=\"hora.vagas > 0\" >\r\n                  <input class=\"inputhora\" type=\"checkbox\" (change)=\"changed($event.target.checked,hora)\" [checked]=\"valorCheck(hora)\" [disabled]=\"inputCheckCondition()\">\r\n                </td>\r\n                <td class=\"center\" *ngIf=\"((dayselect == 'Domingo' || dayselect == 'Sábado') && (hora.vagas > 0))\" >\r\n                  <!-- <input id=\"{{ 'input' + dayselect }}\" type=\"number\" min=\"1\" max=\"5\" style=\"width: 2em;\"  (change)=\"vezesFds($event.target.value, hora.code)\" value=\"valueInput()\" [disabled]=\"!valorCheck(hora)\"> -->\r\n                  <input type=\"number\" min=\"1\" max=\"5\" style=\"width: 2em;\" (change)=\"vezesFds($event.target.value, hora.code)\" [value]=\"valueInput(hora.code)\"\r\n                    [disabled]=\"inputCondition(hora)\" >\r\n                </td>\r\n              </tr>\r\n            </tbody>\r\n          </table>\r\n        </div>\r\n      </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class=\"row\">\r\n        <div class=\"form-group col-md-6\">\r\n\r\n\r\n          <button class=\"btn btn-primary\" type=\"button\" (click)=\"onSubmit()\" [disabled]=\"inputCheckCondition()\" [hidden]=\"changemode\">\r\n            <i class=\"fa fa-floppy-o\" aria-hidden=\"true\"></i> Salvar</button>\r\n\r\n          <button id=\"btnenabled\" class=\"btn btn-warning\" (click)=\"doConfig()\" type=\"button\" [hidden]=\"!changemode\">\r\n            <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n\r\n          <button name=\"cancel\" id=\"btncancel\" class=\"btn btn-danger\" (click)=\"doConfig()\" type=\"button\" [hidden]=\"changemode\">\r\n            <i class=\"fas fa-times\"></i> Cancelar</button>\r\n        </div>\r\n      </div>\r\n\r\n\r\n   \r\n \r\n\r\n</div>\r\n\r\n\r\n\r\n\r\n<div *ngIf=\"!showDisponibilidade\" class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <!--     <ul class=\"list-inline\">\r\n        <li>\r\n          <span class=\"node-link\" (click)=\"onChangeDisponiblidade()\">Disponibilidade</span>\r\n        </li>\r\n      </ul> -->\r\n      <form [formGroup]=\"myForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n\r\n            <label for=\"firstName\">Nome</label>\r\n            <input type=\"text\" id=\"firstName\" class=\"form-control\" formControlName=\"firstName\">\r\n\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"lastName\">Sobrenome</label>\r\n            <input type=\"text\" id=\"lastName\" class=\"form-control\" formControlName=\"lastName\">\r\n          </div>\r\n        </div>\r\n\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"email\">Email</label>\r\n            <input align=\"right\" type=\"email\" id=\"email\" class=\"form-control\" formControlName=\"email\" autocomplete=\"false\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"circuito\">Circuito</label>\r\n            <input type=\"text\" id=\"circuito\" class=\"form-control\" formControlName=\"circuito\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"congregation\">Congregação</label>\r\n            <input type=\"text\" formControlName=\"congregation\" id=\"congregation\" class=\"form-control\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"sex\">Sexo</label>\r\n            <select type=\"text\" id=\"sex\" class=\"form-control\" formControlName=\"sex\">\r\n              <option> </option>\r\n              <option value=\"M\">Masculino</option>\r\n              <option value=\"F\">Feminino</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"privilege\">Privilégio</label>\r\n            <select type=\"text\" id=\"privilege\" class=\"form-control\" formControlName=\"privilege\" ng-model=\"privilege\">\r\n              <option> </option>\r\n              <option value=\"PU\">Publicador(a)</option>\r\n              <option value=\"PI\">Pioneiro(a)</option>\r\n              <option value=\"S\">Servo</option>\r\n              <option value=\"A\">Ancião</option>\r\n              <option value=\"PS\">Pioneiro e Servo</option>\r\n              <option value=\"PA\">Pioneiro e Ancião</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"datebirth\">Data de Nascimento</label>\r\n            <input [(ngModel)]=\"mybirth\" name=\"mybirth\" type=\"date\" id=\"datebirth\" class=\"form-control\" formControlName=\"datebirth\" (change)=\"responsableNeed()\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div *ngIf=\"responsableNeed()\" class=\"form-group\">\r\n            <label for=\"responsable\">Responsável</label>\r\n            <input type=\"text\" formControlName=\"responsable\" id=\"responsable\" class=\"form-control\">\r\n          </div>\r\n        </div>\r\n\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"mobilephone\">Telefone Celular</label>\r\n            <input type=\"number\" id=\"mobilephone\" class=\"form-control\" formControlName=\"mobilephone\" pattern=\".{11,11}\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"phone\">Telefone Residencial</label>\r\n            <input type=\"number\" id=\"phone\" class=\"form-control\" formControlName=\"phone\" pattern=\".{0,10}\">\r\n          </div>\r\n        </div>\r\n\r\n\r\n\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"eldermail\">Email para notificação </label>\r\n            <input type=\"email\" id=\"eldermail\" class=\"form-control\" formControlName=\"eldermail\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label for=\"conjuge\">Companheiro(a)</label>\r\n            <input type=\"text\" formControlName=\"conjuge\" id=\"conjuge\" class=\"form-control\">\r\n          </div>\r\n        </div>\r\n\r\n\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -3727,6 +4255,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -4214,10 +4745,14 @@ var PerfilComponent = /** @class */ (function () {
         }
         return this.changemode;
     };
+    PerfilComponent.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
+    ]; };
     PerfilComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-signup',
-            template: __webpack_require__(/*! ./perfil.component.html */ "./src/app/auth/perfil.component.html"),
+            template: __importDefault(__webpack_require__(/*! raw-loader!./perfil.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/perfil.component.html")).default,
             styles: ["\n\n   #firstName{\n      text-transform: capitalize;\n   }\n\n   #lastName{\n    text-transform: capitalize;\n }\n\n\n\n\n    .nav-link active {\n        cursor: pointer;\n        color: blue;\n\n    }\n\n    .nav-link {\n        cursor: pointer;\n\n    }\n\n    .btn.btn-default{\n\n        background-color: gray;\n        color: white;\n        width: 50px;\n        height: 40px;\n\n        }\n\n.parent{\n    display: inline-block;\n\n}\n\n.center{\n    text-align:center;\n}\n\n  "]
         }),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
@@ -4226,17 +4761,6 @@ var PerfilComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/auth/sendpass.component.html":
-/*!**********************************************!*\
-  !*** ./src/app/auth/sendpass.component.html ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"col-md-6 col-md-offset-1\"> \r\n    <form [formGroup]=\"myForm\" (ngSubmit)=\"onSubmit()\">\r\n        <div class=\"form-group\">\r\n            <br>\r\n            <h3>Esqueceu sua senha?</h3>\r\n            <br>\r\n            <span>Digite seu e-mail cadastrado e click em enviar, você receberá uma nova senha em sua caixa de mensagens</span>\r\n            <br>\r\n            <br>\r\n            <label for=\"email\">Email</label>\r\n            <input type=\"email\" id=\"email\" class=\"form-control\" formControlName=\"email\">\r\n        </div>\r\n        <button id=\"btnsalvarperfil\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!myForm.valid\">Enviar</button>\r\n    </form>\r\n</div>"
 
 /***/ }),
 
@@ -4263,6 +4787,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -4291,10 +4818,14 @@ var SendpassComponent = /** @class */ (function () {
             ]),
         });
     };
+    SendpassComponent.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    ]; };
     SendpassComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-sendpass',
-            template: __webpack_require__(/*! ./sendpass.component.html */ "./src/app/auth/sendpass.component.html")
+            template: __importDefault(__webpack_require__(/*! raw-loader!./sendpass.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/sendpass.component.html")).default
         }),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], SendpassComponent);
@@ -4309,21 +4840,12 @@ var SendpassComponent = /** @class */ (function () {
 /*!*******************************************!*\
   !*** ./src/app/auth/signin.component.css ***!
   \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\r\nbutton{\r\n\r\n  display: block;\r\n  flex-flow: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  margin-left:9%;\r\n  width: 82%;\r\n  color:black;\r\n  background-color: white;\r\n  border: 2px solid black;\r\n  font-weight: 700;\r\n}\r\nbutton:active{\r\n  background:olive;\r\n}\r\n.container{\r\n  background: white;\r\n  position: absolute;\r\n  top: 5%;\r\n}\r\ninput{\r\n  background-color: #3b4148;\r\n  color: #a9a9a9;\r\n  margin-top:12px;\r\n  display: inline-block;\r\n  width: 70%;\r\n  \r\n\r\n\r\n}\r\n.panel-body{\r\n  \r\n  background-color:lightgrey;\r\n\r\n}\r\n.panel-heading{\r\n  background-color: lightgrey;\r\n\r\n}\r\nspan {\r\n  background-color: #363b41;\r\n  color: #606468;\r\n  margin-top:12px;\r\n  margin-left: 9%;\r\n  \r\n  display: block;\r\n  float: left;\r\n  line-height: 38px;\r\n  text-align: center;\r\n  width: 38px;\r\n  height: 38px;\r\n}\r\np { \r\n  text-align: center;\r\n  color: black; font-family: Impact, Charcoal, sans-serif; font-size: 10px; \r\n}\r\nh3 {\r\n  color: black;\r\n  margin-top: 5%;\r\n  text-align: center;\r\nfont-family: 'Impact', 'fantasy';\r\nfont-size: 25px;\r\n\r\n}\r\n.login-panel{\r\n  background-color:lightgrey;\r\n  border: 2px solid;\r\n  border-radius: 25px;\r\n  overflow: hidden;\r\n  -webkit-perspective: 1px;\r\n          perspective: 1px;\r\n  \r\n  }\r\n#mala{\r\n      text-align: center; \r\n      margin-left:25%; \r\n      background-color:lightgrey; \r\n      font-size: 70px;\r\n  }\r\n@media screen and (min-width: 320px) {\r\n      button {\r\n          width: 83%;\r\n      }\r\n  }\r\n@media screen and (min-width: 375px) {\r\n      button {\r\n          width: 81%;\r\n      }\r\n  }\r\n@media screen and (min-width: 414px) {\r\n      button {\r\n          width: 80%;\r\n      }\r\n\r\n      #mala{\r\n          margin-left:27%; \r\n      }\r\n\r\n  }\r\n@media screen and (min-width: 480px) {\r\n      button {\r\n          width: 79%;\r\n      }\r\n\r\n      #mala{\r\n          margin-left:28%; \r\n      }\r\n  }\r\n@media screen and (min-width: 600px) {\r\n      button {\r\n          width: 78%;\r\n      }\r\n  }\r\n@media screen and (min-width: 700px) {\r\n      button {\r\n          width: 81%;\r\n      }\r\n  }\r\n@media screen and (min-width: 768px) {\r\n      button {\r\n          width: 87%;\r\n      }\r\n\r\n      #mala{\r\n          margin-left: 21%; \r\n      }\r\n  }\r\n@media screen and (min-width: 800px) {\r\n      button {\r\n          width: 81%;\r\n      }\r\n  }\r\n@media screen and (min-width: 1280px) {\r\n      button {\r\n          width: 81%;\r\n      }\r\n\r\n      #mala{\r\n          margin-left: 25%; \r\n      }\r\n  }\r\n@media screen and (min-width: 1024px) {\r\n      button {\r\n          width: 81%;\r\n      }\r\n\r\n      #mala{\r\n          margin-left: 25%; \r\n      }\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC9zaWduaW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7O0VBRUUsY0FBYztFQUNkLGlCQUFpQjtFQUNqQix1QkFBdUI7RUFDdkIsbUJBQW1CO0VBQ25CLGNBQWM7RUFDZCxVQUFVO0VBQ1YsV0FBVztFQUNYLHVCQUF1QjtFQUN2Qix1QkFBdUI7RUFDdkIsZ0JBQWdCO0FBQ2xCO0FBQ0E7RUFDRSxnQkFBZ0I7QUFDbEI7QUFHQTtFQUNFLGlCQUFpQjtFQUNqQixrQkFBa0I7RUFDbEIsT0FBTztBQUNUO0FBS0E7RUFDRSx5QkFBeUI7RUFDekIsY0FBYztFQUNkLGVBQWU7RUFDZixxQkFBcUI7RUFDckIsVUFBVTs7OztBQUlaO0FBRUE7O0VBRUUsMEJBQTBCOztBQUU1QjtBQUVBO0VBQ0UsMkJBQTJCOztBQUU3QjtBQUVBO0VBQ0UseUJBQXlCO0VBQ3pCLGNBQWM7RUFDZCxlQUFlO0VBQ2YsZUFBZTs7RUFFZixjQUFjO0VBQ2QsV0FBVztFQUNYLGlCQUFpQjtFQUNqQixrQkFBa0I7RUFDbEIsV0FBVztFQUNYLFlBQVk7QUFDZDtBQUlBO0VBQ0Usa0JBQWtCO0VBQ2xCLFlBQVksRUFBRSx5Q0FBeUMsRUFBRSxlQUFlO0FBQzFFO0FBRUE7RUFDRSxZQUFZO0VBQ1osY0FBYztFQUNkLGtCQUFrQjtBQUNwQixnQ0FBZ0M7QUFDaEMsZUFBZTs7QUFFZjtBQUdBO0VBQ0UsMEJBQTBCO0VBQzFCLGlCQUFpQjtFQUNqQixtQkFBbUI7RUFDbkIsZ0JBQWdCO0VBQ2hCLHdCQUFnQjtVQUFoQixnQkFBZ0I7O0VBRWhCO0FBRUE7TUFDSSxrQkFBa0I7TUFDbEIsZUFBZTtNQUNmLDBCQUEwQjtNQUMxQixlQUFlO0VBQ25CO0FBRUE7TUFDSTtVQUNJLFVBQVU7TUFDZDtFQUNKO0FBRUE7TUFDSTtVQUNJLFVBQVU7TUFDZDtFQUNKO0FBRUE7TUFDSTtVQUNJLFVBQVU7TUFDZDs7TUFFQTtVQUNJLGVBQWU7TUFDbkI7O0VBRUo7QUFHQTtNQUNJO1VBQ0ksVUFBVTtNQUNkOztNQUVBO1VBQ0ksZUFBZTtNQUNuQjtFQUNKO0FBRUE7TUFDSTtVQUNJLFVBQVU7TUFDZDtFQUNKO0FBR0E7TUFDSTtVQUNJLFVBQVU7TUFDZDtFQUNKO0FBRUE7TUFDSTtVQUNJLFVBQVU7TUFDZDs7TUFFQTtVQUNJLGdCQUFnQjtNQUNwQjtFQUNKO0FBRUE7TUFDSTtVQUNJLFVBQVU7TUFDZDtFQUNKO0FBRUE7TUFDSTtVQUNJLFVBQVU7TUFDZDs7TUFFQTtVQUNJLGdCQUFnQjtNQUNwQjtFQUNKO0FBRUE7TUFDSTtVQUNJLFVBQVU7TUFDZDs7TUFFQTtVQUNJLGdCQUFnQjtNQUNwQjtFQUNKIiwiZmlsZSI6InNyYy9hcHAvYXV0aC9zaWduaW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG5idXR0b257XHJcblxyXG4gIGRpc3BsYXk6IGJsb2NrO1xyXG4gIGZsZXgtZmxvdzogY29sdW1uO1xyXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgbWFyZ2luLWxlZnQ6OSU7XHJcbiAgd2lkdGg6IDgyJTtcclxuICBjb2xvcjpibGFjaztcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICBib3JkZXI6IDJweCBzb2xpZCBibGFjaztcclxuICBmb250LXdlaWdodDogNzAwO1xyXG59XHJcbmJ1dHRvbjphY3RpdmV7XHJcbiAgYmFja2dyb3VuZDpvbGl2ZTtcclxufVxyXG5cclxuXHJcbi5jb250YWluZXJ7XHJcbiAgYmFja2dyb3VuZDogd2hpdGU7XHJcbiAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gIHRvcDogNSU7XHJcbn1cclxuXHJcblxyXG5cclxuXHJcbmlucHV0e1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICMzYjQxNDg7XHJcbiAgY29sb3I6ICNhOWE5YTk7XHJcbiAgbWFyZ2luLXRvcDoxMnB4O1xyXG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICB3aWR0aDogNzAlO1xyXG4gIFxyXG5cclxuXHJcbn1cclxuXHJcbi5wYW5lbC1ib2R5e1xyXG4gIFxyXG4gIGJhY2tncm91bmQtY29sb3I6bGlnaHRncmV5O1xyXG5cclxufSBcclxuXHJcbi5wYW5lbC1oZWFkaW5ne1xyXG4gIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Z3JleTtcclxuXHJcbn0gXHJcblxyXG5zcGFuIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzYzYjQxO1xyXG4gIGNvbG9yOiAjNjA2NDY4O1xyXG4gIG1hcmdpbi10b3A6MTJweDtcclxuICBtYXJnaW4tbGVmdDogOSU7XHJcbiAgXHJcbiAgZGlzcGxheTogYmxvY2s7XHJcbiAgZmxvYXQ6IGxlZnQ7XHJcbiAgbGluZS1oZWlnaHQ6IDM4cHg7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIHdpZHRoOiAzOHB4O1xyXG4gIGhlaWdodDogMzhweDtcclxufVxyXG5cclxuXHJcblxyXG5wIHsgXHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGNvbG9yOiBibGFjazsgZm9udC1mYW1pbHk6IEltcGFjdCwgQ2hhcmNvYWwsIHNhbnMtc2VyaWY7IGZvbnQtc2l6ZTogMTBweDsgXHJcbn1cclxuXHJcbmgzIHtcclxuICBjb2xvcjogYmxhY2s7XHJcbiAgbWFyZ2luLXRvcDogNSU7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG5mb250LWZhbWlseTogJ0ltcGFjdCcsICdmYW50YXN5JztcclxuZm9udC1zaXplOiAyNXB4O1xyXG5cclxufVxyXG5cclxuXHJcbi5sb2dpbi1wYW5lbHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOmxpZ2h0Z3JleTtcclxuICBib3JkZXI6IDJweCBzb2xpZDtcclxuICBib3JkZXItcmFkaXVzOiAyNXB4O1xyXG4gIG92ZXJmbG93OiBoaWRkZW47XHJcbiAgcGVyc3BlY3RpdmU6IDFweDtcclxuICBcclxuICB9XHJcblxyXG4gICNtYWxhe1xyXG4gICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7IFxyXG4gICAgICBtYXJnaW4tbGVmdDoyNSU7IFxyXG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOmxpZ2h0Z3JleTsgXHJcbiAgICAgIGZvbnQtc2l6ZTogNzBweDtcclxuICB9XHJcblxyXG4gIEBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDMyMHB4KSB7XHJcbiAgICAgIGJ1dHRvbiB7XHJcbiAgICAgICAgICB3aWR0aDogODMlO1xyXG4gICAgICB9XHJcbiAgfVxyXG5cclxuICBAbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiAzNzVweCkge1xyXG4gICAgICBidXR0b24ge1xyXG4gICAgICAgICAgd2lkdGg6IDgxJTtcclxuICAgICAgfVxyXG4gIH1cclxuXHJcbiAgQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogNDE0cHgpIHtcclxuICAgICAgYnV0dG9uIHtcclxuICAgICAgICAgIHdpZHRoOiA4MCU7XHJcbiAgICAgIH1cclxuXHJcbiAgICAgICNtYWxhe1xyXG4gICAgICAgICAgbWFyZ2luLWxlZnQ6MjclOyBcclxuICAgICAgfVxyXG5cclxuICB9XHJcblxyXG5cclxuICBAbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA0ODBweCkge1xyXG4gICAgICBidXR0b24ge1xyXG4gICAgICAgICAgd2lkdGg6IDc5JTtcclxuICAgICAgfVxyXG5cclxuICAgICAgI21hbGF7XHJcbiAgICAgICAgICBtYXJnaW4tbGVmdDoyOCU7IFxyXG4gICAgICB9XHJcbiAgfVxyXG5cclxuICBAbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA2MDBweCkge1xyXG4gICAgICBidXR0b24ge1xyXG4gICAgICAgICAgd2lkdGg6IDc4JTtcclxuICAgICAgfVxyXG4gIH1cclxuXHJcblxyXG4gIEBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDcwMHB4KSB7XHJcbiAgICAgIGJ1dHRvbiB7XHJcbiAgICAgICAgICB3aWR0aDogODElO1xyXG4gICAgICB9XHJcbiAgfVxyXG5cclxuICBAbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA3NjhweCkge1xyXG4gICAgICBidXR0b24ge1xyXG4gICAgICAgICAgd2lkdGg6IDg3JTtcclxuICAgICAgfVxyXG5cclxuICAgICAgI21hbGF7XHJcbiAgICAgICAgICBtYXJnaW4tbGVmdDogMjElOyBcclxuICAgICAgfVxyXG4gIH1cclxuXHJcbiAgQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogODAwcHgpIHtcclxuICAgICAgYnV0dG9uIHtcclxuICAgICAgICAgIHdpZHRoOiA4MSU7XHJcbiAgICAgIH1cclxuICB9XHJcblxyXG4gIEBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDEyODBweCkge1xyXG4gICAgICBidXR0b24ge1xyXG4gICAgICAgICAgd2lkdGg6IDgxJTtcclxuICAgICAgfVxyXG5cclxuICAgICAgI21hbGF7XHJcbiAgICAgICAgICBtYXJnaW4tbGVmdDogMjUlOyBcclxuICAgICAgfVxyXG4gIH1cclxuXHJcbiAgQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogMTAyNHB4KSB7XHJcbiAgICAgIGJ1dHRvbiB7XHJcbiAgICAgICAgICB3aWR0aDogODElO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAjbWFsYXtcclxuICAgICAgICAgIG1hcmdpbi1sZWZ0OiAyNSU7IFxyXG4gICAgICB9XHJcbiAgfSJdfQ== */"
-
-/***/ }),
-
-/***/ "./src/app/auth/signin.component.html":
-/*!********************************************!*\
-  !*** ./src/app/auth/signin.component.html ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"d-flex justify-content-center\">\n  <div class=\"container\">\n    <div class=\"row justify-content-center\">\n      <div class=\"col-md-4 col-md-offset-4\">\n        <div class=\"login-panel panel panel-default\">\n          <br>\n          <div class=\"row\">\n              <img  id=\"mala\" src=\"/assets/img/tpeg.png\" style=\"width: 50%; height: 30%\">\n       <!--      <span id=\"mala\" class=\"fa fa-suitcase\" aria-hidden=\"true\"></span> -->\n          </div>\n  <!--         <h3>TPE Metropolitano</h3> -->\n        <!--   <p>Santo André</p> -->\n\n          <div class=\"panel-body\">\n            <form name='form-login' role=\"form\" [formGroup]=\"myForm\" (ngSubmit)=\"onSubmit()\">\n              <fieldset>\n                <div class=\"form-group\">\n                  <span class=\"fa fa-user\"></span>\n                  <input class=\"form-control\" placeholder=\"E-mail\" name=\"email\" type=\"email\" formControlName=\"email\" autofocus>\n                </div>\n                <div class=\"form-group\">\n                  <span class=\"fa fa-lock\"></span>\n                  <input class=\"form-control\" placeholder=\"Senha\" name=\"password\" type=\"password\" formControlName=\"password\" value=\"\">\n                </div>\n\n                <button class=\"btn btn-default\" id=\"entrar\" type=\"submit\" [disabled]=\"!myForm.valid\">Entrar</button>\n                <br>\n                <a style=\"margin-right:10%;float:right; font-size: 60%; position: right; color:blue;\" id=\"recuperarSenha\" value=\"recSenha\"\n                  routerLink=\"/auth/sendpass\" routerLinkActive=\"active\">Recuperar Senha</a>\n              </fieldset>\n            </form>\n            <br>\n\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\r\nbutton{\r\n\r\n  display: block;\r\n  flex-flow: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  margin-left:9%;\r\n  width: 82%;\r\n  color:black;\r\n  background-color: white;\r\n  border: 2px solid black;\r\n  font-weight: 700;\r\n}\r\nbutton:active{\r\n  background:olive;\r\n}\r\n.container{\r\n  background: white;\r\n  position: absolute;\r\n  top: 5%;\r\n}\r\ninput{\r\n  background-color: #3b4148;\r\n  color: #a9a9a9;\r\n  margin-top:12px;\r\n  display: inline-block;\r\n  width: 70%;\r\n  \r\n\r\n\r\n}\r\n.panel-body{\r\n  \r\n  background-color:lightgrey;\r\n\r\n}\r\n.panel-heading{\r\n  background-color: lightgrey;\r\n\r\n}\r\nspan {\r\n  background-color: #363b41;\r\n  color: #606468;\r\n  margin-top:12px;\r\n  margin-left: 9%;\r\n  \r\n  display: block;\r\n  float: left;\r\n  line-height: 38px;\r\n  text-align: center;\r\n  width: 38px;\r\n  height: 38px;\r\n}\r\np { \r\n  text-align: center;\r\n  color: black; font-family: Impact, Charcoal, sans-serif; font-size: 10px; \r\n}\r\nh3 {\r\n  color: black;\r\n  margin-top: 5%;\r\n  text-align: center;\r\nfont-family: 'Impact', 'fantasy';\r\nfont-size: 25px;\r\n\r\n}\r\n.login-panel{\r\n  background-color:lightgrey;\r\n  border: 2px solid;\r\n  border-radius: 25px;\r\n  overflow: hidden;\r\n  perspective: 1px;\r\n  \r\n  }\r\n#mala{\r\n      text-align: center; \r\n      margin-left:25%; \r\n      background-color:lightgrey; \r\n      font-size: 70px;\r\n  }\r\n@media screen and (min-width: 320px) {\r\n      button {\r\n          width: 83%;\r\n      }\r\n  }\r\n@media screen and (min-width: 375px) {\r\n      button {\r\n          width: 81%;\r\n      }\r\n  }\r\n@media screen and (min-width: 414px) {\r\n      button {\r\n          width: 80%;\r\n      }\r\n\r\n      #mala{\r\n          margin-left:27%; \r\n      }\r\n\r\n  }\r\n@media screen and (min-width: 480px) {\r\n      button {\r\n          width: 79%;\r\n      }\r\n\r\n      #mala{\r\n          margin-left:28%; \r\n      }\r\n  }\r\n@media screen and (min-width: 600px) {\r\n      button {\r\n          width: 78%;\r\n      }\r\n  }\r\n@media screen and (min-width: 700px) {\r\n      button {\r\n          width: 81%;\r\n      }\r\n  }\r\n@media screen and (min-width: 768px) {\r\n      button {\r\n          width: 87%;\r\n      }\r\n\r\n      #mala{\r\n          margin-left: 21%; \r\n      }\r\n  }\r\n@media screen and (min-width: 800px) {\r\n      button {\r\n          width: 81%;\r\n      }\r\n  }\r\n@media screen and (min-width: 1280px) {\r\n      button {\r\n          width: 81%;\r\n      }\r\n\r\n      #mala{\r\n          margin-left: 25%; \r\n      }\r\n  }\r\n@media screen and (min-width: 1024px) {\r\n      button {\r\n          width: 81%;\r\n      }\r\n\r\n      #mala{\r\n          margin-left: 25%; \r\n      }\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC9zaWduaW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7O0VBRUUsY0FBYztFQUNkLGlCQUFpQjtFQUNqQix1QkFBdUI7RUFDdkIsbUJBQW1CO0VBQ25CLGNBQWM7RUFDZCxVQUFVO0VBQ1YsV0FBVztFQUNYLHVCQUF1QjtFQUN2Qix1QkFBdUI7RUFDdkIsZ0JBQWdCO0FBQ2xCO0FBQ0E7RUFDRSxnQkFBZ0I7QUFDbEI7QUFHQTtFQUNFLGlCQUFpQjtFQUNqQixrQkFBa0I7RUFDbEIsT0FBTztBQUNUO0FBS0E7RUFDRSx5QkFBeUI7RUFDekIsY0FBYztFQUNkLGVBQWU7RUFDZixxQkFBcUI7RUFDckIsVUFBVTs7OztBQUlaO0FBRUE7O0VBRUUsMEJBQTBCOztBQUU1QjtBQUVBO0VBQ0UsMkJBQTJCOztBQUU3QjtBQUVBO0VBQ0UseUJBQXlCO0VBQ3pCLGNBQWM7RUFDZCxlQUFlO0VBQ2YsZUFBZTs7RUFFZixjQUFjO0VBQ2QsV0FBVztFQUNYLGlCQUFpQjtFQUNqQixrQkFBa0I7RUFDbEIsV0FBVztFQUNYLFlBQVk7QUFDZDtBQUlBO0VBQ0Usa0JBQWtCO0VBQ2xCLFlBQVksRUFBRSx5Q0FBeUMsRUFBRSxlQUFlO0FBQzFFO0FBRUE7RUFDRSxZQUFZO0VBQ1osY0FBYztFQUNkLGtCQUFrQjtBQUNwQixnQ0FBZ0M7QUFDaEMsZUFBZTs7QUFFZjtBQUdBO0VBQ0UsMEJBQTBCO0VBQzFCLGlCQUFpQjtFQUNqQixtQkFBbUI7RUFDbkIsZ0JBQWdCO0VBQ2hCLGdCQUFnQjs7RUFFaEI7QUFFQTtNQUNJLGtCQUFrQjtNQUNsQixlQUFlO01BQ2YsMEJBQTBCO01BQzFCLGVBQWU7RUFDbkI7QUFFQTtNQUNJO1VBQ0ksVUFBVTtNQUNkO0VBQ0o7QUFFQTtNQUNJO1VBQ0ksVUFBVTtNQUNkO0VBQ0o7QUFFQTtNQUNJO1VBQ0ksVUFBVTtNQUNkOztNQUVBO1VBQ0ksZUFBZTtNQUNuQjs7RUFFSjtBQUdBO01BQ0k7VUFDSSxVQUFVO01BQ2Q7O01BRUE7VUFDSSxlQUFlO01BQ25CO0VBQ0o7QUFFQTtNQUNJO1VBQ0ksVUFBVTtNQUNkO0VBQ0o7QUFHQTtNQUNJO1VBQ0ksVUFBVTtNQUNkO0VBQ0o7QUFFQTtNQUNJO1VBQ0ksVUFBVTtNQUNkOztNQUVBO1VBQ0ksZ0JBQWdCO01BQ3BCO0VBQ0o7QUFFQTtNQUNJO1VBQ0ksVUFBVTtNQUNkO0VBQ0o7QUFFQTtNQUNJO1VBQ0ksVUFBVTtNQUNkOztNQUVBO1VBQ0ksZ0JBQWdCO01BQ3BCO0VBQ0o7QUFFQTtNQUNJO1VBQ0ksVUFBVTtNQUNkOztNQUVBO1VBQ0ksZ0JBQWdCO01BQ3BCO0VBQ0oiLCJmaWxlIjoic3JjL2FwcC9hdXRoL3NpZ25pbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbmJ1dHRvbntcclxuXHJcbiAgZGlzcGxheTogYmxvY2s7XHJcbiAgZmxleC1mbG93OiBjb2x1bW47XHJcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBtYXJnaW4tbGVmdDo5JTtcclxuICB3aWR0aDogODIlO1xyXG4gIGNvbG9yOmJsYWNrO1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gIGJvcmRlcjogMnB4IHNvbGlkIGJsYWNrO1xyXG4gIGZvbnQtd2VpZ2h0OiA3MDA7XHJcbn1cclxuYnV0dG9uOmFjdGl2ZXtcclxuICBiYWNrZ3JvdW5kOm9saXZlO1xyXG59XHJcblxyXG5cclxuLmNvbnRhaW5lcntcclxuICBiYWNrZ3JvdW5kOiB3aGl0ZTtcclxuICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgdG9wOiA1JTtcclxufVxyXG5cclxuXHJcblxyXG5cclxuaW5wdXR7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogIzNiNDE0ODtcclxuICBjb2xvcjogI2E5YTlhOTtcclxuICBtYXJnaW4tdG9wOjEycHg7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIHdpZHRoOiA3MCU7XHJcbiAgXHJcblxyXG5cclxufVxyXG5cclxuLnBhbmVsLWJvZHl7XHJcbiAgXHJcbiAgYmFja2dyb3VuZC1jb2xvcjpsaWdodGdyZXk7XHJcblxyXG59IFxyXG5cclxuLnBhbmVsLWhlYWRpbmd7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRncmV5O1xyXG5cclxufSBcclxuXHJcbnNwYW4ge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICMzNjNiNDE7XHJcbiAgY29sb3I6ICM2MDY0Njg7XHJcbiAgbWFyZ2luLXRvcDoxMnB4O1xyXG4gIG1hcmdpbi1sZWZ0OiA5JTtcclxuICBcclxuICBkaXNwbGF5OiBibG9jaztcclxuICBmbG9hdDogbGVmdDtcclxuICBsaW5lLWhlaWdodDogMzhweDtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgd2lkdGg6IDM4cHg7XHJcbiAgaGVpZ2h0OiAzOHB4O1xyXG59XHJcblxyXG5cclxuXHJcbnAgeyBcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgY29sb3I6IGJsYWNrOyBmb250LWZhbWlseTogSW1wYWN0LCBDaGFyY29hbCwgc2Fucy1zZXJpZjsgZm9udC1zaXplOiAxMHB4OyBcclxufVxyXG5cclxuaDMge1xyXG4gIGNvbG9yOiBibGFjaztcclxuICBtYXJnaW4tdG9wOiA1JTtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbmZvbnQtZmFtaWx5OiAnSW1wYWN0JywgJ2ZhbnRhc3knO1xyXG5mb250LXNpemU6IDI1cHg7XHJcblxyXG59XHJcblxyXG5cclxuLmxvZ2luLXBhbmVse1xyXG4gIGJhY2tncm91bmQtY29sb3I6bGlnaHRncmV5O1xyXG4gIGJvcmRlcjogMnB4IHNvbGlkO1xyXG4gIGJvcmRlci1yYWRpdXM6IDI1cHg7XHJcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICBwZXJzcGVjdGl2ZTogMXB4O1xyXG4gIFxyXG4gIH1cclxuXHJcbiAgI21hbGF7XHJcbiAgICAgIHRleHQtYWxpZ246IGNlbnRlcjsgXHJcbiAgICAgIG1hcmdpbi1sZWZ0OjI1JTsgXHJcbiAgICAgIGJhY2tncm91bmQtY29sb3I6bGlnaHRncmV5OyBcclxuICAgICAgZm9udC1zaXplOiA3MHB4O1xyXG4gIH1cclxuXHJcbiAgQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogMzIwcHgpIHtcclxuICAgICAgYnV0dG9uIHtcclxuICAgICAgICAgIHdpZHRoOiA4MyU7XHJcbiAgICAgIH1cclxuICB9XHJcblxyXG4gIEBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDM3NXB4KSB7XHJcbiAgICAgIGJ1dHRvbiB7XHJcbiAgICAgICAgICB3aWR0aDogODElO1xyXG4gICAgICB9XHJcbiAgfVxyXG5cclxuICBAbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA0MTRweCkge1xyXG4gICAgICBidXR0b24ge1xyXG4gICAgICAgICAgd2lkdGg6IDgwJTtcclxuICAgICAgfVxyXG5cclxuICAgICAgI21hbGF7XHJcbiAgICAgICAgICBtYXJnaW4tbGVmdDoyNyU7IFxyXG4gICAgICB9XHJcblxyXG4gIH1cclxuXHJcblxyXG4gIEBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDQ4MHB4KSB7XHJcbiAgICAgIGJ1dHRvbiB7XHJcbiAgICAgICAgICB3aWR0aDogNzklO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAjbWFsYXtcclxuICAgICAgICAgIG1hcmdpbi1sZWZ0OjI4JTsgXHJcbiAgICAgIH1cclxuICB9XHJcblxyXG4gIEBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDYwMHB4KSB7XHJcbiAgICAgIGJ1dHRvbiB7XHJcbiAgICAgICAgICB3aWR0aDogNzglO1xyXG4gICAgICB9XHJcbiAgfVxyXG5cclxuXHJcbiAgQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogNzAwcHgpIHtcclxuICAgICAgYnV0dG9uIHtcclxuICAgICAgICAgIHdpZHRoOiA4MSU7XHJcbiAgICAgIH1cclxuICB9XHJcblxyXG4gIEBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDc2OHB4KSB7XHJcbiAgICAgIGJ1dHRvbiB7XHJcbiAgICAgICAgICB3aWR0aDogODclO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAjbWFsYXtcclxuICAgICAgICAgIG1hcmdpbi1sZWZ0OiAyMSU7IFxyXG4gICAgICB9XHJcbiAgfVxyXG5cclxuICBAbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA4MDBweCkge1xyXG4gICAgICBidXR0b24ge1xyXG4gICAgICAgICAgd2lkdGg6IDgxJTtcclxuICAgICAgfVxyXG4gIH1cclxuXHJcbiAgQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogMTI4MHB4KSB7XHJcbiAgICAgIGJ1dHRvbiB7XHJcbiAgICAgICAgICB3aWR0aDogODElO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAjbWFsYXtcclxuICAgICAgICAgIG1hcmdpbi1sZWZ0OiAyNSU7IFxyXG4gICAgICB9XHJcbiAgfVxyXG5cclxuICBAbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiAxMDI0cHgpIHtcclxuICAgICAgYnV0dG9uIHtcclxuICAgICAgICAgIHdpZHRoOiA4MSU7XHJcbiAgICAgIH1cclxuXHJcbiAgICAgICNtYWxhe1xyXG4gICAgICAgICAgbWFyZ2luLWxlZnQ6IDI1JTsgXHJcbiAgICAgIH1cclxuICB9Il19 */");
 
 /***/ }),
 
@@ -4350,6 +4872,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -4391,11 +4916,15 @@ var SigninComponent = /** @class */ (function () {
     SigninComponent.prototype.gotoforgotpass = function () {
         this.router.navigate(['/sendpass']);
     };
+    SigninComponent.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    ]; };
     SigninComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-signin',
-            template: __webpack_require__(/*! ./signin.component.html */ "./src/app/auth/signin.component.html"),
-            styles: [__webpack_require__(/*! ./signin.component.css */ "./src/app/auth/signin.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./signin.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/signin.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./signin.component.css */ "./src/app/auth/signin.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], SigninComponent);
@@ -4403,17 +4932,6 @@ var SigninComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/auth/signup.component.html":
-/*!********************************************!*\
-  !*** ./src/app/auth/signup.component.html ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"row\">\n  <div *ngIf=\"criarForm()\" class=\"col-md-1\">\n    <button id=\"btnnew\" class=\"btn btn-secondary\" (click)=\"goCadastro()\">Cadastro</button>\n  </div>\n  <div *ngIf=\"!criarForm()\" class=\"col-md-1\">\n    <button id=\"btnchange\" class=\"btn btn-secondary\" (click)=\"goCadastro()\">Novo</button>\n  </div>\n  <div *ngIf=\"!criarForm()\" class=\"col-md-1\">\n    <button id=\"btnenabled\" class=\"btn btn-warning\" (click)=\"doEnabled()\">\n      <span class=\"glyphicon glyphicon-edit\"></span>Editar</button>\n  </div>\n</div>\n\n<div *ngIf=\"!criarForm()\" class=\"row\">\n  <div class=\"col-md-1\">\n    <h4>Filtro:</h4>\n  </div>\n  <hr>\n</div>\n\n<div *ngIf=\"!criarForm()\" class=\"row\">\n  <div class=\"col-md-3\">\n    <button type=\"button\" id=\"useranterior\" (click)=\"anteriorUser($event)\" class=\"btn btn-default\">\n      < </button>\n        <button type=\"button\" id=\"userproximo\" (click)=\"proximoUser($event)\" class=\"btn btn-default\"> > </button>\n  </div>\n</div>\n\n\n  <div *ngIf=\"!criarForm()\" class=\"row\" >\n    <div class=\"col-md-3\">\n      <label for=\"userselected\">Publicador </label>\n      <select [(ngModel)]=\"userselected\" class=\"form-control\" (change)=\"setValuesToForm()\" id=\"userselected\">\n        <option> </option>\n        <option *ngFor=\"let user of userall\" [ngValue]=\"user\">{{user?.firstName}} {{user?.lastName}}</option>\n      </select>\n    </div>\n\n\n    <div class=\"col-md-3\" >\n      <label for=\"circselected\">Circuito </label>\n      <select [(ngModel)]=\"circselected\" class=\"form-control\" (change)=\"onCirc()\" id=\"circselected\">\n        <option> </option>\n        <option *ngFor=\"let circ of circall\" [ngValue]=\"circ\">{{circ?.nome}}</option>\n      </select>\n    </div>\n\n    <div class=\"col-md-3\">\n      <label for=\"congselected\">Congregação </label>\n      <select [(ngModel)]=\"congselected\" class=\"form-control\" (change)=\"onCong()\" id=\"congselected\">\n        <option> </option>\n        <option *ngFor=\"let cong of congall\" [ngValue]=\"cong\">{{cong?.nome}}</option>\n      </select>\n    </div>\n  </div>\n\n\n  <div *ngIf=\"!criarForm()\" class=\"row\">\n    <div class=\"col-md-12\">\n      <hr>\n    </div>\n  </div>\n\n\n\n  <form [formGroup]=\"myForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\n  \n    \n        <div class=\"col-md-3\">\n          <div class=\"form-group\">\n\n            <label for=\"firstName\">Nome</label>\n            <input type=\"text\" id=\"firstName\" class=\"form-control\" formControlName=\"firstName\">\n          </div>\n        </div>\n\n        <div class=\"col-md-3\">\n          <div class=\"form-group\">\n            <label for=\"lastName\">Sobrenome</label>\n            <input type=\"text\" id=\"lastName\" class=\"form-control\" formControlName=\"lastName\">\n          </div>\n        </div>\n\n\n\n        <div class=\"col-md-3\">\n          <div class=\"form-group\">\n            <label for=\"email\">Email</label>\n            <input align=\"right\" type=\"email\" id=\"email\" class=\"form-control\" formControlName=\"email\" autocomplete=\"false\">\n          </div>\n        </div>\n  \n\n    \n        <div class=\"col-md-3\">\n          <div *ngIf=\"userSelected()\" class=\"form-group\">\n            <label for=\"password\">Senha</label>\n            <span> (mínimo de 6 caracteres)</span>\n            <input name=\"password\" align=\"right\" type=\"password\" id=\"password\" class=\"form-control\" formControlName=\"password\" pattern=\".{6,}\"\n              required title=\"deve ter 6 caracteres no mínimo\" autocomplete=\"false\">\n          </div>\n        </div>\n      \n\n        <div class=\"col-md-3\">\n          <div class=\"form-group\">\n            <label for=\"circuito\">Circuito</label>\n            <select [(ngModel)]=\"circuito\" id=\"circuito\" class=\"form-control\" formControlName=\"circuito\" (change)=\"changeCongregation()\">\n              <option> </option>\n              <option *ngFor=\"let circuito of circuitos\" [ngValue]=\"circuito\">{{circuito?.nome}}</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"col-md-3\">\n          <div class=\"form-group\">\n            <label for=\"congregation\">Congregação</label>\n            <select [(ngModel)]=\"congregation\" formControlName=\"congregation\" id=\"congregation\" class=\"form-control\" (change)=\"changeResponsableAndConjuge()\">\n              <option> </option>\n              <option *ngFor=\"let congregation of congregations\" [ngValue]=\"congregation\">{{congregation?.nome}}</option>\n            </select>\n          </div>\n        </div>\n      \n\n  \n        <div class=\"col-md-3\">\n          <div class=\"form-group\">\n            <label for=\"sex\">Sexo</label>\n            <select type=\"text\" [(ngModel)]=\"sex\" id=\"sex\" class=\"form-control\" formControlName=\"sex\" (change)=\"changeResponsableAndConjuge()\">\n              <option> </option>\n              <option value=\"M\">Masculino</option>\n              <option value=\"F\">Feminino</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"col-md-3\">\n          <div class=\"form-group\">\n            <label for=\"privilege\">Privilégio</label>\n            <select type=\"text\" id=\"privilege\" class=\"form-control\" formControlName=\"privilege\" ng-model=\"privilege\">\n              <option> </option>\n              <option value=\"PU\">Publicador(a)</option>\n              <option value=\"PI\">Pioneiro(a)</option>\n              <option value=\"S\">Servo</option>\n              <option value=\"A\">Ancião</option>\n              <option value=\"PS\">Pioneiro e Servo</option>\n              <option value=\"PA\">Pioneiro e Ancião</option>\n            </select>\n          </div>\n        </div> \n\n        <div class=\"col-md-3\">\n          <div class=\"form-group\">\n            <label for=\"datebirth\">Data de Nascimento</label>\n            <input [(ngModel)]=\"mybirth\" name=\"mybirth\" type=\"date\" id=\"datebirth\" class=\"form-control\" formControlName=\"datebirth\" (change)=\"responsableNeed()\">\n          </div>\n        </div>\n    \n\n     \n        <div class=\"col-md-3\">\n          <div *ngIf=\"responsableNeed()\" class=\"form-group\">\n            <label for=\"responsable\">Responsável</label>\n            <select [(ngModel)]=\"responsable\" formControlName=\"responsable\" id=\"responsable\" class=\"form-control\">\n              <option> </option>\n              <option *ngFor=\"let responsable of responsables\" [ngValue]=\"responsable\">{{responsable?.firstName}} {{responsable?.lastName}}</option>\n            </select>\n          </div>\n        </div>\n\n\n        <div class=\"col-md-3\">\n          <div class=\"form-group\">\n            <label for=\"mobilephone\">Telefone Celular</label>\n            <input type=\"number\" id=\"mobilephone\" class=\"form-control\" formControlName=\"mobilephone\" pattern=\".{11,11}\">\n          </div>\n        </div>\n\n        <div class=\"col-md-3\">\n          <div class=\"form-group\">\n            <label for=\"phone\">Telefone Residencial</label>\n            <input type=\"number\" id=\"phone\" class=\"form-control\" formControlName=\"phone\" pattern=\".{0,10}\">\n          </div>\n        </div>\n   \n\n    \n        <div class=\"col-md-3\">\n          <div class=\"form-group\">\n            <label for=\"eldermail\">Email para notificação </label>\n            <input type=\"email\" id=\"eldermail\" class=\"form-control\" formControlName=\"eldermail\">\n          </div>\n        </div>\n     \n\n     \n        <div class=\"col-md-3\">\n          <div *ngIf=\"existConjuge()\" class=\"form-group\">\n            <label for=\"conjuge\">Companheiro(a)</label>\n            <select [(ngModel)]=\"conjuge\" formControlName=\"conjuge\" id=\"conjuge\" class=\"form-control\">\n              <option> </option>\n              <option *ngFor=\"let conjuge of conjuges\" [ngValue]=\"conjuge\">{{conjuge?.firstName}} {{conjuge?.lastName}}</option>\n            </select>\n          </div>\n        </div>\n   \n\n    <div class=\"row\">\n      <div *ngIf=\"criarForm()\" class=\"col-md-3\">\n        <br>\n        <button class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!myForm.valid\">Criar</button>\n      </div>\n\n      <div *ngIf=\"!criarForm()\" class=\"col-md-3\">\n        <br>\n        <button class=\"btn btn-primary\" type=\"submit\" [disabled]=\"validMyForm()\">Salvar</button>\n      </div>\n    </div>\n  \n\n  </form>\n\n\n  <div class=\"row\">\n    <div class=\"col-md-3\">\n      <h4>Disponibilidade</h4>\n\n      <br>\n\n\n      <button type=\"button\" id=\"anterior\" (click)=\"anteriorDia($event)\" class=\"btn btn-default\">\n        < </button>\n          <button type=\"button\" id=\"proximo\" (click)=\"proximoDia($event)\" class=\"btn btn-default\"> > </button>\n          <select [(ngModel)]=\"dayselect\" class=\"form-control\" (change)=\"horasExistentes()\" id=\"dayselected\">\n            <option>Segunda-feira</option>\n            <option>Terça-feira</option>\n            <option>Quarta-feira</option>\n            <option>Quinta-feira</option>\n            <option>Sexta-feira</option>\n            <option>Sábado</option>\n            <option>Domingo</option>\n          </select>\n\n          <table class=\"table table-condensed\">\n            <thead>\n              <tr>\n                <th scope=\"col\">Horários</th>\n                <th scope=\"col\">Seleção</th>\n                <th scope=\"col\">Vezes/Mês</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr *ngFor=\"let hora of horas; let h = index\">\n                <th *ngIf=\"hora.vagas > 0\" scope=\"row\">{{ hora.hora }}</th>\n                <td *ngIf=\"hora.vagas > 0\">\n                  <input class=\"inputhora\" type=\"checkbox\" (change)=\"changed($event.target.checked,hora)\" [checked]=\"valorCheck(hora)\" [disabled]=\"inputCheckCondition()\">\n                </td>\n                <td *ngIf=\"((dayselect == 'Domingo' || dayselect == 'Sábado') && (hora.vagas > 0))\">\n                  <!-- <input id=\"{{ 'input' + dayselect }}\" type=\"number\" min=\"1\" max=\"5\" style=\"width: 2em;\"  (change)=\"vezesFds($event.target.value, hora.code)\" value=\"valueInput()\" [disabled]=\"!valorCheck(hora)\"> -->\n                  <input type=\"number\" min=\"1\" max=\"5\" style=\"width: 2em;\" (change)=\"vezesFds($event.target.value, hora.code)\" [value]=\"valueInput(hora.code)\"\n                    [disabled]=\"inputCondition(hora)\">\n                </td>\n              </tr>\n            </tbody>\n          </table>"
 
 /***/ }),
 
@@ -4444,6 +4962,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -5135,10 +5656,14 @@ var SignupComponent = /** @class */ (function () {
         }
         return false;
     };
+    SignupComponent.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
+    ]; };
     SignupComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-signup',
-            template: __webpack_require__(/*! ./signup.component.html */ "./src/app/auth/signup.component.html"),
+            template: __importDefault(__webpack_require__(/*! raw-loader!./signup.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/signup.component.html")).default,
             styles: ["\n\n   #firstName{\n      text-transform: capitalize;\n   }\n\n   #lastName{\n    text-transform: capitalize;\n }\n\n\n\n.ng-valid:not(#userselected):not(#dayselected):not(form):not([type=\"checkbox\"]):not(#circselected):not(#congselected){\n        border-left: 5px solid #42A948; /* green */\n      }\n\n.ng-invalid:not(#userselected):not(#dayselected):not(form):not([type=\"checkbox\"]):not(#circselected):not(#congselected){\n        border-left: 5px solid #a94442; /* red */\n      }\n\ninput[type=checkbox]\n{\n    border: none;\n}\n\n      table {\n        font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n        border-collapse: collapse;\n        width: 100%;\n    }\n\n td, th {\n        border: 1px solid #ddd;\n        padding: 8px;\n        text-align: center;\n    }\n\n  tr:nth-child(even){background-color: #f2f2f2;}\n\n tr:hover {background-color: #ddd;}\n\n th {\n        padding-top: 12px;\n        padding-bottom: 12px;\n        background-color: black;\n        color: white;\n    }\n\n\n\n\n  "]
         }),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
@@ -5147,17 +5672,6 @@ var SignupComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/auth/statistic.component.html":
-/*!***********************************************!*\
-  !*** ./src/app/auth/statistic.component.html ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div *ngIf=\"!showNow\" >\r\n  <h4>Carregando informações...</h4>\r\n</div>\r\n<div *ngIf=\"showNow\" class=\"container\">\r\n\r\n  <div class=\"table table-responsive\">\r\n\r\n    <h2 class=\"text-primary\">Geral</h2>\r\n    <br>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"form-group col-md-4\">\r\n\r\n        <table class=\"table table-responsive table-hover\" id=\"dataTables\">\r\n          <thead style=\"background-color:LightSkyBlue\">\r\n            <tr>\r\n              <th></th>\r\n              <th>Total</th>\r\n              <th>Porcentagem</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr>\r\n              <td>\r\n                <b>Varões</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ totalman }}</span>\r\n                </b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ (totalman/totalpub * 100).toFixed(1)}}%</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Irmãs</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ totalwoman }}</span>\r\n                </b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ (totalwoman/totalpub * 100).toFixed(1)}}%</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Publicadores</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ totalpub }}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n      <div class=\"form-group col-md-4\">\r\n        <table width=\"100%\" class=\"table table-responsive table-hover\" id=\"dataTables2\">\r\n          <thead style=\"background-color:LightSkyBlue\">\r\n            <tr>\r\n              <th></th>\r\n              <th>Média</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr>\r\n              <td>\r\n                <b>Idade</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ (mediaidade).toFixed(1) }}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Publicador mais velho</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ maisvelho }}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Publicador mais novo</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ maisnovo }}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n      <br>\r\n      <div class=\"form-group col-md-4\">\r\n        <table width=\"100%\" class=\"table table-responsive table-hover\" id=\"dataTables3\">\r\n          <thead style=\"background-color:LightSkyBlue\">\r\n            <tr>\r\n              <th></th>\r\n              <th>Total</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr>\r\n              <td>\r\n                <b>Circuitos</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ countcirc }}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Congregações</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ countcong }}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n    </div>\r\n    <br>\r\n    <h2 class=\"text-primary\">Publicadores por Circuito / Congregação </h2>\r\n    <div class=\"row\">\r\n      <div *ngFor=\"let cc of circcong\">\r\n        <br>\r\n        <br>\r\n        <div class=\"form-group col-md-4\">\r\n          <table>\r\n            <tbody>\r\n              <tr>\r\n                <td style=\"white-space:nowrap;\">\r\n                  <b>Circuito: </b>\r\n                  <span class=\"text-danger\">\r\n                    <b>{{ encontraCircuito(cc.circ )}}</b>\r\n                  </span>\r\n                </td>\r\n              </tr>\r\n            </tbody>\r\n          </table>\r\n          <table>\r\n            <thead style=\"background-color:LightSkyBlue\">\r\n              <th>Congregação</th>\r\n              <th>Publicadores</th>\r\n            </thead>\r\n            <tbody>\r\n              <tr *ngFor=\"let c of cc.cong\">\r\n                <td>\r\n                  <b>{{ encontraCongregacao(c) }}</b>\r\n                </td>\r\n                <td class=\"center\">\r\n                  <b>\r\n                    <span class=\"text-danger\">{{ countCong(c) }}</span>\r\n                  </b>\r\n                </td>\r\n              </tr>\r\n              <tr>\r\n                <td>\r\n                  <b>Total</b>\r\n                </td>\r\n                <td class=\"center\">\r\n                  <b>\r\n                    <span class=\"text-danger\">{{ cc.countcirc }}</span>\r\n                  </b>\r\n                </td>\r\n              </tr>\r\n            </tbody>\r\n          </table>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <br>\r\n    <br>\r\n    <h2 class=\"text-primary\">Publicadores por dia / Vagas disponíveis </h2>\r\n    <br>\r\n    <div class=\"row\">\r\n      <div class=\"form-group col-md-6\">\r\n\r\n\r\n\r\n        <table class=\"table table-responsive table-hover\">\r\n          <thead style=\"background-color:LightSkyBlue\">\r\n            <th>Dias da Semana</th>\r\n            <th>Vagas Disponíveis</th>\r\n          </thead>\r\n          <tbody>\r\n            <tr>\r\n              <td>\r\n                <b>Segunda-feira</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ segunda}}/{{totalsegunda}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Terça-feira</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ terca}}/{{totalterca}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Quarta-feira</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ quarta}}/{{totalquarta}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Quinta-feira</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ quinta}}/{{totalquinta}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Sexta-feira</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ sexta}}/{{totalsexta}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Sábado</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ sabado}}/{{totalsabado}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Domingo</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ domingo}}/{{totaldomingo}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n\r\n      <div class=\"form-group col-md-6\">\r\n        <table class=\"table table-responsive table-hover\">\r\n          <thead style=\"background-color:LightSkyBlue\">\r\n            <th>\r\n              <b>Publicadores sem disponibilidade</b>\r\n            </th>\r\n            <th>Qtd</th>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let user of semdispoarray\">\r\n              <td>\r\n                <b>\r\n                  <span class=\"text\"> {{ user.firstName}}{{ user.lastName}}</span>\r\n                </b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">1</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n            <tr>\r\n              <td>\r\n                <b>Total</b>\r\n              </td>\r\n              <td class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{ semdispo }}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n    </div>\r\n    <br>\r\n    <br>\r\n\r\n    <h2 class=\"text-primary\">Publicadores por horário / Vagas disponíveis </h2>\r\n    <br>\r\n    <div class=\"row\">\r\n\r\n      <div *ngFor=\"let semanadia of diasdasemana; let i = index\" class=\"form-group col-md-4\">\r\n\r\n        <table class=\"table table-responsive table-hover\">\r\n          <thead style=\"background-color:LightSkyBlue\">\r\n            <tr>\r\n              <th scope=\"col\">Horário</th>\r\n              <th scope=\"col\">\r\n                <b>{{ semanadia }}</b>\r\n              </th>\r\n            </tr>\r\n            <tr>\r\n\r\n            </tr>\r\n          </thead>\r\n          <tbody *ngIf=\"horasExistentes(semanadia)\">\r\n            <tr *ngFor=\"let hora of horas; let h = index\">\r\n              <th *ngIf=\"hora.vagas > 0\" scope=\"row\">\r\n                <b>{{ hora.hora }}</b>\r\n              </th>\r\n              <td *ngIf=\"hora.vagas > 0\" class=\"center\">\r\n                <b>\r\n                  <span class=\"text-danger\">{{countUser(hora.code,semanadia)}}/{{hora.vagas}}</span>\r\n                </b>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -5182,6 +5696,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -5481,10 +5998,14 @@ var StatisticComponent = /** @class */ (function () {
         var users = this.users.filter(function (a) { return a.congregation == cong; });
         return users.length;
     };
+    StatisticComponent.ctorParameters = function () { return [
+        { type: _auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }
+    ]; };
     StatisticComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-statistic',
-            template: __webpack_require__(/*! ./statistic.component.html */ "./src/app/auth/statistic.component.html"),
+            template: __importDefault(__webpack_require__(/*! raw-loader!./statistic.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/statistic.component.html")).default,
             styles: ["\n\n  .center{\n    text-align: center\n  }\n\n    "]
         }),
         __metadata("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
@@ -5506,6 +6027,9 @@ var StatisticComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var User = /** @class */ (function () {
     function User(email, password, firstName, lastName, congregation, circuito, mobilephone, phone, datebirth, responsable, conjuge, sex, privilege, eldermail, config, released, userId, lastday, role, agenda, escala, telegram) {
         this.email = email;
@@ -5540,17 +6064,6 @@ var User = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/errors/error.component.html":
-/*!*********************************************!*\
-  !*** ./src/app/errors/error.component.html ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\n    <div class=\"modal-dialog\" role=\"document\">\n        <div class=\"modal-content\">\n            <div class=\"modal-header\">\n                <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"onErrorHandled()\"><span aria-hidden=\"true\">&times;</span></button>\n                <h4 class=\"modal-title\">{{ error?.title }}</h4>\n            </div>\n            <div class=\"modal-body\">\n                <p>{{ error?.message }}</p>\n            </div>\n            <div class=\"modal-footer\">\n                <button type=\"button\" class=\"btn btn-default\" (click)=\"onErrorHandled()\">Fechar</button>\n            </div>\n        </div><!-- /.modal-content -->\n    </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->"
-
-/***/ }),
-
 /***/ "./src/app/errors/error.component.ts":
 /*!*******************************************!*\
   !*** ./src/app/errors/error.component.ts ***!
@@ -5572,6 +6085,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -5597,10 +6113,14 @@ var ErrorComponent = /** @class */ (function () {
                 _this.router.navigate(['/auth', 'signin']);
         });
     };
+    ErrorComponent.ctorParameters = function () { return [
+        { type: _error_service__WEBPACK_IMPORTED_MODULE_2__["ErrorService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }
+    ]; };
     ErrorComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-error',
-            template: __webpack_require__(/*! ./error.component.html */ "./src/app/errors/error.component.html"),
+            template: __importDefault(__webpack_require__(/*! raw-loader!./error.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/errors/error.component.html")).default,
             styles: ["\n        .backdrop {\n            background-color: rgba(0,0,0,0.6);\n            position: fixed;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100vh;\n        }\n    "]
         }),
         __metadata("design:paramtypes", [_error_service__WEBPACK_IMPORTED_MODULE_2__["ErrorService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
@@ -5622,6 +6142,9 @@ var ErrorComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Error", function() { return Error; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var Error = /** @class */ (function () {
     function Error(title, message) {
         this.title = title;
@@ -5646,6 +6169,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorService", function() { return ErrorService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _error_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./error.model */ "./src/app/errors/error.model.ts");
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 
 var ErrorService = /** @class */ (function () {
@@ -5685,6 +6211,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -5730,6 +6259,9 @@ var HelpComponent = /** @class */ (function () {
         else
             return ' ';
     };
+    HelpComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"] }
+    ]; };
     HelpComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-help',
@@ -5748,21 +6280,12 @@ var HelpComponent = /** @class */ (function () {
 /*!*******************************************************!*\
   !*** ./src/app/newschedule/newschedule.component.css ***!
   \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = ".backdrop {\r\n    background-color: rgba(0,0,0,0.6);\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100vh;\r\n}\r\n\r\nspan{\r\n    font-size:22px;\r\n\r\n  }\r\n\r\nh3{ \r\n      background-color: yellow;\r\n      font: bold 34px \"Century Schoolbook\", Georgia, Times, serif;\r\n      color: #333;\r\n      line-height: 90%;\r\n      margin: .2em 0 .4em 0;\r\n      letter-spacing: -2px;\r\n  }\r\n\r\ntable, th, td {\r\n    border: 1px solid black;\r\n    border-spacing: 2px;\r\n    \r\n}\r\n\r\ntd    {padding: 4px;}\r\n\r\n.container {\r\n  background-size: cover;\r\n  background: rgb(226,226,226); /* Old browsers */ /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */\r\n  background: linear-gradient(to bottom,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* W3C */\r\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */\r\n  padding: 20px;\r\n}\r\n\r\n.led-box {\r\n  height: 30px;\r\n  width: 25%;\r\n  margin: 10px 0;\r\n  float: left;\r\n}\r\n\r\n.led-box p {\r\n  font-size: 12px;\r\n  text-align: center;\r\n  margin: 1em;\r\n}\r\n\r\n.led-red {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #F00;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;\r\n  -webkit-animation: blinkRed 0.5s infinite;\r\n  animation: blinkRed 0.5s infinite;\r\n}\r\n\r\n@-webkit-keyframes blinkRed {\r\n    from { background-color: #F00; }\r\n    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}\r\n    to { background-color: #F00; }\r\n}\r\n\r\n@keyframes blinkRed {\r\n    from { background-color: #F00; }\r\n    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}\r\n    to { background-color: #F00; }\r\n}\r\n\r\n.led-yellow {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #FF0;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;\r\n  -webkit-animation: blinkYellow 1s infinite;\r\n  animation: blinkYellow 1s infinite;\r\n}\r\n\r\n.led-yellow-static {\r\n    margin: 0 auto;\r\n    width: 20px;\r\n    height: 20px;\r\n    background-color: #FF0;\r\n    border-radius: 50%;\r\n    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;\r\n  }\r\n\r\n@-webkit-keyframes blinkYellow {\r\n    from { background-color: #FF0; }\r\n    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }\r\n    to { background-color: #FF0; }\r\n}\r\n\r\n@keyframes blinkYellow {\r\n    from { background-color: #FF0; }\r\n    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }\r\n    to { background-color: #FF0; }\r\n}\r\n\r\n.led-green {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #ABFF00;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;\r\n}\r\n\r\n.led-blue {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #24E0FF;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3F8CFF 0 2px 14px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmV3c2NoZWR1bGUvbmV3c2NoZWR1bGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGlDQUFpQztJQUNqQyxlQUFlO0lBQ2YsTUFBTTtJQUNOLE9BQU87SUFDUCxXQUFXO0lBQ1gsYUFBYTtBQUNqQjs7QUFFQTtJQUNJLGNBQWM7O0VBRWhCOztBQUlFO01BQ0Usd0JBQXdCO01BQ3hCLDJEQUEyRDtNQUMzRCxXQUFXO01BQ1gsZ0JBQWdCO01BQ2hCLHFCQUFxQjtNQUNyQixvQkFBb0I7RUFDeEI7O0FBR0E7SUFDRSx1QkFBdUI7SUFDdkIsbUJBQW1COztBQUV2Qjs7QUFFQSxPQUFPLFlBQVksQ0FBQzs7QUFFcEI7RUFDRSxzQkFBc0I7RUFDdEIsNEJBQTRCLEVBQUUsaUJBQWlCLEVBQzZGLFdBQVcsRUFDMEQsb0JBQW9CLEVBQ3pGLHlCQUF5QixFQUM5QixpQkFBaUIsRUFDaEIsVUFBVTtFQUNsSix3SUFBd0ksRUFBRSxRQUFRO0VBQ2xKLG1IQUFtSCxFQUFFLFVBQVU7RUFDL0gsYUFBYTtBQUNmOztBQUVBO0VBQ0UsWUFBWTtFQUNaLFVBQVU7RUFDVixjQUFjO0VBQ2QsV0FBVztBQUNiOztBQUVBO0VBQ0UsZUFBZTtFQUNmLGtCQUFrQjtFQUNsQixXQUFXO0FBQ2I7O0FBRUE7RUFDRSxjQUFjO0VBQ2QsV0FBVztFQUNYLFlBQVk7RUFDWixzQkFBc0I7RUFDdEIsa0JBQWtCO0VBQ2xCLHdHQUF3RztFQUN4Ryx5Q0FBeUM7RUFJekMsaUNBQWlDO0FBQ25DOztBQUVBO0lBQ0ksT0FBTyxzQkFBc0IsRUFBRTtJQUMvQixNQUFNLHNCQUFzQixFQUFFLHFHQUFxRyxDQUFDO0lBQ3BJLEtBQUssc0JBQXNCLEVBQUU7QUFDakM7O0FBZ0JBO0lBQ0ksT0FBTyxzQkFBc0IsRUFBRTtJQUMvQixNQUFNLHNCQUFzQixFQUFFLHFHQUFxRyxDQUFDO0lBQ3BJLEtBQUssc0JBQXNCLEVBQUU7QUFDakM7O0FBRUE7RUFDRSxjQUFjO0VBQ2QsV0FBVztFQUNYLFlBQVk7RUFDWixzQkFBc0I7RUFDdEIsa0JBQWtCO0VBQ2xCLHdGQUF3RjtFQUN4RiwwQ0FBMEM7RUFJMUMsa0NBQWtDO0FBQ3BDOztBQUVBO0lBQ0ksY0FBYztJQUNkLFdBQVc7SUFDWCxZQUFZO0lBQ1osc0JBQXNCO0lBQ3RCLGtCQUFrQjtJQUNsQix3RkFBd0Y7RUFDMUY7O0FBRUY7SUFDSSxPQUFPLHNCQUFzQixFQUFFO0lBQy9CLE1BQU0sc0JBQXNCLEVBQUUscUZBQXFGLEVBQUU7SUFDckgsS0FBSyxzQkFBc0IsRUFBRTtBQUNqQzs7QUFnQkE7SUFDSSxPQUFPLHNCQUFzQixFQUFFO0lBQy9CLE1BQU0sc0JBQXNCLEVBQUUscUZBQXFGLEVBQUU7SUFDckgsS0FBSyxzQkFBc0IsRUFBRTtBQUNqQzs7QUFFQTtFQUNFLGNBQWM7RUFDZCxXQUFXO0VBQ1gsWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixrQkFBa0I7RUFDbEIsMkZBQTJGO0FBQzdGOztBQUVBO0VBQ0UsY0FBYztFQUNkLFdBQVc7RUFDWCxZQUFZO0VBQ1oseUJBQXlCO0VBQ3pCLGtCQUFrQjtFQUNsQix3RkFBd0Y7QUFDMUYiLCJmaWxlIjoic3JjL2FwcC9uZXdzY2hlZHVsZS9uZXdzY2hlZHVsZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJhY2tkcm9wIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwwLDAsMC42KTtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHRvcDogMDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogMTAwdmg7XHJcbn1cclxuXHJcbnNwYW57XHJcbiAgICBmb250LXNpemU6MjJweDtcclxuXHJcbiAgfVxyXG5cclxuICBcclxuXHJcbiAgICBoM3sgXHJcbiAgICAgIGJhY2tncm91bmQtY29sb3I6IHllbGxvdztcclxuICAgICAgZm9udDogYm9sZCAzNHB4IFwiQ2VudHVyeSBTY2hvb2xib29rXCIsIEdlb3JnaWEsIFRpbWVzLCBzZXJpZjtcclxuICAgICAgY29sb3I6ICMzMzM7XHJcbiAgICAgIGxpbmUtaGVpZ2h0OiA5MCU7XHJcbiAgICAgIG1hcmdpbjogLjJlbSAwIC40ZW0gMDtcclxuICAgICAgbGV0dGVyLXNwYWNpbmc6IC0ycHg7XHJcbiAgfVxyXG5cclxuXHJcbiAgdGFibGUsIHRoLCB0ZCB7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCBibGFjaztcclxuICAgIGJvcmRlci1zcGFjaW5nOiAycHg7XHJcbiAgICBcclxufSBcclxuXHJcbnRkICAgIHtwYWRkaW5nOiA0cHg7fVxyXG5cclxuLmNvbnRhaW5lciB7XHJcbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxuICBiYWNrZ3JvdW5kOiByZ2IoMjI2LDIyNiwyMjYpOyAvKiBPbGQgYnJvd3NlcnMgKi9cclxuICBiYWNrZ3JvdW5kOiAtbW96LWxpbmVhci1ncmFkaWVudCh0b3AsICByZ2JhKDIyNiwyMjYsMjI2LDEpIDAlLCByZ2JhKDIxOSwyMTksMjE5LDEpIDUwJSwgcmdiYSgyMDksMjA5LDIwOSwxKSA1MSUsIHJnYmEoMjU0LDI1NCwyNTQsMSkgMTAwJSk7IC8qIEZGMy42KyAqL1xyXG4gIGJhY2tncm91bmQ6IC13ZWJraXQtZ3JhZGllbnQobGluZWFyLCBsZWZ0IHRvcCwgbGVmdCBib3R0b20sIGNvbG9yLXN0b3AoMCUscmdiYSgyMjYsMjI2LDIyNiwxKSksIGNvbG9yLXN0b3AoNTAlLHJnYmEoMjE5LDIxOSwyMTksMSkpLCBjb2xvci1zdG9wKDUxJSxyZ2JhKDIwOSwyMDksMjA5LDEpKSwgY29sb3Itc3RvcCgxMDAlLHJnYmEoMjU0LDI1NCwyNTQsMSkpKTsgLyogQ2hyb21lLFNhZmFyaTQrICovXHJcbiAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG9wLCAgcmdiYSgyMjYsMjI2LDIyNiwxKSAwJSxyZ2JhKDIxOSwyMTksMjE5LDEpIDUwJSxyZ2JhKDIwOSwyMDksMjA5LDEpIDUxJSxyZ2JhKDI1NCwyNTQsMjU0LDEpIDEwMCUpOyAvKiBDaHJvbWUxMCssU2FmYXJpNS4xKyAqL1xyXG4gIGJhY2tncm91bmQ6IC1vLWxpbmVhci1ncmFkaWVudCh0b3AsICByZ2JhKDIyNiwyMjYsMjI2LDEpIDAlLHJnYmEoMjE5LDIxOSwyMTksMSkgNTAlLHJnYmEoMjA5LDIwOSwyMDksMSkgNTElLHJnYmEoMjU0LDI1NCwyNTQsMSkgMTAwJSk7IC8qIE9wZXJhIDExLjEwKyAqL1xyXG4gIGJhY2tncm91bmQ6IC1tcy1saW5lYXItZ3JhZGllbnQodG9wLCAgcmdiYSgyMjYsMjI2LDIyNiwxKSAwJSxyZ2JhKDIxOSwyMTksMjE5LDEpIDUwJSxyZ2JhKDIwOSwyMDksMjA5LDEpIDUxJSxyZ2JhKDI1NCwyNTQsMjU0LDEpIDEwMCUpOyAvKiBJRTEwKyAqL1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20sICByZ2JhKDIyNiwyMjYsMjI2LDEpIDAlLHJnYmEoMjE5LDIxOSwyMTksMSkgNTAlLHJnYmEoMjA5LDIwOSwyMDksMSkgNTElLHJnYmEoMjU0LDI1NCwyNTQsMSkgMTAwJSk7IC8qIFczQyAqL1xyXG4gIGZpbHRlcjogcHJvZ2lkOkRYSW1hZ2VUcmFuc2Zvcm0uTWljcm9zb2Z0LmdyYWRpZW50KCBzdGFydENvbG9yc3RyPScjZTJlMmUyJywgZW5kQ29sb3JzdHI9JyNmZWZlZmUnLEdyYWRpZW50VHlwZT0wICk7IC8qIElFNi05ICovXHJcbiAgcGFkZGluZzogMjBweDtcclxufVxyXG5cclxuLmxlZC1ib3gge1xyXG4gIGhlaWdodDogMzBweDtcclxuICB3aWR0aDogMjUlO1xyXG4gIG1hcmdpbjogMTBweCAwO1xyXG4gIGZsb2F0OiBsZWZ0O1xyXG59XHJcblxyXG4ubGVkLWJveCBwIHtcclxuICBmb250LXNpemU6IDEycHg7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIG1hcmdpbjogMWVtO1xyXG59XHJcblxyXG4ubGVkLXJlZCB7XHJcbiAgbWFyZ2luOiAwIGF1dG87XHJcbiAgd2lkdGg6IDIwcHg7XHJcbiAgaGVpZ2h0OiAyMHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNGMDA7XHJcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gIGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yKSAwIC0xcHggN3B4IDFweCwgaW5zZXQgIzQ0MTMxMyAwIC0xcHggOXB4LCByZ2JhKDI1NSwgMCwgMCwgMC41KSAwIDJweCAxMnB4O1xyXG4gIC13ZWJraXQtYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gIC1tb3otYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gIC1tcy1hbmltYXRpb246IGJsaW5rUmVkIDAuNXMgaW5maW5pdGU7XHJcbiAgLW8tYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gIGFuaW1hdGlvbjogYmxpbmtSZWQgMC41cyBpbmZpbml0ZTtcclxufVxyXG5cclxuQC13ZWJraXQta2V5ZnJhbWVzIGJsaW5rUmVkIHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxufVxyXG5ALW1vei1rZXlmcmFtZXMgYmxpbmtSZWQge1xyXG4gICAgZnJvbSB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxuICAgIDUwJSB7IGJhY2tncm91bmQtY29sb3I6ICNBMDA7IGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yKSAwIC0xcHggN3B4IDFweCwgaW5zZXQgIzQ0MTMxMyAwIC0xcHggOXB4LCByZ2JhKDI1NSwgMCwgMCwgMC41KSAwIDJweCAwO31cclxuICAgIHRvIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG59XHJcbkAtbXMta2V5ZnJhbWVzIGJsaW5rUmVkIHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxufVxyXG5ALW8ta2V5ZnJhbWVzIGJsaW5rUmVkIHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxufVxyXG5Aa2V5ZnJhbWVzIGJsaW5rUmVkIHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxufVxyXG5cclxuLmxlZC15ZWxsb3cge1xyXG4gIG1hcmdpbjogMCBhdXRvO1xyXG4gIHdpZHRoOiAyMHB4O1xyXG4gIGhlaWdodDogMjBweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwO1xyXG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcclxuICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAxMnB4O1xyXG4gIC13ZWJraXQtYW5pbWF0aW9uOiBibGlua1llbGxvdyAxcyBpbmZpbml0ZTtcclxuICAtbW96LWFuaW1hdGlvbjogYmxpbmtZZWxsb3cgMXMgaW5maW5pdGU7XHJcbiAgLW1zLWFuaW1hdGlvbjogYmxpbmtZZWxsb3cgMXMgaW5maW5pdGU7XHJcbiAgLW8tYW5pbWF0aW9uOiBibGlua1llbGxvdyAxcyBpbmZpbml0ZTtcclxuICBhbmltYXRpb246IGJsaW5rWWVsbG93IDFzIGluZmluaXRlO1xyXG59XHJcblxyXG4ubGVkLXllbGxvdy1zdGF0aWMge1xyXG4gICAgbWFyZ2luOiAwIGF1dG87XHJcbiAgICB3aWR0aDogMjBweDtcclxuICAgIGhlaWdodDogMjBweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNGRjA7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAxMnB4O1xyXG4gIH1cclxuXHJcbkAtd2Via2l0LWtleWZyYW1lcyBibGlua1llbGxvdyB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0FBMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMDsgfVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbn1cclxuQC1tb3ota2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQUEwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAwOyB9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxufVxyXG5ALW1zLWtleWZyYW1lcyBibGlua1llbGxvdyB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0FBMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMDsgfVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbn1cclxuQC1vLWtleWZyYW1lcyBibGlua1llbGxvdyB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0FBMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMDsgfVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbn1cclxuQGtleWZyYW1lcyBibGlua1llbGxvdyB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0FBMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMDsgfVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbn1cclxuXHJcbi5sZWQtZ3JlZW4ge1xyXG4gIG1hcmdpbjogMCBhdXRvO1xyXG4gIHdpZHRoOiAyMHB4O1xyXG4gIGhlaWdodDogMjBweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjQUJGRjAwO1xyXG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcclxuICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICMzMDQ3MDEgMCAtMXB4IDlweCwgIzg5RkYwMCAwIDJweCAxMnB4O1xyXG59XHJcblxyXG4ubGVkLWJsdWUge1xyXG4gIG1hcmdpbjogMCBhdXRvO1xyXG4gIHdpZHRoOiAyMHB4O1xyXG4gIGhlaWdodDogMjBweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjRFMEZGO1xyXG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcclxuICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICMwMDYgMCAtMXB4IDlweCwgIzNGOENGRiAwIDJweCAxNHB4O1xyXG59Il19 */"
-
-/***/ }),
-
-/***/ "./src/app/newschedule/newschedule.component.html":
-/*!********************************************************!*\
-  !*** ./src/app/newschedule/newschedule.component.html ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"onClose()\"><span aria-hidden=\"true\">&times;</span></button>\r\n                <h4 class=\"modal-title\">Telegrams Enviados {{telegramreport.length}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <p *ngFor=\"let tele of telegramreport\">{{ tele.user.firstName }} {{ tele.user.lastName }} dia {{ tele.dia}} horário: {{ tele.hora }}</p>\r\n            </div>\r\n            <div class=\"modal-footer\">\r\n                <button type=\"button\" class=\"btn btn-default\" (click)=\"onClose()\">Fechar</button>\r\n            </div>\r\n        </div><!-- /.modal-content -->\r\n    </div><!-- /.modal-dialog -->\r\n</div><!-- /.modal -->\r\n\r\n<div class=\"backdrop\" [ngStyle]=\"{'display': displaymail}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': displaymail}\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"onClosemail()\"><span aria-hidden=\"true\">&times;</span></button>\r\n                <h4 class=\"modal-title\">Emails Enviados {{emailreport.length}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <p *ngFor=\"let mail of emailreport\">{{ mail.user.firstName }} {{ mail.user.lastName }} dia {{ mail.dia}} horário: {{ mail.hora }}</p>\r\n            </div>\r\n            <div class=\"modal-footer\">\r\n                <button type=\"button\" class=\"btn btn-default\" (click)=\"onClosemail()\">Fechar</button>\r\n            </div>\r\n        </div><!-- /.modal-content -->\r\n    </div><!-- /.modal-dialog -->\r\n</div><!-- /.modal -->\r\n\r\n<div class=\"row\">\r\n  <div class=\"col-md-10 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <h3>Período Vigente</h3>\r\n    <button type=\"button\" id=\"anterior\" (click)=\"nextValidity($event)\" class=\"btn btn-default\">\r\n      < </button>\r\n        <button type=\"button\" id=\"proximo\" (click)=\"beforeValidity($event)\" class=\"btn btn-default\"> > </button>\r\n        <span class=\"badge badge-success\">De</span>\r\n        <span class=\"badge badge-success\"> {{ datainicio }}</span>\r\n        <span class=\"badge badge-success\">até</span>\r\n        <span class=\"badge badge-success\"> {{ datafim }}</span>\r\n        <div *ngIf=\"isAuthenticated()\">\r\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"sendEmail()\" style=\"float: right;\" [disabled]=\"!allowdelete\" [hidden]=\"!allowdelete\">Email</button>\r\n        <button type=\"button\" class=\"btn btn-success\" (click)=\"sendTelegram()\" style=\"float: right;\" [disabled]=\"!allowdelete\" [hidden]=\"!allowdelete\">Telegram</button>\r\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"salvaEscala()\" style=\"float: right;\" [disabled]=\"verifyallowsave()\">Salvar Escala</button>\r\n        <button type=\"button\" class=\"btn btn-danger\" (click)=\"deletaEscala()\" style=\"float: right;\" [disabled]=\"!allowdelete\">Del</button>\r\n        </div>\r\n  </div>\r\n</div>\r\n\r\n<div *ngIf=\"isAuthenticated()\" class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <button type=\"button\" class=\"btn btn-primary\" (click)=\"geraEscala()\" [disabled]=\"!allowsave\">Gerar Escala</button>\r\n    <br>\r\n    <li style=\"color:Black\" *ngIf=\"showNow\">\r\n      Pontos Vazios\r\n      <span class=\"label label-primary\" style=\"font-size:16px;\">\r\n        {{ reportvoid }}</span>\r\n    </li>\r\n    <hr>\r\n    <br>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div *ngIf=\"showNow\" class=\"row\">\r\n  <div class=\"col-md-12 col-md-offset-1\">\r\n    <div *ngFor=\"let esc of escala\">\r\n      <div class=\"alert alert-secondary\" role=\"alert\">\r\n      <span class=\"label label-info\" style=\"font-size:17px;\"><b>{{esc.dia}}</b></span>\r\n      <span class=\"label label-warning\" style=\"font-size:14px;\"><b>{{esc.diasemana}}</b></span>\r\n      </div>\r\n      <br>\r\n      <ul *ngFor=\"let hr of esc.hora; let h = index\">\r\n        <br>\r\n        <li style=\"background-color:Azure; color:Black\">\r\n          <b>{{ hr.hora }}</b>\r\n          <span style=\"float:right;font-size:11px;\">{{esc.dia}}/{{esc.diasemana}}</span>\r\n        </li>\r\n        <ul *ngFor=\"let pont of esc.pontos[h]\">\r\n          <li style=\"color:Black\">\r\n            <b>{{ pont.name }}</b>\r\n          </li>\r\n          <ul>\r\n            <table style=\"width:100%\">\r\n              <tr *ngFor=\"let pub of pont.pubs\">\r\n                <td width=\"5%\" *ngIf=\"(!allowsave) && pub?.sim == false && pub?.nao == false\"><div class=\"led-yellow\"></div></td>\r\n                <td width=\"5%\" *ngIf=\"allowsave && pub?.sim == false && pub?.nao == false\"><div class=\"led-yellow-static\"></div></td>\r\n                <td width=\"5%\" *ngIf=\"pub?.sim == true && pub?.nao == false\"><div class=\"led-green\"></div></td>\r\n                <td width=\"5%\" *ngIf=\"pub?.sim == false && pub?.nao == true\"><div class=\"led-red\"></div></td>\r\n                <td width=\"5%\" *ngIf=\"pub?.sim == true && pub?.nao == true\"><div class=\"led-green\"></div></td>\r\n                <td *ngIf=\"pub.firstName != undefined\" [style.color]=\"getStyle(pub?.sex)\" width=\"30%\">{{ pub?.firstName }} {{ pub?.lastName}}</td>\r\n                \r\n                <td *ngIf=\"pub.firstName != undefined\" width=\"4%\">{{ getAge(pub?.datebirth) || ' '}}</td>\r\n                <td *ngIf=\"pub.firstName != undefined\" width=\"9%\">{{ pub?.congregation.circuit || ' ' }}</td> \r\n                <td *ngIf=\"pub.firstName != undefined\" width=\"20%\">{{ pub?.congregation.nome }}</td>\r\n                <td *ngIf=\"pub.firstName != undefined\" width=\"12%\">{{ pub?.mobilephone || pub?.phone }}</td>\r\n                <td *ngIf=\"pub.firstName != undefined\" >{{ pub?.email }}</td>\r\n                <td *ngIf=\"pub.firstName != undefined\" width=\"5%\">\r\n                  <p class=\"bg-success text-white\" style=\"font-size:12px; text-align: center;\" *ngIf=\"pub.tipoesc == 'A' \"><b>{{ pub?.tipoesc }}</b></p>\r\n                  <p class=\"bg-light text-dark\" style=\"font-size:12px; text-align: center;\" *ngIf=\"pub.tipoesc == 'E' \"><b>{{ pub?.tipoesc }}</b></p>\r\n                  <p class=\"bg-primary text-white\" style=\"font-size:12px; text-align: center;\" *ngIf=\"pub.tipoesc == 'S' \"><b>{{ pub?.tipoesc }}</b></p>\r\n                </td>\r\n                <td *ngIf=\"pub.firstName != undefined\" width=\"5%\"> </td> \r\n              </tr>\r\n            </table>\r\n          </ul>\r\n        </ul>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div *ngIf=\"showNow\" class=\"row\">\r\n  <div class=\"col-md-10 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <h3>Designações por período:</h3>\r\n    <br>\r\n    <div *ngFor=\"let final of finalreport\">\r\n      <li style=\"color:Black\">\r\n        <span class=\"label label-primary\" style=\"font-size:12px;\" *ngIf=\"final.count > 0\">\r\n          {{ final.count }}</span>\r\n        <span class=\"label label-danger\" style=\"font-size:12px;\" *ngIf=\"final.count == 0\">\r\n          {{ final.count }}</span>\r\n        <b>{{ final.nome }} {{ final.sobrenome }}</b>\r\n      </li>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".backdrop {\r\n    background-color: rgba(0,0,0,0.6);\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100vh;\r\n}\r\n\r\nspan{\r\n    font-size:22px;\r\n\r\n  }\r\n\r\nh3{ \r\n      background-color: yellow;\r\n      font: bold 34px \"Century Schoolbook\", Georgia, Times, serif;\r\n      color: #333;\r\n      line-height: 90%;\r\n      margin: .2em 0 .4em 0;\r\n      letter-spacing: -2px;\r\n  }\r\n\r\ntable, th, td {\r\n    border: 1px solid black;\r\n    border-spacing: 2px;\r\n    \r\n}\r\n\r\ntd    {padding: 4px;}\r\n\r\n.container {\r\n  background-size: cover;\r\n  background: rgb(226,226,226); /* Old browsers */ /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */\r\n  background: linear-gradient(to bottom,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* W3C */\r\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */\r\n  padding: 20px;\r\n}\r\n\r\n.led-box {\r\n  height: 30px;\r\n  width: 25%;\r\n  margin: 10px 0;\r\n  float: left;\r\n}\r\n\r\n.led-box p {\r\n  font-size: 12px;\r\n  text-align: center;\r\n  margin: 1em;\r\n}\r\n\r\n.led-red {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #F00;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;\r\n  -webkit-animation: blinkRed 0.5s infinite;\r\n  animation: blinkRed 0.5s infinite;\r\n}\r\n\r\n@-webkit-keyframes blinkRed {\r\n    from { background-color: #F00; }\r\n    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}\r\n    to { background-color: #F00; }\r\n}\r\n\r\n@keyframes blinkRed {\r\n    from { background-color: #F00; }\r\n    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}\r\n    to { background-color: #F00; }\r\n}\r\n\r\n.led-yellow {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #FF0;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;\r\n  -webkit-animation: blinkYellow 1s infinite;\r\n  animation: blinkYellow 1s infinite;\r\n}\r\n\r\n.led-yellow-static {\r\n    margin: 0 auto;\r\n    width: 20px;\r\n    height: 20px;\r\n    background-color: #FF0;\r\n    border-radius: 50%;\r\n    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;\r\n  }\r\n\r\n@-webkit-keyframes blinkYellow {\r\n    from { background-color: #FF0; }\r\n    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }\r\n    to { background-color: #FF0; }\r\n}\r\n\r\n@keyframes blinkYellow {\r\n    from { background-color: #FF0; }\r\n    50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }\r\n    to { background-color: #FF0; }\r\n}\r\n\r\n.led-green {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #ABFF00;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;\r\n}\r\n\r\n.led-blue {\r\n  margin: 0 auto;\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #24E0FF;\r\n  border-radius: 50%;\r\n  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3F8CFF 0 2px 14px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmV3c2NoZWR1bGUvbmV3c2NoZWR1bGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGlDQUFpQztJQUNqQyxlQUFlO0lBQ2YsTUFBTTtJQUNOLE9BQU87SUFDUCxXQUFXO0lBQ1gsYUFBYTtBQUNqQjs7QUFFQTtJQUNJLGNBQWM7O0VBRWhCOztBQUlFO01BQ0Usd0JBQXdCO01BQ3hCLDJEQUEyRDtNQUMzRCxXQUFXO01BQ1gsZ0JBQWdCO01BQ2hCLHFCQUFxQjtNQUNyQixvQkFBb0I7RUFDeEI7O0FBR0E7SUFDRSx1QkFBdUI7SUFDdkIsbUJBQW1COztBQUV2Qjs7QUFFQSxPQUFPLFlBQVksQ0FBQzs7QUFFcEI7RUFDRSxzQkFBc0I7RUFDdEIsNEJBQTRCLEVBQUUsaUJBQWlCLEVBQzZGLFdBQVcsRUFDMEQsb0JBQW9CLEVBQ3pGLHlCQUF5QixFQUM5QixpQkFBaUIsRUFDaEIsVUFBVTtFQUNsSix3SUFBd0ksRUFBRSxRQUFRO0VBQ2xKLG1IQUFtSCxFQUFFLFVBQVU7RUFDL0gsYUFBYTtBQUNmOztBQUVBO0VBQ0UsWUFBWTtFQUNaLFVBQVU7RUFDVixjQUFjO0VBQ2QsV0FBVztBQUNiOztBQUVBO0VBQ0UsZUFBZTtFQUNmLGtCQUFrQjtFQUNsQixXQUFXO0FBQ2I7O0FBRUE7RUFDRSxjQUFjO0VBQ2QsV0FBVztFQUNYLFlBQVk7RUFDWixzQkFBc0I7RUFDdEIsa0JBQWtCO0VBQ2xCLHdHQUF3RztFQUN4Ryx5Q0FBeUM7RUFJekMsaUNBQWlDO0FBQ25DOztBQUVBO0lBQ0ksT0FBTyxzQkFBc0IsRUFBRTtJQUMvQixNQUFNLHNCQUFzQixFQUFFLHFHQUFxRyxDQUFDO0lBQ3BJLEtBQUssc0JBQXNCLEVBQUU7QUFDakM7O0FBZ0JBO0lBQ0ksT0FBTyxzQkFBc0IsRUFBRTtJQUMvQixNQUFNLHNCQUFzQixFQUFFLHFHQUFxRyxDQUFDO0lBQ3BJLEtBQUssc0JBQXNCLEVBQUU7QUFDakM7O0FBRUE7RUFDRSxjQUFjO0VBQ2QsV0FBVztFQUNYLFlBQVk7RUFDWixzQkFBc0I7RUFDdEIsa0JBQWtCO0VBQ2xCLHdGQUF3RjtFQUN4RiwwQ0FBMEM7RUFJMUMsa0NBQWtDO0FBQ3BDOztBQUVBO0lBQ0ksY0FBYztJQUNkLFdBQVc7SUFDWCxZQUFZO0lBQ1osc0JBQXNCO0lBQ3RCLGtCQUFrQjtJQUNsQix3RkFBd0Y7RUFDMUY7O0FBRUY7SUFDSSxPQUFPLHNCQUFzQixFQUFFO0lBQy9CLE1BQU0sc0JBQXNCLEVBQUUscUZBQXFGLEVBQUU7SUFDckgsS0FBSyxzQkFBc0IsRUFBRTtBQUNqQzs7QUFnQkE7SUFDSSxPQUFPLHNCQUFzQixFQUFFO0lBQy9CLE1BQU0sc0JBQXNCLEVBQUUscUZBQXFGLEVBQUU7SUFDckgsS0FBSyxzQkFBc0IsRUFBRTtBQUNqQzs7QUFFQTtFQUNFLGNBQWM7RUFDZCxXQUFXO0VBQ1gsWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixrQkFBa0I7RUFDbEIsMkZBQTJGO0FBQzdGOztBQUVBO0VBQ0UsY0FBYztFQUNkLFdBQVc7RUFDWCxZQUFZO0VBQ1oseUJBQXlCO0VBQ3pCLGtCQUFrQjtFQUNsQix3RkFBd0Y7QUFDMUYiLCJmaWxlIjoic3JjL2FwcC9uZXdzY2hlZHVsZS9uZXdzY2hlZHVsZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJhY2tkcm9wIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwwLDAsMC42KTtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHRvcDogMDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogMTAwdmg7XHJcbn1cclxuXHJcbnNwYW57XHJcbiAgICBmb250LXNpemU6MjJweDtcclxuXHJcbiAgfVxyXG5cclxuICBcclxuXHJcbiAgICBoM3sgXHJcbiAgICAgIGJhY2tncm91bmQtY29sb3I6IHllbGxvdztcclxuICAgICAgZm9udDogYm9sZCAzNHB4IFwiQ2VudHVyeSBTY2hvb2xib29rXCIsIEdlb3JnaWEsIFRpbWVzLCBzZXJpZjtcclxuICAgICAgY29sb3I6ICMzMzM7XHJcbiAgICAgIGxpbmUtaGVpZ2h0OiA5MCU7XHJcbiAgICAgIG1hcmdpbjogLjJlbSAwIC40ZW0gMDtcclxuICAgICAgbGV0dGVyLXNwYWNpbmc6IC0ycHg7XHJcbiAgfVxyXG5cclxuXHJcbiAgdGFibGUsIHRoLCB0ZCB7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCBibGFjaztcclxuICAgIGJvcmRlci1zcGFjaW5nOiAycHg7XHJcbiAgICBcclxufSBcclxuXHJcbnRkICAgIHtwYWRkaW5nOiA0cHg7fVxyXG5cclxuLmNvbnRhaW5lciB7XHJcbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxuICBiYWNrZ3JvdW5kOiByZ2IoMjI2LDIyNiwyMjYpOyAvKiBPbGQgYnJvd3NlcnMgKi9cclxuICBiYWNrZ3JvdW5kOiAtbW96LWxpbmVhci1ncmFkaWVudCh0b3AsICByZ2JhKDIyNiwyMjYsMjI2LDEpIDAlLCByZ2JhKDIxOSwyMTksMjE5LDEpIDUwJSwgcmdiYSgyMDksMjA5LDIwOSwxKSA1MSUsIHJnYmEoMjU0LDI1NCwyNTQsMSkgMTAwJSk7IC8qIEZGMy42KyAqL1xyXG4gIGJhY2tncm91bmQ6IC13ZWJraXQtZ3JhZGllbnQobGluZWFyLCBsZWZ0IHRvcCwgbGVmdCBib3R0b20sIGNvbG9yLXN0b3AoMCUscmdiYSgyMjYsMjI2LDIyNiwxKSksIGNvbG9yLXN0b3AoNTAlLHJnYmEoMjE5LDIxOSwyMTksMSkpLCBjb2xvci1zdG9wKDUxJSxyZ2JhKDIwOSwyMDksMjA5LDEpKSwgY29sb3Itc3RvcCgxMDAlLHJnYmEoMjU0LDI1NCwyNTQsMSkpKTsgLyogQ2hyb21lLFNhZmFyaTQrICovXHJcbiAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG9wLCAgcmdiYSgyMjYsMjI2LDIyNiwxKSAwJSxyZ2JhKDIxOSwyMTksMjE5LDEpIDUwJSxyZ2JhKDIwOSwyMDksMjA5LDEpIDUxJSxyZ2JhKDI1NCwyNTQsMjU0LDEpIDEwMCUpOyAvKiBDaHJvbWUxMCssU2FmYXJpNS4xKyAqL1xyXG4gIGJhY2tncm91bmQ6IC1vLWxpbmVhci1ncmFkaWVudCh0b3AsICByZ2JhKDIyNiwyMjYsMjI2LDEpIDAlLHJnYmEoMjE5LDIxOSwyMTksMSkgNTAlLHJnYmEoMjA5LDIwOSwyMDksMSkgNTElLHJnYmEoMjU0LDI1NCwyNTQsMSkgMTAwJSk7IC8qIE9wZXJhIDExLjEwKyAqL1xyXG4gIGJhY2tncm91bmQ6IC1tcy1saW5lYXItZ3JhZGllbnQodG9wLCAgcmdiYSgyMjYsMjI2LDIyNiwxKSAwJSxyZ2JhKDIxOSwyMTksMjE5LDEpIDUwJSxyZ2JhKDIwOSwyMDksMjA5LDEpIDUxJSxyZ2JhKDI1NCwyNTQsMjU0LDEpIDEwMCUpOyAvKiBJRTEwKyAqL1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20sICByZ2JhKDIyNiwyMjYsMjI2LDEpIDAlLHJnYmEoMjE5LDIxOSwyMTksMSkgNTAlLHJnYmEoMjA5LDIwOSwyMDksMSkgNTElLHJnYmEoMjU0LDI1NCwyNTQsMSkgMTAwJSk7IC8qIFczQyAqL1xyXG4gIGZpbHRlcjogcHJvZ2lkOkRYSW1hZ2VUcmFuc2Zvcm0uTWljcm9zb2Z0LmdyYWRpZW50KCBzdGFydENvbG9yc3RyPScjZTJlMmUyJywgZW5kQ29sb3JzdHI9JyNmZWZlZmUnLEdyYWRpZW50VHlwZT0wICk7IC8qIElFNi05ICovXHJcbiAgcGFkZGluZzogMjBweDtcclxufVxyXG5cclxuLmxlZC1ib3gge1xyXG4gIGhlaWdodDogMzBweDtcclxuICB3aWR0aDogMjUlO1xyXG4gIG1hcmdpbjogMTBweCAwO1xyXG4gIGZsb2F0OiBsZWZ0O1xyXG59XHJcblxyXG4ubGVkLWJveCBwIHtcclxuICBmb250LXNpemU6IDEycHg7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIG1hcmdpbjogMWVtO1xyXG59XHJcblxyXG4ubGVkLXJlZCB7XHJcbiAgbWFyZ2luOiAwIGF1dG87XHJcbiAgd2lkdGg6IDIwcHg7XHJcbiAgaGVpZ2h0OiAyMHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNGMDA7XHJcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gIGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yKSAwIC0xcHggN3B4IDFweCwgaW5zZXQgIzQ0MTMxMyAwIC0xcHggOXB4LCByZ2JhKDI1NSwgMCwgMCwgMC41KSAwIDJweCAxMnB4O1xyXG4gIC13ZWJraXQtYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gIC1tb3otYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gIC1tcy1hbmltYXRpb246IGJsaW5rUmVkIDAuNXMgaW5maW5pdGU7XHJcbiAgLW8tYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gIGFuaW1hdGlvbjogYmxpbmtSZWQgMC41cyBpbmZpbml0ZTtcclxufVxyXG5cclxuQC13ZWJraXQta2V5ZnJhbWVzIGJsaW5rUmVkIHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxufVxyXG5ALW1vei1rZXlmcmFtZXMgYmxpbmtSZWQge1xyXG4gICAgZnJvbSB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxuICAgIDUwJSB7IGJhY2tncm91bmQtY29sb3I6ICNBMDA7IGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yKSAwIC0xcHggN3B4IDFweCwgaW5zZXQgIzQ0MTMxMyAwIC0xcHggOXB4LCByZ2JhKDI1NSwgMCwgMCwgMC41KSAwIDJweCAwO31cclxuICAgIHRvIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG59XHJcbkAtbXMta2V5ZnJhbWVzIGJsaW5rUmVkIHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxufVxyXG5ALW8ta2V5ZnJhbWVzIGJsaW5rUmVkIHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxufVxyXG5Aa2V5ZnJhbWVzIGJsaW5rUmVkIHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxufVxyXG5cclxuLmxlZC15ZWxsb3cge1xyXG4gIG1hcmdpbjogMCBhdXRvO1xyXG4gIHdpZHRoOiAyMHB4O1xyXG4gIGhlaWdodDogMjBweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwO1xyXG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcclxuICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAxMnB4O1xyXG4gIC13ZWJraXQtYW5pbWF0aW9uOiBibGlua1llbGxvdyAxcyBpbmZpbml0ZTtcclxuICAtbW96LWFuaW1hdGlvbjogYmxpbmtZZWxsb3cgMXMgaW5maW5pdGU7XHJcbiAgLW1zLWFuaW1hdGlvbjogYmxpbmtZZWxsb3cgMXMgaW5maW5pdGU7XHJcbiAgLW8tYW5pbWF0aW9uOiBibGlua1llbGxvdyAxcyBpbmZpbml0ZTtcclxuICBhbmltYXRpb246IGJsaW5rWWVsbG93IDFzIGluZmluaXRlO1xyXG59XHJcblxyXG4ubGVkLXllbGxvdy1zdGF0aWMge1xyXG4gICAgbWFyZ2luOiAwIGF1dG87XHJcbiAgICB3aWR0aDogMjBweDtcclxuICAgIGhlaWdodDogMjBweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNGRjA7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAxMnB4O1xyXG4gIH1cclxuXHJcbkAtd2Via2l0LWtleWZyYW1lcyBibGlua1llbGxvdyB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0FBMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMDsgfVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbn1cclxuQC1tb3ota2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbiAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQUEwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAwOyB9XHJcbiAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxufVxyXG5ALW1zLWtleWZyYW1lcyBibGlua1llbGxvdyB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0FBMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMDsgfVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbn1cclxuQC1vLWtleWZyYW1lcyBibGlua1llbGxvdyB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0FBMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMDsgfVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbn1cclxuQGtleWZyYW1lcyBibGlua1llbGxvdyB7XHJcbiAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDsgfVxyXG4gICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0FBMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMDsgfVxyXG4gICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbn1cclxuXHJcbi5sZWQtZ3JlZW4ge1xyXG4gIG1hcmdpbjogMCBhdXRvO1xyXG4gIHdpZHRoOiAyMHB4O1xyXG4gIGhlaWdodDogMjBweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjQUJGRjAwO1xyXG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcclxuICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICMzMDQ3MDEgMCAtMXB4IDlweCwgIzg5RkYwMCAwIDJweCAxMnB4O1xyXG59XHJcblxyXG4ubGVkLWJsdWUge1xyXG4gIG1hcmdpbjogMCBhdXRvO1xyXG4gIHdpZHRoOiAyMHB4O1xyXG4gIGhlaWdodDogMjBweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjRFMEZGO1xyXG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcclxuICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICMwMDYgMCAtMXB4IDlweCwgIzNGOENGRiAwIDJweCAxNHB4O1xyXG59Il19 */");
 
 /***/ }),
 
@@ -5794,6 +6317,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -6877,11 +7403,14 @@ var NewscheduleComponent = /** @class */ (function () {
             }
         });
     };
+    NewscheduleComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"] }
+    ]; };
     NewscheduleComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-schedule',
-            template: __webpack_require__(/*! ./newschedule.component.html */ "./src/app/newschedule/newschedule.component.html"),
-            styles: [__webpack_require__(/*! ./newschedule.component.css */ "./src/app/newschedule/newschedule.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./newschedule.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/newschedule/newschedule.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./newschedule.component.css */ "./src/app/newschedule/newschedule.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"]])
     ], NewscheduleComponent);
@@ -6896,21 +7425,12 @@ var NewscheduleComponent = /** @class */ (function () {
 /*!*****************************************************!*\
   !*** ./src/app/perfilrole/perfilrole.component.css ***!
   \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZpbHJvbGUvcGVyZmlscm9sZS5jb21wb25lbnQuY3NzIn0= */"
-
-/***/ }),
-
-/***/ "./src/app/perfilrole/perfilrole.component.html":
-/*!******************************************************!*\
-  !*** ./src/app/perfilrole/perfilrole.component.html ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <form [formGroup]=\"perfilroleForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n                <div class=\"modal-header\">\r\n                    <h5 class=\"modal-title\" id=\"modal_titulo\">Novo perfil</h5>\r\n                    <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n                        <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n                    <br/>\r\n\r\n                    <div class=\"form-row\">\r\n                        <div class=\"form-group col-md-8\">\r\n                            <label>Email *</label>\r\n                            <input type=\"email\" class=\"form-control\" id=\"perfilrole_email\" placeholder=\"Digite o email\" formControlName=\"email\">\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div *ngIf=\"!this.edit\" class=\"form-row\">\r\n                        <div class=\"form-group col-md-8\">\r\n                            <label>Senha *</label>\r\n                            <span> (mínimo de 6 caracteres)</span>\r\n                            <input name=\"senha\" type=\"password\" id=\"perfilrole_senha\" class=\"form-control\" formControlName=\"senha\" pattern=\".{6,}\"\r\n                              required title=\"deve ter 6 caracteres no mínimo\" autocomplete=\"false\">\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"form-row\">\r\n                            <div class=\"form-group col-md-8\">\r\n                                <label>Função *</label>\r\n                                <br>\r\n                                <label class=\"md-check\">CTC\r\n                                <input type=\"radio\" value=\"ctc\" class=\"form-control\" id=\"perfilrole_role1\"  formControlName=\"role\">\r\n                                </label>\r\n                                <label class=\"md-check\">Superintendente/Logistica\r\n                                <input type=\"radio\" value=\"gold\" class=\"form-control\" id=\"perfilrole_role2\"  formControlName=\"role\">\r\n                                </label>\r\n                            </div>\r\n                        </div>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n\r\n                    <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n                </div>\r\n            </form>\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n    <div class=\"row\">\r\n        <div class=\"form-group col-md-4\">\r\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewperfilrole()\" [disabled]=\"auth\">Novo perfilrole +</button>\r\n        </div>\r\n\r\n        <form>\r\n\r\n        </form>\r\n        <table class=\"table table-striped\">\r\n            <thead>\r\n                <tr>\r\n                    <th scope=\"col\">#</th>\r\n                    <th scope=\"col\">Email</th>\r\n                    <th scope=\"col\">Perfil</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr *ngFor=\"let perfilrole of perfilroles; let j = index\">\r\n                    <th scope=\"row\">{{j + 1}}</th>\r\n                    <td>{{perfilrole.email}}</td>\r\n                    <td *ngIf=\"perfilrole.role == 'ctc'\">CTC</td>\r\n                    <td *ngIf=\"perfilrole.role == 'gold'\">Superintendente/Logistica</td>\r\n                    <td>\r\n                        <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n                            <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n                        <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n                            <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcmZpbHJvbGUvcGVyZmlscm9sZS5jb21wb25lbnQuY3NzIn0= */");
 
 /***/ }),
 
@@ -6935,6 +7455,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -7031,11 +7554,14 @@ var PerfilroleComponent = /** @class */ (function () {
         if (this.authService.isAuthenticated())
             this.auth = false;
     };
+    PerfilroleComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+    ]; };
     PerfilroleComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-perfilrole",
-            template: __webpack_require__(/*! ./perfilrole.component.html */ "./src/app/perfilrole/perfilrole.component.html"),
-            styles: [__webpack_require__(/*! ./perfilrole.component.css */ "./src/app/perfilrole/perfilrole.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./perfilrole.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/perfilrole/perfilrole.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./perfilrole.component.css */ "./src/app/perfilrole/perfilrole.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], PerfilroleComponent);
@@ -7050,21 +7576,12 @@ var PerfilroleComponent = /** @class */ (function () {
 /*!*********************************************!*\
   !*** ./src/app/report/report.component.css ***!
   \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\r\n.led-box {\r\n    height: 30px;\r\n    width: 25%;\r\n    margin: 10px 0;\r\n    float: left;\r\n  }\r\n  \r\n  .led-box p {\r\n    font-size: 12px;\r\n    text-align: center;\r\n    margin: 1em;\r\n  }\r\n  \r\n  .led-red {\r\n    margin: 0 auto;\r\n    width: 20px;\r\n    height: 20px;\r\n    background-color: #F00;\r\n    border-radius: 50%;\r\n    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;\r\n    -webkit-animation: blinkRed 0.5s infinite;\r\n    animation: blinkRed 0.5s infinite;\r\n  }\r\n  \r\n  @-webkit-keyframes blinkRed {\r\n      from { background-color: #F00; }\r\n      50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}\r\n      to { background-color: #F00; }\r\n  }\r\n  \r\n  @keyframes blinkRed {\r\n      from { background-color: #F00; }\r\n      50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}\r\n      to { background-color: #F00; }\r\n  }\r\n  \r\n  .led-yellow {\r\n    margin: 0 auto;\r\n    width: 20px;\r\n    height: 20px;\r\n    background-color: #FF0;\r\n    border-radius: 50%;\r\n    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;\r\n    -webkit-animation: blinkYellow 1s infinite;\r\n    animation: blinkYellow 1s infinite;\r\n  }\r\n  \r\n  @-webkit-keyframes blinkYellow {\r\n      from { background-color: #FF0; }\r\n      50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }\r\n      to { background-color: #FF0; }\r\n  }\r\n  \r\n  @keyframes blinkYellow {\r\n      from { background-color: #FF0; }\r\n      50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }\r\n      to { background-color: #FF0; }\r\n  }\r\n  \r\n  .led-green {\r\n    margin: 0 auto;\r\n    width: 20px;\r\n    height: 20px;\r\n    background-color: #ABFF00;\r\n    border-radius: 50%;\r\n    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;\r\n  }\r\n  \r\n  .led-blue {\r\n    margin: 0 auto;\r\n    width: 20px;\r\n    height: 20px;\r\n    background-color: #24E0FF;\r\n    border-radius: 50%;\r\n    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3F8CFF 0 2px 14px;\r\n  }\r\n  \r\n  \r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmVwb3J0L3JlcG9ydC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLFlBQVk7SUFDWixVQUFVO0lBQ1YsY0FBYztJQUNkLFdBQVc7RUFDYjs7RUFFQTtJQUNFLGVBQWU7SUFDZixrQkFBa0I7SUFDbEIsV0FBVztFQUNiOztFQUVBO0lBQ0UsY0FBYztJQUNkLFdBQVc7SUFDWCxZQUFZO0lBQ1osc0JBQXNCO0lBQ3RCLGtCQUFrQjtJQUNsQix3R0FBd0c7SUFDeEcseUNBQXlDO0lBSXpDLGlDQUFpQztFQUNuQzs7RUFFQTtNQUNJLE9BQU8sc0JBQXNCLEVBQUU7TUFDL0IsTUFBTSxzQkFBc0IsRUFBRSxxR0FBcUcsQ0FBQztNQUNwSSxLQUFLLHNCQUFzQixFQUFFO0VBQ2pDOztFQWdCQTtNQUNJLE9BQU8sc0JBQXNCLEVBQUU7TUFDL0IsTUFBTSxzQkFBc0IsRUFBRSxxR0FBcUcsQ0FBQztNQUNwSSxLQUFLLHNCQUFzQixFQUFFO0VBQ2pDOztFQUVBO0lBQ0UsY0FBYztJQUNkLFdBQVc7SUFDWCxZQUFZO0lBQ1osc0JBQXNCO0lBQ3RCLGtCQUFrQjtJQUNsQix3RkFBd0Y7SUFDeEYsMENBQTBDO0lBSTFDLGtDQUFrQztFQUNwQzs7RUFFQTtNQUNJLE9BQU8sc0JBQXNCLEVBQUU7TUFDL0IsTUFBTSxzQkFBc0IsRUFBRSxxRkFBcUYsRUFBRTtNQUNySCxLQUFLLHNCQUFzQixFQUFFO0VBQ2pDOztFQWdCQTtNQUNJLE9BQU8sc0JBQXNCLEVBQUU7TUFDL0IsTUFBTSxzQkFBc0IsRUFBRSxxRkFBcUYsRUFBRTtNQUNySCxLQUFLLHNCQUFzQixFQUFFO0VBQ2pDOztFQUVBO0lBQ0UsY0FBYztJQUNkLFdBQVc7SUFDWCxZQUFZO0lBQ1oseUJBQXlCO0lBQ3pCLGtCQUFrQjtJQUNsQiwyRkFBMkY7RUFDN0Y7O0VBRUE7SUFDRSxjQUFjO0lBQ2QsV0FBVztJQUNYLFlBQVk7SUFDWix5QkFBeUI7SUFDekIsa0JBQWtCO0lBQ2xCLHdGQUF3RjtFQUMxRiIsImZpbGUiOiJzcmMvYXBwL3JlcG9ydC9yZXBvcnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4ubGVkLWJveCB7XHJcbiAgICBoZWlnaHQ6IDMwcHg7XHJcbiAgICB3aWR0aDogMjUlO1xyXG4gICAgbWFyZ2luOiAxMHB4IDA7XHJcbiAgICBmbG9hdDogbGVmdDtcclxuICB9XHJcbiAgXHJcbiAgLmxlZC1ib3ggcCB7XHJcbiAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBtYXJnaW46IDFlbTtcclxuICB9XHJcbiAgXHJcbiAgLmxlZC1yZWQge1xyXG4gICAgbWFyZ2luOiAwIGF1dG87XHJcbiAgICB3aWR0aDogMjBweDtcclxuICAgIGhlaWdodDogMjBweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNGMDA7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMTJweDtcclxuICAgIC13ZWJraXQtYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gICAgLW1vei1hbmltYXRpb246IGJsaW5rUmVkIDAuNXMgaW5maW5pdGU7XHJcbiAgICAtbXMtYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gICAgLW8tYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gICAgYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gIH1cclxuICBcclxuICBALXdlYmtpdC1rZXlmcmFtZXMgYmxpbmtSZWQge1xyXG4gICAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gICAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICAgIHRvIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gIH1cclxuICBALW1vei1rZXlmcmFtZXMgYmxpbmtSZWQge1xyXG4gICAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gICAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICAgIHRvIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gIH1cclxuICBALW1zLWtleWZyYW1lcyBibGlua1JlZCB7XHJcbiAgICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbiAgICAgIDUwJSB7IGJhY2tncm91bmQtY29sb3I6ICNBMDA7IGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yKSAwIC0xcHggN3B4IDFweCwgaW5zZXQgIzQ0MTMxMyAwIC0xcHggOXB4LCByZ2JhKDI1NSwgMCwgMCwgMC41KSAwIDJweCAwO31cclxuICAgICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbiAgfVxyXG4gIEAtby1rZXlmcmFtZXMgYmxpbmtSZWQge1xyXG4gICAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gICAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICAgIHRvIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gIH1cclxuICBAa2V5ZnJhbWVzIGJsaW5rUmVkIHtcclxuICAgICAgZnJvbSB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxuICAgICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0EwMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjNDQxMzEzIDAgLTFweCA5cHgsIHJnYmEoMjU1LCAwLCAwLCAwLjUpIDAgMnB4IDA7fVxyXG4gICAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxuICB9XHJcbiAgXHJcbiAgLmxlZC15ZWxsb3cge1xyXG4gICAgbWFyZ2luOiAwIGF1dG87XHJcbiAgICB3aWR0aDogMjBweDtcclxuICAgIGhlaWdodDogMjBweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNGRjA7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAxMnB4O1xyXG4gICAgLXdlYmtpdC1hbmltYXRpb246IGJsaW5rWWVsbG93IDFzIGluZmluaXRlO1xyXG4gICAgLW1vei1hbmltYXRpb246IGJsaW5rWWVsbG93IDFzIGluZmluaXRlO1xyXG4gICAgLW1zLWFuaW1hdGlvbjogYmxpbmtZZWxsb3cgMXMgaW5maW5pdGU7XHJcbiAgICAtby1hbmltYXRpb246IGJsaW5rWWVsbG93IDFzIGluZmluaXRlO1xyXG4gICAgYW5pbWF0aW9uOiBibGlua1llbGxvdyAxcyBpbmZpbml0ZTtcclxuICB9XHJcbiAgXHJcbiAgQC13ZWJraXQta2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgICAgZnJvbSB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxuICAgICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0FBMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMDsgfVxyXG4gICAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxuICB9XHJcbiAgQC1tb3ota2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgICAgZnJvbSB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxuICAgICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0FBMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMDsgfVxyXG4gICAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxuICB9XHJcbiAgQC1tcy1rZXlmcmFtZXMgYmxpbmtZZWxsb3cge1xyXG4gICAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDsgfVxyXG4gICAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQUEwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAwOyB9XHJcbiAgICAgIHRvIHsgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDsgfVxyXG4gIH1cclxuICBALW8ta2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgICAgZnJvbSB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxuICAgICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0FBMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMDsgfVxyXG4gICAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxuICB9XHJcbiAgQGtleWZyYW1lcyBibGlua1llbGxvdyB7XHJcbiAgICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbiAgICAgIDUwJSB7IGJhY2tncm91bmQtY29sb3I6ICNBQTA7IGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yKSAwIC0xcHggN3B4IDFweCwgaW5zZXQgIzgwODAwMiAwIC0xcHggOXB4LCAjRkYwIDAgMnB4IDA7IH1cclxuICAgICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbiAgfVxyXG4gIFxyXG4gIC5sZWQtZ3JlZW4ge1xyXG4gICAgbWFyZ2luOiAwIGF1dG87XHJcbiAgICB3aWR0aDogMjBweDtcclxuICAgIGhlaWdodDogMjBweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNBQkZGMDA7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICMzMDQ3MDEgMCAtMXB4IDlweCwgIzg5RkYwMCAwIDJweCAxMnB4O1xyXG4gIH1cclxuICBcclxuICAubGVkLWJsdWUge1xyXG4gICAgbWFyZ2luOiAwIGF1dG87XHJcbiAgICB3aWR0aDogMjBweDtcclxuICAgIGhlaWdodDogMjBweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMyNEUwRkY7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICMwMDYgMCAtMXB4IDlweCwgIzNGOENGRiAwIDJweCAxNHB4O1xyXG4gIH1cclxuICBcclxuICBcclxuICAiXX0= */"
-
-/***/ }),
-
-/***/ "./src/app/report/report.component.html":
-/*!**********************************************!*\
-  !*** ./src/app/report/report.component.html ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\r\n  <div class=\"col-md-12\">\r\n    <form [formGroup]=\"dataForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n      <div class=\"form-row\">\r\n        <div class=\"form-group col-md-3\">\r\n          <label>Início *</label>\r\n          <input name=\"begin\" type=\"date\" id=\"begin\" class=\"form-control\" formControlName=\"begin\">\r\n        </div>\r\n\r\n        <div class=\"form-group col-md-3\">\r\n          <label>Fim *</label>\r\n          <input name=\"end\" type=\"date\" id=\"end\" class=\"form-control\" formControlName=\"end\">\r\n\r\n        </div>\r\n        <div class=\"form-group col-md-3\">\r\n          <button type=\"submit\" class=\"form-control\" [disabled]=\"validMyForm()\" style=\"padding: 22px 26px\" class=\"btn btn-primary\">Buscar</button>\r\n        </div>\r\n      </div>\r\n        <div class=\"form-row col-md-5\">\r\n          <h4>Total de designações: {{totaldesignacoes}}</h4>\r\n          <hr>\r\n        </div>\r\n      \r\n    </form>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-md-3\">\r\n        <div class=\"form-group\">\r\n          <label for=\"circuito\">Circuito</label>\r\n          <select [(ngModel)]=\"circuito\" id=\"circuito\" class=\"form-control\" (change)=\"onCircuito()\">\r\n            <option> </option>\r\n            <option *ngFor=\"let circuito of circuitos\" [ngValue]=\"circuito\">{{circuito?.nome}}</option>\r\n          </select>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-md-3\">\r\n        <div class=\"form-group\">\r\n          <label for=\"congregation\">Congregação</label>\r\n          <select [(ngModel)]=\"congregation\" class=\"form-control\" (change)=\"onCongregacao()\">\r\n            <option> </option>\r\n            <option *ngFor=\"let congregation of congregations\" [ngValue]=\"congregation\">{{congregation?.nome}}</option>\r\n          </select>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n\r\n    <div class=\"row\">\r\n      <ul class=\"nav nav-tabs\" id=\"myTab\" role=\"tablist\">\r\n          <li class=\"nav-item\">\r\n              <a class=\"nav-link active\" id=\"aba0-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"home\" aria-selected=\"true\" (click)=\"onAba0()\">Por Período</a>\r\n            </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"aba1-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"home\" aria-selected=\"true\" (click)=\"onAba1()\">Sem confirmação</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"aba2-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"profile\" aria-selected=\"false\" (click)=\"onAba2()\">Recusadas</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"aba3-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"profile\" aria-selected=\"false\" (click)=\"onAba3()\">Substituições</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"aba4-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"profile\" aria-selected=\"false\" (click)=\"onAba4()\">Gráficos</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"aba5-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"profile\" aria-selected=\"false\" (click)=\"onAba5()\">Companheiro</a>\r\n        </li>\r\n\r\n      </ul>\r\n    </div>\r\n\r\n\r\n    <br>\r\n\r\n    <div *ngIf=\"abaperiodo\">\r\n        <h4>Designações por Período:</h4>  \r\n\r\n        <button (click)=\"sortAlpha()\" type=\"button\" class=\"btn btn-default btn-sm\">\r\n            <i class=\"fa fa-sort-alpha-asc\"></i> \r\n          </button>\r\n\r\n          <button (click)=\"sortAsc()\" type=\"button\" class=\"btn btn-default btn-sm\">\r\n              <i class=\"fa fa-sort-amount-asc\"></i> \r\n            </button>\r\n\r\n            <button (click)=\"sortDesc()\" type=\"button\" class=\"btn btn-default btn-sm\">\r\n                <i class=\"\tfa fa-sort-amount-desc\"></i> \r\n              </button>\r\n\r\n        <div class=\"table-responsive\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-bordered\">\r\n  \r\n              <thead>\r\n                <tr>\r\n                  <th style=\"vertical-align: middle !important; text-align: left;\">Total</th>\r\n                  <th style=\"vertical-align: middle !important; text-align: left;\">Nome</th>\r\n                  <th style=\"vertical-align: middle !important; text-align: left;\">Circuito</th>\r\n                  <th style=\"vertical-align: middle !important; text-align: left;\">Congregação</th>\r\n                  <th style=\"vertical-align: middle !important; text-align: left;\">Telefone</th>\r\n                  <th style=\"vertical-align: middle !important; text-align: left;\">Email</th>\r\n                  <th style=\"vertical-align: middle !important; text-align: left;\">Telegram</th>\r\n                </tr>\r\n  \r\n              </thead>\r\n              <tbody>\r\n  \r\n  \r\n  \r\n                <tr *ngFor=\"let obj of totalhistorico; let i = index\">\r\n                  <td style=\"vertical-align: middle !important; text-align: center;\">{{ obj.total }}</td>\r\n                  <td [style.color]=\"getStyle(obj.user?.sex)\" style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.firstName }} {{ obj.user?.lastName}} </td>\r\n                  <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCircuito(obj.user?.circuito) }}</td>\r\n                  <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCongregacao(obj.user?.congregation) }}</td>\r\n                  <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.mobilephone || obj.user?.phone }}</td>\r\n                  <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.email }}</td>\r\n                  <td *ngIf=\"getTelegram(obj.user?.telegram) == 'SIM'\" ><i class=\"fa fa-check-circle-o\" style=\"font-size:40px;color:green\"></i></td>\r\n                  <td *ngIf=\"getTelegram(obj.user?.telegram) == 'NÃO'\" ><i class=\"fa fa-times-circle-o\" style=\"font-size:40px;color:red\"></i></td>\r\n                  <!-- <td style=\"vertical-align: middle !important; text-align: left;\">getTelegram(obj.user?.telegram) }}</td> -->\r\n                </tr>\r\n  \r\n  \r\n              </tbody>\r\n  \r\n            </table>\r\n            <!-- <div *ngIf=\"existPerfil(pont)\"> -->\r\n  \r\n            <br>\r\n            <br>\r\n          </div>\r\n  \r\n        </div>\r\n      </div>\r\n\r\n    <div *ngIf=\"abasemconfirmacao\">\r\n      <h4>Designações não confirmadas: {{semresposta.length}}</h4>\r\n\r\n      <div class=\"table-responsive\">\r\n        <div class=\"card-body\">\r\n          <table class=\"table table-bordered\">\r\n\r\n            <thead>\r\n              <tr>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Data</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Nome</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Circuito</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Congregação</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Telefone</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Email</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Telegram</th>\r\n              </tr>\r\n\r\n            </thead>\r\n            <tbody>\r\n\r\n\r\n\r\n              <tr *ngFor=\"let obj of semresposta; let i = index\">\r\n                <td style=\"vertical-align: middle !important; text-align: center;\">{{ obj.data }}</td>\r\n                <td [style.color]=\"getStyle(obj.user?.sex)\" style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.firstName }} {{ obj.user?.lastName}} </td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCircuito(obj.user?.circuito) }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCongregacao(obj.user?.congregation) }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.mobilephone || obj.user?.phone }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.email }}</td>\r\n                <td *ngIf=\"getTelegram(obj.user?.telegram) == 'SIM'\" ><i class=\"fa fa-check-circle-o\" style=\"font-size:40px;color:green\"></i></td>\r\n                <td *ngIf=\"getTelegram(obj.user?.telegram) == 'NÃO'\" ><i class=\"fa fa-times-circle-o\" style=\"font-size:40px;color:red\"></i></td>\r\n              </tr>\r\n\r\n\r\n            </tbody>\r\n\r\n          </table>\r\n          <!-- <div *ngIf=\"existPerfil(pont)\"> -->\r\n\r\n          <br>\r\n          <br>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"abarecusadas\">\r\n      <h4>Designações recusadas: {{naoresposta.length}}</h4>\r\n      <div class=\"table-responsive\">\r\n        <div class=\"card-body\">\r\n          <table class=\"table table-bordered\">\r\n\r\n            <thead>\r\n              <tr>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Total</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Nome</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Circuito</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Congregação</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Telefone</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Email</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Telegram</th>\r\n              </tr>\r\n\r\n            </thead>\r\n            <tbody>\r\n\r\n\r\n\r\n              <tr *ngFor=\"let obj of totalnao; let i = index\">\r\n                <td style=\"vertical-align: middle !important; text-align: center;\">{{ obj.nao}}/{{obj.sim }}</td>\r\n                <td [style.color]=\"getStyle(obj.user?.sex)\" style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.firstName }} {{ obj.user?.lastName}} </td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCircuito(obj.user?.circuito) }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCongregacao(obj.user?.congregation) }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.mobilephone || obj.user?.phone }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.email }}</td>\r\n                <td *ngIf=\"getTelegram(obj.user?.telegram) == 'SIM'\" ><i class=\"fa fa-check-circle-o\" style=\"font-size:40px;color:green\"></i></td>\r\n                <td *ngIf=\"getTelegram(obj.user?.telegram) == 'NÃO'\" ><i class=\"fa fa-times-circle-o\" style=\"font-size:40px;color:red\"></i></td>\r\n              </tr>\r\n\r\n\r\n            </tbody>\r\n\r\n          </table>\r\n          <!-- <div *ngIf=\"existPerfil(pont)\"> -->\r\n\r\n          <br>\r\n          <br>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n\r\n    <div *ngIf=\"abasubstituicao\">\r\n      <h4>Substituições realizadas: {{subresposta.length}}</h4>\r\n\r\n      <div class=\"table-responsive\">\r\n        <div class=\"card-body\">\r\n          <table class=\"table table-bordered\">\r\n\r\n            <thead>\r\n              <tr>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Total</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Nome</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Circuito</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Congregação</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Telefone</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Email</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Telegram</th>\r\n              </tr>\r\n\r\n            </thead>\r\n            <tbody>\r\n\r\n\r\n\r\n              <tr *ngFor=\"let obj of totalsub; let i = index\">\r\n                <td style=\"vertical-align: middle !important; text-align: center;\">{{ obj.sub }}</td>\r\n                <td [style.color]=\"getStyle(obj.user?.sex)\" style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.firstName }} {{ obj.user?.lastName}} </td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCircuito(obj.user?.circuito) }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCongregacao(obj.user?.congregation) }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.mobilephone || obj.user?.phone }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ obj.user?.email }}</td>\r\n                <td *ngIf=\"getTelegram(obj.user?.telegram) == 'SIM'\" ><i class=\"fa fa-check-circle-o\" style=\"font-size:40px;color:green\"></i></td>\r\n                <td *ngIf=\"getTelegram(obj.user?.telegram) == 'NÃO'\" ><i class=\"fa fa-times-circle-o\" style=\"font-size:40px;color:red\"></i></td>\r\n              </tr>\r\n\r\n\r\n            </tbody>\r\n\r\n          </table>\r\n          <!-- <div *ngIf=\"existPerfil(pont)\"> -->\r\n\r\n          <br>\r\n          <br>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"abagraficos\">\r\n      \r\n        </div>\r\n \r\n\r\n    <div *ngIf=\"abacompanheiro\">\r\n      <h4>Total de irmãos: {{userscomp.length}}</h4>\r\n      <div class=\"table-responsive\">\r\n        <div class=\"card-body\">\r\n          <table class=\"table table-bordered\">\r\n\r\n            <thead>\r\n              <tr>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Nome</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Circuito</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Congregação</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Companheiro</th>\r\n                <th style=\"vertical-align: middle !important; text-align: left;\">Responsavel</th>\r\n              </tr>\r\n\r\n            </thead>\r\n            <tbody>\r\n\r\n\r\n\r\n              <tr *ngFor=\"let obj of userscomp; let i = index\">\r\n                <td [style.color]=\"getStyle(obj?.sex)\" style=\"vertical-align: middle !important; text-align: left;\">{{ obj?.firstName }} {{ obj?.lastName}} </td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCircuito(obj?.circuito) }}</td>\r\n                <td style=\"vertical-align: middle !important; text-align: left;\">{{ encontraCongregacao(obj?.congregation) }}</td>\r\n                <td [style.color]=\"getStyleId(obj?.conjuge)\" style=\"vertical-align: middle !important; text-align: left;\">{{ encontraId(obj?.conjuge) }}</td>\r\n                <td [style.color]=\"getStyleId(obj?.responsable)\" style=\"vertical-align: middle !important; text-align: left;\">{{ encontraId(obj?.responsable) }}</td>\r\n\r\n              </tr>\r\n\r\n\r\n            </tbody>\r\n\r\n          </table>\r\n          <!-- <div *ngIf=\"existPerfil(pont)\"> -->\r\n\r\n          <br>\r\n          <br>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\r\n.led-box {\r\n    height: 30px;\r\n    width: 25%;\r\n    margin: 10px 0;\r\n    float: left;\r\n  }\r\n  \r\n  .led-box p {\r\n    font-size: 12px;\r\n    text-align: center;\r\n    margin: 1em;\r\n  }\r\n  \r\n  .led-red {\r\n    margin: 0 auto;\r\n    width: 20px;\r\n    height: 20px;\r\n    background-color: #F00;\r\n    border-radius: 50%;\r\n    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;\r\n    -webkit-animation: blinkRed 0.5s infinite;\r\n    animation: blinkRed 0.5s infinite;\r\n  }\r\n  \r\n  @-webkit-keyframes blinkRed {\r\n      from { background-color: #F00; }\r\n      50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}\r\n      to { background-color: #F00; }\r\n  }\r\n  \r\n  @keyframes blinkRed {\r\n      from { background-color: #F00; }\r\n      50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}\r\n      to { background-color: #F00; }\r\n  }\r\n  \r\n  .led-yellow {\r\n    margin: 0 auto;\r\n    width: 20px;\r\n    height: 20px;\r\n    background-color: #FF0;\r\n    border-radius: 50%;\r\n    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;\r\n    -webkit-animation: blinkYellow 1s infinite;\r\n    animation: blinkYellow 1s infinite;\r\n  }\r\n  \r\n  @-webkit-keyframes blinkYellow {\r\n      from { background-color: #FF0; }\r\n      50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }\r\n      to { background-color: #FF0; }\r\n  }\r\n  \r\n  @keyframes blinkYellow {\r\n      from { background-color: #FF0; }\r\n      50% { background-color: #AA0; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0; }\r\n      to { background-color: #FF0; }\r\n  }\r\n  \r\n  .led-green {\r\n    margin: 0 auto;\r\n    width: 20px;\r\n    height: 20px;\r\n    background-color: #ABFF00;\r\n    border-radius: 50%;\r\n    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;\r\n  }\r\n  \r\n  .led-blue {\r\n    margin: 0 auto;\r\n    width: 20px;\r\n    height: 20px;\r\n    background-color: #24E0FF;\r\n    border-radius: 50%;\r\n    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3F8CFF 0 2px 14px;\r\n  }\r\n  \r\n  \r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmVwb3J0L3JlcG9ydC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLFlBQVk7SUFDWixVQUFVO0lBQ1YsY0FBYztJQUNkLFdBQVc7RUFDYjs7RUFFQTtJQUNFLGVBQWU7SUFDZixrQkFBa0I7SUFDbEIsV0FBVztFQUNiOztFQUVBO0lBQ0UsY0FBYztJQUNkLFdBQVc7SUFDWCxZQUFZO0lBQ1osc0JBQXNCO0lBQ3RCLGtCQUFrQjtJQUNsQix3R0FBd0c7SUFDeEcseUNBQXlDO0lBSXpDLGlDQUFpQztFQUNuQzs7RUFFQTtNQUNJLE9BQU8sc0JBQXNCLEVBQUU7TUFDL0IsTUFBTSxzQkFBc0IsRUFBRSxxR0FBcUcsQ0FBQztNQUNwSSxLQUFLLHNCQUFzQixFQUFFO0VBQ2pDOztFQWdCQTtNQUNJLE9BQU8sc0JBQXNCLEVBQUU7TUFDL0IsTUFBTSxzQkFBc0IsRUFBRSxxR0FBcUcsQ0FBQztNQUNwSSxLQUFLLHNCQUFzQixFQUFFO0VBQ2pDOztFQUVBO0lBQ0UsY0FBYztJQUNkLFdBQVc7SUFDWCxZQUFZO0lBQ1osc0JBQXNCO0lBQ3RCLGtCQUFrQjtJQUNsQix3RkFBd0Y7SUFDeEYsMENBQTBDO0lBSTFDLGtDQUFrQztFQUNwQzs7RUFFQTtNQUNJLE9BQU8sc0JBQXNCLEVBQUU7TUFDL0IsTUFBTSxzQkFBc0IsRUFBRSxxRkFBcUYsRUFBRTtNQUNySCxLQUFLLHNCQUFzQixFQUFFO0VBQ2pDOztFQWdCQTtNQUNJLE9BQU8sc0JBQXNCLEVBQUU7TUFDL0IsTUFBTSxzQkFBc0IsRUFBRSxxRkFBcUYsRUFBRTtNQUNySCxLQUFLLHNCQUFzQixFQUFFO0VBQ2pDOztFQUVBO0lBQ0UsY0FBYztJQUNkLFdBQVc7SUFDWCxZQUFZO0lBQ1oseUJBQXlCO0lBQ3pCLGtCQUFrQjtJQUNsQiwyRkFBMkY7RUFDN0Y7O0VBRUE7SUFDRSxjQUFjO0lBQ2QsV0FBVztJQUNYLFlBQVk7SUFDWix5QkFBeUI7SUFDekIsa0JBQWtCO0lBQ2xCLHdGQUF3RjtFQUMxRiIsImZpbGUiOiJzcmMvYXBwL3JlcG9ydC9yZXBvcnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4ubGVkLWJveCB7XHJcbiAgICBoZWlnaHQ6IDMwcHg7XHJcbiAgICB3aWR0aDogMjUlO1xyXG4gICAgbWFyZ2luOiAxMHB4IDA7XHJcbiAgICBmbG9hdDogbGVmdDtcclxuICB9XHJcbiAgXHJcbiAgLmxlZC1ib3ggcCB7XHJcbiAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBtYXJnaW46IDFlbTtcclxuICB9XHJcbiAgXHJcbiAgLmxlZC1yZWQge1xyXG4gICAgbWFyZ2luOiAwIGF1dG87XHJcbiAgICB3aWR0aDogMjBweDtcclxuICAgIGhlaWdodDogMjBweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNGMDA7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMTJweDtcclxuICAgIC13ZWJraXQtYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gICAgLW1vei1hbmltYXRpb246IGJsaW5rUmVkIDAuNXMgaW5maW5pdGU7XHJcbiAgICAtbXMtYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gICAgLW8tYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gICAgYW5pbWF0aW9uOiBibGlua1JlZCAwLjVzIGluZmluaXRlO1xyXG4gIH1cclxuICBcclxuICBALXdlYmtpdC1rZXlmcmFtZXMgYmxpbmtSZWQge1xyXG4gICAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gICAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICAgIHRvIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gIH1cclxuICBALW1vei1rZXlmcmFtZXMgYmxpbmtSZWQge1xyXG4gICAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gICAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICAgIHRvIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gIH1cclxuICBALW1zLWtleWZyYW1lcyBibGlua1JlZCB7XHJcbiAgICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbiAgICAgIDUwJSB7IGJhY2tncm91bmQtY29sb3I6ICNBMDA7IGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yKSAwIC0xcHggN3B4IDFweCwgaW5zZXQgIzQ0MTMxMyAwIC0xcHggOXB4LCByZ2JhKDI1NSwgMCwgMCwgMC41KSAwIDJweCAwO31cclxuICAgICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRjAwOyB9XHJcbiAgfVxyXG4gIEAtby1rZXlmcmFtZXMgYmxpbmtSZWQge1xyXG4gICAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gICAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQTAwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM0NDEzMTMgMCAtMXB4IDlweCwgcmdiYSgyNTUsIDAsIDAsIDAuNSkgMCAycHggMDt9XHJcbiAgICAgIHRvIHsgYmFja2dyb3VuZC1jb2xvcjogI0YwMDsgfVxyXG4gIH1cclxuICBAa2V5ZnJhbWVzIGJsaW5rUmVkIHtcclxuICAgICAgZnJvbSB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxuICAgICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0EwMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjNDQxMzEzIDAgLTFweCA5cHgsIHJnYmEoMjU1LCAwLCAwLCAwLjUpIDAgMnB4IDA7fVxyXG4gICAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGMDA7IH1cclxuICB9XHJcbiAgXHJcbiAgLmxlZC15ZWxsb3cge1xyXG4gICAgbWFyZ2luOiAwIGF1dG87XHJcbiAgICB3aWR0aDogMjBweDtcclxuICAgIGhlaWdodDogMjBweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNGRjA7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAxMnB4O1xyXG4gICAgLXdlYmtpdC1hbmltYXRpb246IGJsaW5rWWVsbG93IDFzIGluZmluaXRlO1xyXG4gICAgLW1vei1hbmltYXRpb246IGJsaW5rWWVsbG93IDFzIGluZmluaXRlO1xyXG4gICAgLW1zLWFuaW1hdGlvbjogYmxpbmtZZWxsb3cgMXMgaW5maW5pdGU7XHJcbiAgICAtby1hbmltYXRpb246IGJsaW5rWWVsbG93IDFzIGluZmluaXRlO1xyXG4gICAgYW5pbWF0aW9uOiBibGlua1llbGxvdyAxcyBpbmZpbml0ZTtcclxuICB9XHJcbiAgXHJcbiAgQC13ZWJraXQta2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgICAgZnJvbSB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxuICAgICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0FBMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMDsgfVxyXG4gICAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxuICB9XHJcbiAgQC1tb3ota2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgICAgZnJvbSB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxuICAgICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0FBMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMDsgfVxyXG4gICAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxuICB9XHJcbiAgQC1tcy1rZXlmcmFtZXMgYmxpbmtZZWxsb3cge1xyXG4gICAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDsgfVxyXG4gICAgICA1MCUgeyBiYWNrZ3JvdW5kLWNvbG9yOiAjQUEwOyBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICM4MDgwMDIgMCAtMXB4IDlweCwgI0ZGMCAwIDJweCAwOyB9XHJcbiAgICAgIHRvIHsgYmFja2dyb3VuZC1jb2xvcjogI0ZGMDsgfVxyXG4gIH1cclxuICBALW8ta2V5ZnJhbWVzIGJsaW5rWWVsbG93IHtcclxuICAgICAgZnJvbSB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxuICAgICAgNTAlIHsgYmFja2dyb3VuZC1jb2xvcjogI0FBMDsgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDAgLTFweCA3cHggMXB4LCBpbnNldCAjODA4MDAyIDAgLTFweCA5cHgsICNGRjAgMCAycHggMDsgfVxyXG4gICAgICB0byB7IGJhY2tncm91bmQtY29sb3I6ICNGRjA7IH1cclxuICB9XHJcbiAgQGtleWZyYW1lcyBibGlua1llbGxvdyB7XHJcbiAgICAgIGZyb20geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbiAgICAgIDUwJSB7IGJhY2tncm91bmQtY29sb3I6ICNBQTA7IGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yKSAwIC0xcHggN3B4IDFweCwgaW5zZXQgIzgwODAwMiAwIC0xcHggOXB4LCAjRkYwIDAgMnB4IDA7IH1cclxuICAgICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkYwOyB9XHJcbiAgfVxyXG4gIFxyXG4gIC5sZWQtZ3JlZW4ge1xyXG4gICAgbWFyZ2luOiAwIGF1dG87XHJcbiAgICB3aWR0aDogMjBweDtcclxuICAgIGhlaWdodDogMjBweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNBQkZGMDA7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICMzMDQ3MDEgMCAtMXB4IDlweCwgIzg5RkYwMCAwIDJweCAxMnB4O1xyXG4gIH1cclxuICBcclxuICAubGVkLWJsdWUge1xyXG4gICAgbWFyZ2luOiAwIGF1dG87XHJcbiAgICB3aWR0aDogMjBweDtcclxuICAgIGhlaWdodDogMjBweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMyNEUwRkY7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBib3gtc2hhZG93OiByZ2JhKDAsIDAsIDAsIDAuMikgMCAtMXB4IDdweCAxcHgsIGluc2V0ICMwMDYgMCAtMXB4IDlweCwgIzNGOENGRiAwIDJweCAxNHB4O1xyXG4gIH1cclxuICBcclxuICBcclxuICAiXX0= */");
 
 /***/ }),
 
@@ -7094,6 +7611,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -7738,11 +8258,15 @@ var ReportComponent = /** @class */ (function () {
                 return 0;
             });
     };
+    ReportComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+    ]; };
     ReportComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-report',
-            template: __webpack_require__(/*! ./report.component.html */ "./src/app/report/report.component.html"),
-            styles: [__webpack_require__(/*! ./report.component.css */ "./src/app/report/report.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./report.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/report/report.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./report.component.css */ "./src/app/report/report.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], ReportComponent);
@@ -7757,21 +8281,12 @@ var ReportComponent = /** @class */ (function () {
 /*!*************************************************!*\
   !*** ./src/app/schedule/schedule.component.css ***!
   \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NjaGVkdWxlL3NjaGVkdWxlLmNvbXBvbmVudC5jc3MifQ== */"
-
-/***/ }),
-
-/***/ "./src/app/schedule/schedule.component.html":
-/*!**************************************************!*\
-  !*** ./src/app/schedule/schedule.component.html ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"col-md-12 col-md-offset-1\">\r\n        <h2><span class=\"badge badge-primary\">Escala</span></h2>\r\n        <br>\r\n    \r\n        <button type=\"button\" id=\"anterior\" (click)=\"anteriorDia($event)\" class=\"btn btn-default\"> < </button>\r\n                        <button type=\"button\" id=\"proximo\" (click)=\"proximoDia($event)\" class=\"btn btn-default\"> > </button>\r\n                        <label for=\"dia\">DATA</label>\r\n                        <input name=\"dia\" id=\"dia\" type=\"date\" [(ngModel)]=\"dia\" (change)=\"onChange()\"> {{ diasemana }}\r\n                        <br>\r\n                        <br>\r\n\r\n                        <div *ngFor=\"let hora of horas; let h = index\">\r\n                                <div *ngIf=\"hora.vagas > 0\">\r\n                        <h3>{{hora.hora}}</h3>\r\n                        <div class=\"row\">     \r\n                        <div *ngFor=\"let ponto of pontos_hora[h]; let i = index\">    \r\n                        <div class=\"col-md-4\">  \r\n                        <div class=\"panel panel-default\" >\r\n                                        \r\n                                        <div class=\"panel-heading\" ><strong>Ponto({{i + 1}}): {{ponto.name}}</strong></div>\r\n                                        <div class=\"panel-body\">\r\n                                                        <div *ngFor=\"let pub of ponto.pubs; let j = index\" class=\"alert alert-success\" role=\"alert\">\r\n                                                                P {{ j + 1 }}:\r\n                                                                 <span  [style.color]=\"getStyle(pub?.sex)\" *ngIf=\"pub\">{{ pub?.firstName }} {{ pub?.lastName}}         </span>\r\n                                                                        I:  <span [style.color]=\"getStyle(pub?.sex)\" *ngIf=\"pub\">{{ getAge(pub?.datebirth) || ' ' }}  </span>\r\n                                                                        Cong: <span  [style.color]=\"getStyle(pub?.sex)\" *ngIf=\"pub\">{{ identifyCongregation(pub?.congregation) || ' ' }} </span> \r\n\r\n                                                                </div> \r\n                                                                </div>\r\n                                                        </div>\r\n                                                </div>\r\n                                        </div>\r\n                                </div>\r\n                        </div>\r\n                </div>\r\n             "
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NjaGVkdWxlL3NjaGVkdWxlLmNvbXBvbmVudC5jc3MifQ== */");
 
 /***/ }),
 
@@ -7802,6 +8317,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -8018,11 +8536,14 @@ var ScheduleComponent = /** @class */ (function () {
             return ' ';
         }
     };
+    ScheduleComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"] }
+    ]; };
     ScheduleComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-schedule',
-            template: __webpack_require__(/*! ./schedule.component.html */ "./src/app/schedule/schedule.component.html"),
-            styles: [__webpack_require__(/*! ./schedule.component.css */ "./src/app/schedule/schedule.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./schedule.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/schedule/schedule.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./schedule.component.css */ "./src/app/schedule/schedule.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"]])
     ], ScheduleComponent);
@@ -8043,6 +8564,9 @@ var ScheduleComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Agenda", function() { return Agenda; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var Agenda = /** @class */ (function () {
     function Agenda(data, datashow, hora, diasemana, code, userId, agendaId, sex) {
         this.data = data;
@@ -8066,21 +8590,12 @@ var Agenda = /** @class */ (function () {
 /*!***************************************************!*\
   !*** ./src/app/schedule2/schedule2.component.css ***!
   \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = ".btn.btn-default{\r\n\r\n    background-color: gray;\r\n    color: white;\r\n    width: 50px;\r\n    height: 40px;\r\n\r\n    }\r\n\r\n.center{\r\n        text-align: center\r\n      }\r\n\r\n.container{\r\n\r\n  position:absolute;\r\n  padding-top: 40px;\r\n\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2NoZWR1bGUyL3NjaGVkdWxlMi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztJQUVJLHNCQUFzQjtJQUN0QixZQUFZO0lBQ1osV0FBVztJQUNYLFlBQVk7O0lBRVo7O0FBRUo7UUFDUTtNQUNGOztBQUVOOztFQUVFLGlCQUFpQjtFQUNqQixpQkFBaUI7O0FBRW5CIiwiZmlsZSI6InNyYy9hcHAvc2NoZWR1bGUyL3NjaGVkdWxlMi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJ0bi5idG4tZGVmYXVsdHtcclxuXHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBncmF5O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgd2lkdGg6IDUwcHg7XHJcbiAgICBoZWlnaHQ6IDQwcHg7XHJcblxyXG4gICAgfVxyXG5cclxuLmNlbnRlcntcclxuICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXJcclxuICAgICAgfVxyXG5cclxuLmNvbnRhaW5lcntcclxuXHJcbiAgcG9zaXRpb246YWJzb2x1dGU7XHJcbiAgcGFkZGluZy10b3A6IDQwcHg7XHJcblxyXG59Il19 */"
-
-/***/ }),
-
-/***/ "./src/app/schedule2/schedule2.component.html":
-/*!****************************************************!*\
-  !*** ./src/app/schedule2/schedule2.component.html ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div *ngIf=\"showNow\" class=\"container\">\r\n<div *ngIf=\"validities.length > 0\">\r\n  <p><b>Período aberto de {{ dateString(validities[0].begin) }} até {{ dateString(validities[0].end) }}</b></p>\r\n</div>\r\n<div *ngIf=\"validities.length == 0\">\r\n  <h4>Período fechado</h4>\r\n</div>\r\n    <div class=\"row\">\r\n      <div class=\"col-md-6\">\r\n        <button type=\"button\" id=\"anterior\" (click)=\"anteriorDia($event)\" class=\"btn btn-default\">\r\n          <i class=\"fas fa-angle-left\"></i>\r\n        </button>\r\n        <input name=\"dia\" id=\"dia\" type=\"date\" [(ngModel)]=\"dia\" (change)=\"onChange()\">\r\n        <button type=\"button\" id=\"proximo\" (click)=\"proximoDia($event)\" class=\"btn btn-default\">\r\n          <i class=\"fas fa-angle-right\"></i>\r\n        </button>\r\n        <br>\r\n        <b> {{ diasemana }}</b>\r\n        <div class=\"panel-body\">\r\n\r\n          <div *ngIf=\"buscaFeriado()\" class=\"alert alert-warning\">\r\n            <strong>Feriado</strong>\r\n          </div>\r\n          <div class=\"table-responsive\">\r\n            <table class=\"table\">\r\n              <thead>\r\n                <tr>\r\n                  <th scope=\"col\">Horários</th>\r\n                  <th scope=\"col\">Vagas</th>\r\n                  <th scope=\"col\" class=\"center\">Seleção</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n\r\n                <tr *ngFor=\"let hora of horas; let h = index\">\r\n                  <th *ngIf=\"hora.vagas > 0\" scope=\"row\">{{ hora.hora }}</th>\r\n                  <td *ngIf=\"hora.vagas > 0\">\r\n                    <span class=\"badge badge-success\">{{ hora.vagas - hora.dispo}}/{{hora.vagas}}</span>\r\n                  </td>\r\n                  <td *ngIf=\"hora.vagas > 0\" class=\"center\">\r\n                    <input  type=\"radio\" name=\"jradio\" (change)=\"onChangeSel($event, hora)\" [checked]=\"valCheck()\" [disabled]=\"disabledAgenda()\">\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n          </div>\r\n        </div>\r\n        <button id=\"btnAgendar\" class=\"btn btn-primary\" type=\"submit\" (click)=\"execAgendar()\" [disabled]=\"disabledAgenda()\">Agendar</button>\r\n\r\n      </div>\r\n\r\n      <div class=\"col-md-5\">\r\n\r\n        <h4>Histórico</h4>\r\n        <div *ngFor=\"let agenda of user_agenda; let i = index\" class=\"alert alert-success\" role=\"alert\">\r\n          <a>\r\n            <i class=\"fa fa-trash-o\" aria-hidden=\"true\" style=\"color:blue\" (click)=\"Delete(i)\"></i>\r\n          </a>Agendado {{ agenda.diasemana }} {{ agenda.datashow }} ás {{ agenda.hora }}\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n</div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".btn.btn-default{\r\n\r\n    background-color: gray;\r\n    color: white;\r\n    width: 50px;\r\n    height: 40px;\r\n\r\n    }\r\n\r\n.center{\r\n        text-align: center\r\n      }\r\n\r\n.container{\r\n\r\n  position:absolute;\r\n  padding-top: 40px;\r\n\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2NoZWR1bGUyL3NjaGVkdWxlMi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztJQUVJLHNCQUFzQjtJQUN0QixZQUFZO0lBQ1osV0FBVztJQUNYLFlBQVk7O0lBRVo7O0FBRUo7UUFDUTtNQUNGOztBQUVOOztFQUVFLGlCQUFpQjtFQUNqQixpQkFBaUI7O0FBRW5CIiwiZmlsZSI6InNyYy9hcHAvc2NoZWR1bGUyL3NjaGVkdWxlMi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJ0bi5idG4tZGVmYXVsdHtcclxuXHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBncmF5O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgd2lkdGg6IDUwcHg7XHJcbiAgICBoZWlnaHQ6IDQwcHg7XHJcblxyXG4gICAgfVxyXG5cclxuLmNlbnRlcntcclxuICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXJcclxuICAgICAgfVxyXG5cclxuLmNvbnRhaW5lcntcclxuXHJcbiAgcG9zaXRpb246YWJzb2x1dGU7XHJcbiAgcGFkZGluZy10b3A6IDQwcHg7XHJcblxyXG59Il19 */");
 
 /***/ }),
 
@@ -8109,6 +8624,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -8377,11 +8895,14 @@ var Schedule2Component = /** @class */ (function () {
     Schedule2Component.prototype.dateString = function (data) {
         return moment__WEBPACK_IMPORTED_MODULE_2__["utc"](data).format('DD-MM-YYYY');
     };
+    Schedule2Component.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"] }
+    ]; };
     Schedule2Component = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-schedule2',
-            template: __webpack_require__(/*! ./schedule2.component.html */ "./src/app/schedule2/schedule2.component.html"),
-            styles: [__webpack_require__(/*! ./schedule2.component.css */ "./src/app/schedule2/schedule2.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./schedule2.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/schedule2/schedule2.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./schedule2.component.css */ "./src/app/schedule2/schedule2.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"]])
     ], Schedule2Component);
@@ -8396,21 +8917,12 @@ var Schedule2Component = /** @class */ (function () {
 /*!**********************************************!*\
   !*** ./src/app/setup/circuito.component.css ***!
   \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = ".backdrop {\r\n    background-color: rgba(0,0,0,0.6);\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100vh;\r\n\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2V0dXAvY2lyY3VpdG8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGlDQUFpQztJQUNqQyxlQUFlO0lBQ2YsTUFBTTtJQUNOLE9BQU87SUFDUCxXQUFXO0lBQ1gsYUFBYTs7QUFFakIiLCJmaWxlIjoic3JjL2FwcC9zZXR1cC9jaXJjdWl0by5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJhY2tkcm9wIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwwLDAsMC42KTtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHRvcDogMDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogMTAwdmg7XHJcblxyXG59XHJcblxyXG4iXX0= */"
-
-/***/ }),
-
-/***/ "./src/app/setup/circuito.component.html":
-/*!***********************************************!*\
-  !*** ./src/app/setup/circuito.component.html ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <form [formGroup]=\"circuitoForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"modal_titulo\">Novo Circuito</h5>\r\n          <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n          <br/>\r\n\r\n          <div class=\"form-row\">\r\n            <div class=\"form-group col-md-4\">\r\n              <label>Nome *</label>\r\n              <input type=\"text\" class=\"form-control\" id=\"circuito_nome\" placeholder=\"Digite o nome do circuito\" formControlName=\"nome\">\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n\r\n          <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n        </div>\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewCircuito()\" [disabled]=\"auth\">Novo circuito +</button>\r\n    </div>\r\n\r\n    <form>\r\n\r\n    </form>\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th scope=\"col\">#</th>\r\n          <th scope=\"col\">Nome</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let circuito of circuitos; let j = index\">\r\n          <th scope=\"row\">{{j + 1}}</th>\r\n          <td>{{circuito.nome}}</td>\r\n          <td>\r\n            <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".backdrop {\r\n    background-color: rgba(0,0,0,0.6);\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100vh;\r\n\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2V0dXAvY2lyY3VpdG8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGlDQUFpQztJQUNqQyxlQUFlO0lBQ2YsTUFBTTtJQUNOLE9BQU87SUFDUCxXQUFXO0lBQ1gsYUFBYTs7QUFFakIiLCJmaWxlIjoic3JjL2FwcC9zZXR1cC9jaXJjdWl0by5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJhY2tkcm9wIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwwLDAsMC42KTtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHRvcDogMDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogMTAwdmg7XHJcblxyXG59XHJcblxyXG4iXX0= */");
 
 /***/ }),
 
@@ -8436,6 +8948,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -8516,11 +9031,14 @@ var CircuitoComponent = /** @class */ (function () {
         if (this.authService.isAuthenticated())
             this.auth = false;
     };
+    CircuitoComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+    ]; };
     CircuitoComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-circuito',
-            template: __webpack_require__(/*! ./circuito.component.html */ "./src/app/setup/circuito.component.html"),
-            styles: [__webpack_require__(/*! ./circuito.component.css */ "./src/app/setup/circuito.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./circuito.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/circuito.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./circuito.component.css */ "./src/app/setup/circuito.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], CircuitoComponent);
@@ -8541,6 +9059,9 @@ var CircuitoComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Circuito", function() { return Circuito; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var Circuito = /** @class */ (function () {
     function Circuito(nome, id) {
         this.nome = nome;
@@ -8557,21 +9078,12 @@ var Circuito = /** @class */ (function () {
 /*!**************************************************!*\
   !*** ./src/app/setup/congregation.component.css ***!
   \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = ".backdrop {\r\n    background-color: rgba(0,0,0,0.6);\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100vh;\r\n\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2V0dXAvY29uZ3JlZ2F0aW9uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxpQ0FBaUM7SUFDakMsZUFBZTtJQUNmLE1BQU07SUFDTixPQUFPO0lBQ1AsV0FBVztJQUNYLGFBQWE7O0FBRWpCIiwiZmlsZSI6InNyYy9hcHAvc2V0dXAvY29uZ3JlZ2F0aW9uLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFja2Ryb3Age1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLDAsMCwwLjYpO1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgdG9wOiAwO1xyXG4gICAgbGVmdDogMDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAxMDB2aDtcclxuXHJcbn1cclxuIl19 */"
-
-/***/ }),
-
-/***/ "./src/app/setup/congregation.component.html":
-/*!***************************************************!*\
-  !*** ./src/app/setup/congregation.component.html ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <form [formGroup]=\"congregationForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"modal_titulo\">Nova congregação</h5>\r\n          <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n          <br/>\r\n          \r\n          <div class=\"form-row\">\r\n            <div class=\"form-group col-md-4\">\r\n              <label>Circuito *</label>\r\n          <select [(ngModel)]=\"mycircuit\" formControlName=\"circuit\" id=\"circuit\" class=\"form-control\">\r\n            <option value=\" \"></option>\r\n            <option *ngFor=\"let circuito of circuitos\" [ngValue]=\"circuito\">{{circuito.nome}}</option>\r\n          </select>\r\n        </div>\r\n \r\n            <div class=\"form-group col-md-7\">\r\n              <label>Nome *</label>\r\n              <input type=\"text\" class=\"form-control\" id=\"congregation_nome\" placeholder=\"Digite o nome da congregação\" formControlName=\"nome\">\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n\r\n          <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n        </div>\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewCongregation()\" [disabled]=\"auth\">Nova congregação +</button>\r\n    </div>\r\n\r\n    <form>\r\n    </form>\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th scope=\"col\">#</th>\r\n          <th scope=\"col\">Circuito</th>\r\n          <th scope=\"col\">Nome</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let congregation of congregations; let j = index\">\r\n          <th scope=\"row\">{{j + 1}}</th>\r\n          <td>{{congregation.circuit}}</td>\r\n          <td>{{congregation.nome}}</td>\r\n          <td>\r\n            <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".backdrop {\r\n    background-color: rgba(0,0,0,0.6);\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100vh;\r\n\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2V0dXAvY29uZ3JlZ2F0aW9uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxpQ0FBaUM7SUFDakMsZUFBZTtJQUNmLE1BQU07SUFDTixPQUFPO0lBQ1AsV0FBVztJQUNYLGFBQWE7O0FBRWpCIiwiZmlsZSI6InNyYy9hcHAvc2V0dXAvY29uZ3JlZ2F0aW9uLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFja2Ryb3Age1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLDAsMCwwLjYpO1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgdG9wOiAwO1xyXG4gICAgbGVmdDogMDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAxMDB2aDtcclxuXHJcbn1cclxuIl19 */");
 
 /***/ }),
 
@@ -8598,6 +9110,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -8690,11 +9205,14 @@ var CongregationComponent = /** @class */ (function () {
         if (this.authService.isAuthenticated())
             this.auth = false;
     };
+    CongregationComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+    ]; };
     CongregationComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-congregation",
-            template: __webpack_require__(/*! ./congregation.component.html */ "./src/app/setup/congregation.component.html"),
-            styles: [__webpack_require__(/*! ./congregation.component.css */ "./src/app/setup/congregation.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./congregation.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/congregation.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./congregation.component.css */ "./src/app/setup/congregation.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], CongregationComponent);
@@ -8715,6 +9233,9 @@ var CongregationComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Congregation", function() { return Congregation; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var Congregation = /** @class */ (function () {
     function Congregation(nome, circuit, id) {
         this.nome = nome;
@@ -8732,21 +9253,12 @@ var Congregation = /** @class */ (function () {
 /*!**********************************************!*\
   !*** ./src/app/setup/especial.component.css ***!
   \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NldHVwL2VzcGVjaWFsLmNvbXBvbmVudC5jc3MifQ== */"
-
-/***/ }),
-
-/***/ "./src/app/setup/especial.component.html":
-/*!***********************************************!*\
-  !*** ./src/app/setup/especial.component.html ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <form [formGroup]=\"especialForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"modal_titulo\">Novo dia especial</h5>\r\n          <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n          <br/>\r\n\r\n          <div class=\"form-row\">\r\n\r\n            <div class=\"form-group col-md-7\">\r\n              <label>Nome *</label>\r\n              <input name=\"nome\" type=\"text\" id=\"nome\" class=\"form-control\" formControlName=\"nome\">\r\n            </div>\r\n\r\n            <div class=\"form-group col-md-4\">\r\n              <label>Circuito *</label>\r\n              <select [(ngModel)]=\"mycircuit\" formControlName=\"circuit\" id=\"circuit\" class=\"form-control\">\r\n                <option value=\" \"></option>\r\n                <option *ngFor=\"let circuito of circuitos\" [ngValue]=\"circuito\">{{circuito.nome}}</option>\r\n              </select>\r\n            </div>\r\n\r\n          </div>\r\n\r\n          <div class=\"form-row\">\r\n            <div class=\"form-group col-md-6\">\r\n              <label>Início *</label>\r\n              <input name=\"begin\" type=\"date\" id=\"begin\" class=\"form-control\" formControlName=\"begin\">\r\n            </div>\r\n\r\n            <div class=\"form-group col-md-6\">\r\n              <label>Fim *</label>\r\n              <input name=\"end\" type=\"date\" id=\"end\" class=\"form-control\" formControlName=\"end\">\r\n\r\n            </div>\r\n\r\n\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n\r\n          <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n        </div>\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewespecial()\" [disabled]=\"auth\">Novo dia especial +</button>\r\n    </div>\r\n\r\n    <form>\r\n    </form>\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th scope=\"col\">#</th>\r\n          <th scope=\"col\">Nome</th>\r\n          <th scope=\"col\">Circuito</th>\r\n          <th scope=\"col\">Início</th>\r\n          <th scope=\"col\">Fim</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let especial of especiais; let j = index\">\r\n          <th scope=\"row\">{{j + 1}}</th>\r\n          <td>{{especial.nome}}</td>\r\n          <td>{{especial.circuito}}</td>\r\n          <td>{{dateString(especial.begin)}}</td>\r\n          <td>{{dateString(especial.end)}}</td>\r\n          <td>\r\n            <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NldHVwL2VzcGVjaWFsLmNvbXBvbmVudC5jc3MifQ== */");
 
 /***/ }),
 
@@ -8777,6 +9289,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -8889,11 +9404,14 @@ var EspecialComponent = /** @class */ (function () {
     EspecialComponent.prototype.dateString = function (data) {
         return moment__WEBPACK_IMPORTED_MODULE_6__["utc"](data).format('DD-MM-YYYY');
     };
+    EspecialComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+    ]; };
     EspecialComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-especial',
-            template: __webpack_require__(/*! ./especial.component.html */ "./src/app/setup/especial.component.html"),
-            styles: [__webpack_require__(/*! ./especial.component.css */ "./src/app/setup/especial.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./especial.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/especial.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./especial.component.css */ "./src/app/setup/especial.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], EspecialComponent);
@@ -8914,6 +9432,9 @@ var EspecialComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Especial", function() { return Especial; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var Especial = /** @class */ (function () {
     function Especial(begin, end, circuito, nome, id) {
         this.begin = begin;
@@ -8933,21 +9454,12 @@ var Especial = /** @class */ (function () {
 /*!*******************************************!*\
   !*** ./src/app/setup/excel.component.css ***!
   \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NldHVwL2V4Y2VsLmNvbXBvbmVudC5jc3MifQ== */"
-
-/***/ }),
-
-/***/ "./src/app/setup/excel.component.html":
-/*!********************************************!*\
-  !*** ./src/app/setup/excel.component.html ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-row\">\r\n      <div class=\"form-group\">\r\n\r\n        <button type=\"button\" id=\"anterior\" (click)=\"anteriorDia($event)\" class=\"btn btn-default\">\r\n          < </button>\r\n            <button type=\"button\" id=\"proximo\" (click)=\"proximoDia($event)\" class=\"btn btn-default\"> > </button>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <select [(ngModel)]=\"dayselect\" class=\"form-control\">\r\n          <option>Segunda-feira</option>\r\n          <option>Terça-feira</option>\r\n          <option>Quarta-feira</option>\r\n          <option>Quinta-feira</option>\r\n          <option>Sexta-feira</option>\r\n          <option>Sábado</option>\r\n          <option>Domingo</option>\r\n          <option>Feriado</option>\r\n        </select>\r\n      </div>\r\n      <div class=\"form-group col-md-3\">\r\n        <button id=\"btnCreate3\" class=\"btn btn-primary\" (click)=\"salvarConfig()\" [disabled]=\"auth\">Salvar </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th>Ponto/Horário</th>\r\n          <th *ngFor=\"let hora of horas; let h = index\">{{hora.hora}}</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let ponto of pontos; let p = index\">\r\n          <td>{{ponto.name}}</td>\r\n          <td *ngFor=\"let hora of horas; let ph = index\">\r\n            <input type=\"checkbox\" (click)=\"changed($event.target.checked,ponto,hora)\" [checked]=\"valorCheck(ponto,hora)\" [disabled]=\"auth\">\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n\r\n  </div>\r\n</div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NldHVwL2V4Y2VsLmNvbXBvbmVudC5jc3MifQ== */");
 
 /***/ }),
 
@@ -8971,6 +9483,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -9105,11 +9620,14 @@ var ExcelComponent = /** @class */ (function () {
         if (this.authService.isAuthenticated())
             this.auth = false;
     };
+    ExcelComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"] }
+    ]; };
     ExcelComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-excel",
-            template: __webpack_require__(/*! ./excel.component.html */ "./src/app/setup/excel.component.html"),
-            styles: [__webpack_require__(/*! ./excel.component.css */ "./src/app/setup/excel.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./excel.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/excel.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./excel.component.css */ "./src/app/setup/excel.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"]])
     ], ExcelComponent);
@@ -9124,21 +9642,12 @@ var ExcelComponent = /** @class */ (function () {
 /*!*********************************************!*\
   !*** ./src/app/setup/feriado.component.css ***!
   \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NldHVwL2ZlcmlhZG8uY29tcG9uZW50LmNzcyJ9 */"
-
-/***/ }),
-
-/***/ "./src/app/setup/feriado.component.html":
-/*!**********************************************!*\
-  !*** ./src/app/setup/feriado.component.html ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <form [formGroup]=\"feriadoForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"modal_titulo\">Novo feriado</h5>\r\n          <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n          <br/>\r\n\r\n          <div class=\"form-row\">\r\n            <div class=\"form-group col-md-7\">\r\n              <label>Nome *</label>\r\n              <input name=\"feriado\" type=\"text\" id=\"feriado\" class=\"form-control\" formControlName=\"feriado\">\r\n            </div>\r\n\r\n            <div class=\"form-group col-md-5\">\r\n              <label>Data *</label>\r\n              <input name=\"data\" type=\"date\" id=\"data\" class=\"form-control\" formControlName=\"data\">\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n\r\n          <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n        </div>\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewferiado()\" [disabled]=\"auth\">Novo feriado +</button>\r\n    </div>\r\n\r\n    <form>\r\n    </form>\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th scope=\"col\">#</th>\r\n          <th scope=\"col\">Nome</th>\r\n          <th scope=\"col\">Data</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let feriado of feriados; let j = index\">\r\n          <th scope=\"row\">{{j + 1}}</th>\r\n          <td>{{feriado.feriado}}</td>\r\n          <td>{{feriado.datashow}}</td>\r\n          <td>\r\n            <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NldHVwL2ZlcmlhZG8uY29tcG9uZW50LmNzcyJ9 */");
 
 /***/ }),
 
@@ -9168,6 +9677,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -9260,11 +9772,14 @@ var FeriadoComponent = /** @class */ (function () {
         if (this.authService.isAuthenticated())
             this.auth = false;
     };
+    FeriadoComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+    ]; };
     FeriadoComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-feriado',
-            template: __webpack_require__(/*! ./feriado.component.html */ "./src/app/setup/feriado.component.html"),
-            styles: [__webpack_require__(/*! ./feriado.component.css */ "./src/app/setup/feriado.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./feriado.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/feriado.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./feriado.component.css */ "./src/app/setup/feriado.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], FeriadoComponent);
@@ -9285,6 +9800,9 @@ var FeriadoComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Feriado", function() { return Feriado; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var Feriado = /** @class */ (function () {
     function Feriado(feriado, data, datashow, idferiado) {
         this.feriado = feriado;
@@ -9303,21 +9821,12 @@ var Feriado = /** @class */ (function () {
 /*!******************************************!*\
   !*** ./src/app/setup/hora.component.css ***!
   \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NldHVwL2hvcmEuY29tcG9uZW50LmNzcyJ9 */"
-
-/***/ }),
-
-/***/ "./src/app/setup/hora.component.html":
-/*!*******************************************!*\
-  !*** ./src/app/setup/hora.component.html ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <form [formGroup]=\"horaForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"modal_titulo\">Novo horário</h5>\r\n          <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n          <br/>\r\n\r\n          <div class=\"form-row\">\r\n            <div class=\"form-group col-md-7\">\r\n              <label>Horário *</label>\r\n              <input type=\"text\" class=\"form-control\" id=\"hora_hora\" pattern=\".{11,11}\" placeholder=\"Digite o nome da congregação\" formControlName=\"hora\">\r\n            </div>\r\n\r\n            <div class=\"form-group col-md-5\">\r\n              <label>Código *</label>\r\n              <input type=\"text\" class=\"form-control\" id=\"hora_code\" pattern=\".{3,3}\" placeholder=\"Digite o nome da congregação\" formControlName=\"code\">\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n\r\n          <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n        </div>\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewhora()\" [disabled]=\"auth\">Novo horário +</button>\r\n    </div>\r\n\r\n    <form>\r\n    </form>\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th scope=\"col\">#</th>\r\n          <th scope=\"col\">Horário</th>\r\n          <th scope=\"col\">Código</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let hora of horas; let j = index\">\r\n          <th scope=\"row\">{{j + 1}}</th>\r\n          <td>{{hora.hora}}</td>\r\n          <td>{{hora.code}}</td>\r\n          <td>\r\n            <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NldHVwL2hvcmEuY29tcG9uZW50LmNzcyJ9 */");
 
 /***/ }),
 
@@ -9343,6 +9852,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -9426,11 +9938,14 @@ var HoraComponent = /** @class */ (function () {
         if (this.authService.isAuthenticated())
             this.auth = false;
     };
+    HoraComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+    ]; };
     HoraComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-hora",
-            template: __webpack_require__(/*! ./hora.component.html */ "./src/app/setup/hora.component.html"),
-            styles: [__webpack_require__(/*! ./hora.component.css */ "./src/app/setup/hora.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./hora.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/hora.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./hora.component.css */ "./src/app/setup/hora.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], HoraComponent);
@@ -9451,6 +9966,9 @@ var HoraComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hora", function() { return Hora; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var Hora = /** @class */ (function () {
     function Hora(code, hora, idhora) {
         this.code = code;
@@ -9470,21 +9988,12 @@ var Hora = /** @class */ (function () {
 /*!**********************************************!*\
   !*** ./src/app/setup/newponto.component.css ***!
   \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = ".backdrop {\r\n    background-color: rgba(0,0,0,0.6);\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100vh;\r\n\r\n}\r\n\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2V0dXAvbmV3cG9udG8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGlDQUFpQztJQUNqQyxlQUFlO0lBQ2YsTUFBTTtJQUNOLE9BQU87SUFDUCxXQUFXO0lBQ1gsYUFBYTs7QUFFakIiLCJmaWxlIjoic3JjL2FwcC9zZXR1cC9uZXdwb250by5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJhY2tkcm9wIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwwLDAsMC42KTtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHRvcDogMDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogMTAwdmg7XHJcblxyXG59XHJcblxyXG5cclxuIl19 */"
-
-/***/ }),
-
-/***/ "./src/app/setup/newponto.component.html":
-/*!***********************************************!*\
-  !*** ./src/app/setup/newponto.component.html ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <form [formGroup]=\"pontoForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"modal_titulo\">Novo Ponto</h5>\r\n          <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n          <br/>\r\n\r\n          <div class=\"form-row\">\r\n            <div class=\"form-group col-md-7\">\r\n              <label>Nome *</label>\r\n              <input type=\"text\" class=\"form-control\" id=\"ponto_nome\" placeholder=\"Digite o nome do ponto\" formControlName=\"name\">\r\n\r\n            </div>\r\n            <div class=\"form-group col-md-5\">\r\n              <label>Qtde. Publicadores *</label>\r\n              <input type=\"number\" class=\"form-control\" id=\"ponto_qtde_publicadores\" placeholder=\"Digite a quantidade\" formControlName=\"npubs\">\r\n\r\n            </div>\r\n            <div class=\"form-group col-md-12\">\r\n              <label>Endereço *</label>\r\n              <input type=\"text\" class=\"form-control\" id=\"ponto_endereco\" placeholder=\"Digite o endereço do ponto\" formControlName=\"address\">\r\n\r\n            </div>\r\n            <div class=\"form-group col-md-12\">\r\n              <label>Observações</label>\r\n              <textarea class=\"form-control\" id=\"ponto_obs\" rows=\"2\" formControlName=\"obs\"></textarea>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label for=\"exampleFormControlFile1\">Imagem *</label>\r\n              <input type=\"file\" class=\"form-control\" id=\"ponto_imagem\" (change)=\"onFileChanged($event)\" formControlName=\"fileimg\">\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n  \r\n          <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n    \r\n        </div>\r\n      </form>\r\n   \r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewPonto()\" [disabled]=\"auth\">Novo ponto +</button>\r\n    </div>\r\n\r\n    <form>\r\n\r\n    </form>\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th scope=\"col\">#</th>\r\n          <th scope=\"col\">Ponto</th>\r\n          <th scope=\"col\">Qtde. Publicadores</th>\r\n          <th scope=\"col\">Endereço</th>\r\n          <th scope=\"col\"></th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let point of pontos; let i = index\">\r\n          <th scope=\"row\">{{i + 1}}</th>\r\n          <td>{{point.name}}</td>\r\n          <td>{{point.npubs}}</td>\r\n          <td>{{point.address}}</td>\r\n          <td>\r\n            <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(i)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(i)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-trash-o\" aria-hidden=\"true\" ></i> Excluir</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n\r\n <!--  <div *ngFor=\"let point of pontos; let t = index\" class='holder'>\r\n      <img src=\"/assets/img/{{point.fileimg}}\" alt=\"{{point.name}}\"> \r\n  </div> -->\r\n  <div class=\"row\">\r\n  <div *ngFor=\"let point of pontos; let t = index\" class=\"card\" style=\"width: 18rem;\">\r\n      <img class=\"card-img-top\" src=\"/assets/img/{{point.fileimg}}\" alt=\"Card image cap\">\r\n      <div class=\"card-body\">\r\n        <p class=\"card-text\"><b>{{point.name}}</b></p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n    <!-- \r\n</div>\r\n\r\n\r\n<div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <form [formGroup]=\"pontoForm\" (ngSubmit)=\"onSubmit()\">\r\n        <h2>Pontos</h2>\r\n        <div class=\"form-group\">\r\n            <label for=\"name\">Nome do ponto:</label>\r\n            <input type=\"text\" id=\"name\" class=\"form-control\" formControlName=\"name\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label for=\"npubs\">Número de Publicadores:</label>\r\n            <input type=\"number\" id=\"npubs\" class=\"form-control\" formControlName=\"npubs\">\r\n        </div>\r\n\r\n\r\n        <button id=\"btnCreate\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!pontoForm.valid\">Criar Ponto</button>\r\n    </form>\r\n</div> -->"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".backdrop {\r\n    background-color: rgba(0,0,0,0.6);\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100vh;\r\n\r\n}\r\n\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2V0dXAvbmV3cG9udG8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGlDQUFpQztJQUNqQyxlQUFlO0lBQ2YsTUFBTTtJQUNOLE9BQU87SUFDUCxXQUFXO0lBQ1gsYUFBYTs7QUFFakIiLCJmaWxlIjoic3JjL2FwcC9zZXR1cC9uZXdwb250by5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJhY2tkcm9wIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwwLDAsMC42KTtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHRvcDogMDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogMTAwdmg7XHJcblxyXG59XHJcblxyXG5cclxuIl19 */");
 
 /***/ }),
 
@@ -9514,6 +10023,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -9644,11 +10156,14 @@ var NewpontoComponent = /** @class */ (function () {
         if (this.authService.isAuthenticated())
             this.auth = false;
     };
+    NewpontoComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+    ]; };
     NewpontoComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-newponto",
-            template: __webpack_require__(/*! ./newponto.component.html */ "./src/app/setup/newponto.component.html"),
-            styles: [__webpack_require__(/*! ./newponto.component.css */ "./src/app/setup/newponto.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./newponto.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/newponto.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./newponto.component.css */ "./src/app/setup/newponto.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], NewpontoComponent);
@@ -9669,6 +10184,9 @@ var NewpontoComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ponto", function() { return Ponto; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var Ponto = /** @class */ (function () {
     function Ponto(name, npubs, date, id, pubs, config, address, obs, fileimg) {
         this.name = name;
@@ -9685,17 +10203,6 @@ var Ponto = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/setup/setup.component.html":
-/*!********************************************!*\
-  !*** ./src/app/setup/setup.component.html ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<!-- <div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <form [formGroup]=\"pontoForm\" (ngSubmit)=\"onSubmit()\">\r\n      <h2>Pontos</h2>\r\n      <div class=\"form-group\">\r\n        <label for=\"name\">Nome do ponto:</label>\r\n        <input type=\"text\" id=\"name\" class=\"form-control\" formControlName=\"name\">\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"npubs\">Número de Publicadores:</label>\r\n        <input type=\"number\" id=\"npubs\" class=\"form-control\" formControlName=\"npubs\">\r\n      </div>\r\n\r\n\r\n      <button id=\"btnCreate\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!pontoForm.valid\">Criar Ponto</button>\r\n    </form>\r\n  </div>\r\n\r\n\r\n\r\n  <div class=\"col-md-4\">\r\n    <br>\r\n    <br>\r\n    <div *ngFor=\"let ponto of pontos; let i = index\" class=\"alert alert-info\">\r\n\r\n      <a>\r\n          <i class=\"fa fa-trash-o\" aria-hidden=\"true\" style=\"color:blue\" (click)=\"Delete(i)\"></i>\r\n      </a>\r\n      <span style=\"color:black\">Ponto({{i + 1}}): </span>\r\n      <span style=\"color:Sienna\">{{ponto.name}} </span>\r\n      <span style=\"color:black\">Publicadores: </span>\r\n      <span style=\"color:Sienna\">{{ ponto.npubs }}</span>\r\n    </div>\r\n  </div>\r\n</div> -->\r\n\r\n\r\n\r\n\r\n<!-- \r\n\r\n\r\n\r\n<div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <form [formGroup]=\"horaForm\" (ngSubmit)=\"onSubmit2()\">\r\n      <h2>Horários</h2>\r\n      <div class=\"form-group\">\r\n        <label for=\"hora\">Nome do horário:</label>\r\n        <input type=\"text\" id=\"hora\" pattern=\".{11,11}\" class=\"form-control\" formControlName=\"hora\">\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"hora\">Código:</label>\r\n        <input type=\"text\" id=\"code\" pattern=\".{3,3}\" class=\"form-control\" formControlName=\"code\">\r\n      </div>\r\n\r\n      <button id=\"btnCreate2\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!horaForm.valid\">Criar Hora</button>\r\n    </form>\r\n  </div>\r\n  <div class=\"col-md-3\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <div *ngFor=\"let hora of horas; let j = index\" class=\"alert alert-info\">\r\n\r\n      <a>\r\n          <i class=\"fa fa-trash-o\" aria-hidden=\"true\" style=\"color:blue\" (click)=\"Delete2(j)\"></i>\r\n      </a>\r\n      <span style=\"color:black\">Horário({{j+1}}): </span>\r\n      <span style=\"color:Sienna\">{{ hora.hora }}</span>\r\n      <span style=\"color:black\">Cód: </span>\r\n      <span style=\"color:Sienna\">{{ hora.code }}</span>\r\n    </div>\r\n  </div>\r\n</div> -->\r\n\r\n\r\n<div class=\"row\">\r\n  <div class=\"col-md-8 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <h2>Dia X Ponto X Horário</h2>\r\n    <div class=\"col-md-4\">\r\n      <br>\r\n      <button type=\"button\" id=\"anterior\" (click)=\"anteriorDia($event)\" class=\"btn btn-default\">\r\n        < </button>\r\n          <button type=\"button\" id=\"proximo\" (click)=\"proximoDia($event)\" class=\"btn btn-default\"> > </button>\r\n          <select [(ngModel)]=\"dayselect\" class=\"form-control\">\r\n            <option>Segunda-feira</option>\r\n            <option>Terça-feira</option>\r\n            <option>Quarta-feira</option>\r\n            <option>Quinta-feira</option>\r\n            <option>Sexta-feira</option>\r\n            <option>Sábado</option>\r\n            <option>Domingo</option>\r\n            <option>Feriado</option>\r\n          </select>\r\n    </div>\r\n    <table class=\"table table-condensed\">\r\n      <thead>\r\n        <tr>\r\n          <th>Ponto/Horário</th>\r\n          <th *ngFor=\"let hora of horas; let h = index\">{{hora.hora}}</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let ponto of pontos; let p = index\">\r\n          <td>{{ponto.name}}</td>\r\n          <td *ngFor=\"let hora of horas; let ph = index\">\r\n            <input type=\"checkbox\" (click)=\"changed($event.target.checked,ponto,hora)\" [checked]=\"valorCheck(ponto,hora)\">\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n    <button id=\"btnCreate3\" class=\"btn btn-primary\" (click)=\"salvarConfig()\">Salvar Config</button>\r\n  </div>\r\n</div>\r\n\r\n<!-- <div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <form [formGroup]=\"feriadoForm\" (ngSubmit)=\"onSubmit3()\">\r\n      <h2>Feriados</h2>\r\n      <div class=\"form-group\">\r\n        <label for=\"feriado\">Nome do Feriado:</label>\r\n        <input type=\"text\" id=\"feriado\" pattern=\".{3,20}\" class=\"form-control\" formControlName=\"feriado\">\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"data\">Data:</label>\r\n        <input type=\"date\" id=\"dia\" name=\"dia\" [ngModel]=\"dia\" class=\"form-control\" formControlName=\"data\">\r\n      </div>\r\n\r\n      <button id=\"btnCreate4\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!feriadoForm.valid\">Criar Feriado</button>\r\n    </form>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <div *ngFor=\"let feriado of feriados; let j = index\" class=\"alert alert-info\">\r\n\r\n      <a>\r\n          <i class=\"fa fa-trash-o\" aria-hidden=\"true\" style=\"color:blue\" (click)=\"Delete3(j)\"></i>\r\n      </a>\r\n      <span style=\"color:black\">Feriado({{j+1}}): </span>\r\n      <span style=\"color:Sienna\">{{ feriado.feriado }}</span>\r\n      <span style=\"color:black\">Data: </span>\r\n      <span style=\"color:Sienna\">{{ feriado.datashow }}</span>\r\n    </div>\r\n  </div>\r\n\r\n\r\n</div> -->\r\n\r\n<!-- <div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <form [formGroup]=\"circuitoForm\" (ngSubmit)=\"onSubmit4()\">\r\n      <h2>Circuitos</h2>\r\n      <div class=\"form-group\">\r\n        <label for=\"circuito\">Nome do circuito:</label>\r\n        <input type=\"text\" id=\"nome\" pattern=\".{3,20}\" class=\"form-control\" formControlName=\"nome\">\r\n      </div>\r\n\r\n      <button id=\"btnCreate5\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!circuitoForm.valid\">Criar Circuito</button>\r\n    </form>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item list-group-item-action active\">Circuitos</li>\r\n      <li class=\"list-group-item list-group-item-dark\" *ngFor=\"let circuito of circuitos; let j = index\">\r\n        <span style=\"color:black\">Circuito({{j+1}}): </span>\r\n        <span style=\"color:Sienna\">{{ circuit.nome }}</span>\r\n        <a>\r\n            <i class=\"fa fa-trash-o\" aria-hidden=\"true\" style=\"color:blue\"  (click)=\"Delete4(j)\"></i>\r\n        </a>\r\n      </li>\r\n    </ul>\r\n\r\n\r\n  </div>\r\n</div> -->\r\n\r\n<!-- <div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n\r\n\r\n    <form [formGroup]=\"congregationForm\" (ngSubmit)=\"onSubmit5()\">\r\n\r\n      <h2>Congregações</h2>\r\n      <div class=\"form-group\">\r\n        <label for=\"circuit\">Circuito:</label>\r\n        <select [(ngModel)]=\"mycircuit\" formControlName=\"circuit\" id=\"circuit\" class=\"form-control\">\r\n          <option value=\" \"></option>\r\n          <option *ngFor=\"let circuito of circuitos\" [ngValue]=\"circuito\">{{circuito.nome}}</option>\r\n        </select>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"congregation\">Nome da Congregação:</label>\r\n        <input type=\"text\" id=\"nome\" class=\"form-control\" formControlName=\"nome\">\r\n      </div>\r\n\r\n\r\n\r\n\r\n      <button id=\"btnCreate6\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!congregationForm.valid\">Criar Congregação</button>\r\n    </form>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item list-group-item-action active\">Congregações</li>\r\n      <li class=\"list-group-item list-group-item-dark\" *ngFor=\"let congregation of congregations; let j = index\">\r\n        <span style=\"color:black\">Circ: </span>\r\n        <span style=\"color:Sienna\">{{congregation.circuit}}</span>\r\n        <span style=\"color:black\">Cong({{j+1}}): </span>\r\n        <span style=\"color:Sienna\">{{congregation.nome}}</span>\r\n\r\n        <a>\r\n            <i class=\"fa fa-trash-o\" aria-hidden=\"true\" style=\"color:blue\" (click)=\"Delete5(j)\"></i>\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</div> -->\r\n\r\n<!-- <div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-1\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n\r\n\r\n    <form [formGroup]=\"validityForm\" (ngSubmit)=\"onSubmit6()\">\r\n\r\n      <h2>Vigência</h2>\r\n      <div class=\"form-group\">\r\n        <label for=\"begin\">Início:</label>\r\n        <input [(ngModel)]=\"begin\" name=\"begin\" type=\"date\" id=\"begin\" class=\"form-control\" formControlName=\"begin\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"end\">Fim:</label>\r\n      <input [(ngModel)]=\"end\" name=\"end\" type=\"date\" id=\"end\" class=\"form-control\" formControlName=\"end\">\r\n  </div>\r\n\r\n\r\n\r\n\r\n      <button id=\"btnCreate7\" class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!validityForm.valid\">Criar Vigência</button>\r\n    </form>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n    <br>\r\n    <br>\r\n    <br>\r\n\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item list-group-item-action active\">Vigências</li>\r\n      <li class=\"list-group-item list-group-item-dark\" *ngFor=\"let validity of validities; let j = index\">\r\n        <span style=\"color:black\">Início: </span>\r\n        <span style=\"color:Sienna\">{{dateString(validity.begin)}}</span>\r\n        <span style=\"color:black\">Fim: </span>\r\n        <span style=\"color:Sienna\">{{dateString(validity.end)}}</span>\r\n\r\n        <a>\r\n            <i class=\"fa fa-trash-o\" aria-hidden=\"true\" style=\"color:blue\"  (click)=\"Delete6(j)\"></i>\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</div> -->"
 
 /***/ }),
 
@@ -9732,6 +10239,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -10116,10 +10626,14 @@ var SetupComponent = /** @class */ (function () {
     SetupComponent.prototype.dateString = function (data) {
         return moment__WEBPACK_IMPORTED_MODULE_11__["utc"](data).format("DD-MM-YYYY");
     };
+    SetupComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_9__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    ]; };
     SetupComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-setup',
-            template: __webpack_require__(/*! ./setup.component.html */ "./src/app/setup/setup.component.html"),
+            template: __importDefault(__webpack_require__(/*! raw-loader!./setup.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/setup.component.html")).default,
             styles: ["\n\n    #npubs {\n        width: 70px;\n    }\n\n"]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_9__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
@@ -10135,21 +10649,12 @@ var SetupComponent = /** @class */ (function () {
 /*!**********************************************!*\
   !*** ./src/app/setup/validity.component.css ***!
   \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = ".switch {\r\n    position: relative;\r\n    display: inline-block;\r\n    width: 60px;\r\n    height: 34px;\r\n  }\r\n  \r\n  .switch input {display:none;}\r\n  \r\n  .slider {\r\n    position: absolute;\r\n    cursor: pointer;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: #ccc;\r\n    transition: .4s;\r\n  }\r\n  \r\n  .slider:before {\r\n    position: absolute;\r\n    content: \"\";\r\n    height: 26px;\r\n    width: 26px;\r\n    left: 4px;\r\n    bottom: 4px;\r\n    background-color: white;\r\n    transition: .4s;\r\n  }\r\n  \r\n  input:checked + .slider {\r\n    background-color: rgb(33, 243, 145);\r\n  }\r\n  \r\n  input:focus + .slider {\r\n    box-shadow: 0 0 1px rgb(33, 243, 145);\r\n  }\r\n  \r\n  input:checked + .slider:before {\r\n    -webkit-transform: translateX(26px);\r\n    transform: translateX(26px);\r\n  }\r\n  \r\n  /* Rounded sliders */\r\n  \r\n  .slider.round {\r\n    border-radius: 34px;\r\n  }\r\n  \r\n  .slider.round:before {\r\n    border-radius: 50%;\r\n  }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2V0dXAvdmFsaWRpdHkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGtCQUFrQjtJQUNsQixxQkFBcUI7SUFDckIsV0FBVztJQUNYLFlBQVk7RUFDZDs7RUFFQSxlQUFlLFlBQVksQ0FBQzs7RUFFNUI7SUFDRSxrQkFBa0I7SUFDbEIsZUFBZTtJQUNmLE1BQU07SUFDTixPQUFPO0lBQ1AsUUFBUTtJQUNSLFNBQVM7SUFDVCxzQkFBc0I7SUFFdEIsZUFBZTtFQUNqQjs7RUFFQTtJQUNFLGtCQUFrQjtJQUNsQixXQUFXO0lBQ1gsWUFBWTtJQUNaLFdBQVc7SUFDWCxTQUFTO0lBQ1QsV0FBVztJQUNYLHVCQUF1QjtJQUV2QixlQUFlO0VBQ2pCOztFQUVBO0lBQ0UsbUNBQW1DO0VBQ3JDOztFQUVBO0lBQ0UscUNBQXFDO0VBQ3ZDOztFQUVBO0lBQ0UsbUNBQW1DO0lBRW5DLDJCQUEyQjtFQUM3Qjs7RUFFQSxvQkFBb0I7O0VBQ3BCO0lBQ0UsbUJBQW1CO0VBQ3JCOztFQUVBO0lBQ0Usa0JBQWtCO0VBQ3BCIiwiZmlsZSI6InNyYy9hcHAvc2V0dXAvdmFsaWRpdHkuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zd2l0Y2gge1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gICAgd2lkdGg6IDYwcHg7XHJcbiAgICBoZWlnaHQ6IDM0cHg7XHJcbiAgfVxyXG4gIFxyXG4gIC5zd2l0Y2ggaW5wdXQge2Rpc3BsYXk6bm9uZTt9XHJcbiAgXHJcbiAgLnNsaWRlciB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICB0b3A6IDA7XHJcbiAgICBsZWZ0OiAwO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgICBib3R0b206IDA7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjY2NjO1xyXG4gICAgLXdlYmtpdC10cmFuc2l0aW9uOiAuNHM7XHJcbiAgICB0cmFuc2l0aW9uOiAuNHM7XHJcbiAgfVxyXG4gIFxyXG4gIC5zbGlkZXI6YmVmb3JlIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIGNvbnRlbnQ6IFwiXCI7XHJcbiAgICBoZWlnaHQ6IDI2cHg7XHJcbiAgICB3aWR0aDogMjZweDtcclxuICAgIGxlZnQ6IDRweDtcclxuICAgIGJvdHRvbTogNHB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IC40cztcclxuICAgIHRyYW5zaXRpb246IC40cztcclxuICB9XHJcbiAgXHJcbiAgaW5wdXQ6Y2hlY2tlZCArIC5zbGlkZXIge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDMzLCAyNDMsIDE0NSk7XHJcbiAgfVxyXG4gIFxyXG4gIGlucHV0OmZvY3VzICsgLnNsaWRlciB7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgMXB4IHJnYigzMywgMjQzLCAxNDUpO1xyXG4gIH1cclxuICBcclxuICBpbnB1dDpjaGVja2VkICsgLnNsaWRlcjpiZWZvcmUge1xyXG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMjZweCk7XHJcbiAgICAtbXMtdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDI2cHgpO1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDI2cHgpO1xyXG4gIH1cclxuICBcclxuICAvKiBSb3VuZGVkIHNsaWRlcnMgKi9cclxuICAuc2xpZGVyLnJvdW5kIHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDM0cHg7XHJcbiAgfVxyXG4gIFxyXG4gIC5zbGlkZXIucm91bmQ6YmVmb3JlIHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcclxuICB9XHJcbiAgIl19 */"
-
-/***/ }),
-
-/***/ "./src/app/setup/validity.component.html":
-/*!***********************************************!*\
-  !*** ./src/app/setup/validity.component.html ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"backdrop\" [ngStyle]=\"{'display': display}\"></div>\r\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display': display}\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <form [formGroup]=\"validityForm\" (ngSubmit)=\"onSubmit()\" autocomplete=\"off\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"modal_titulo\">Nova vigência</h5>\r\n          <button type=\"button\" id=\"modal_fechar\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"onClose()\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <label style=\"font-size: 11px; float: right;\">* Campos obrigatórios</label>\r\n          <br/>\r\n\r\n          <div class=\"form-row\">\r\n            <div class=\"form-group col-md-6\">\r\n              <label>Início *</label>\r\n              <input name=\"begin\" type=\"date\" id=\"begin\" class=\"form-control\" formControlName=\"begin\">\r\n            </div>\r\n\r\n            <div class=\"form-group col-md-6\">\r\n              <label>Fim *</label>\r\n              <input name=\"end\" type=\"date\" id=\"end\" class=\"form-control\" formControlName=\"end\">\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n\r\n          <button type=\"submit\" [disabled]=\"validMyForm()\" class=\"btn btn-primary\">Salvar</button>\r\n\r\n        </div>\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"onNewvalidity()\" [disabled]=\"auth\">Nova vigência +</button>\r\n    </div>\r\n\r\n    <form>\r\n    </form>\r\n    <table class=\"table table-striped\">\r\n      <thead>\r\n        <tr>\r\n          <th scope=\"col\">#</th>\r\n          <th scope=\"col\">Início</th>\r\n          <th scope=\"col\">Fim</th>\r\n          <th scope=\"col\">Status</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let validity of validities; let j = index\">\r\n          <th scope=\"row\">{{j + 1}}</th>\r\n          <td>{{dateString(validity.begin)}}</td>\r\n          <td>{{dateString(validity.end)}}</td>\r\n          <td ><label class=\"switch\">\r\n            <input type=\"checkbox\" [checked]=\"validities[j].status\" (click)=\"onChangeStatus($event, $event.target.checked,j)\" [disabled]=\"auth\">\r\n            <span class=\"slider round\"></span>\r\n          </label>\r\n          </td>\r\n          <td>\r\n            <button type=\"button\" class=\"btn btn-warning btn-sm\" (click)=\"onEdit(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i> Editar</button>\r\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"onDelete(j)\" [disabled]=\"auth\">\r\n              <i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i> Excluir</button>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".switch {\r\n    position: relative;\r\n    display: inline-block;\r\n    width: 60px;\r\n    height: 34px;\r\n  }\r\n  \r\n  .switch input {display:none;}\r\n  \r\n  .slider {\r\n    position: absolute;\r\n    cursor: pointer;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: #ccc;\r\n    transition: .4s;\r\n  }\r\n  \r\n  .slider:before {\r\n    position: absolute;\r\n    content: \"\";\r\n    height: 26px;\r\n    width: 26px;\r\n    left: 4px;\r\n    bottom: 4px;\r\n    background-color: white;\r\n    transition: .4s;\r\n  }\r\n  \r\n  input:checked + .slider {\r\n    background-color: rgb(33, 243, 145);\r\n  }\r\n  \r\n  input:focus + .slider {\r\n    box-shadow: 0 0 1px rgb(33, 243, 145);\r\n  }\r\n  \r\n  input:checked + .slider:before {\r\n    transform: translateX(26px);\r\n  }\r\n  \r\n  /* Rounded sliders */\r\n  \r\n  .slider.round {\r\n    border-radius: 34px;\r\n  }\r\n  \r\n  .slider.round:before {\r\n    border-radius: 50%;\r\n  }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2V0dXAvdmFsaWRpdHkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGtCQUFrQjtJQUNsQixxQkFBcUI7SUFDckIsV0FBVztJQUNYLFlBQVk7RUFDZDs7RUFFQSxlQUFlLFlBQVksQ0FBQzs7RUFFNUI7SUFDRSxrQkFBa0I7SUFDbEIsZUFBZTtJQUNmLE1BQU07SUFDTixPQUFPO0lBQ1AsUUFBUTtJQUNSLFNBQVM7SUFDVCxzQkFBc0I7SUFFdEIsZUFBZTtFQUNqQjs7RUFFQTtJQUNFLGtCQUFrQjtJQUNsQixXQUFXO0lBQ1gsWUFBWTtJQUNaLFdBQVc7SUFDWCxTQUFTO0lBQ1QsV0FBVztJQUNYLHVCQUF1QjtJQUV2QixlQUFlO0VBQ2pCOztFQUVBO0lBQ0UsbUNBQW1DO0VBQ3JDOztFQUVBO0lBQ0UscUNBQXFDO0VBQ3ZDOztFQUVBO0lBR0UsMkJBQTJCO0VBQzdCOztFQUVBLG9CQUFvQjs7RUFDcEI7SUFDRSxtQkFBbUI7RUFDckI7O0VBRUE7SUFDRSxrQkFBa0I7RUFDcEIiLCJmaWxlIjoic3JjL2FwcC9zZXR1cC92YWxpZGl0eS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnN3aXRjaCB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgICB3aWR0aDogNjBweDtcclxuICAgIGhlaWdodDogMzRweDtcclxuICB9XHJcbiAgXHJcbiAgLnN3aXRjaCBpbnB1dCB7ZGlzcGxheTpub25lO31cclxuICBcclxuICAuc2xpZGVyIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIHRvcDogMDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICByaWdodDogMDtcclxuICAgIGJvdHRvbTogMDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNjY2M7XHJcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IC40cztcclxuICAgIHRyYW5zaXRpb246IC40cztcclxuICB9XHJcbiAgXHJcbiAgLnNsaWRlcjpiZWZvcmUge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgY29udGVudDogXCJcIjtcclxuICAgIGhlaWdodDogMjZweDtcclxuICAgIHdpZHRoOiAyNnB4O1xyXG4gICAgbGVmdDogNHB4O1xyXG4gICAgYm90dG9tOiA0cHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgIC13ZWJraXQtdHJhbnNpdGlvbjogLjRzO1xyXG4gICAgdHJhbnNpdGlvbjogLjRzO1xyXG4gIH1cclxuICBcclxuICBpbnB1dDpjaGVja2VkICsgLnNsaWRlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMzMsIDI0MywgMTQ1KTtcclxuICB9XHJcbiAgXHJcbiAgaW5wdXQ6Zm9jdXMgKyAuc2xpZGVyIHtcclxuICAgIGJveC1zaGFkb3c6IDAgMCAxcHggcmdiKDMzLCAyNDMsIDE0NSk7XHJcbiAgfVxyXG4gIFxyXG4gIGlucHV0OmNoZWNrZWQgKyAuc2xpZGVyOmJlZm9yZSB7XHJcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogdHJhbnNsYXRlWCgyNnB4KTtcclxuICAgIC1tcy10cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMjZweCk7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMjZweCk7XHJcbiAgfVxyXG4gIFxyXG4gIC8qIFJvdW5kZWQgc2xpZGVycyAqL1xyXG4gIC5zbGlkZXIucm91bmQge1xyXG4gICAgYm9yZGVyLXJhZGl1czogMzRweDtcclxuICB9XHJcbiAgXHJcbiAgLnNsaWRlci5yb3VuZDpiZWZvcmUge1xyXG4gICAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gIH1cclxuICAiXX0= */");
 
 /***/ }),
 
@@ -10179,6 +10684,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -10300,11 +10808,14 @@ var ValidityComponent = /** @class */ (function () {
             });
         }, function (error) { return console.error(error); });
     };
+    ValidityComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+    ]; };
     ValidityComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-validity",
-            template: __webpack_require__(/*! ./validity.component.html */ "./src/app/setup/validity.component.html"),
-            styles: [__webpack_require__(/*! ./validity.component.css */ "./src/app/setup/validity.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./validity.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/setup/validity.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./validity.component.css */ "./src/app/setup/validity.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], ValidityComponent);
@@ -10325,6 +10836,9 @@ var ValidityComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Validity", function() { return Validity; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var Validity = /** @class */ (function () {
     function Validity(begin, end, status, id) {
         this.begin = begin;
@@ -10343,21 +10857,12 @@ var Validity = /** @class */ (function () {
 /*!*****************************************************!*\
   !*** ./src/app/showpontos/showpontos.component.css ***!
   \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = ".container{\r\n    text-align: center;\r\n    margin:auto;\r\n  }\r\n\r\n  .myleft{\r\n    text-align: left;\r\n  }\r\n\r\n  #visualizar{\r\n    color:white;\r\n    float: left;\r\n  }\r\n\r\n  @media screen and (min-width: 320px) {\r\n    #foto{\r\n      width:60%;\r\n      height: 60%;\r\n\r\n}\r\n\r\n\r\n\r\n  }\r\n\r\n  @media screen and (min-width: 480px) {\r\n    #foto{\r\n      width:70%;\r\n      height: 70%;\r\n\r\n}\r\n\r\n\r\n\r\n  }\r\n\r\n  @media screen and (min-width: 700px) {\r\n    #foto{\r\n      width:80%;\r\n      height:80%;\r\n}\r\n\r\n\r\n  }\r\n\r\n  @media screen and (min-width: 800px) {\r\n    #foto{\r\n      width:100%;\r\n      height:100%;\r\n}\r\n\r\n\r\n  }\r\n\r\n\r\n\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hvd3BvbnRvcy9zaG93cG9udG9zLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7SUFDbEIsV0FBVztFQUNiOztFQUVBO0lBQ0UsZ0JBQWdCO0VBQ2xCOztFQUdBO0lBQ0UsV0FBVztJQUNYLFdBQVc7RUFDYjs7RUFFQTtJQUNFO01BQ0UsU0FBUztNQUNULFdBQVc7O0FBRWpCOzs7O0VBSUU7O0VBR0E7SUFDRTtNQUNFLFNBQVM7TUFDVCxXQUFXOztBQUVqQjs7OztFQUlFOztFQUVBO0lBQ0U7TUFDRSxTQUFTO01BQ1QsVUFBVTtBQUNoQjs7O0VBR0U7O0VBR0E7SUFDRTtNQUNFLFVBQVU7TUFDVixXQUFXO0FBQ2pCOzs7RUFHRSIsImZpbGUiOiJzcmMvYXBwL3Nob3dwb250b3Mvc2hvd3BvbnRvcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lcntcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIG1hcmdpbjphdXRvO1xyXG4gIH1cclxuXHJcbiAgLm15bGVmdHtcclxuICAgIHRleHQtYWxpZ246IGxlZnQ7XHJcbiAgfVxyXG5cclxuXHJcbiAgI3Zpc3VhbGl6YXJ7XHJcbiAgICBjb2xvcjp3aGl0ZTtcclxuICAgIGZsb2F0OiBsZWZ0O1xyXG4gIH1cclxuXHJcbiAgQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogMzIwcHgpIHtcclxuICAgICNmb3Rve1xyXG4gICAgICB3aWR0aDo2MCU7XHJcbiAgICAgIGhlaWdodDogNjAlO1xyXG5cclxufVxyXG5cclxuXHJcblxyXG4gIH1cclxuXHJcblxyXG4gIEBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDQ4MHB4KSB7XHJcbiAgICAjZm90b3tcclxuICAgICAgd2lkdGg6NzAlO1xyXG4gICAgICBoZWlnaHQ6IDcwJTtcclxuXHJcbn1cclxuXHJcblxyXG5cclxuICB9XHJcblxyXG4gIEBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDcwMHB4KSB7XHJcbiAgICAjZm90b3tcclxuICAgICAgd2lkdGg6ODAlO1xyXG4gICAgICBoZWlnaHQ6ODAlO1xyXG59XHJcblxyXG5cclxuICB9XHJcblxyXG5cclxuICBAbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA4MDBweCkge1xyXG4gICAgI2ZvdG97XHJcbiAgICAgIHdpZHRoOjEwMCU7XHJcbiAgICAgIGhlaWdodDoxMDAlO1xyXG59XHJcblxyXG5cclxuICB9XHJcblxyXG5cclxuXHJcblxyXG4iXX0= */"
-
-/***/ }),
-
-/***/ "./src/app/showpontos/showpontos.component.html":
-/*!******************************************************!*\
-  !*** ./src/app/showpontos/showpontos.component.html ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\r\n\r\n  <div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\r\n    <!-- Indicators -->\r\n    <ol class=\"carousel-indicators\">\r\n      <li data-target=\"#myCarousel\" *ngFor=\"let point of pontos;let i = index\" [attr.data-slide-to]=\"i\" ngClass=\"i == 0 ? 'active' : ''\"></li>\r\n    </ol>\r\n    <!-- Wrapper for slides -->\r\n    <div class=\"carousel-inner\" role=\"listbox\">\r\n      <div *ngFor=\"let point of pontos; let k = index\" [ngClass]=\"k == 0 ? 'carousel-item active' : 'carousel-item'\" style=\"background-image: url('http://placehold.it/1080x400')\">\r\n        <img src=\"/assets/img/{{point.fileimg}}\" alt=\"Event Image\" id=\"foto\">\r\n        <div class=\"carousel-caption\">\r\n          <h3 style=\"font-size: 5.0vh\" class=\"mycaption\" >{{point.name}}</h3>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Left and right controls -->\r\n    <a class=\"carousel-control-prev\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\r\n      <span style=\"color:black\" class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\r\n      <span class=\"sr-only\">Previous</span>\r\n    </a>\r\n    <a class=\"carousel-control-next\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\r\n      <span style=\"color:black\" class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\r\n      <span class=\"sr-only\">Next</span>\r\n    </a>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n\r\n  <h1 class=\"my-4\">Pontos TPE</h1>\r\n\r\n\r\n  <div class=\"row\">\r\n\r\n\r\n    <div class=\"col-md-4\" *ngFor=\"let point of pontos; let k = index\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <h4 class=\"myleft\">{{point.name}}</h4>\r\n        </div>\r\n        <div class=\"card-body\">\r\n\r\n          <p class=\"myleft\">\r\n            <b>Endereço: </b>{{ point.address }}</p>\r\n          <p class=\"myleft\">{{point.obs}}</p>\r\n        </div>\r\n\r\n        <div class=\"card-footer\">\r\n          <button id=\"visualizar\" class=\"btn btn-primary\" href=\"#myCarousel\" [attr.data-slide-to]=\"k\" (click)=\"onTop()\">Visualizar</button>\r\n        </div>\r\n      </div>\r\n      <br>\r\n    </div>\r\n\r\n  </div>\r\n\r\n\r\n\r\n\r\n  <hr>\r\n\r\n\r\n  <div class=\"row mb-4\">\r\n    <div class=\"col-md-8\">\r\n      <p>\"Estas boas novas do Reino serão pregadas em toda a terra habitada\" - Mateus 24:14</p>\r\n    </div>\r\n    <div class=\"col-md-4\">\r\n      <a class=\"btn btn-lg btn-secondary btn-block\" (click)=\"onTop()\">Voltar ao topo</a>\r\n    </div>\r\n  </div>\r\n\r\n\r\n\r\n</div>\r\n"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".container{\r\n    text-align: center;\r\n    margin:auto;\r\n  }\r\n\r\n  .myleft{\r\n    text-align: left;\r\n  }\r\n\r\n  #visualizar{\r\n    color:white;\r\n    float: left;\r\n  }\r\n\r\n  @media screen and (min-width: 320px) {\r\n    #foto{\r\n      width:60%;\r\n      height: 60%;\r\n\r\n}\r\n\r\n\r\n\r\n  }\r\n\r\n  @media screen and (min-width: 480px) {\r\n    #foto{\r\n      width:70%;\r\n      height: 70%;\r\n\r\n}\r\n\r\n\r\n\r\n  }\r\n\r\n  @media screen and (min-width: 700px) {\r\n    #foto{\r\n      width:80%;\r\n      height:80%;\r\n}\r\n\r\n\r\n  }\r\n\r\n  @media screen and (min-width: 800px) {\r\n    #foto{\r\n      width:100%;\r\n      height:100%;\r\n}\r\n\r\n\r\n  }\r\n\r\n\r\n\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hvd3BvbnRvcy9zaG93cG9udG9zLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7SUFDbEIsV0FBVztFQUNiOztFQUVBO0lBQ0UsZ0JBQWdCO0VBQ2xCOztFQUdBO0lBQ0UsV0FBVztJQUNYLFdBQVc7RUFDYjs7RUFFQTtJQUNFO01BQ0UsU0FBUztNQUNULFdBQVc7O0FBRWpCOzs7O0VBSUU7O0VBR0E7SUFDRTtNQUNFLFNBQVM7TUFDVCxXQUFXOztBQUVqQjs7OztFQUlFOztFQUVBO0lBQ0U7TUFDRSxTQUFTO01BQ1QsVUFBVTtBQUNoQjs7O0VBR0U7O0VBR0E7SUFDRTtNQUNFLFVBQVU7TUFDVixXQUFXO0FBQ2pCOzs7RUFHRSIsImZpbGUiOiJzcmMvYXBwL3Nob3dwb250b3Mvc2hvd3BvbnRvcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lcntcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIG1hcmdpbjphdXRvO1xyXG4gIH1cclxuXHJcbiAgLm15bGVmdHtcclxuICAgIHRleHQtYWxpZ246IGxlZnQ7XHJcbiAgfVxyXG5cclxuXHJcbiAgI3Zpc3VhbGl6YXJ7XHJcbiAgICBjb2xvcjp3aGl0ZTtcclxuICAgIGZsb2F0OiBsZWZ0O1xyXG4gIH1cclxuXHJcbiAgQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogMzIwcHgpIHtcclxuICAgICNmb3Rve1xyXG4gICAgICB3aWR0aDo2MCU7XHJcbiAgICAgIGhlaWdodDogNjAlO1xyXG5cclxufVxyXG5cclxuXHJcblxyXG4gIH1cclxuXHJcblxyXG4gIEBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDQ4MHB4KSB7XHJcbiAgICAjZm90b3tcclxuICAgICAgd2lkdGg6NzAlO1xyXG4gICAgICBoZWlnaHQ6IDcwJTtcclxuXHJcbn1cclxuXHJcblxyXG5cclxuICB9XHJcblxyXG4gIEBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDcwMHB4KSB7XHJcbiAgICAjZm90b3tcclxuICAgICAgd2lkdGg6ODAlO1xyXG4gICAgICBoZWlnaHQ6ODAlO1xyXG59XHJcblxyXG5cclxuICB9XHJcblxyXG5cclxuICBAbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA4MDBweCkge1xyXG4gICAgI2ZvdG97XHJcbiAgICAgIHdpZHRoOjEwMCU7XHJcbiAgICAgIGhlaWdodDoxMDAlO1xyXG59XHJcblxyXG5cclxuICB9XHJcblxyXG5cclxuXHJcblxyXG4iXX0= */");
 
 /***/ }),
 
@@ -10385,6 +10890,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 
 
@@ -10405,11 +10913,15 @@ var ShowpontosComponent = /** @class */ (function () {
     ShowpontosComponent.prototype.onTop = function () {
         window.scrollTo(0, 0);
     };
+    ShowpontosComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }
+    ]; };
     ShowpontosComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-showpontos",
-            template: __webpack_require__(/*! ./showpontos.component.html */ "./src/app/showpontos/showpontos.component.html"),
-            styles: [__webpack_require__(/*! ./showpontos.component.css */ "./src/app/showpontos/showpontos.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./showpontos.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/showpontos/showpontos.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./showpontos.component.css */ "./src/app/showpontos/showpontos.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], ShowpontosComponent);
@@ -10436,6 +10948,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 var MsgresetmailComponent = /** @class */ (function () {
@@ -10471,6 +10986,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 var SuccessComponent = /** @class */ (function () {
     function SuccessComponent() {
@@ -10492,21 +11010,12 @@ var SuccessComponent = /** @class */ (function () {
 /*!****************************************************!*\
   !*** ./src/app/telegram/telegramapi.component.css ***!
   \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "button{\r\n\r\n    background-color: #4CAF50;\r\n      border: none;\r\n      color: white;\r\n      padding: 20px;\r\n      text-align: center;\r\n      text-decoration: none;\r\n      display: inline-block;\r\n      font-size: 16px;\r\n      margin: 4px 2px;\r\n  }\r\n  \r\n  .container{\r\n  position:absolute;\r\n  padding-top: 40px;\r\n\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGVsZWdyYW0vdGVsZWdyYW1hcGkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7SUFFSSx5QkFBeUI7TUFDdkIsWUFBWTtNQUNaLFlBQVk7TUFDWixhQUFhO01BQ2Isa0JBQWtCO01BQ2xCLHFCQUFxQjtNQUNyQixxQkFBcUI7TUFDckIsZUFBZTtNQUNmLGVBQWU7RUFDbkI7O0VBRUE7RUFDQSxpQkFBaUI7RUFDakIsaUJBQWlCOztFQUVqQiIsImZpbGUiOiJzcmMvYXBwL3RlbGVncmFtL3RlbGVncmFtYXBpLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJidXR0b257XHJcblxyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzRDQUY1MDtcclxuICAgICAgYm9yZGVyOiBub25lO1xyXG4gICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIHBhZGRpbmc6IDIwcHg7XHJcbiAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG4gICAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgICAgbWFyZ2luOiA0cHggMnB4O1xyXG4gIH1cclxuICBcclxuICAuY29udGFpbmVye1xyXG4gIHBvc2l0aW9uOmFic29sdXRlO1xyXG4gIHBhZGRpbmctdG9wOiA0MHB4O1xyXG5cclxuICB9Il19 */"
-
-/***/ }),
-
-/***/ "./src/app/telegram/telegramapi.component.html":
-/*!*****************************************************!*\
-  !*** ./src/app/telegram/telegramapi.component.html ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\r\n  <div class=\"form-group\">\r\n    <div class=\"row\">\r\n      <br>\r\n      <p>\r\n      <b>STATUS: </b>\r\n      <span *ngIf=\"user?.telegram\" style=\"color:green\">\r\n        <b> Cadastrado</b>\r\n      </span>\r\n      <span *ngIf=\"!user?.telegram\" style=\"color:red\">\r\n        <b> Sem cadastro</b>\r\n      </span>\r\n    </p>\r\n      <br>\r\n      <br>\r\n    </div>\r\n\r\n    <h4>Para receber as designações por telegram, execute os seguintes passos:</h4>\r\n    <p>1. Baixe o aplicativo para o seu celular</p>\r\n    <p>2. Configure o aplicativo com o seu numero</p>\r\n    <p>3. Clique no botão abaixo para vincular sua conta do site com o telegram</p>\r\n    <button (click)=\"onCadastro()\">Cadastrar Telegram</button>\r\n    <br>\r\n    <br>\r\n\r\n    <p>4. Dentro do aplicativo, clique no botão \"começar\"</p>\r\n    <p>Pronto, você já pode receber suas designações.</p>\r\n    <br>\r\n    <h4>Para entrar no grupo de substituições, clique no botão abaixo:</h4>\r\n    <p>Obs.: Você deve estar cadastrado no telegram</p>\r\n    <button (click)=\"onGoGroup()\">Grupo Substituição</button>\r\n  </div>\r\n\r\n</div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("button{\r\n\r\n    background-color: #4CAF50;\r\n      border: none;\r\n      color: white;\r\n      padding: 20px;\r\n      text-align: center;\r\n      text-decoration: none;\r\n      display: inline-block;\r\n      font-size: 16px;\r\n      margin: 4px 2px;\r\n  }\r\n  \r\n  .container{\r\n  position:absolute;\r\n  padding-top: 40px;\r\n\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGVsZWdyYW0vdGVsZWdyYW1hcGkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7SUFFSSx5QkFBeUI7TUFDdkIsWUFBWTtNQUNaLFlBQVk7TUFDWixhQUFhO01BQ2Isa0JBQWtCO01BQ2xCLHFCQUFxQjtNQUNyQixxQkFBcUI7TUFDckIsZUFBZTtNQUNmLGVBQWU7RUFDbkI7O0VBRUE7RUFDQSxpQkFBaUI7RUFDakIsaUJBQWlCOztFQUVqQiIsImZpbGUiOiJzcmMvYXBwL3RlbGVncmFtL3RlbGVncmFtYXBpLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJidXR0b257XHJcblxyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzRDQUY1MDtcclxuICAgICAgYm9yZGVyOiBub25lO1xyXG4gICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIHBhZGRpbmc6IDIwcHg7XHJcbiAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG4gICAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgICAgbWFyZ2luOiA0cHggMnB4O1xyXG4gIH1cclxuICBcclxuICAuY29udGFpbmVye1xyXG4gIHBvc2l0aW9uOmFic29sdXRlO1xyXG4gIHBhZGRpbmctdG9wOiA0MHB4O1xyXG5cclxuICB9Il19 */");
 
 /***/ }),
 
@@ -10531,6 +11040,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -10570,11 +11082,15 @@ var TelegramapiComponent = /** @class */ (function () {
                 window.location.href = "https://telegram.me/" + _this.nameBotTelegram + "?start=" + data;
         });
     };
+    TelegramapiComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    ]; };
     TelegramapiComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-telegramapi',
-            template: __webpack_require__(/*! ./telegramapi.component.html */ "./src/app/telegram/telegramapi.component.html"),
-            styles: [__webpack_require__(/*! ./telegramapi.component.css */ "./src/app/telegram/telegramapi.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./telegramapi.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/telegram/telegramapi.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./telegramapi.component.css */ "./src/app/telegram/telegramapi.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], TelegramapiComponent);
@@ -10595,6 +11111,9 @@ var TelegramapiComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Sms", function() { return Sms; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var Sms = /** @class */ (function () {
     function Sms(meutexto, telefone, tempo) {
         this.meutexto = meutexto;
@@ -10612,21 +11131,12 @@ var Sms = /** @class */ (function () {
 /*!***********************************************!*\
   !*** ./src/app/testsms/testsms.component.css ***!
   \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3Rlc3RzbXMvdGVzdHNtcy5jb21wb25lbnQuY3NzIn0= */"
-
-/***/ }),
-
-/***/ "./src/app/testsms/testsms.component.html":
-/*!************************************************!*\
-  !*** ./src/app/testsms/testsms.component.html ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"col-md-5 col-md-offset-1\">\n    <br>\n    <h3>Saldo atual: R$ {{ saldo }}</h3>\n    <br>\n    <button type=\"button\" class=\"btn btn-warning\" (click)=\"open()\">Tempo</button>\n    <input type=\"time\" [(ngModel)]=\"selectedTime\"> \n    <form [formGroup]=\"smsForm\" (ngSubmit)=\"onSubmit()\">\n    <div class=\"form-group\">\n        <label for=\"meutexto\">Texto para SMS:</label>\n        <textarea class=\"form-control\" rows=\"5\" id=\"meutexto\" formControlName=\"meutexto\"></textarea>\n      </div>\n      <div class=\"form-group\">\n          <label for=\"telefone\">Celular para envio com DDD:</label>\n          <input type=\"number\" class=\"form-control\" id=\"telefone\" formControlName=\"telefone\">\n        </div>\n    \n    <br>\n      <button id=\"btnSMS\" class=\"btn btn-success\" type=\"submit\" [disabled]=\"!smsForm.valid\">Envia SMS</button>      \n    </form>\n    <br> \n    <button id=\"btnSMSresposta\" class=\"btn btn-info\"  (click)=\"smsResposta()\">Pegar Resposta</button>\n    <input type=\"text\" id=\"idresposta\" [(ngModel)]=\"idresposta\" disabled> \n    <br>\n    <h4>Resposta: <span style=\"color:red\">{{respostadada}}</span></h4>\n    </div>"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3Rlc3RzbXMvdGVzdHNtcy5jb21wb25lbnQuY3NzIn0= */");
 
 /***/ }),
 
@@ -10657,6 +11167,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -10734,11 +11247,15 @@ var TestsmsComponent = /** @class */ (function () {
             console.log("this.selectedTime", _this.selectedTime);
         });
     };
+    TestsmsComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
+        { type: amazing_time_picker__WEBPACK_IMPORTED_MODULE_4__["AmazingTimePickerService"] }
+    ]; };
     TestsmsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-testsms',
-            template: __webpack_require__(/*! ./testsms.component.html */ "./src/app/testsms/testsms.component.html"),
-            styles: [__webpack_require__(/*! ./testsms.component.css */ "./src/app/testsms/testsms.component.css")]
+            template: __importDefault(__webpack_require__(/*! raw-loader!./testsms.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/testsms/testsms.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./testsms.component.css */ "./src/app/testsms/testsms.component.css")).default]
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], amazing_time_picker__WEBPACK_IMPORTED_MODULE_4__["AmazingTimePickerService"]])
     ], TestsmsComponent);
@@ -10759,6 +11276,9 @@ var TestsmsComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Telegram", function() { return Telegram; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var Telegram = /** @class */ (function () {
     function Telegram(message, id) {
         this.message = message;
@@ -10768,17 +11288,6 @@ var Telegram = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/testtelegram/testtelegram.component.html":
-/*!**********************************************************!*\
-  !*** ./src/app/testtelegram/testtelegram.component.html ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"col-md-5 col-md-offset-1\">\n\n    <form [formGroup]=\"telegramForm\" (ngSubmit)=\"onSubmit()\">\n    <div class=\"form-group\">\n        <label for=\"meutexto\">Texto para Telegram:</label>\n        <textarea class=\"form-control\" rows=\"5\" id=\"meutexto\" formControlName=\"message\"></textarea>\n      </div>\n      <div class=\"form-group\">\n          <label for=\"telefone\">Id Chat:</label>\n          <input type=\"number\" class=\"form-control\" id=\"telefone\" formControlName=\"id\">\n        </div>\n\n    <br>\n      <button id=\"btnTelegram\" class=\"btn btn-success\" type=\"submit\" [disabled]=\"!telegramForm.valid\">Envia Telegram</button>\n    </form>\n    <br>\n\n    </div>\n    <div class=\"col-md-5\">\n\n    </div>\n"
 
 /***/ }),
 
@@ -10806,6 +11315,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
 
@@ -10845,10 +11357,13 @@ var TesttelegramComponent = /** @class */ (function () {
     TesttelegramComponent.prototype.myId = function () {
         return this.idresposta;
     };
+    TesttelegramComponent.ctorParameters = function () { return [
+        { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] }
+    ]; };
     TesttelegramComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-telegram',
-            template: __webpack_require__(/*! ./testtelegram.component.html */ "./src/app/testtelegram/testtelegram.component.html"),
+            template: __importDefault(__webpack_require__(/*! raw-loader!./testtelegram.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/testtelegram/testtelegram.component.html")).default,
         }),
         __metadata("design:paramtypes", [_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]])
     ], TesttelegramComponent);
@@ -10869,21 +11384,14 @@ var TesttelegramComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var environment = {
     production: false,
-    apiUrl: 'http://localhost:3000/'
+    //apiUrl: 'http://localhost:3000/'
+    apiUrl: 'https://tpeteste.com.br/'
 };
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
 
 /***/ }),
@@ -10901,6 +11409,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm5/platform-browser-dynamic.js");
 /* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 
 
 
@@ -10921,7 +11432,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\alexa\Desktop\ProjetosAngular\tpeglobalfinal\tpeglobal\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\Projetos_Angular\tpeglobal\src\main.ts */"./src/main.ts");
 
 
 /***/ }),
