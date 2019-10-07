@@ -21,7 +21,7 @@ var moment = require("moment");
 
 router.get("/", function(req, res, next) {
   //var decoded = jwt.decode(req.query.token);
-  const start = moment().startOf('day');
+  const start = moment();
   Agenda.find({ data: { $gte: start }}).exec(function(err, agendas) {
     if (err) {
       return res.status(500).json({
