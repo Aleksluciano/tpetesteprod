@@ -10,7 +10,7 @@ var moment = require("moment");
 
 var socket = null;
 
-cron.schedule("0 20 * * 0-6", function() {
+cron.schedule("0 15 * * 0-6", function() {
 
   let tresDiasDepois = moment.utc().add(3, "day");
   let dataTresDiasDepois = new Date(tresDiasDepois);
