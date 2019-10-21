@@ -10,241 +10,241 @@ var moment = require("moment");
 
 var socket = null;
 
-// cron.schedule("0 20 * * 0-6", function() {
+cron.schedule("0 22 * * 0-6", function() {
 
-//   let tresDiasDepois = moment.utc().add(3, "day");
-//   let dataTresDiasDepois = new Date(tresDiasDepois);
-//   let dataTresDiasDepoisMonth = dataTresDiasDepois.getMonth();
-//   let dataTresDiasDepoisYear = dataTresDiasDepois.getFullYear();
-//   let dataTresDiasDepoisDay = dataTresDiasDepois.getDate();
+  let tresDiasDepois = moment.utc().add(3, "day");
+  let dataTresDiasDepois = new Date(tresDiasDepois);
+  let dataTresDiasDepoisMonth = dataTresDiasDepois.getMonth();
+  let dataTresDiasDepoisYear = dataTresDiasDepois.getFullYear();
+  let dataTresDiasDepoisDay = dataTresDiasDepois.getDate();
 
-//   let dataini = new Date(dataTresDiasDepoisYear, dataTresDiasDepoisMonth, dataTresDiasDepoisDay, 0, 0, 0);
-//   let datafim = new Date(dataTresDiasDepoisYear, dataTresDiasDepoisMonth, dataTresDiasDepoisDay, 3, 0, 0);
+  let dataini = new Date(dataTresDiasDepoisYear, dataTresDiasDepoisMonth, dataTresDiasDepoisDay, 0, 0, 0);
+  let datafim = new Date(dataTresDiasDepoisYear, dataTresDiasDepoisMonth, dataTresDiasDepoisDay, 3, 0, 0);
 
-//   Escala.findOne({ data: { $gte: dataini, $lte: datafim } }, function(
-//     err,
-//     escala
-//   ) {
-//     if (err) {
-//       return console.log("erro schedule");
-//     }
+  Escala.findOne({ data: { $gte: dataini, $lte: datafim } }, function(
+    err,
+    escala
+  ) {
+    if (err) {
+      return console.log("erro schedule");
+    }
 
-//     if (!escala) {
-//       return console.log("erro schedule");
-//     }
+    if (!escala) {
+      return console.log("erro schedule");
+    }
 
-//     Led.find({ idescala: escala._id, nao: false, sim: false }, function(err, leds) {
-//         if (err) {
-//           console.log("erro schedule");
-//         }
+    Led.find({ idescala: escala._id, nao: false, sim: false }, function(err, leds) {
+        if (err) {
+          console.log("erro schedule");
+        }
 
-//         if (!leds) {
-//           return console.log("erro schedule");
-//         }
+        if (!leds) {
+          return console.log("erro schedule");
+        }
 
-//         for (let i = 0; i < leds.length; i++) {
+        for (let i = 0; i < leds.length; i++) {
          
-//             let led = leds[i];
-//             led.nao = true;
-//             rejectThem(led, escala);
+            let led = leds[i];
+            led.nao = true;
+            rejectThem(led, escala);
         
-//         }
-//         });
-//       });
-//     });
+        }
+        });
+      });
+    });
 
   
-//     function rejectThem(led, escala) {
+    function rejectThem(led, escala) {
 
-//       led
-//       .save()
-//       .then(() => {
-//       if (led.msg != undefined) {
-//         let text = led.msg.text + "\n\u{274C} *Recusado*";
-//         telegram.bot
-//           .editMessageText(text, {
-//             chat_id: led.msg.chat.id,
-//             message_id: led.msg.message_id,
-//             parse_mode: "Markdown"
-//           })
-//           .then(() => {
-//             console.log("edit led");
-//           })
-//           .catch(e => {
-//             console.log(e);
-//           });
-//       }
+      led
+      .save()
+      .then(() => {
+      if (led.msg != undefined) {
+        let text = led.msg.text + "\n\u{274C} *Recusado*";
+        telegram.bot
+          .editMessageText(text, {
+            chat_id: led.msg.chat.id,
+            message_id: led.msg.message_id,
+            parse_mode: "Markdown"
+          })
+          .then(() => {
+            console.log("edit led");
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      }
 
-//       atualiza_central_via_socket(
-//         led.idescala,
-//         led.iduser,
-//         led.horacode,
-//         led.sim,
-//         led.nao,
-//         "led",
-//         " "
-//       );
+      atualiza_central_via_socket(
+        led.idescala,
+        led.iduser,
+        led.horacode,
+        led.sim,
+        led.nao,
+        "led",
+        " "
+      );
 
-//           for (let p = 0; p < escala.pontos.length; p++) {
-//             for (let u = 0; u < escala.pontos[p].length; u++) {
-//               for (let s = 0; s < escala.pontos[p][u].npubs; s++) {
-//                 if (
-//                   escala.pontos[p][u].pubs[s].userId == led.iduser &&
-//                   escala.hora[p].code == led.horacode
-//                 ) {
-//                   let irmao = `${escala.pontos[p][u].pubs[s].firstName} ${
-//                     escala.pontos[p][u].pubs[s].lastName
-//                   }`;
+          for (let p = 0; p < escala.pontos.length; p++) {
+            for (let u = 0; u < escala.pontos[p].length; u++) {
+              for (let s = 0; s < escala.pontos[p][u].npubs; s++) {
+                if (
+                  escala.pontos[p][u].pubs[s].userId == led.iduser &&
+                  escala.hora[p].code == led.horacode
+                ) {
+                  let irmao = `${escala.pontos[p][u].pubs[s].firstName} ${
+                    escala.pontos[p][u].pubs[s].lastName
+                  }`;
 
-//                   let userFriend = [];
-//                   for (
-//                     let z = 0;
-//                     z < escala.pontos[p][u].pubs.length;
-//                     z++
-//                   ) {
-//                     if (
-//                       led.iduser != escala.pontos[p][u].pubs[z].userId
-//                     ){
-//                       userFriend.push(escala.pontos[p][u].pubs[z]);
-//                       if(escala.pontos[p][u].pubs[z].userId == escala.pontos[p][u].pubs[s].conjuge){
-//                         Led.findOne({ idescala: escala._id, nao: false, sim: true, horacode: led.horacode, iduser: escala.pontos[p][u].pubs[s].conjuge }, function(err3, ledConjuge) {     
-//                           if (err3) {
-//                             return console.log("erro ledconjuge");
-//                           }
+                  let userFriend = [];
+                  for (
+                    let z = 0;
+                    z < escala.pontos[p][u].pubs.length;
+                    z++
+                  ) {
+                    if (
+                      led.iduser != escala.pontos[p][u].pubs[z].userId
+                    ){
+                      userFriend.push(escala.pontos[p][u].pubs[z]);
+                      if(escala.pontos[p][u].pubs[z].userId == escala.pontos[p][u].pubs[s].conjuge){
+                        Led.findOne({ idescala: escala._id, nao: false, sim: true, horacode: led.horacode, iduser: escala.pontos[p][u].pubs[s].conjuge }, function(err3, ledConjuge) {     
+                          if (err3) {
+                            return console.log("erro ledconjuge");
+                          }
                       
-//                           if (!ledConjuge) {
-//                             return console.log("erro ledconjuge");
-//                           }
-//                           ledConjuge.nao = true;
-//                           ledConjuge.sim = false;
-//                           setTimeout(() => {
-//                             rejectThem(ledConjuge, escala);
-//                           }, 1000);
+                          if (!ledConjuge) {
+                            return console.log("erro ledconjuge");
+                          }
+                          ledConjuge.nao = true;
+                          ledConjuge.sim = false;
+                          setTimeout(() => {
+                            rejectThem(ledConjuge, escala);
+                          }, 1000);
                       
-//                         })
+                        })
                       
-//                       }
-//                     }
-//                   }
+                      }
+                    }
+                  }
 
-//                   let text = `*Substituição TPE*
-// \nSubstituir: *${irmao}*
-// Dia: *${escala.dia} ${escala.diasemana}*
-// Hora: *${escala.hora[p].hora}*
-// Ponto: *${escala.pontos[p][u].name}*
-// Companheiro: `;
+                  let text = `*Substituição TPE*
+\nSubstituir: *${irmao}*
+Dia: *${escala.dia} ${escala.diasemana}*
+Hora: *${escala.hora[p].hora}*
+Ponto: *${escala.pontos[p][u].name}*
+Companheiro: `;
 
-//                   let complement = "";
-//                   let parceiroid = "";
+                  let complement = "";
+                  let parceiroid = "";
 
-//                   userFriend.map(j => {
-//                     parceiroid = j.userId;
+                  userFriend.map(j => {
+                    parceiroid = j.userId;
 
-//                     complement =
-//                       complement +
-//                       `*${j.firstName} ${j.lastName}*
-// Tel: *${j.mobilephone}*
-// Cong: *${j.congregation.nome}*
-// Circ: *${j.congregation.circuit}*\n`;
-//                   });
+                    complement =
+                      complement +
+                      `*${j.firstName} ${j.lastName}*
+Tel: *${j.mobilephone}*
+Cong: *${j.congregation.nome}*
+Circ: *${j.congregation.circuit}*\n`;
+                  });
 
-//                   let question = `\nQuem gostaria de substituir?`;
-//                   text = text + complement + question;
-//                   let textsub =
-//                     "@" +
-//                     led.idescala +
-//                     "%" +
-//                     led.iduser +
-//                     "$" +
-//                     led.horacode;
-//                   console.log(textsub);
-//                   console.log(userFriend);
-//                   try {
-//                     telegram.bot.sendMessage(process.env.GROUPTELEGRAM, text, {
-//                       parse_mode: "Markdown",
-//                       reply_markup: {
-//                         inline_keyboard: [
-//                           [
-//                             {
-//                               text: "\u{1F504} Substituir",
-//                               callback_data: textsub
-//                             }
-//                           ]
-//                         ]
-//                       }
-//                     });
-//                   } catch (er) {
-//                     console.log(er);
-//                   }
+                  let question = `\nQuem gostaria de substituir?`;
+                  text = text + complement + question;
+                  let textsub =
+                    "@" +
+                    led.idescala +
+                    "%" +
+                    led.iduser +
+                    "$" +
+                    led.horacode;
+                  console.log(textsub);
+                  console.log(userFriend);
+                  try {
+                    telegram.bot.sendMessage(process.env.GROUPTELEGRAM, text, {
+                      parse_mode: "Markdown",
+                      reply_markup: {
+                        inline_keyboard: [
+                          [
+                            {
+                              text: "\u{1F504} Substituir",
+                              callback_data: textsub
+                            }
+                          ]
+                        ]
+                      }
+                    });
+                  } catch (er) {
+                    console.log(er);
+                  }
                 
-//                 }
-//               }
-//             }
-//           }
+                }
+              }
+            }
+          }
 
-//           return "schedule recusa OK save";
-//         });
-//     }
+          return "schedule recusa OK save";
+        });
+    }
 
-// cron.schedule("0 17 * * 0-6", function() {
-//   let diaatual = moment.utc().add(1, "day");
-//   let dia = new Date(diaatual);
-//   let tomorrowmonth = dia.getMonth();
-//   let tomorrowyear = dia.getFullYear();
-//   let tomorrowday = dia.getDate();
+cron.schedule("0 17 * * 0-6", function() {
+  let diaatual = moment.utc().add(1, "day");
+  let dia = new Date(diaatual);
+  let tomorrowmonth = dia.getMonth();
+  let tomorrowyear = dia.getFullYear();
+  let tomorrowday = dia.getDate();
 
-//   console.log(dia);
+  console.log(dia);
 
-//   console.log("shcedule funcionando");
+  console.log("shcedule funcionando");
 
-//   let dataini = new Date(tomorrowyear, tomorrowmonth, tomorrowday, 0, 0, 0);
-//   let datafim = new Date(tomorrowyear, tomorrowmonth, tomorrowday, 3, 0, 0);
+  let dataini = new Date(tomorrowyear, tomorrowmonth, tomorrowday, 0, 0, 0);
+  let datafim = new Date(tomorrowyear, tomorrowmonth, tomorrowday, 3, 0, 0);
 
-//   Escala.findOne({ data: { $gte: dataini, $lte: datafim } }, function(
-//     err,
-//     escala
-//   ) {
-//     if (err) {
-//       return console.log("erro schedule");
-//     }
+  Escala.findOne({ data: { $gte: dataini, $lte: datafim } }, function(
+    err,
+    escala
+  ) {
+    if (err) {
+      return console.log("erro schedule");
+    }
 
-//     if (!escala) {
-//       return console.log("erro schedule");
-//     }
+    if (!escala) {
+      return console.log("erro schedule");
+    }
 
-//     Led.find({ idescala: escala._id, nao: false })
-//       .populate("iduser")
-//       .exec(function(err, leds) {
-//         if (err) {
-//           console.log("erro schedule");
-//         }
+    Led.find({ idescala: escala._id, nao: false })
+      .populate("iduser")
+      .exec(function(err, leds) {
+        if (err) {
+          console.log("erro schedule");
+        }
 
-//         if (!leds) {
-//           return console.log("erro schedule");
-//         }
+        if (!leds) {
+          return console.log("erro schedule");
+        }
 
-//         for (let i = 0; i < leds.length; i++) {
-//           try {
-//             if (leds[i].iduser.telegram) {
-//               telegram.bot.sendMessage(
-//                 leds[i].iduser.telegram,
-//                 `*Lembrete:* Você tem uma designação amanhã ${escala.dia} ${
-//                   escala.diasemana
-//                 }. Favor verificar o status do seu companheiro(a) no site TPE. Bom trabalho!`,
-//                 { parse_mode: "Markdown" }
-//               );
-//             }
-//             console.log(leds[i].iduser.firstName);
-//           } catch (e) {
-//             console.log(e);
-//           }
-//         }
+        for (let i = 0; i < leds.length; i++) {
+          try {
+            if (leds[i].iduser.telegram) {
+              telegram.bot.sendMessage(
+                leds[i].iduser.telegram,
+                `*Lembrete:* Você tem uma designação amanhã ${escala.dia} ${
+                  escala.diasemana
+                }. Favor verificar o status do seu companheiro(a) no site TPE. Bom trabalho!`,
+                { parse_mode: "Markdown" }
+              );
+            }
+            console.log(leds[i].iduser.firstName);
+          } catch (e) {
+            console.log(e);
+          }
+        }
 
-//         return console.log("sucesso schedule");
-//       });
-//   });
+        return console.log("sucesso schedule");
+      });
+  });
 
-// });
+});
 
 router.post("/", function(req, res, next) {
   //var decoded = jwt.decode(req.query.token);
