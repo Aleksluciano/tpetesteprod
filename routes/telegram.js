@@ -363,17 +363,21 @@ bot.on("message", msg => {
   }
 
   const start = "/start";
-
+  const report = "/report"
   if (
     !msg.text
       .toString()
       .toLowerCase()
       .includes(start) &&
-    chatId != process.env.GROUPTELEGRAM
+    chatId != process.env.GROUPTELEGRAM && 
+    !msg.text
+    .toString()
+    .toLowerCase()
+    .includes(report) 
   ) {
     const respprivate = `Desculpe não entendi.`;
     try{
-    bot.sendMessage(chatId, resp, { parse_mode: "Markdown" });
+    bot.sendMessage(chatId, respprivate, { parse_mode: "Markdown" });
   } catch (e) {
     console.log(e);
   }
