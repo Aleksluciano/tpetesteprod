@@ -13,7 +13,7 @@ const TelegramBot = require("node-telegram-bot-api");
 const ms = require("ms");
 const cron = require("node-cron");
 
-const Circuito = require("./models/circuito");
+const Circuito = require("../models/circuito");
 const { ExportToCsv }  = require("export-to-csv");
 const fs = require('fs')
 
