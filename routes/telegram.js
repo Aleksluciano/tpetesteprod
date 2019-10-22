@@ -35,6 +35,193 @@ const bot = new TelegramBot(token, { polling: true });
 
 var socket = null;
 
+
+bot.onText(/\/report (.+)/, (msg, match) => {
+  const chatId = msg.chat.id;
+  const mes = match[1];
+try{
+  if(chatId == parseInt(resetEmail1) || chatId == parseInt(resetEmail2) || chatId == parseInt(resetEmail3)
+  || chatId == parseInt(resetEmail4)){
+    respostaDosIrmaos(mes,chatId);
+  }
+}catch(e){
+console.log(e);
+}
+
+})
+
+
+function respostaDosIrmaos(mes, chatId) {
+  let date = new Date()
+  let data1 = new Date(date.setMonth(date.getMonth()-parseInt(mes)));
+
+
+  let datamonth_ini = data1.getMonth();
+  let datayear_ini = data1.getFullYear();
+  let dataday_ini = data1.getDate();
+
+  let data2 = new Date();
+
+  let datamonth_fim = data2.getMonth();
+  let datayear_fim = data2.getFullYear();
+  let dataday_fim = data2.getDate();
+
+  let dataini = new Date(datayear_ini, datamonth_ini, dataday_ini, 0, 0, 0);
+  let datafim = new Date(datayear_fim, datamonth_fim, dataday_fim, 3, 0, 0);
+
+  console.log(dataini);
+  console.log(datafim);
+  Circuito.find().exec(function(err, circuitos) {
+  Congregation.find().exec(function(err, congregations) {
+
+Led.find({ data: { $gte: dataini, $lte: datafim } })
+  .populate("iduser")
+  .populate("idescala").exec((err, leds) => {
+
+     //Escala.find({ data: { $gte: dataini, $lte: datafim } }, function(
+
+// let ledsdata = leds.filter( a => {
+  
+//   if(a.idescala)
+//   if(a.idescala.data.getTime() >= dataini.getTime() && a.idescala.data.getTime() <= datafim.getTime())return a
+let ledsdata = leds;
+  
+// });
+// let total = leds.filter(a => !a.sub);
+// let nao = leds.filter(a => a.nao && !a.sim );
+// let naoesim = leds.filter(a => !a.nao && !a.sim)
+// let sub = leds.filter(a => a.lock); 
+// console.log("total",total.length, "nao",nao.length,"naoesim", naoesim.length, "sub", sub.length);
+
+let dados = [];
+let substituicoes = ledsdata.filter(a => a.lock && a.idescala);
+
+// let subs = substituicoes.map( a => {
+//   let nome = a.sub.firstName + ' ' + a.sub.lastName;
+//   return { hora: a.horacode, escala: a.idescala, cara: a.sub.userId, nome: nome , sim: a.sim, nao: a.nao }
+// })
+
+//console.table(subs);
+ledsdata.forEach(a =>{
+
+//   if(a.iduser && a.iduser._id){
+//   let achasub = substituicoes.find(x => x.sub.userId.equals(a.iduser._id))
+//   if(achasub)console.log("achei", a.iduser._id, achasub.sub.userId);
+// }
+
+//if(a.idescala && a.iduser)
+// console.log(a.idescala._id,
+//     a.iduser._id,
+//     a.horacode,
+//     a.sim,
+//     a.nao,
+//     a.lock,
+//     a.data
+// )
+  if(a.iduser && a.iduser._id && a.idescala){
+   let nome = a.iduser.firstName + ' ' + a.iduser.lastName;
+  let irmao = dados.find(b => b.id == a.iduser._id);
+  if(irmao){ 
+     if(a.sim && !a.nao){
+      let achasub = substituicoes.find(x => (x.sub.userId.equals(a.iduser._id) && (x.horacode == a.horacode) && x.idescala._id.equals(a.idescala._id)))
+ //let achasub = substituicoes.find(x => x.idescala == a.idescala )
+    if(!achasub){
+      irmao.total++;
+      irmao.confirmou++;
+    }else{
+      irmao.substituiu++;
+    }
+    }else if(a.nao && !a.sim){
+      irmao.total++;
+      irmao.recusou++;
+    }else if(!a.nao && !a.sim){
+      irmao.total++;
+      irmao.semresposta++;
+    }
+  }else{
+    let confirmou = 0;
+    let recusou = 0;
+    let semresposta = 0;
+    let substituiu = 0;
+    let total = 0;
+    if(a.sim && !a.nao){
+      let achasub = substituicoes.find(x => (x.sub.userId.equals(a.iduser._id) && (x.horacode == a.horacode) && x.idescala._id.equals(a.idescala._id)) )
+      //let achasub = substituicoes.find(x => x.idescala == a.idescala )
+      if(!achasub){
+        total++;
+        confirmou++;
+      }else{
+        substituiu++;
+      }
+    } else if(a.nao && !a.sim){
+      total++;
+      recusou++;
+    } else if(!a.nao && !a.sim){
+      total++;
+      semresposta++;
+    }
+    //console.log(a.iduser.circuito, a.iduser.congregation)
+   
+    dados.push({ id: a.iduser._id, nome: nome, circutio: circuitos.find(c => c._id.equals(a.iduser.circuito)).nome, congregacao: congregations.find(c => c._id.equals(a.iduser.congregation)).nome, total: total, confirmou: confirmou, recusou: recusou, semresposta: semresposta, taxa_aproveitamento: 0, taxa_respostas: 0, substituiu: substituiu })
+  }
+}
+
+});
+console.log("fim")
+
+let media_aproveitamento = 0;
+let media_sub = 0;
+let total = 0;
+let total_confirmou = 0;
+let total_respostas = 0;
+let media_respostas = 0;
+let total_sub  = 0;
+
+dados.forEach( (f,idx) => {
+
+  delete f.id;
+
+  if(f.confirmou > 0)
+  f.taxa_aproveitamento = ~~(f.confirmou / f.total * 100); 
+  if(f.confirmou + f.recusou > 0)
+  f.taxa_respostas = ~~((f.confirmou + f.recusou) / f.total * 100); 
+  
+  total_confirmou+= f.confirmou;
+  total+= f.total;
+  total_sub+= f.substituiu + f.confirmou;
+  total_respostas+= f.confirmou + f.recusou;
+
+})
+
+if(total_confirmou > 0) media_aproveitamento = ~~( total_confirmou / total * 100);
+if(total_sub > 0) media_sub = ~~(total_sub / total * 100);
+if(total_respostas > 0)media_respostas = ~~(total_respostas / total * 100);
+dados.sort((a,b) => a.taxa_aproveitamento - b.taxa_aproveitamento);
+console.table(dados)
+const header = dataini.toLocaleDateString("pt-BR") + 'ate' + datafim.toLocaleDateString("pt-BR")
+const options = { 
+  fieldSeparator: ';',
+  quoteStrings: '"',
+  decimalSeparator: '.',
+  showLabels: true, 
+  showTitle: true,
+  title: 'Período: ' + header + ' % Média Aproveitamento Geral: ' + media_aproveitamento
+   + ' % Média Contando as subsituições: ' + media_sub + '% Média de respostas: ' + media_respostas,
+  useTextFile: false,
+  useBom: true,
+  useKeysAsHeaders: true,
+  // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
+};
+
+const exportToCsv = new ExportToCsv(options);
+const csvData = exportToCsv.generateCsv(dados, true);
+fs.writeFileSync('dados.csv',csvData);
+bot.sendDocument(chatId, 'dados.csv').then(a => console.log("telegramdata", a))
+});
+});
+});
+}
+
 bot.onText(/\/reset (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
   const email = match[1];
