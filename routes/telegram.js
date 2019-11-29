@@ -512,6 +512,7 @@ bot.on("message", msg => {
   const start = "/start";
   const report = "/report";
   const list = "/list";
+  const list = "/reset";
   const resppr = "Desculpe não entendi.";
   if (
     !msg.text
@@ -526,7 +527,11 @@ bot.on("message", msg => {
     !msg.text
       .toString()
       .toLowerCase()
-      .includes(list)
+      .includes(list) &&
+      !msg.text
+      .toString()
+      .toLowerCase()
+      .includes(reset)
   ) {
     try {
       bot.sendMessage(chatId, resppr, { parse_mode: "Markdown" });
