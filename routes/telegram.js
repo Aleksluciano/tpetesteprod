@@ -512,7 +512,7 @@ bot.on("message", msg => {
   const start = "/start";
   const report = "/report";
   const list = "/list";
-  const list = "/reset";
+  const reset = "/reset";
   const resppr = "Desculpe não entendi.";
   if (
     !msg.text
@@ -528,7 +528,7 @@ bot.on("message", msg => {
       .toString()
       .toLowerCase()
       .includes(list) &&
-      !msg.text
+    !msg.text
       .toString()
       .toLowerCase()
       .includes(reset)
@@ -552,7 +552,7 @@ bot.on("callback_query", msg => {
   let atualData = new Date();
   if (
     buttonConfirmation.find(
-      a => a.code == msg.data && atualData.getTime() - a.data.getTime() < 12000
+      a => a.code == msg.data && atualData.getTime() - a.data.getTime() < 50000
     )
   ) {
     //se existe cotninua o processo para o botão escolhido
