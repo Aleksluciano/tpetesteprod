@@ -56,7 +56,9 @@ console.log("config", config);
         released:  false,
         lastday: req.body.lastday,
         role: " ",
-        vezesmes: req.body.vezesmes
+        vezesmes: req.body.vezesmes,
+        contavezes: 0,
+        mesescalado: 0
     });
     user.save(function(err, result) {
         if (err) {
@@ -597,7 +599,8 @@ router.put('/:id', function (req, res, next) {
         user.privilege    = req.body.privilege;
         user.eldermail    = req.body.eldermail;
        }
-       user.vezesmes = req.body.vezesmes;
+    
+      user.vezesmes = req.body.vezesmes;
       user.config       = req.body.config;
       console.log("ALEXALEX",user.vezesmes)
         // released
