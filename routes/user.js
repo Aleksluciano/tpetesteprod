@@ -55,8 +55,8 @@ console.log("config", config);
         config: config,
         released:  false,
         lastday: req.body.lastday,
-        role: " "
-
+        role: " ",
+        vezesmes: req.body.vezesmes
     });
     user.save(function(err, result) {
         if (err) {
@@ -79,6 +79,7 @@ console.log("config", config);
 
                 user2.conjuge = result._id;
                 user2.config = result.config;
+                user2.vezesmes = result.vezesmes;
                 user2.save();
 
 
@@ -596,7 +597,9 @@ router.put('/:id', function (req, res, next) {
         user.privilege    = req.body.privilege;
         user.eldermail    = req.body.eldermail;
        }
-        user.config       = req.body.config;
+       user.vezesmes = req.body.vezesmes;
+      user.config       = req.body.config;
+      console.log("ALEXALEX",user.vezesmes)
         // released
        // if (req.body.lastday != null)user.lastday = req.body.lastday;
         //role
@@ -621,6 +624,7 @@ router.put('/:id', function (req, res, next) {
                     user2.conjuge = null;
                     else user2.conjuge = result._id;
                     user2.config  = result.config;
+                    user2.vezesmes = result.vezesmes;
                     user2.save();
 
 

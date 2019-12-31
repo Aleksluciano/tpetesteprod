@@ -29,6 +29,9 @@ const userSchema = new Schema({
     agenda: [{type: Schema.Types.ObjectId, ref: 'Agenda'}],
     escala: [{type: Schema.Types.ObjectId, ref: 'Escala'}],
     telegram: {type: String },
+    vezesmes: {type: String },
+    contavezes: {type: Number},
+    mesescalado: {type: Number},
 
 }, {timestamps: true, versionKey: false},
 );
