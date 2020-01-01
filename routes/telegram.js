@@ -1211,8 +1211,10 @@ console.log("detalhes2",ledother,ledother.sub,ledother.sub.userId,user.conjuge)
                                 Led.findOne(
                                   {
                                     idescala: idescala,
-                                    iduser: iduser,
+                                    iduser: ledother.sub.userId,
                                     horacode: horacode,
+                                    sim: true,
+                                    nao: false,
                                     lock: false
                                   },
                                   function(err, led) {
