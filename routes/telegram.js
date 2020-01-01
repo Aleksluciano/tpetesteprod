@@ -5,6 +5,7 @@ const User = require("../models/user");
 const Usertotal = require("../models/user");
 const Usersub = require("../models/user");
 const Led = require("../models/led");
+const LedOther = require("../models/led"); 
 const Congregation = require("../models/congregation");
 const bcrypt = require("bcryptjs");
 const Escala = require("../models/escala");
@@ -13,6 +14,7 @@ const TelegramBot = require("node-telegram-bot-api");
 const ms = require("ms");
 const cron = require("node-cron");
 
+const User2 = require("../models/user");
 const Circuito = require("../models/circuito");
 const { ExportToCsv } = require("export-to-csv");
 const fs = require("fs");
@@ -1099,25 +1101,25 @@ function setSubUser(idescala, iduser, horacode, usergram, msg, sim, nao) {
                 return console.log("substituir você mesmo");
               }
 
-              if (usersub.sex == "M" && user.sex == "M") {
-                if (usersub.conjuge) {
-                  bot.answerCallbackQuery(
-                    msg.id,
-                    "Desculpe, precisamos de uma irmã para este ponto!",
-                    true
-                  );
-                  return console.log("erro de gênero");
-                }
-              }
+              // if (usersub.sex == "M" && user.sex == "M") {
+              //   if (usersub.conjuge) {
+              //     bot.answerCallbackQuery(
+              //       msg.id,
+              //       "Desculpe, precisamos de uma irmã para este ponto!",
+              //       true
+              //     );
+              //     return console.log("erro de gênero");
+              //   }
+              // }
 
-              if (usersub.sex == "F" && user.sex == "M") {
-                bot.answerCallbackQuery(
-                  msg.id,
-                  "Desculpe, precisamos de uma irmã para este ponto!",
-                  true
-                );
-                return console.log("erro de gênero");
-              }
+              // if (usersub.sex == "F" && user.sex == "M") {
+              //   bot.answerCallbackQuery(
+              //     msg.id,
+              //     "Desculpe, precisamos de uma irmã para este ponto!",
+              //     true
+              //   );
+              //   return console.log("erro de gênero");
+              // }
 
               if (usersub.sex == "M" && user.sex == "F") {
                 if (usersub.conjuge) {
@@ -1141,14 +1143,19 @@ function setSubUser(idescala, iduser, horacode, usergram, msg, sim, nao) {
                 if (!escala) {
                   return console.log("erro1", err);
                 }
-
+                
+                let posicaoencontrada = false;
                 for (let p = 0; p < escala.pontos.length; p++) {
+                  if(posicaoencontrada)break;
                   for (let u = 0; u < escala.pontos[p].length; u++) {
+                    if(posicaoencontrada)break;
                     for (let s = 0; s < escala.pontos[p][u].npubs; s++) {
+                      if(posicaoencontrada)break;
                       if (
                         escala.pontos[p][u].pubs[s].userId == iduser &&
                         escala.hora[p].code == horacode
                       ) {
+
                         let obj = {
                           firstName: user.firstName,
                           lastName: user.lastName,
@@ -1180,6 +1187,170 @@ function setSubUser(idescala, iduser, horacode, usergram, msg, sim, nao) {
                           sim: sim,
                           nao: nao
                         };
+
+                        posicaoencontrada = true;
+console.log("detalhes", user.sex,user.conjuge,usersub.sex );
+                        if(user.sex == "M" && usersub.sex == "M" && !usersub.conjuge){
+                        //segue em diante
+                        }else if((user.sex == "M" && user.conjuge && usersub.sex == "F") || (user.sex == "M" && user.conjuge && usersub.sex == "M" && usersub.conjuge)){
+                          let other = escala.pontos[p][u].pubs.find(q => q.userId !== iduser);
+                        if(other){
+
+                          LedOther.findOne(
+                            {
+                              idescala: idescala,
+                              iduser: other.userId,
+                              horacode: horacode,
+                              sim: false,
+                              nao: true,
+                              lock: true
+                            },
+                            function(errother, ledother) {
+
+                              if(ledother && ledother.sub && ledother.sub.userId == user.conjuge){
+                                Led.findOne(
+                                  {
+                                    idescala: idescala,
+                                    iduser: iduser,
+                                    horacode: horacode,
+                                    lock: false
+                                  },
+                                  function(err, led) {
+                                    if (err) {
+                                      return console.log(err);
+                                    }
+        
+                                    if (!led) {
+                                      return console.log("Usuario inexistente");
+                                    }
+        
+                                    if (!led.lock) {
+                                      let newled = new Led({
+                                        datainicio: led.datainicio,
+                                        datafim: led.datafim,
+                                        idescala: led.idescala,
+                                        iduser: user._id,
+                                        horacode: led.horacode,
+                                        indexpub: s,
+                                        sim: sim,
+                                        nao: false,
+                                        sub: {},
+                                        lock: false,
+                                        msg: led.msg,
+                                        data: led.data
+                                      });
+                                      led.sub = obj;
+                                      led.lock = true;
+                                      led
+                                        .save()
+                                        .then(() => {
+                                          console.log("ok lock");
+                                          newled
+                                            .save()
+                                            .then(() => {
+                                              console.log("save newled");
+        
+                                              atualiza_central_via_socket(
+                                                idescala,
+                                                iduser,
+                                                horacode,
+                                                sim,
+                                                nao,
+                                                "sub",
+                                                obj
+                                              );
+        
+                                              user.escala.push(
+                                                mongoose.Types.ObjectId(idescala)
+                                              );
+                                              user.save();
+        
+                                              usersub.escala.remove(idescala);
+                                              usersub.markModified("escala");
+                                              usersub.save();
+        
+                                              let text =
+                                                msg.message.text +
+                                                "\n\u{2705} *Confirmado por:* " +
+                                                user.firstName +
+                                                " " +
+                                                user.lastName;
+                                              bot.editMessageText(text, {
+                                                chat_id: msg.message.chat.id,
+                                                message_id: msg.message.message_id,
+                                                parse_mode: "Markdown"
+                                              });
+        
+                                              bot.answerCallbackQuery(
+                                                msg.id,
+                                                "Confirmado, obrigado por ajudar!",
+                                                true
+                                              );
+        
+                                              let mytime = setInterval(() => {
+                                                bot.deleteMessage(
+                                                  msg.message.chat.id,
+                                                  msg.message.message_id
+                                                );
+                                                try {
+                                                  bot.sendMessage(usergram, text, {
+                                                    parse_mode: "Markdown"
+                                                  });
+                                                } catch (e) {
+                                                  console.log(e);
+                                                }
+                                                clearInterval(mytime);
+                                              }, 10000);
+                                            })
+                                            .catch(err => {
+                                              console.log("erro", err);
+                                            });
+                                        })
+                                        .catch(err => {
+                                          // mongoose connection error will be handled here
+                                          console.log("erro", err);
+                                        });
+                                    }
+                                  }
+                                );
+                              }else {
+                                bot.answerCallbackQuery(
+                                  msg.id,
+                                  "Desculpe. Sua companheira não esta na outra vaga do ponto para que você possa pegar esta substituição!",
+                                  true
+                                  );
+                                  return console.log("vaga sem compnaheira");
+                              }
+
+                              if (errother) {
+                                return console.log(err);
+                              }
+  
+                              if (!ledother) {
+                                return console.log("Usuario inexistente");
+                              }
+
+                            });
+                     break;
+                        }else{
+                          bot.answerCallbackQuery(
+                            msg.id,
+                            "Desculpe. Aconteceu algum erro inesperado!",
+                            true
+                            );
+                            return console.log("Usuario inexistente");
+                        }
+
+                        }else if (user.sex == "M") {
+                          bot.answerCallbackQuery(
+                            msg.id,
+                            "Desculpe, precisamos de uma irmã para este ponto!",
+                            true
+                            );
+                            return console.log("Genero erro");
+                        }
+
+              
 
                         Led.findOne(
                           {
@@ -1290,7 +1461,9 @@ function setSubUser(idescala, iduser, horacode, usergram, msg, sim, nao) {
                     }
                   }
                 }
+               
               });
+             
             });
         }
       );
