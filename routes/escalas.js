@@ -283,7 +283,7 @@ router.post("/", function(req, res, next) {
                 err,
                 user
               ) {
-                user.contavezes  = escala.pontos[p][u].pubs[s].contavezes;
+                user.contavezes = escala.pontos[p][u].pubs[s].contavezes;
                 user.mesescalado = escala.data.getMonth();
                 user.lastday = escala.data;
                 user.escala.push(mongoose.Types.ObjectId(result._id));
