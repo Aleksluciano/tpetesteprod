@@ -1206,9 +1206,9 @@ console.log("detalhes", user.sex,user.conjuge,usersub.sex );
                               lock: true
                             },
                             function(errother, ledother) {
-
+                              console.log("detalhe1",ledother.sub, user.conjuge)
                               if(ledother && ledother.sub && ledother.sub == user.conjuge){
-                      
+                                console.log("detalhe2",ledother.sub, user.conjuge)
                                 Led.findOne(
                                   {
                                     idescala: idescala,
