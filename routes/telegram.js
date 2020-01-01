@@ -1207,7 +1207,7 @@ console.log("detalhes", user.sex,user.conjuge,usersub.sex );
                             },
                             function(errother, ledother) {
 
-                              if(ledother && && ledother.sub && ledother.sub == user.conjuge){
+                              if(ledother && ledother.sub && ledother.sub == user.conjuge){
                       
                                 Led.findOne(
                                   {
