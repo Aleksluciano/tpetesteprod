@@ -1189,7 +1189,7 @@ function setSubUser(idescala, iduser, horacode, usergram, msg, sim, nao) {
                         };
 
                         posicaoencontrada = true;
-console.log("detalhes", user.sex,user.conjuge,usersub.sex );
+
                         if(user.sex == "M" && usersub.sex == "M" && !usersub.conjuge){
                         //segue em diante
                         }else if((user.sex == "M" && user.conjuge && usersub.sex == "F") || (user.sex == "M" && user.conjuge && usersub.sex == "M" && usersub.conjuge)){
@@ -1207,16 +1207,13 @@ console.log("detalhes", user.sex,user.conjuge,usersub.sex );
                             },
                             function(errother, ledother) {
                               console.log("detalhe1",ledother.sub, user.conjuge)
-                              console.log(typeof (ledother.sub.userId),typeof (user.conjuge))
-                              if(ledother && ledother.sub && mongoose.Types.ObjectId(ledother.sub.userId) == mongoose.Types.ObjectId(user.conjuge)){
+                              if(ledother.sub.userId == user.conjuge){
                                 console.log("detalhe2",ledother.sub, user.conjuge)
                                 Led.findOne(
                                   {
                                     idescala: idescala,
-                                    iduser: ledother.sub.userId,
+                                    iduser: iduser,
                                     horacode: horacode,
-                                    sim: true,
-                                    nao: false,
                                     lock: false
                                   },
                                   function(err, led) {
