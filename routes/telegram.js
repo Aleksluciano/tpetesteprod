@@ -1208,7 +1208,7 @@ console.log("detalhes", user.sex,user.conjuge,usersub.sex );
                             function(errother, ledother) {
                               console.log("detalhe1",ledother.sub, user.conjuge)
                               console.log(typeof (ledother.sub.userId),typeof (user.conjuge))
-                              if(ledother && ledother.sub && mongoose.Types.ObjectId(ledother.sub.userId) == mongoose.Types.ObjectI(user.conjuge)){
+                              if(ledother && ledother.sub && mongoose.Types.ObjectId(ledother.sub.userId) == mongoose.Types.ObjectId(user.conjuge)){
                                 console.log("detalhe2",ledother.sub, user.conjuge)
                                 Led.findOne(
                                   {
