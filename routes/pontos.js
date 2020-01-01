@@ -179,7 +179,7 @@ router.put("/", function(req, res, next) {
 router.put("/edit", function(req, res, next) {
   console.log("servidor", req.body);
 
-  Ponto.findById(req.body.id, function(err, ponto) {
+  Ponto.findById(req.body._id, function(err, ponto) {
     if (err) {
       return res.status(500).json({
         title: "Ocorreu um erro2",
