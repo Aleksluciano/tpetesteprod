@@ -1207,12 +1207,12 @@ console.log("detalhes", user.sex,user.conjuge,usersub.sex );
                             },
                             function(errother, ledother) {
                               console.log("detalhe1",ledother.sub, user.conjuge)
-                              if(ledother && ledother.sub && ledother.sub == user.conjuge){
+                              if(ledother && ledother.sub && ledother.sub.userId == user.conjuge){
                                 console.log("detalhe2",ledother.sub, user.conjuge)
                                 Led.findOne(
                                   {
                                     idescala: idescala,
-                                    iduser: ledother.sub,
+                                    iduser: ledother.sub.userId,
                                     horacode: horacode,
                                     sim: true,
                                     nao: false,
