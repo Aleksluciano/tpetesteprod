@@ -1206,7 +1206,7 @@ console.log("detalhes", user.sex,user.conjuge,usersub.sex );
                               lock: true
                             },
                             function(errother, ledother) {
-
+console.log("detalhes2",ledother,ledother.sub,ledother.sub.userId,user.conjuge)
                               if(ledother && ledother.sub && ledother.sub.userId == user.conjuge){
                                 Led.findOne(
                                   {
