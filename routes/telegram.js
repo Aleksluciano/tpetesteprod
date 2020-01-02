@@ -1190,9 +1190,13 @@ function setSubUser(idescala, iduser, horacode, usergram, msg, sim, nao) {
 
                         posicaoencontrada = true;
 console.log("dettt",user.sex,user.conjuge,usersub.sex,usersub.conjuge);
-                        if(user.sex == "M" && usersub.sex == "M" && !usersub.conjuge){
+let doisirmaos_subsemconjuge = (!usersub.conjuge && user.sex == "M" && usersub.sex == "M");
+let irmaocomconjuge_irma = (user.conjuge && user.sex == "M" && usersub.sex == "F");
+let doisirmaos_comconjuge = (user.sex == "M" && user.conjuge && usersub.sex == "M" && usersub.conjuge);
+console.log("dettt2",doisirmaos_subsemconjuge,irmaocomconjuge_irma,doisirmaos_comconjuge);
+                        if(doisirmaos_subsemconjuge){
                         //segue em diante
-                        }else if((user.sex == "M" && user.conjuge && usersub.sex == "F") || (user.sex == "M" && user.conjuge && usersub.sex == "M" && usersub.conjuge)){
+                        }else if(irmaocomconjuge_irma || doisirmaos_comconjuge ){
                           let other = escala.pontos[p][u].pubs.find(q => q.userId !== iduser);
                         if(other){
 
