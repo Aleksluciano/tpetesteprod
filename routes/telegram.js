@@ -1210,8 +1210,19 @@ console.log("dettt2",doisirmaos_subsemconjuge,irmaocomconjuge_irma,doisirmaos_co
                               lock: true
                             },
                             function(errother, ledother) {
+                              if (errother) {
+                                return console.log(err);
+                              }
+  
+                              if (!ledother) {
+                                bot.answerCallbackQuery(
+                                  msg.id,
+                                  "Desculpe. Sua companheira não esta na outra vaga do ponto para que você possa pegar esta substituição!",
+                                  true
+                                  );
+                                return console.log("Usuario inexistente");
+                              }
                          
-                              console.log("detalhe1",ledother.sub.userId, user.conjuge, ledother.sub.userId == user.conjuge );
                               if(ledother.sub.userId.equals(user.conjuge)){
                                 console.log("detalhe2",ledother.sub.userId, user.conjuge, ledother.sub.userId == user.conjuge);
                                 Led.findOne(
@@ -1328,13 +1339,7 @@ console.log("dettt2",doisirmaos_subsemconjuge,irmaocomconjuge_irma,doisirmaos_co
                                   return console.log("vaga sem compnaheira");
                               }
 
-                              if (errother) {
-                                return console.log(err);
-                              }
-  
-                              if (!ledother) {
-                                return console.log("Usuario inexistente");
-                              }
+                         
 
                             });
                      break;
