@@ -1212,7 +1212,7 @@ console.log("dettt2",doisirmaos_subsemconjuge,irmaocomconjuge_irma,doisirmaos_co
                             function(errother, ledother) {
                          
                               console.log("detalhe1",ledother.sub.userId, user.conjuge, ledother.sub.userId == user.conjuge );
-                              if(ledother.sub.userId == user.conjuge){
+                              if(ledother.sub.userId.equals(user.conjuge)){
                                 console.log("detalhe2",ledother.sub.userId, user.conjuge, ledother.sub.userId == user.conjuge);
                                 Led.findOne(
                                   {
