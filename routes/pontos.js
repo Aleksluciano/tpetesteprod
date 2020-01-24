@@ -807,7 +807,7 @@ router.put("/anuncio/avisaemail", function(req, res, next) {
       }
 
       User.find().exec(function(err, users) {
-        const titulo = `*TPE Anúncio: ${anuncio.titulo}*`;
+        const titulo = `TPE Anúncio: ${anuncio.titulo}`;
 
         const corpo = `${anuncio.mensagem}`;
 
