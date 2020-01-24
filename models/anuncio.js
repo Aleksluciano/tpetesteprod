@@ -5,7 +5,8 @@ var mongooseUniqueValidator = require('mongoose-unique-validator');
 var schema = new Schema({
     titulo: {type: String, required: true, unique: true},
     mensagem: {type: String, required: true},
-    avisado: {type: Boolean}
+    avisado: {type: Boolean},
+    avisadoemail: {type: Boolean}
 });
 
 schema.plugin(mongooseUniqueValidator);

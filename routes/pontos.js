@@ -19,11 +19,12 @@ var Congregation = require("../models/congregation");
 var Validity = require("../models/validity");
 var Especial = require("../models/especial");
 var path = require("path");
-var moment = require('moment');
+var moment = require("moment");
 var Escala = require("../models/escala");
 var Anuncio = require("../models/anuncio");
 var telegram = require("../routes/telegram");
-var User = require('../models/user');
+var User = require("../models/user");
+var nodemailer = require("nodemailer");
 //var http = require('http');
 
 const reqPath = path.join(__dirname, "../");
@@ -83,8 +84,6 @@ router.get("/", function(req, res, next) {
 
 router.post("/", function(req, res, next) {
   let config = [[], [], [], [], [], [], [], []];
-
-
 
   console.log(req.body);
 
@@ -231,8 +230,6 @@ router.post("/telegram", function(req, res, next) {
     message: "Telegram enviado",
     obj: "ok"
   });
-
-
 });
 
 router.get("/telegramresposta", function(req, res, next) {});
@@ -340,8 +337,6 @@ router.delete("/hora/:id", function(req, res, next) {
     });
   });
 });
-
-
 
 router.put("/hora/edit", function(req, res, next) {
   Hora.findById(req.body.idhora, function(err, hora) {
@@ -452,8 +447,6 @@ router.delete("/feriado/:id", function(req, res, next) {
   });
 });
 
-
-
 router.put("/feriado/edit", function(req, res, next) {
   Feriado.findById(req.body.idferiado, function(err, feriado) {
     if (err) {
@@ -470,8 +463,8 @@ router.put("/feriado/edit", function(req, res, next) {
       });
     }
 
-    feriado.feriado  = req.body.feriado;
-    feriado.data     = req.body.data;
+    feriado.feriado = req.body.feriado;
+    feriado.data = req.body.data;
     feriado.datashow = req.body.datashow;
 
     feriado.save(function(err, result) {
@@ -534,8 +527,6 @@ router.get("/circuito/all/:id", function(req, res, next) {
         error: err
       });
     }
-
-
 
     res.status(200).json({
       message: "Sucesso ao pegar lista de circuitos",
@@ -639,8 +630,6 @@ router.get("/anuncio/:id", function(req, res, next) {
       });
     }
 
-
-
     res.status(200).json({
       message: "Sucesso ao pegar lista de anuncios",
       obj: anuncios
@@ -648,14 +637,13 @@ router.get("/anuncio/:id", function(req, res, next) {
   });
 });
 
-
-
 router.post("/anuncio", function(req, res, next) {
   console.log("anuncio", req.body);
   var anuncio = new Anuncio({
     titulo: req.body.titulo,
     mensagem: req.body.mensagem,
-    avisado: false
+    avisado: false,
+    avisadoemail: false
   });
 
   anuncio.save(function(err, result) {
@@ -753,7 +741,6 @@ router.put("/anuncio/avisa", function(req, res, next) {
       });
     }
 
-
     anuncio.avisado = req.body.avisado;
     anuncio.save(function(err, result) {
       if (err) {
@@ -763,35 +750,25 @@ router.put("/anuncio/avisa", function(req, res, next) {
         });
       }
 
-
-
-User.find().exec(function (err, users) {
-
-const resp = `*Anúncio: ${anuncio.titulo}*
+      User.find().exec(function(err, users) {
+        const resp = `*Anúncio: ${anuncio.titulo}*
 
 ${anuncio.mensagem}`;
 
-for(let i = 0;i < users.length; i++){
-
-
-if(users[i].telegram){
-
-      try{
-      telegram.bot.sendMessage(users[i].telegram, resp, { parse_mode: "Markdown" });
-      console.log(users[i].email);
-    } catch (e) {
-      console.log(`erro no envio para ${users[i].email}`);
-      console.log(e);
-    }
-  }
-
-  }
-
-
-    });
-
-
-
+        for (let i = 0; i < users.length; i++) {
+          if (users[i].telegram) {
+            try {
+              telegram.bot.sendMessage(users[i].telegram, resp, {
+                parse_mode: "Markdown"
+              });
+              console.log(users[i].email);
+            } catch (e) {
+              console.log(`erro no envio para ${users[i].email}`);
+              console.log(e);
+            }
+          }
+        }
+      });
 
       res.status(200).json({
         message: "Anúncio enviado",
@@ -801,8 +778,84 @@ if(users[i].telegram){
   });
 });
 
+router.put("/anuncio/avisaemail", function(req, res, next) {
+  Anuncio.findById(req.body.id, function(err, anuncio) {
+    if (err) {
+      return res.status(500).json({
+        title: "Ocorreu um erro5",
+        error: err
+      });
+    }
 
+    if (!anuncio) {
+      return res.status(500).json({
+        title: "Anuncio não encontrado!",
+        error: { message: "Anuncio não encontrado" }
+      });
+    }
 
+    anuncio.avisadoemail = req.body.avisadoemail;
+    anuncio.save(function(err, result) {
+      if (err) {
+        return res.status(500).json({
+          title: "Ocorreu um erro6",
+          error: err
+        });
+      }
+
+      User.find().exec(function(err, users) {
+        const titulo = `*TPE Anúncio: ${anuncio.titulo}*`;
+
+        const corpo = `${anuncio.mensagem}`;
+
+        const tpe = "tpe";
+
+        let transporter = nodemailer.createTransport({
+          host: "smtp.mailgun.org",
+          port: 465,
+          secure: true,
+          auth: {
+            user: SUPORTEMAIL,
+            pass: PASSEMAIL
+          }
+        });
+
+        for (let i = 0; i < users.length; i++) {
+          if (users[i].email) {
+            if (users[i].email == "aleksluciano@gmail.com") {
+              if (
+                !users[i].email
+                  .toString()
+                  .toLowerCase()
+                  .includes(tpe)
+              ) {
+                const mailOptions = {
+                  from: `"TPE" <${SUPORTEMAIL}>`,
+                  to: users[i].email,
+                  subject: titulo,
+                  text: corpo
+                };
+
+                transporter.sendMail(mailOptions, function(error, info) {
+                  if (error) {
+                    console.log(error);
+                  } else {
+                    console.log("Email enviado: " + info.response);
+                  }
+                });
+              }
+            }
+          }
+        }
+      });
+
+      res.status(200).json({
+        message: "Anúncio enviado",
+        obj: result
+      });
+    });
+  });
+});
 
 //Cadastro de congregações
 router.get("/congregation/:id", function(req, res, next) {
@@ -845,8 +898,6 @@ router.get("/congregation/all/:id", function(req, res, next) {
         error: err
       });
     }
-
-
 
     res.status(200).json({
       message: "Sucesso ao pegar lista de congregações",
@@ -961,8 +1012,7 @@ router.get("/validity", function(req, res, next) {
 });
 
 router.get("/validity/last", function(req, res, next) {
-  Validity.find({ status: true })
-  .exec(function(err, validity) {
+  Validity.find({ status: true }).exec(function(err, validity) {
     if (err) {
       return res.status(500).json({
         title: "Ocorreu um erro13",
@@ -970,8 +1020,8 @@ router.get("/validity/last", function(req, res, next) {
       });
     }
 
-    validity.sort(function(a,b){
-      return (a.begin > b.begin) ? -1 : (a.begin < b.begin) ? 1 : 0;
+    validity.sort(function(a, b) {
+      return a.begin > b.begin ? -1 : a.begin < b.begin ? 1 : 0;
     });
 
     res.status(200).json({
@@ -982,15 +1032,11 @@ router.get("/validity/last", function(req, res, next) {
 });
 
 router.post("/validity", function(req, res, next) {
-
   var validity = new Validity({
     begin: req.body.begin,
     end: req.body.end,
     status: false
   });
-
-
-
 
   validity.save(function(err, result) {
     if (err) {
@@ -1008,7 +1054,6 @@ router.post("/validity", function(req, res, next) {
 });
 
 router.delete("/validity/:id", function(req, res, next) {
-
   Validity.findById(req.params.id, function(err, validity) {
     if (err) {
       return res.status(500).json({
@@ -1026,7 +1071,6 @@ router.delete("/validity/:id", function(req, res, next) {
 
     let data = moment.utc(validity.begin).format("DD-MM-YYYY");
     Escala.findOne({ datainicio: data }, function(err2, escala) {
-
       if (err2) {
         return res.status(500).json({
           title: "Ocorreu um erro6",
@@ -1034,31 +1078,28 @@ router.delete("/validity/:id", function(req, res, next) {
         });
       }
 
-
-      if(escala){
+      if (escala) {
         return res.status(500).json({
           title: "Operação impossível!",
           error: { message: "Existe uma escala para esta vigência" }
         });
       }
 
-    validity.remove(function(err, result) {
-      if (err) {
-        return res.status(500).json({
-          title: "Ocorreu um erro6",
-          error: err
+      validity.remove(function(err, result) {
+        if (err) {
+          return res.status(500).json({
+            title: "Ocorreu um erro6",
+            error: err
+          });
+        }
+        res.status(200).json({
+          message: "Vigência deletada",
+          obj: result
         });
-      }
-      res.status(200).json({
-        message: "Vigência deletada",
-        obj: result
       });
     });
   });
-
 });
-});
-
 
 router.put("/validity/edit", function(req, res, next) {
   Validity.findById(req.body.id, function(err, validity) {
@@ -1077,8 +1118,8 @@ router.put("/validity/edit", function(req, res, next) {
     }
 
     validity.begin = req.body.begin;
-    validity.end   = req.body.end;
-    validity.status  = req.body.status;
+    validity.end = req.body.end;
+    validity.status = req.body.status;
     validity.save(function(err, result) {
       if (err) {
         return res.status(500).json({
@@ -1114,7 +1155,6 @@ router.get("/especial", function(req, res, next) {
 });
 
 router.post("/especial", function(req, res, next) {
-
   var especial = new Especial({
     begin: req.body.begin,
     end: req.body.end,
@@ -1168,7 +1208,6 @@ router.delete("/especial/:id", function(req, res, next) {
   });
 });
 
-
 router.put("/especial/edit", function(req, res, next) {
   Especial.findById(req.body.id, function(err, especial) {
     if (err) {
@@ -1186,9 +1225,9 @@ router.put("/especial/edit", function(req, res, next) {
     }
 
     especial.begin = req.body.begin;
-    especial.end   = req.body.end;
-    especial.circuito   = req.body.circuito;
-    especial.nome   = req.body.nome;
+    especial.end = req.body.end;
+    especial.circuito = req.body.circuito;
+    especial.nome = req.body.nome;
     especial.save(function(err, result) {
       if (err) {
         return res.status(500).json({
@@ -1204,89 +1243,79 @@ router.put("/especial/edit", function(req, res, next) {
   });
 });
 
-
 //role
-router.post("/perfilrole", function (req, res, next) {
-
-
-
+router.post("/perfilrole", function(req, res, next) {
   let conjuge = null;
   let responsable = null;
-  let config = [[],[],[],[],[],[],[]];
+  let config = [[], [], [], [], [], [], []];
 
-console.log(req.body);
+  console.log(req.body);
 
-          let user = new User({
-          firstName: 'TPE CTC',
-          lastName: 'TPE CTC',
-          password: bcrypt.hashSync(req.body.senha, 10),
-          email: req.body.email,
-          congregation: null,
-          circuito: null,
-          mobilephone: 11999999999,
-          phone: 11999999999,
-          datebirth: new Date(2017,0,1,3,0,0),
-          responsable: responsable,
-          conjuge: conjuge,
-          sex: 'M',
-          privilege: 'PU',
-          eldermail: req.body.email,
-          config: config,
-          released:  false,
-          lastday: new Date(2017,0,1,3,0,0),
-          role: req.body.role
-
-      });
-
-      console.log(user);
-      user.save(function(err, result) {
-          if (err) {
-              return res.status(500).json({
-                  title: 'Ocorreu um erro9',
-                  error: err
-              });
-          }
-
-
-              return res.status(201).json({
-              message: 'Usuário role Criado',
-              obj: result
-          });
-      });
+  let user = new User({
+    firstName: "TPE CTC",
+    lastName: "TPE CTC",
+    password: bcrypt.hashSync(req.body.senha, 10),
+    email: req.body.email,
+    congregation: null,
+    circuito: null,
+    mobilephone: 11999999999,
+    phone: 11999999999,
+    datebirth: new Date(2017, 0, 1, 3, 0, 0),
+    responsable: responsable,
+    conjuge: conjuge,
+    sex: "M",
+    privilege: "PU",
+    eldermail: req.body.email,
+    config: config,
+    released: false,
+    lastday: new Date(2017, 0, 1, 3, 0, 0),
+    role: req.body.role
   });
 
+  console.log(user);
+  user.save(function(err, result) {
+    if (err) {
+      return res.status(500).json({
+        title: "Ocorreu um erro9",
+        error: err
+      });
+    }
 
-  router.get("/perfilrole/:id", function(req, res, next) {
-    User.find({role: { $in: ['ctc', 'gold']}}).exec(function(err, userctc) {
-      if (err) {
-        return res.status(500).json({
-          title: "Ocorreu um erro13",
-          error: err
-        });
-      }
+    return res.status(201).json({
+      message: "Usuário role Criado",
+      obj: result
+    });
+  });
+});
 
-      let user = [];
+router.get("/perfilrole/:id", function(req, res, next) {
+  User.find({ role: { $in: ["ctc", "gold"] } }).exec(function(err, userctc) {
+    if (err) {
+      return res.status(500).json({
+        title: "Ocorreu um erro13",
+        error: err
+      });
+    }
 
-      for(let i=0;i< userctc.length;i++){
+    let user = [];
 
+    for (let i = 0; i < userctc.length; i++) {
       userperfil = {
-           email: userctc[i].email,
-           senha: ' ',
-           role: userctc[i].role,
-           id: userctc[i]._id
-      }
+        email: userctc[i].email,
+        senha: " ",
+        role: userctc[i].role,
+        id: userctc[i]._id
+      };
 
       user.push(userperfil);
     }
 
-      res.status(200).json({
-        message: "Sucesso ao pegar lista de usuarios perfilrole",
-        obj: user
-      });
+    res.status(200).json({
+      message: "Sucesso ao pegar lista de usuarios perfilrole",
+      obj: user
     });
   });
-
-
+});
 
 router.delete("/perfilrole/:id", function(req, res, next) {
   User.findById(req.params.id, function(err, userctc) {
@@ -1319,7 +1348,6 @@ router.delete("/perfilrole/:id", function(req, res, next) {
   });
 });
 
-
 router.put("/perfilrole/edit", function(req, res, next) {
   User.findById(req.body.id, function(err, userctc) {
     if (err) {
@@ -1337,7 +1365,7 @@ router.put("/perfilrole/edit", function(req, res, next) {
     }
 
     userctc.email = req.body.email;
-    userctc.role   = req.body.role;
+    userctc.role = req.body.role;
 
     userctc.save(function(err, result) {
       if (err) {
