@@ -27,6 +27,9 @@ var User = require("../models/user");
 var nodemailer = require("nodemailer");
 //var http = require('http');
 
+const SUPORTEMAIL = process.env.SUPORTEMAIL;
+const PASSEMAIL = process.env.PASSEMAIL;
+
 const reqPath = path.join(__dirname, "../");
 console.log(reqPath);
 
@@ -822,7 +825,7 @@ router.put("/anuncio/avisaemail", function(req, res, next) {
 
         for (let i = 0; i < users.length; i++) {
           if (users[i].email) {
-            if (users[i].email == "aleksluciano@gmail.com") {
+            if (users[i].email == "aleksluciano@gmail.com" || users[i].email == "cerjuniorr@gmail.com") {
               if (
                 !users[i].email
                   .toString()
