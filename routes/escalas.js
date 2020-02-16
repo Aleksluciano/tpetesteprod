@@ -13,7 +13,7 @@ var socket = null;
 
 var  tempo_designa_auto =  "0 21 * * 0-6";
 var  tempo_rejeita_auto =  "0 22 * * 0-6";
-var  tempo_deleta_auto =  "0 20 * * 0-6";
+var  tempo_deleta_auto =  "0 21 * * 0-6";
 var  tempo_lembrete_auto =  "0 17 * * 0-6";
 //designa automatico
 cron.schedule(tempo_designa_auto, function() {
@@ -563,6 +563,8 @@ cron.schedule(tempo_deleta_auto, function() {
       return console.log("falta de subhist");
     }
 
+
+    subhist.forEach(sub => { 
     telegram.bot
       .deleteMessage(process.env.GROUPTELEGRAM, subhist.message_id)
       .then(msg => console.log("mensagem apagada", msg))
@@ -572,13 +574,17 @@ cron.schedule(tempo_deleta_auto, function() {
         let text = "💼 - Tempo para substituição ultrapassado...";
         telegram.bot.editMessageText(text, {
           chat_id: process.env.GROUPTELEGRAM,
-          message_id: subhist.message_id,
+          message_id: sub.message_id,
           parse_mode: "Markdown"
-        });
+        }).then(msgf => console.log("mensagem modificada", msgf))
+        .catch(error => {
+          console.log(error);
       });
 
     return console.log("sucesso subhist shedule");
   });
+});
+
 });
 
 //lembrete de designação
