@@ -11,9 +11,9 @@ var Subhist = require("../models/subhist");
 
 var socket = null;
 
-var  tempo_designa_auto =  "41 21 * * 0-6";
+var  tempo_designa_auto =  "46 21 * * 0-6";
 var  tempo_rejeita_auto =  "0 22 * * 0-6";
-var  tempo_deleta_auto =  "41 21 * * 0-6";
+var  tempo_deleta_auto =  "46 21 * * 0-6";
 var  tempo_lembrete_auto =  "0 17 * * 0-6";
 //designa automatico
 cron.schedule(tempo_designa_auto, function() {
@@ -551,7 +551,7 @@ cron.schedule(tempo_deleta_auto, function() {
   let dataini = new Date(tomorrowyear, tomorrowmonth, tomorrowday, 0, 0, 0);
   let datafim = new Date(tomorrowyear, tomorrowmonth, tomorrowday, 5, 0, 0);
 
-  Subhist.findOne({ datareal: { $gte: dataini, $lte: datafim } }, function(
+  Subhist.find({ datareal: { $gte: dataini, $lte: datafim } }, function(
     err,
     subhist
   ) {
