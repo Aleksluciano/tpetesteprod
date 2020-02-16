@@ -11,9 +11,9 @@ var Subhist = require("../models/subhist");
 
 var socket = null;
 
-var  tempo_designa_auto =  "0 21 * * 0-6";
+var  tempo_designa_auto =  "0 21 31 * 0-6";
 var  tempo_rejeita_auto =  "0 22 * * 0-6";
-var  tempo_deleta_auto =  "0 21 * * 0-6";
+var  tempo_deleta_auto =  "0 21 31 * 0-6";
 var  tempo_lembrete_auto =  "0 17 * * 0-6";
 //designa automatico
 cron.schedule(tempo_designa_auto, function() {
@@ -566,7 +566,7 @@ cron.schedule(tempo_deleta_auto, function() {
 
     subhist.forEach(sub => { 
     telegram.bot
-      .deleteMessage(process.env.GROUPTELEGRAM, subhist.message_id)
+      .deleteMessage(process.env.GROUPTELEGRAM, sub.message_id)
       .then(msg => console.log("mensagem apagada", msg))
       .catch(erro => {
         console.log(erro);
@@ -581,9 +581,10 @@ cron.schedule(tempo_deleta_auto, function() {
           console.log(error);
       });
 
+    });
+  });
     return console.log("sucesso subhist shedule");
   });
-});
 
 });
 
