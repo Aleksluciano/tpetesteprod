@@ -1006,12 +1006,12 @@ Circ: *${j.congregation.circuit}*\n`;
                           }
                         }).then(msg => {
                
-                          let Subhist = new Subhist({
+                          let subhist = new Subhist({
                             message_id: msg.message_id,
                             datareal: escala.data
                           })
 
-                          Subhist.save();
+                          subhist.save();
           
                         });
                       } catch (e) {
