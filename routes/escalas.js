@@ -11,9 +11,9 @@ var Subhist = require("../models/subhist");
 
 var socket = null;
 
-var  tempo_designa_auto =  "0 21 34 * 0-6";
+var  tempo_designa_auto =  "38 21 * * 0-6";
 var  tempo_rejeita_auto =  "0 22 * * 0-6";
-var  tempo_deleta_auto =  "0 21 34 * 0-6";
+var  tempo_deleta_auto =  "38 21 * * 0-6";
 var  tempo_lembrete_auto =  "0 17 * * 0-6";
 //designa automatico
 cron.schedule(tempo_designa_auto, function() {
