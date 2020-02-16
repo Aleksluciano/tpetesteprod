@@ -161,6 +161,7 @@ Companheiro: *${usergram.comp}*
 Por favor, verifique o status no site TPE.
 Bom trabalho!!_`;
 
+              if(usergram.telegram)
               telegram.bot
                 .sendMessage(usergram.telegram, message, {
                   parse_mode: "Markdown"
@@ -339,6 +340,7 @@ function procuraSemParceiro(escala, registro, mudanca, ajustados) {
   });
 }
 
+//rejeita automatico quem não respondeu
 cron.schedule("0 22 * * 0-6", function() {
   let tresDiasDepois = moment.utc().add(3, "day");
   let dataTresDiasDepois = new Date(tresDiasDepois);
@@ -534,6 +536,7 @@ Circ: *${j.congregation.circuit}*\n`;
   });
 }
 
+//deleta mensagens enviadas pra grupo sub
 cron.schedule("0 20 * * 0-6", function() {
   let diaatual = moment.utc().add(1, "day");
   let dia = new Date(diaatual);
@@ -574,6 +577,7 @@ cron.schedule("0 20 * * 0-6", function() {
   });
 });
 
+//lembrete de designação
 cron.schedule("0 17 * * 0-6", function() {
   let diaatual = moment.utc().add(1, "day");
   let dia = new Date(diaatual);
