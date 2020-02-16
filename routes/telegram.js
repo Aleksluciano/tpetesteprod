@@ -5,7 +5,7 @@ const User = require("../models/user");
 const Usertotal = require("../models/user");
 const Usersub = require("../models/user");
 const Led = require("../models/led");
-const LedOther = require("../models/led"); 
+const LedOther = require("../models/led");
 const Congregation = require("../models/congregation");
 const bcrypt = require("bcryptjs");
 const Escala = require("../models/escala");
@@ -13,6 +13,7 @@ const mongoose = require("mongoose");
 const TelegramBot = require("node-telegram-bot-api");
 const ms = require("ms");
 const cron = require("node-cron");
+const Subhist = require("../models/subhist");
 
 const User2 = require("../models/user");
 const Circuito = require("../models/circuito");
@@ -839,7 +840,7 @@ function setUserLed(
         return console.log("Usuario inexistente");
       }
 
-      if (led.sim || led.nao) {
+      if (((led.nao || led.sim) && (!conjugeJarespondeu) ) || ( led.nao && conjugeJarespondeu) ) {
         //Confirma a reposta do usuario
         bot.answerCallbackQuery(msg.id, "Respondido pelo site!", true);
 
@@ -1003,6 +1004,15 @@ Circ: *${j.congregation.circuit}*\n`;
                               ]
                             ]
                           }
+                        }).then(msg => {
+               
+                          let Subhist = new Subhist({
+                            message_id: msg.message_id,
+                            datareal: escala.data
+                          })
+
+                          Subhist.save();
+          
                         });
                       } catch (e) {
                         console.log(e);
@@ -1143,19 +1153,18 @@ function setSubUser(idescala, iduser, horacode, usergram, msg, sim, nao) {
                 if (!escala) {
                   return console.log("erro1", err);
                 }
-                
+
                 let posicaoencontrada = false;
                 for (let p = 0; p < escala.pontos.length; p++) {
-                  if(posicaoencontrada)break;
+                  if (posicaoencontrada) break;
                   for (let u = 0; u < escala.pontos[p].length; u++) {
-                    if(posicaoencontrada)break;
+                    if (posicaoencontrada) break;
                     for (let s = 0; s < escala.pontos[p][u].npubs; s++) {
-                      if(posicaoencontrada)break;
+                      if (posicaoencontrada) break;
                       if (
                         escala.pontos[p][u].pubs[s].userId == iduser &&
                         escala.hora[p].code == horacode
                       ) {
-
                         let obj = {
                           firstName: user.firstName,
                           lastName: user.lastName,
@@ -1189,179 +1198,211 @@ function setSubUser(idescala, iduser, horacode, usergram, msg, sim, nao) {
                         };
 
                         posicaoencontrada = true;
-console.log("dettt",user.sex,user.conjuge,usersub.sex,usersub.conjuge);
-let doisirmaos_subsemconjuge = (!usersub.conjuge && user.sex == "M" && usersub.sex == "M");
-let irmaocomconjuge_irma = (user.conjuge && user.sex == "M" && usersub.sex == "F");
-let doisirmaos_comconjuge = (user.sex == "M" && user.conjuge && usersub.sex == "M" && usersub.conjuge);
-console.log("dettt2",doisirmaos_subsemconjuge,irmaocomconjuge_irma,doisirmaos_comconjuge);
-                        if(doisirmaos_subsemconjuge){
-                        //segue em diante
-                        }else if(irmaocomconjuge_irma || doisirmaos_comconjuge ){
-                          let other = escala.pontos[p][u].pubs.find(q => q.userId !== iduser);
-                        if(other){
+                        console.log(
+                          "dettt",
+                          user.sex,
+                          user.conjuge,
+                          usersub.sex,
+                          usersub.conjuge
+                        );
+                        let doisirmaos_subsemconjuge =
+                          !usersub.conjuge &&
+                          user.sex == "M" &&
+                          usersub.sex == "M";
+                        let irmaocomconjuge_irma =
+                          user.conjuge && user.sex == "M" && usersub.sex == "F";
+                        let doisirmaos_comconjuge =
+                          user.sex == "M" &&
+                          user.conjuge &&
+                          usersub.sex == "M" &&
+                          usersub.conjuge;
+                        console.log(
+                          "dettt2",
+                          doisirmaos_subsemconjuge,
+                          irmaocomconjuge_irma,
+                          doisirmaos_comconjuge
+                        );
+                        if (doisirmaos_subsemconjuge) {
+                          //segue em diante
+                        } else if (
+                          irmaocomconjuge_irma ||
+                          doisirmaos_comconjuge
+                        ) {
+                          let other = escala.pontos[p][u].pubs.find(
+                            q => q.userId !== iduser
+                          );
+                          if (other) {
+                            LedOther.findOne(
+                              {
+                                idescala: idescala,
+                                iduser: other.userId,
+                                horacode: horacode,
+                                sim: false,
+                                nao: true,
+                                lock: true
+                              },
+                              function(errother, ledother) {
+                                if (errother) {
+                                  return console.log(err);
+                                }
 
-                          LedOther.findOne(
-                            {
-                              idescala: idescala,
-                              iduser: other.userId,
-                              horacode: horacode,
-                              sim: false,
-                              nao: true,
-                              lock: true
-                            },
-                            function(errother, ledother) {
-                              if (errother) {
-                                return console.log(err);
-                              }
-  
-                              if (!ledother) {
-                                bot.answerCallbackQuery(
-                                  msg.id,
-                                  "Desculpe. Sua companheira não esta na outra vaga do ponto para que você possa pegar esta substituição!",
-                                  true
+                                if (!ledother) {
+                                  bot.answerCallbackQuery(
+                                    msg.id,
+                                    "Desculpe. Sua companheira não esta na outra vaga do ponto para que você possa pegar esta substituição!",
+                                    true
                                   );
-                                return console.log("Usuario inexistente");
-                              }
-                         
-                              if(ledother.sub.userId.equals(user.conjuge)){
-                                console.log("detalhe2",ledother.sub.userId, user.conjuge, ledother.sub.userId == user.conjuge);
-                                Led.findOne(
-                                  {
-                                    idescala: idescala,
-                                    iduser: iduser,
-                                    horacode: horacode,
-                                    lock: false
-                                  },
-                                  function(err, led) {
-                                    if (err) {
-                                      return console.log(err);
-                                    }
-        
-                                    if (!led) {
-                                      return console.log("Usuario inexistente");
-                                    }
-        
-                                    if (!led.lock) {
-                                      let newled = new Led({
-                                        datainicio: led.datainicio,
-                                        datafim: led.datafim,
-                                        idescala: led.idescala,
-                                        iduser: user._id,
-                                        horacode: led.horacode,
-                                        indexpub: s,
-                                        sim: sim,
-                                        nao: false,
-                                        sub: {},
-                                        lock: false,
-                                        msg: led.msg,
-                                        data: led.data
-                                      });
-                                      led.sub = obj;
-                                      led.lock = true;
-                                      led
-                                        .save()
-                                        .then(() => {
-                                          console.log("ok lock");
-                                          newled
-                                            .save()
-                                            .then(() => {
-                                              console.log("save newled");
-        
-                                              atualiza_central_via_socket(
-                                                idescala,
-                                                iduser,
-                                                horacode,
-                                                sim,
-                                                nao,
-                                                "sub",
-                                                obj
-                                              );
-        
-                                              user.escala.push(
-                                                mongoose.Types.ObjectId(idescala)
-                                              );
-                                              user.save();
-        
-                                              usersub.escala.remove(idescala);
-                                              usersub.markModified("escala");
-                                              usersub.save();
-        
-                                              let text =
-                                                msg.message.text +
-                                                "\n\u{2705} *Confirmado por:* " +
-                                                user.firstName +
-                                                " " +
-                                                user.lastName;
-                                              bot.editMessageText(text, {
-                                                chat_id: msg.message.chat.id,
-                                                message_id: msg.message.message_id,
-                                                parse_mode: "Markdown"
-                                              });
-        
-                                              bot.answerCallbackQuery(
-                                                msg.id,
-                                                "Confirmado, obrigado por ajudar!",
-                                                true
-                                              );
-        
-                                              let mytime = setInterval(() => {
-                                                bot.deleteMessage(
-                                                  msg.message.chat.id,
-                                                  msg.message.message_id
-                                                );
-                                                try {
-                                                  bot.sendMessage(usergram, text, {
-                                                    parse_mode: "Markdown"
-                                                  });
-                                                } catch (e) {
-                                                  console.log(e);
-                                                }
-                                                clearInterval(mytime);
-                                              }, 10000);
-                                            })
-                                            .catch(err => {
-                                              console.log("erro", err);
-                                            });
-                                        })
-                                        .catch(err => {
-                                          // mongoose connection error will be handled here
-                                          console.log("erro", err);
+                                  return console.log("Usuario inexistente");
+                                }
+
+                                if (ledother.sub.userId.equals(user.conjuge)) {
+                                  console.log(
+                                    "detalhe2",
+                                    ledother.sub.userId,
+                                    user.conjuge,
+                                    ledother.sub.userId == user.conjuge
+                                  );
+                                  Led.findOne(
+                                    {
+                                      idescala: idescala,
+                                      iduser: iduser,
+                                      horacode: horacode,
+                                      lock: false
+                                    },
+                                    function(err, led) {
+                                      if (err) {
+                                        return console.log(err);
+                                      }
+
+                                      if (!led) {
+                                        return console.log(
+                                          "Usuario inexistente"
+                                        );
+                                      }
+
+                                      if (!led.lock) {
+                                        let newled = new Led({
+                                          datainicio: led.datainicio,
+                                          datafim: led.datafim,
+                                          idescala: led.idescala,
+                                          iduser: user._id,
+                                          horacode: led.horacode,
+                                          indexpub: s,
+                                          sim: sim,
+                                          nao: false,
+                                          sub: {},
+                                          lock: false,
+                                          msg: led.msg,
+                                          data: led.data
                                         });
+                                        led.sub = obj;
+                                        led.lock = true;
+                                        led
+                                          .save()
+                                          .then(() => {
+                                            console.log("ok lock");
+                                            newled
+                                              .save()
+                                              .then(() => {
+                                                console.log("save newled");
+
+                                                atualiza_central_via_socket(
+                                                  idescala,
+                                                  iduser,
+                                                  horacode,
+                                                  sim,
+                                                  nao,
+                                                  "sub",
+                                                  obj
+                                                );
+
+                                                user.escala.push(
+                                                  mongoose.Types.ObjectId(
+                                                    idescala
+                                                  )
+                                                );
+                                                user.save();
+
+                                                usersub.escala.remove(idescala);
+                                                usersub.markModified("escala");
+                                                usersub.save();
+
+                                                let text =
+                                                  msg.message.text +
+                                                  "\n\u{2705} *Confirmado por:* " +
+                                                  user.firstName +
+                                                  " " +
+                                                  user.lastName;
+                                                bot.editMessageText(text, {
+                                                  chat_id: msg.message.chat.id,
+                                                  message_id:
+                                                    msg.message.message_id,
+                                                  parse_mode: "Markdown"
+                                                });
+
+                                                bot.answerCallbackQuery(
+                                                  msg.id,
+                                                  "Confirmado, obrigado por ajudar!",
+                                                  true
+                                                );
+
+                                                let mytime = setInterval(() => {
+                                                  bot.deleteMessage(
+                                                    msg.message.chat.id,
+                                                    msg.message.message_id
+                                                  );
+                                                  try {
+                                                    bot.sendMessage(
+                                                      usergram,
+                                                      text,
+                                                      {
+                                                        parse_mode: "Markdown"
+                                                      }
+                                                    );
+                                                  } catch (e) {
+                                                    console.log(e);
+                                                  }
+                                                  clearInterval(mytime);
+                                                }, 10000);
+                                              })
+                                              .catch(err => {
+                                                console.log("erro", err);
+                                              });
+                                          })
+                                          .catch(err => {
+                                            // mongoose connection error will be handled here
+                                            console.log("erro", err);
+                                          });
+                                      }
                                     }
-                                  }
-                                );
-                              }else {
-                                bot.answerCallbackQuery(
-                                  msg.id,
-                                  "Desculpe. Sua companheira não esta na outra vaga do ponto para que você possa pegar esta substituição!",
-                                  true
+                                  );
+                                } else {
+                                  bot.answerCallbackQuery(
+                                    msg.id,
+                                    "Desculpe. Sua companheira não esta na outra vaga do ponto para que você possa pegar esta substituição!",
+                                    true
                                   );
                                   return console.log("vaga sem compnaheira");
+                                }
                               }
-
-                         
-
-                            });
-                     break;
-                        }else{
-                          bot.answerCallbackQuery(
-                            msg.id,
-                            "Desculpe. Aconteceu algum erro inesperado!",
-                            true
+                            );
+                            break;
+                          } else {
+                            bot.answerCallbackQuery(
+                              msg.id,
+                              "Desculpe. Aconteceu algum erro inesperado!",
+                              true
                             );
                             return console.log("Usuario inexistente");
-                        }
-
-                        }else if (user.sex == "M") {
+                          }
+                        } else if (user.sex == "M") {
                           bot.answerCallbackQuery(
                             msg.id,
                             "Desculpe, precisamos de uma irmã para este ponto!",
                             true
-                            );
-                            return console.log("Genero erro");
+                          );
+                          return console.log("Genero erro");
                         }
-
-              
 
                         Led.findOne(
                           {
@@ -1472,9 +1513,7 @@ console.log("dettt2",doisirmaos_subsemconjuge,irmaocomconjuge_irma,doisirmaos_co
                     }
                   }
                 }
-               
               });
-             
             });
         }
       );

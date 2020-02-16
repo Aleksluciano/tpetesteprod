@@ -7,8 +7,337 @@ var Led = require("../models/led");
 var telegram = require("../routes/telegram");
 var cron = require("node-cron");
 var moment = require("moment");
+var Subhist = require("../models/subhist");
 
 var socket = null;
+
+//designa automatico
+cron.schedule("0 21 * * 0-6", function() {
+  selectEscala();
+});
+
+function selectEscala() {
+  let diaatual = moment.utc().add(1, "day");
+  let dia = new Date(diaatual);
+  let tomorrowmonth = dia.getMonth();
+  let tomorrowyear = dia.getFullYear();
+  let tomorrowday = dia.getDate();
+
+  let dataini = new Date(tomorrowyear, tomorrowmonth, tomorrowday, 0, 0, 0);
+  let datafim = new Date(tomorrowyear, tomorrowmonth, tomorrowday, 5, 0, 0);
+  console.log(dataini);
+  console.log(datafim);
+  Escala.findOne({ data: { $gte: dataini, $lte: datafim } }, function(
+    err,
+    escala
+  ) {
+    if (err) {
+      return console.log("erro schedule");
+    }
+
+    if (!escala) {
+      return console.log("sem escala");
+    }
+
+    let registro = [];
+    for (let p = 0; p < escala.pontos.length; p++) {
+      for (let u = 0; u < escala.pontos[p].length; u++) {
+        for (let s = 0; s < escala.pontos[p][u].npubs; s++) {
+          if (escala.pontos[p][u].pubs[s]) {
+            registro.push({
+              ponto: escala.pontos[p][u].name,
+              username: escala.pontos[p][u].pubs[s].firstName,
+              user: { ...escala.pontos[p][u].pubs[s] },
+              horacode: escala.hora[p].code,
+              nao: false,
+              sim: false,
+              sub: {},
+              sex: escala.pontos[p][u].pubs[s].sex,
+              p: p,
+              u: u,
+              s: s
+            });
+          }
+        }
+      }
+    }
+
+    //console.log(escala);
+
+    Led.find({ idescala: escala._id })
+      // .populate("iduser")
+      .exec(function(err, leds) {
+        if (err) {
+          console.log("erro schedule");
+        }
+
+        if (!leds) {
+          return console.log("erro schedule");
+        }
+
+        for (let i = 0; i < leds.length; i++) {
+          let led = leds[i];
+
+          //console.log(led)
+          let reg = registro.find(a => a.user.userId == led.iduser);
+          if (led.sub) reg.sex = led.sub.sex;
+          if (reg) {
+            reg.sim = led.sim;
+            reg.nao = led.nao;
+            reg.sub = led.sub;
+          }
+        }
+
+        let mudanca = [];
+
+        for (let p = 0; p < escala.pontos.length; p++) {
+          for (let u = 0; u < escala.pontos[p].length; u++) {
+            let user1 = {};
+            let user2 = {};
+            for (let s = 0; s < escala.pontos[p][u].npubs; s++) {
+              if (escala.pontos[p][u].pubs[s]) {
+                if (s == 0) {
+                  user1 = registro.find(
+                    a => a.user.userId == escala.pontos[p][u].pubs[s].userId
+                  );
+                } else if (s == 1) {
+                  user2 = registro.find(
+                    a => a.user.userId == escala.pontos[p][u].pubs[s].userId
+                  );
+                }
+              }
+            }
+
+            if (
+              user1 &&
+              user2 &&
+              ((user1.sim && user2.nao && !user2.sub) ||
+                (user1.nao && !user1.sub && user2.sim) ||
+                (user1.nao && !user1.sub && user2.nao && user2.sub) ||
+                (user1.nao && user1.sub && user2.nao && !user2.sub))
+            ) {
+              if (user1.sim || user1.sub) mudanca.push({ ...user1 });
+              if (user2.sim || user2.sub) mudanca.push({ ...user2 });
+            }
+          }
+        }
+
+        imprime(escala, registro);
+        console.log(
+          "//////////////////////////////////////////////////////////////////////////////////////////////"
+        );
+
+        let troca = [];
+        let ajustados = [];
+
+        procuraSemParceiro(escala, registro, mudanca, ajustados);
+        //procuraSemParceiro(escala, registro, mudanca, ajustados, false);
+        ajustados.forEach(aj => {
+          console.log(aj.user, aj.dia, aj.hora, aj.foipara, aj.telegram);
+        });
+
+        // console.table(mudanca);
+        // console.table(troca);
+        imprime(escala, registro);
+        if (ajustados.length > 0) {
+          escala.markModified("pontos");
+          escala.save(function(err, result) {
+            if (err) {
+              return console.log(err);
+            }
+
+            ajustados.forEach(usergram => {
+              let message = `*Ajuste de designação TPE*
+      
+Mudança no *Ponto* da sua designação de amanhã
+            
+Irmão: *${usergram.user}*
+Dia: *${usergram.dia} ${usergram.diasemana}*
+Hora: *${usergram.hora}*
+Ponto: *${usergram.foipara}*
+Companheiro: *${usergram.comp}* 
+      
+ _A mudança foi necessária, pois você estava sem companhia até o presente momento.
+Por favor, verifique o status no site TPE.
+Bom trabalho!!_`;
+
+              telegram.bot
+                .sendMessage(usergram.telegram, message, {
+                  parse_mode: "Markdown"
+                })
+                .then(m => {
+                  console.log(m);
+                })
+                .catch(erro0 => {
+                  console.log(erro0);
+                });
+            });
+          });
+        }
+      });
+  });
+}
+
+function imprime(escala, registro) {
+  for (let p = 0; p < escala.pontos.length; p++) {
+    for (let u = 0; u < escala.pontos[p].length; u++) {
+      console.log("////////////////", escala.pontos[p][u].name);
+      for (let s = 0; s < escala.pontos[p][u].npubs; s++) {
+        if (escala.pontos[p][u].pubs[s]) {
+          let reg = registro.find(
+            a => a.user.userId == escala.pontos[p][u].pubs[s].userId
+          );
+          if (reg && reg.sub) console.log(reg.sub.firstName);
+          else if (reg) console.log(reg.user.firstName);
+        } else console.log("sem nome");
+      }
+    }
+  }
+}
+
+function procuraSemParceiro(escala, registro, mudanca, ajustados) {
+  mudanca.sort((a, b) => {
+    return a.sim ? 1 : !a.sim ? -1 : 0;
+  });
+  mudanca.forEach(muda => {
+    let escolheOutro = false;
+    let cond = false;
+    let jaFoi = ajustados.find(
+      a => a.id1 == muda.user.userId || a.id2 == muda.user.userId
+    );
+    if (!jaFoi)
+      for (let rep = 0; rep < 2; rep++) {
+        if (escolheOutro) break;
+        if (cond > 0) cond = true;
+        for (let p = 0; p < escala.pontos.length; p++) {
+          if (escolheOutro) break;
+          for (let u = 0; u < escala.pontos[p].length; u++) {
+            if (escolheOutro) break;
+            let user1 = null;
+            let user2 = null;
+
+            if (escala.hora[p].code == muda.horacode)
+              for (let s = 0; s < escala.pontos[p][u].npubs; s++) {
+                if (escala.pontos[p][u].name !== muda.ponto)
+                  if (escala.pontos[p][u].pubs[s]) {
+                    if (s == 0) {
+                      user1 = registro.find(
+                        a => a.user.userId == escala.pontos[p][u].pubs[s].userId
+                      );
+                    } else if (s == 1) {
+                      user2 = registro.find(
+                        a => a.user.userId == escala.pontos[p][u].pubs[s].userId
+                      );
+                    }
+                  }
+              }
+
+            let userChange = null;
+            let compUser = null;
+            if (
+              user1 &&
+              user2 &&
+              ((user1.sim && user2.nao && !user2.sub) ||
+                (user1.nao && !user1.sub && user2.sim) ||
+                (user1.nao && !user1.sub && user2.nao && user2.sub) ||
+                (user1.nao && user1.sub && user2.nao && !user2.sub))
+            ) {
+              if (user1 && user2) {
+                if (
+                  user1.nao &&
+                  !user1.sub &&
+                  user2.sim &&
+                  muda.user.sex == user2.sex
+                ) {
+                  escala.pontos[muda.p][muda.u].pubs[muda.s] = {
+                    ...escala.pontos[p][u].pubs[0]
+                  };
+                  escala.pontos[p][u].pubs[0] = { ...muda.user };
+                  userChange = muda;
+                  compUser = user2;
+                } else if (
+                  user1.nao &&
+                  !user1.sub &&
+                  user2.sub &&
+                  muda.user.sex == user2.sub.sex &&
+                  cond
+                ) {
+                  escala.pontos[muda.p][muda.u].pubs[muda.s] = {
+                    ...escala.pontos[p][u].pubs[0]
+                  };
+                  escala.pontos[p][u].pubs[0] = { ...muda.user };
+                  userChange = muda;
+                  compUser = user2;
+                } else if (
+                  user2.nao &&
+                  !user2.sub &&
+                  user1.sim &&
+                  muda.user.sex == user1.sex
+                ) {
+                  escala.pontos[muda.p][muda.u].pubs[muda.s] = {
+                    ...escala.pontos[p][u].pubs[1]
+                  };
+                  escala.pontos[p][u].pubs[1] = { ...muda.user };
+                  userChange = muda;
+                  compUser = user1;
+                } else if (
+                  user2.nao &&
+                  !user2.sub &&
+                  user1.sub &&
+                  muda.user.sex == user1.sub.sex &&
+                  cond
+                ) {
+                  escala.pontos[muda.p][muda.u].pubs[muda.s] = {
+                    ...escala.pontos[p][u].pubs[1]
+                  };
+                  escala.pontos[p][u].pubs[1] = { ...muda.user };
+                  userChange = muda;
+                  compUser = user1;
+                }
+                if (userChange) {
+                  if (userChange.sub) {
+                    ajustados.push({
+                      id1: userChange.sub.userId,
+                      id2: compUser.user.userId,
+                      user: userChange.sub.firstName,
+                      telegram: userChange.sub.telegram,
+                      foipara: escala.pontos[p][u].name,
+                      comp: compUser.sub
+                        ? compUser.sub.firstName + " " + compUser.sub.lastName
+                        : compUser.user.firstName +
+                          " " +
+                          compUser.user.lastName,
+                      dia: escala.dia,
+                      hora: escala.hora[p].hora,
+                      diasemana: escala.diasemana
+                    });
+                  } else {
+                    ajustados.push({
+                      id1: userChange.user.userId,
+                      id2: compUser.user.userId,
+                      user: userChange.user.firstName,
+                      telegram: userChange.user.telegram,
+                      foipara: escala.pontos[p][u].name,
+                      comp: compUser.sub
+                        ? compUser.sub.firstName + " " + compUser.sub.lastName
+                        : compUser.user.firstName +
+                          " " +
+                          compUser.user.lastName,
+                      dia: escala.dia,
+                      hora: escala.hora[p].hora,
+                      diasemana: escala.diasemana
+                    });
+                  }
+                  escolheOutro = true;
+                  break;
+                }
+              }
+            }
+          }
+        }
+      }
+  });
+}
 
 cron.schedule("0 22 * * 0-6", function() {
   let tresDiasDepois = moment.utc().add(3, "day");
@@ -128,6 +457,10 @@ function rejectThem(led, escala) {
                       if (!ledConjuge) {
                         return console.log("erro ledconjuge");
                       }
+
+                      if (ledConjuge.nao) {
+                        return console.log("conjuge ja disse nao");
+                      }
                       ledConjuge.nao = true;
                       ledConjuge.sim = false;
                       setTimeout(() => {
@@ -167,19 +500,28 @@ Circ: *${j.congregation.circuit}*\n`;
             console.log(textsub);
             console.log(userFriend);
             try {
-              telegram.bot.sendMessage(process.env.GROUPTELEGRAM, text, {
-                parse_mode: "Markdown",
-                reply_markup: {
-                  inline_keyboard: [
-                    [
-                      {
-                        text: "\u{1F504} Substituir",
-                        callback_data: textsub
-                      }
+              telegram.bot
+                .sendMessage(process.env.GROUPTELEGRAM, text, {
+                  parse_mode: "Markdown",
+                  reply_markup: {
+                    inline_keyboard: [
+                      [
+                        {
+                          text: "\u{1F504} Substituir",
+                          callback_data: textsub
+                        }
+                      ]
                     ]
-                  ]
-                }
-              });
+                  }
+                })
+                .then(msg => {
+                  let Subhist = new Subhist({
+                    message_id: msg.message_id,
+                    datareal: escala.data
+                  });
+
+                  Subhist.save();
+                });
             } catch (er) {
               console.log(er);
             }
@@ -191,6 +533,46 @@ Circ: *${j.congregation.circuit}*\n`;
     return "schedule recusa OK save";
   });
 }
+
+cron.schedule("0 20 * * 0-6", function() {
+  let diaatual = moment.utc().add(1, "day");
+  let dia = new Date(diaatual);
+  let tomorrowmonth = dia.getMonth();
+  let tomorrowyear = dia.getFullYear();
+  let tomorrowday = dia.getDate();
+
+  let dataini = new Date(tomorrowyear, tomorrowmonth, tomorrowday, 0, 0, 0);
+  let datafim = new Date(tomorrowyear, tomorrowmonth, tomorrowday, 5, 0, 0);
+
+  Subhist.findOne({ datareal: { $gte: dataini, $lte: datafim } }, function(
+    err,
+    subhist
+  ) {
+    if (err) {
+      return console.log("erro subhist");
+    }
+
+    if (!subhist) {
+      return console.log("falta de subhist");
+    }
+
+    telegram.bot
+      .deleteMessage(process.env.GROUPTELEGRAM, subhist.message_id)
+      .then(msg => console.log("mensagem apagada", msg))
+      .catch(erro => {
+        console.log(erro);
+
+        let text = "💼 - Tempo para substituição ultrapassado...";
+        telegram.bot.editMessageText(text, {
+          chat_id: process.env.GROUPTELEGRAM,
+          message_id: subhist.message_id,
+          parse_mode: "Markdown"
+        });
+      });
+
+    return console.log("sucesso subhist shedule");
+  });
+});
 
 cron.schedule("0 17 * * 0-6", function() {
   let diaatual = moment.utc().add(1, "day");
@@ -747,10 +1129,8 @@ Circ: *${j.congregation.circuit}*\n`;
                       console.log(textsub);
                       console.log(userFriend);
                       try {
-                        telegram.bot.sendMessage(
-                          process.env.GROUPTELEGRAM,
-                          text,
-                          {
+                        telegram.bot
+                          .sendMessage(process.env.GROUPTELEGRAM, text, {
                             parse_mode: "Markdown",
                             reply_markup: {
                               inline_keyboard: [
@@ -762,8 +1142,15 @@ Circ: *${j.congregation.circuit}*\n`;
                                 ]
                               ]
                             }
-                          }
-                        );
+                          })
+                          .then(msg => {
+                            let Subhist = new Subhist({
+                              message_id: msg.message_id,
+                              datareal: escala.data
+                            });
+
+                            Subhist.save();
+                          });
                       } catch (e) {
                         console.log(e);
                       }
